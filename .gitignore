@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.eggs/
+*.egg-info/
+venv/
+.venv/
+
+# Data (don't push large datasets to GitHub)
+data/raw/
+data/processed/
+
+# Results (can get large)
+results/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Scratch
+.scratch_docx/
