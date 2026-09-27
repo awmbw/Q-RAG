@@ -1,0 +1,25 @@
+# ── Data & Core ──
+datasets                  # HuggingFace datasets library (to download HotpotQA)
+numpy
+pandas
+
+# ── Embeddings & Retrieval ──
+sentence-transformers     # For loading MiniLM / BGE embedding models
+faiss-cpu                 # Facebook's vector similarity search library
+
+# ── Quantum ──
+qiskit                    # Core quantum computing framework
+qiskit-optimization       # QUBO → Ising conversion, QAOA utilities
+qiskit-aer                # Local quantum circuit simulator
+
+# ── LLM ──
+transformers              # HuggingFace transformers (for Phi-3 / Qwen)
+accelerate                # Efficient model loading on CPU/GPU
+
+# ── Evaluation ──
+scikit-learn              # For metrics utilities
+
+# ── Notebooks & Visualization ──
+jupyter
+matplotlib
+seaborn
