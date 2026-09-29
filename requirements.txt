@@ -11,6 +11,8 @@ faiss-cpu                 # Facebook's vector similarity search library
 qiskit                    # Core quantum computing framework
 qiskit-optimization       # QUBO → Ising conversion, QAOA utilities
 qiskit-aer                # Local quantum circuit simulator
+qiskit-algorithms
+
 
 # ── LLM ──
 transformers              # HuggingFace transformers (for Phi-3 / Qwen)
