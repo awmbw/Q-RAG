@@ -51,7 +51,7 @@ Where:
 
 ---
 
-## 📊 Evaluation & Results
+## Evaluation & Results
 
 To prove the efficacy of the QUBO formulation, we run a Hyperparameter Grid Search (tuning $\beta$) and evaluate the pipeline on a 500-question subset of HotpotQA.
 
