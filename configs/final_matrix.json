@@ -91,8 +91,10 @@
       "sha256": "0e6fa145621e9cd072250960440ef6ba39ca41fb2a6ec366d77e384beb685ab8"
     }
   ],
+  "execution_cycle": 2,
   "frozen_before_held_out_execution": true,
   "gamma": 0.2,
+  "implementation_erratum": "Restart all conditions after a Unicode provenance invariant repair. Candidate IDs, models, budgets, methods and gamma are unchanged. Cycle 1 retained separately and excluded from final comparisons.",
   "notes": "No noninferiority tolerance adopted. Negative findings retained. Larger quantum/corpus and token studies have separate sample counts.",
   "primary_generators": "Qwen 1.5B and 3B on full classical supplied pools; primary quantum uses 1.5B",
   "principal_comparison": "xy_evidence_f0.5 versus xy_absolute_f0.5 on same 50 questions per dataset; three seeds averaged within question"

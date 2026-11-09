@@ -197,3 +197,7 @@ Replaced quadratic-cost artifact rewrites for the new study runner with a durabl
 ## November 10, 2026 — Phase G freeze checkpoint
 
 Added bounded-corpus retrieval and explicit evaluation of missing support, then constructed the common candidate files before answer generation. Added memory high-water marks and stage timing fields. Formatted and linted the Python sources and reran all 39 tests before freezing the final configurations. Completed a separate Qwen 3B GPU smoke and a 16-candidate development quantum profile. The frozen matrix is now ready for execution; no held-out result is claimed at this checkpoint.
+
+### Phase G restart: provenance invariant repair
+
+A real held-out input revealed the Unicode surface/canonical distinction. Stopped the matrix, retained the complete first run and partial subsequent run, reproduced the assertion from the source text, added a targeted regression, and restarted every condition with unchanged scientific settings. Forty-five tests pass. The first cycle remains an auditable superseded implementation run, not a pool from which favorable results are chosen.

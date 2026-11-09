@@ -4,6 +4,7 @@ import hashlib
 import json
 import re
 import sqlite3
+from contextlib import closing
 from dataclasses import asdict
 from pathlib import Path
 from time import perf_counter
@@ -47,7 +48,7 @@ STOP = {
     "when",
     "where",
 }
-EXTRACTOR_REVISION = "entity-link-regex-title-v1"
+EXTRACTOR_REVISION = "entity-link-regex-title-v2-surface-provenance"
 
 
 def terms(text):
@@ -63,6 +64,7 @@ def mentions(doc, title_aliases):
             found.append(
                 {
                     "entity": entity,
+                    "surface": match.group(),
                     "start": match.start(),
                     "end": match.end(),
                     "kind": "candidate-title",
@@ -76,6 +78,7 @@ def mentions(doc, title_aliases):
             found.append(
                 {
                     "entity": entity,
+                    "surface": match.group(),
                     "start": match.start(),
                     "end": match.end(),
                     "kind": "capitalized-span",
@@ -143,7 +146,7 @@ def build_evidence(query, relevance):
     # Every mention is independently checkable against its exact source span.
     for doc, group in zip(query.documents, extracted):
         for m in group:
-            assert doc.text[m["start"] : m["end"]].casefold() == m["entity"]
+            assert doc.text[m["start"] : m["end"]] == m["surface"]
     return comp, coverage, graph
 
 
@@ -191,7 +194,7 @@ def cached_evidence(query, relevance, path: Path):
         }
     )
     path.parent.mkdir(parents=True, exist_ok=True)
-    with sqlite3.connect(path) as db:
+    with closing(sqlite3.connect(path)) as db, db:
         db.execute(
             "CREATE TABLE IF NOT EXISTS graphs (key TEXT PRIMARY KEY, digest TEXT, payload TEXT)"
         )

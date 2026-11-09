@@ -15,6 +15,25 @@ from qrag.optimization import (
 
 
 class ExtendedSelectionTests(unittest.TestCase):
+    def test_unicode_entity_surface_has_exact_provenance(self):
+        query = QueryInput(
+            "q",
+            "Where is Istanbul High School?",
+            (
+                Document(
+                    "a", "Istanbul High School", "İstanbul High School is in Turkey."
+                ),
+                Document("b", "Turkey", "Istanbul High School is a school."),
+            ),
+        )
+        comp, coverage, graph = build_evidence(query, np.array([0.8, 0.6]))
+        self.assertGreater(comp[0, 1], 0)
+        for doc in query.documents:
+            for mention in graph["mentions"][doc.id]:
+                self.assertEqual(
+                    doc.text[mention["start"] : mention["end"]], mention["surface"]
+                )
+
     def test_budget_milp_matches_oracle_with_negative_pairs(self):
         rng = np.random.default_rng(55)
         for n in range(2, 8):

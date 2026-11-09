@@ -822,3 +822,7 @@ Exact chunk search gives similarities. A document's dense retrieval score is the
 Gold evidence can be missing from a retrieved pool. That is a retrieval failure to measure, not invalid data to delete. Original dataset adapters validate support mappings; retrieved-pool adapters permit external reference evidence so recall can correctly be zero. Candidate recall is an evaluation-only diagnostic and never enters graph construction or selection.
 
 GPU peak allocated memory reports the maximum tensor memory observed by PyTorch since process initialization. Process peak RSS reports the largest resident host memory observed by Linux. Neither is free memory or total physical-device usage, and neither isolates one query unless the counter is reset around that query. These fields are high-water marks under the recorded execution, not invented service capacity promises.
+
+### Unicode surface forms and canonical names
+
+A canonical entity name is a key used to join mentions. A surface form is the exact original text at a character range. They are different objects. For example, Unicode case-insensitive matching may relate “İstanbul” to “istanbul”, while casefolding the dotted capital I introduces a combining dot. The lengths and bytes of the normalized strings need not match. Provenance therefore checks that source[start:end] equals the stored surface, and stores the canonical key separately. Normalizing text before locating spans can shift character positions; offsets must always refer to the original source string.

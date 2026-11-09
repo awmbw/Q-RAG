@@ -7,6 +7,7 @@ import hashlib
 import json
 import re
 import sqlite3
+from contextlib import closing
 from dataclasses import asdict, dataclass
 from pathlib import Path
 from threading import RLock
@@ -297,7 +298,7 @@ class ExactIndex:
             if file_hash(directory / name) != digest:
                 raise ValueError("Index bundle checksum mismatch")
         self.index = faiss.read_index(str(directory / "vectors.faiss"))
-        with sqlite3.connect(directory / "metadata.sqlite") as db:
+        with closing(sqlite3.connect(directory / "metadata.sqlite")) as db:
             self.rows = [
                 json.loads(r[0])
                 for r in db.execute("SELECT payload FROM chunks ORDER BY position")
@@ -326,7 +327,7 @@ class ExactIndex:
         index = faiss.IndexFlatIP(vectors.shape[1])
         index.add(vectors)
         faiss.write_index(index, str(directory / "vectors.faiss"))
-        with sqlite3.connect(directory / "metadata.sqlite") as db:
+        with closing(sqlite3.connect(directory / "metadata.sqlite")) as db, db:
             db.execute(
                 "CREATE TABLE chunks (position INTEGER PRIMARY KEY, payload TEXT)"
             )

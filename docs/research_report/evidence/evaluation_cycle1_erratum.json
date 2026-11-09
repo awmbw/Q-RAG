@@ -1,0 +1,32 @@
+{
+  "archive": "results/archive_cycle1_unicode_provenance",
+  "reason": "Unicode case-insensitive title matching did not preserve canonical casefold equality; source surface and canonical entity are now separate. No scientific parameter change.",
+  "retuned_on_held_out_answers": false,
+  "runs": [
+    {
+      "errors": 19,
+      "manifest_sha256": "d6fc4578628a234f570c75d91ad375032a68a81426453582df50cd1bc5d76c79",
+      "records": 9500,
+      "run": "final_hotpotqa_qwen15_count",
+      "source_sha256": "cb8323f2c6de24c54b38c1cd41bb3a2fbc595380342fcff1c667339037c99049",
+      "status": "completed_with_errors"
+    },
+    {
+      "errors": 0,
+      "manifest_sha256": "781928933b22e82b68b716f452b8c7897ef789ee59c508fb2a42681c73aca390",
+      "records": 1600,
+      "run": "final_hotpotqa_qwen15_tokens",
+      "source_sha256": "cb8323f2c6de24c54b38c1cd41bb3a2fbc595380342fcff1c667339037c99049",
+      "status": "completed"
+    },
+    {
+      "errors": 0,
+      "manifest_sha256": "57ddbe2feb080dc6e2a68464cee10ec5d01f2bd13a3122cd987dea7277723dff",
+      "records": 857,
+      "run": "final_hotpotqa_qwen3_count",
+      "source_sha256": "cb8323f2c6de24c54b38c1cd41bb3a2fbc595380342fcff1c667339037c99049",
+      "status": "interrupted_or_failed"
+    }
+  ],
+  "superseded": true
+}
