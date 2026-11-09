@@ -12,9 +12,15 @@ dependencies = ["numpy>=1.26", "scipy>=1.11"]
 [project.optional-dependencies]
 models = ["torch", "transformers", "sentence-transformers", "huggingface-hub"]
 research = ["faiss-cpu", "rank-bm25", "networkx", "qiskit", "qiskit-aer", "matplotlib", "datasets", "gdown", "httpx"]
-service = ["fastapi", "uvicorn"]
+service = ["fastapi", "uvicorn", "opentelemetry-sdk"]
 dev = ["pytest", "ruff", "httpx", "build"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
 include = ["qrag*"]
+
+[tool.setuptools.package-data]
+qrag_service = ["static/*.html"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]

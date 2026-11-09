@@ -41,3 +41,9 @@ Maintain a claim-to-artifact map in the final paper package. Submission, authors
 ## Development decision recorded before final evaluation
 
 Gamma=0.2 is selected by equal-weight mean development F1 over 100 questions per dataset. Evidence-guided half-edge versus absolute half-edge remains the principal sparsification comparison. Add a same-shot uniform feasible-sampling baseline because n=10,k=5 has only 252 feasible subsets. Report the study as an encoding-aware comparison; no noninferiority tolerance or quantum-superiority claim is adopted. Larger-candidate and corpus results are separately bounded settings.
+
+## Secondary complete-gate-cap diagnostic
+
+Before definitive held-out comparison analysis, add a separately labeled diagnostic on the first ten quantum IDs per dataset. Compare absolute and evidence-guided masks under a hard cap of 180 complete compiled line two-qubit gates, using three seeds and the same p=1/64-evaluation/1,024-shot settings. The cap is based on the approximately 177-gate development half-edge results. Search retention fractions from 1 to 0 in steps of 0.05, keep the largest tested feasible fraction, and verify the actual optimized circuit again. Record preprocessing cost and any cap violations/infeasible penalty control. This does not alter the 18-condition primary matrix or create a noninferiority claim.
+
+The secondary formulation control also compares gamma=0 and gamma=0.2 under the same p=1 XY-QAOA settings, first 50 quantum IDs per dataset and three seeds. Its separate configurations are frozen before definitive comparative answer analysis. This tests scoring effects under QAOA as well as MILP; it does not replace the principal half-edge comparison.

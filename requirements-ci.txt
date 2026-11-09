@@ -1,0 +1,15 @@
+# Tested direct dependency pins for CPU correctness/service CI.
+# Full host-specific transitive snapshot: requirements-laptop.lock.
+numpy==2.5.3
+scipy==1.18.1
+qiskit==2.5.2
+qiskit-aer==0.17.2
+faiss-cpu==1.15.1
+rank-bm25==0.2.2
+fastapi==0.162.2
+uvicorn==0.54.0
+opentelemetry-sdk==1.45.2
+httpx==0.28.1
+pytest==9.2.0
+ruff==0.17.4
+build==1.6.1

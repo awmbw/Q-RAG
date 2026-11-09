@@ -1,0 +1,17 @@
+.git
+.github
+.cache
+.env
+.env.*
+venv
+.venv
+data
+results
+docs
+paper
+build
+dist
+*.egg-info
+**/__pycache__
+**/*.pyc
+midsem_report.tex

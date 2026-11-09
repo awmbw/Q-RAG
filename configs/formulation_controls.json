@@ -1,0 +1,15 @@
+{
+  "configs": [
+    {
+      "config": "configs/secondary/final_hotpotqa_formulation.json",
+      "role": "formulation effect under identical QAOA budget and candidates",
+      "sha256": "267bbbdee05ebb4d44415c1f1d2a0a31d6928a28d1af9180954fe64bb7bd6b98"
+    },
+    {
+      "config": "configs/secondary/final_musique_formulation.json",
+      "role": "formulation effect under identical QAOA budget and candidates",
+      "sha256": "ace24f2f3b7f0f270cefc51a8144926dcc6f44f3c8b361f1d26843dd98976a6f"
+    }
+  ],
+  "scope": "predeclared secondary formulation control; original primary matrix unchanged"
+}

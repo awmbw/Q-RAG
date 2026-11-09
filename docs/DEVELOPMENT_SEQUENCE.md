@@ -201,3 +201,7 @@ Added bounded-corpus retrieval and explicit evaluation of missing support, then 
 ### Phase G restart: provenance invariant repair
 
 A real held-out input revealed the Unicode surface/canonical distinction. Stopped the matrix, retained the complete first run and partial subsequent run, reproduced the assertion from the source text, added a targeted regression, and restarted every condition with unchanged scientific settings. Forty-five tests pass. The first cycle remains an auditable superseded implementation run, not a pool from which favorable results are chosen.
+
+## Phase H parallel preparation while frozen runs execute
+
+Placed the API in a separate package so service changes do not alter the frozen research source fingerprint. Implemented input validation, bounded jobs, persistence, readiness, fallback accounting, corpus ingestion/query and local tracing. Built and started the full CPU container, verified HTTP endpoints and checked read-only access to the pinned model snapshots. The browser inventory is empty, so visual UI review is not claimed. Prepared the manuscript source and PDF renderer, deferring numerical claims until the full results exist.

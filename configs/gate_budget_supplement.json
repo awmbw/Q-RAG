@@ -1,0 +1,10 @@
+{
+  "scope": "secondary compiled-gate-cap diagnostic, declared before definitive held-out outcome analysis; main matrix unchanged",
+  "datasets": ["hotpotqa", "musique"],
+  "questions_per_dataset": 10,
+  "seeds": [41, 42, 43],
+  "line_gate_cap": 180,
+  "shots": 1024,
+  "max_evals": 64,
+  "choice_basis": "Development half-edge XY mean was approximately 177 complete compiled line two-qubit gates. Keep the largest tested retention fraction meeting cap, then verify final optimized circuit. Penalty control may be infeasible under this cap."
+}
