@@ -712,3 +712,35 @@ BM25 is lexical retrieval. For each query term t, it combines an inverse-documen
 A cross-encoder reads the question and passage together and produces a relevance logit. It is more expensive than comparing already stored dense vectors. We score token-safe chunks and use the maximum chunk score per document. This emphasizes a strong local match, whereas mean-pooled embeddings summarize chunks. Both are approximations; neither sees reference labels. Final candidate retrieval and downstream selection must be held constant when attributing effects to an optimizer.
 
 The measured cache speedup covers an already-loaded embedding model and 50 development questions. It excludes generator loading, answer generation, graph construction and service overhead. Calling it a global “warm run” would hide which component was reused; the precise description is model-ready encoding with cache misses versus model-ready encoding with cache hits.
+
+## Phase D foundations — budgets, heuristics and graph coefficients
+
+### Native token constraints
+
+Let t_i be a conservative estimate of the generator tokens needed to format passage i and T the available context budget. The linear constraint is sum(t_i*x_i) <= T. In count mode we instead impose sum(x_i)=k. These are different experiments: five short passages may use fewer tokens than two long ones. Variable-count mode also uses sum(x_i)>=1 so a nonempty feasible context is required. If no passage fits, the instance is infeasible and becomes a recorded failure rather than being silently changed.
+
+For linear token costs, MILP needs no penalty or extra binary slack variables. It places the token row directly in the linear constraint matrix. The pair products still use y_ij<=x_i, y_ij<=x_j and y_ij>=x_i+x_j-1 with 0<=y_ij<=1. Negative pair coefficients are valid: the constraints enforce the product independently of coefficient sign. An inequality omitted merely because a coefficient is negative could change the feasible optimization problem.
+
+Tokenizer lengths are not perfectly additive across concatenated strings. We estimate each formatted source separately and add a ten-token per-source margin, then independently count the actual complete context. This margin is an engineering guard, not a universal tokenizer theorem. If the exact count exceeds T, the run records a failure without trimming or claiming feasibility. The generator separately checks instructions, question, context and reserved output against its total input limit.
+
+For example, costs (400,300,250) with T=600 permit passages 2 and 3 together (550), but do not permit 1 and 2 (700). Exact k=2 alone allows the latter; it controls a different resource. A method with the same token cap can still consume fewer actual tokens, so we report consumption as well as the cap.
+
+### Classical policies
+
+Relevance ranking sorts individual scores. Greedy energy selection repeatedly adds the feasible item with the largest reduction in the common energy. Its marginal gain for adding i to current set S is -a_i - sum of pair coefficients connecting i to S. This ignores future interactions, so it can miss a good pair whose individual members look weak. MILP searches the joint constrained problem and can certify optimality for its numerical model.
+
+MMR balances relevance and similarity to what is already selected: 0.7*r_i - 0.3*max similarity(i,j) over selected j, with zero redundancy for an empty set. It is a selection policy, not an exact solver of our full quadratic objective. Greedy coverage uses a passage-by-question-term indicator matrix A. Current covered weight is the sum over terms of max A among selected passages. The next passage is chosen by added coverage plus a small relevance tie-break. These lexical requirements are observable query terms, not gold reasoning decompositions.
+
+Simulated annealing starts from a feasible relevance selection. In fixed-count mode, swap one selected and one unselected item, preserving k. Token mode also considers add/drop moves but rejects any budget violation. An improving move is accepted; a worsening energy change delta is accepted with probability exp(-delta/temperature). Temperature falls geometrically over the recorded number of steps. The random seed fixes the proposed sequence under the same implementation. Annealing reports a heuristic result, never a global-optimum certificate.
+
+### Entity-link graph and complementarity proxy
+
+For each passage, extract exact candidate-title matches and capitalized spans, recording their character positions. Shared extracted entities induce links between passages. This makes two graphs distinct: the entity-link graph connects passage/mention evidence, while the optimization interaction graph carries numerical coefficients between binary passage choices. A text match is not an extracted true subject–predicate–object relation.
+
+Let a_i be the fraction of non-stopword question terms appearing in passage i's title or text. Let L_ij be 1 when passages i and j share an extracted entity, otherwise 0. Define C_ij = L_ij * max(a_i,a_j) * sqrt(max(r_i,0)*max(r_j,0)). Each factor is nonnegative. The anchor lets a question-matching passage connect to a possible bridge; the square root downweights pairs with little dense relevance. The pair coefficient becomes b_ij = beta*max(similarity_ij,0) - gamma*C_ij. Positive b discourages joint selection; negative b rewards it. Gamma controls the strength of an uncertain graph signal, not a probability of truth.
+
+For relevance (0.8,0.5), anchor maximum 0.6 and a link, C=0.6*sqrt(0.4), approximately 0.3795. If similarity is 0.4, beta=0.2 and gamma=0.8, then b=0.08-0.3036=-0.2236. A mistaken link therefore introduces a real reward for selecting both passages. This explains why mathematically optimal selection can worsen answers when the graph feature is noisy. The actual development graph result is negative; the example explains a possible mechanism, not a diagnosis of every failed question.
+
+### Timing and generation reuse
+
+When different selectors return exactly the same ordered source IDs for one question, their deterministic generation input is identical. The runner generates once and marks subsequent uses as reused. It records both the original generation duration and zero additional generation execution for reuse. Summing every copied duration would overestimate total work. End-to-end invocation time remains authoritative. Reusing generation does not make repeated selector records statistically independent observations.

@@ -169,3 +169,11 @@ Implemented token-aware source-preserving chunks first, then reused their exact 
 The first real profile encoded 534 chunks plus 50 questions: 584 misses, followed by 584 hits on repetition. Encoding time fell from 1.587 to 0.296 seconds under this measured condition. Index restoration returned identical results. Twenty-five offline tests pass. Two initial retrieval-test expectations were corrected before this milestone: reciprocal-rank fusion is nonlinear in rank, and an intentionally tiny test chunk needed an appropriately small overlap.
 
 No answer-quality conclusion follows from this profile. Native token constraints and comparable generated-answer runs remain coupled to Phase D's solver work. Full corpus evaluation comes later after the common candidate construction is frozen.
+
+## November 10, 2026 — Phase D optimization and first broad pilot
+
+Extended the common problem with optional linear token costs, a variable-count mode and minimum count. Retained the original exact-k API for historical tests. Added independent budget validation and exhaustive comparisons on small signed objectives. Added feasible heuristics before integrating graph coefficients so objective changes and solver changes remain separable.
+
+Built the graph from permitted text and question inputs only; stored exact mention spans and named the result an entity-link graph. Added cached extraction and explicit limitations. Integrated shared candidates, token-safe embeddings, classical comparators, full source snapshots and compact exports in a new study runner while retaining the historical baseline entry point.
+
+Executed 500 fixed-count development records (50 questions by 10 methods) and 100 token-budget records (10 by 10). All completed successfully; actual token caps were independently checked. The first graph weight worsened mean answer F1 relative to the base objective. That result is retained, and no graph improvement is claimed. Twenty-nine offline tests pass. Independent graph annotation and original-model prior reproduction remain limitations. Next dependency: exact quantum mapping, actual QAOA sampling and complete compiled-resource accounting.

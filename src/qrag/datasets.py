@@ -47,6 +47,15 @@ def score_answer(prediction: str, labels) -> dict:
     return {'answer_em': max(s[0] for s in scores), 'answer_f1': max(s[1] for s in scores)}
 
 
+def score_evidence(selected, labels) -> dict:
+    gold = labels.supporting_ids or labels.supporting_titles
+    predicted = {d.id for d in selected} if labels.supporting_ids else {d.title for d in selected}
+    overlap = len(predicted & gold)
+    return {'document_recall': overlap / len(gold) if gold else None,
+            'document_precision': overlap / len(predicted) if predicted else 0.,
+            'all_supporting_documents': float(gold <= predicted) if gold else None}
+
+
 def question_key(text: str) -> str:
     return ' '.join(re.findall(r'\w+', text.casefold()))
 

@@ -1,0 +1,276 @@
+{
+  "compact_predictions_file": "phase_d_tokens.jsonl",
+  "compact_predictions_sha256": "bbae2c5050a5c1c56fa3d8f27a0b016b0c6b6ce1249d42a778941740de46a2f8",
+  "git": {
+    "commit": "32504a2af2a50196b4c9412018256100d296e0e1",
+    "status": "M src/qrag/datasets.py\n M src/qrag/optimization.py\n?? configs/studies/\n?? src/qrag/evidence.py\n?? src/qrag/experiments/study.py\n?? tests/test_selection_extensions.py",
+    "tracked_diff_sha256": "36dcc989d4af592ec407088a5ac5e9822cf908007e3d5ba27579155a8b76b993"
+  },
+  "identity": {
+    "backend": {
+      "device": "cuda",
+      "dtype": "float16",
+      "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+      "embedding_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "generator_model": "Qwen/Qwen2.5-1.5B-Instruct",
+      "generator_revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
+    },
+    "data_sha256": "0d331f15f519d1329c5ec9a8617ed69eaa95d5b791f9b5d2fc0e929de6dde16a",
+    "environment": {
+      "packages": {
+        "huggingface-hub": "1.33.0",
+        "numpy": "2.5.3",
+        "safetensors": "0.8.0",
+        "scipy": "1.18.1",
+        "sentence-transformers": "6.1.0",
+        "tokenizers": "0.23.2",
+        "torch": "2.14.0+cu132",
+        "transformers": "5.17.0"
+      },
+      "platform": "Linux-7.0.0-42-generic-x86_64-with-glibc2.43",
+      "python": "3.14.4"
+    },
+    "question_ids": [
+      "5a74d91455429916b016422a",
+      "5a8b922d55429950cd6afd19",
+      "5ac5355f5542996feb3fea25",
+      "5abc3ff8554299658360042f",
+      "5ac3133d5542995ef918c0ef",
+      "5add59475542992200553ac9",
+      "5ab69f52554299110f219a3e",
+      "5abff0445542997d64295955",
+      "5a7559465542993748c89839",
+      "5ae3e8c65542992f92d823a7"
+    ],
+    "source_sha256": "2b201ff8e056f3f6a90017ea53afeef34adfeb4ab7dc18a98c344101052ab286",
+    "spec": {
+      "budget_mode": "tokens",
+      "context_budget": 900,
+      "methods": [
+        {
+          "name": "top_k",
+          "solver": "top_k"
+        },
+        {
+          "name": "bm25",
+          "solver": "bm25"
+        },
+        {
+          "name": "hybrid",
+          "solver": "hybrid"
+        },
+        {
+          "name": "reranker",
+          "solver": "reranker"
+        },
+        {
+          "name": "mmr",
+          "solver": "mmr"
+        },
+        {
+          "name": "coverage",
+          "solver": "coverage"
+        },
+        {
+          "name": "greedy",
+          "solver": "greedy"
+        },
+        {
+          "name": "annealing",
+          "solver": "annealing"
+        },
+        {
+          "name": "milp",
+          "solver": "milp"
+        },
+        {
+          "gamma": 0.8,
+          "name": "milp_graph",
+          "solver": "milp"
+        }
+      ],
+      "model": {
+        "alpha": 1.0,
+        "beta": 0.2,
+        "dataset": "data/processed/research/hotpotqa_development.json",
+        "device": "cuda",
+        "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+        "embedding_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+        "embedding_truncation": "error",
+        "generator_dtype": "float16",
+        "generator_model": "Qwen/Qwen2.5-1.5B-Instruct",
+        "generator_revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+        "k": 5,
+        "limit": 10,
+        "local_files_only": true,
+        "max_input_tokens": 4096,
+        "max_new_tokens": 32,
+        "seed": 42,
+        "short_pool_policy": "use_all",
+        "solver_time_limit": 10.0,
+        "threads": 4
+      },
+      "reranker": {
+        "model": "cross-encoder/ms-marco-MiniLM-L6-v2",
+        "revision": "233902d25c440f23af6f7d6e94d2946bac0bee0a"
+      },
+      "scope": "development pilot; not held-out evaluation"
+    }
+  },
+  "invocations": [
+    {
+      "ended_at": "2026-11-09T20:40:31.049420+00:00",
+      "preparation": {
+        "document_embedding_cache": "not_implemented",
+        "embedding_max_sequence_tokens": 256,
+        "generator_input_limit": 4096,
+        "model_load_seconds": 1.2072882889997345
+      },
+      "started_at": "2026-11-09T20:40:16.721623+00:00",
+      "wall_seconds": 14.32779351499994
+    }
+  ],
+  "note": "Derived compact evidence. Original artifacts and exact prompts remain in the local run bundle; hashes identify their unchanged bytes.",
+  "original_hashes": {
+    "manifest.json": "985999bef6575d53071a342b1a73a7f86b56ca63f4d8696eb7f0b96cc0055d44",
+    "predictions.jsonl": "b751c5ac60ee7bf1bb579f99f6793986dc017b3e2a7a061d414f345bf6273b1a",
+    "source_snapshot.json": "4976629056564852cd3f06ae974927dc9532af8d2df71a9008bd287ca12d7909",
+    "summary.json": "3e278b19779ee37a33cd317e0c4525c01b61ba87e1567fc498629378799ec1bc"
+  },
+  "run_id": "phase_d_tokens",
+  "status": "completed",
+  "summary": {
+    "methods": {
+      "annealing": {
+        "all_supporting_documents_successful_only": 0.5,
+        "answer_em": 0.4,
+        "answer_f1": 0.475,
+        "context_tokens_successful_only": 794.6,
+        "document_recall_successful_only": 0.75,
+        "failures": 0,
+        "generation_seconds_successful_only": 0.15606629779995274,
+        "input_tokens_successful_only": 880.6,
+        "questions": 10,
+        "selected_count_successful_only": 5.6,
+        "selection_seconds_successful_only": 0.020415806399978465
+      },
+      "bm25": {
+        "all_supporting_documents_successful_only": 0.6,
+        "answer_em": 0.5,
+        "answer_f1": 0.575,
+        "context_tokens_successful_only": 806.8,
+        "document_recall_successful_only": 0.8,
+        "failures": 0,
+        "generation_seconds_successful_only": 0.1555759769999895,
+        "input_tokens_successful_only": 892.8,
+        "questions": 10,
+        "selected_count_successful_only": 5.1,
+        "selection_seconds_successful_only": 6.820339999649149e-05
+      },
+      "coverage": {
+        "all_supporting_documents_successful_only": 0.9,
+        "answer_em": 0.6,
+        "answer_f1": 0.755,
+        "context_tokens_successful_only": 809.5,
+        "document_recall_successful_only": 0.95,
+        "failures": 0,
+        "generation_seconds_successful_only": 0.21236570410005698,
+        "input_tokens_successful_only": 895.5,
+        "questions": 10,
+        "selected_count_successful_only": 5.3,
+        "selection_seconds_successful_only": 0.00026895010000771435
+      },
+      "greedy": {
+        "all_supporting_documents_successful_only": 0.5,
+        "answer_em": 0.4,
+        "answer_f1": 0.475,
+        "context_tokens_successful_only": 784.4,
+        "document_recall_successful_only": 0.75,
+        "failures": 0,
+        "generation_seconds_successful_only": 0.15620547230005286,
+        "input_tokens_successful_only": 870.4,
+        "questions": 10,
+        "selected_count_successful_only": 5.0,
+        "selection_seconds_successful_only": 0.00030548770000677906
+      },
+      "hybrid": {
+        "all_supporting_documents_successful_only": 0.9,
+        "answer_em": 0.5,
+        "answer_f1": 0.655,
+        "context_tokens_successful_only": 787.6,
+        "document_recall_successful_only": 0.95,
+        "failures": 0,
+        "generation_seconds_successful_only": 0.15655477590003103,
+        "input_tokens_successful_only": 873.6,
+        "questions": 10,
+        "selected_count_successful_only": 5.4,
+        "selection_seconds_successful_only": 7.300760007638019e-05
+      },
+      "milp": {
+        "all_supporting_documents_successful_only": 0.5,
+        "answer_em": 0.4,
+        "answer_f1": 0.475,
+        "context_tokens_successful_only": 794.6,
+        "document_recall_successful_only": 0.75,
+        "failures": 0,
+        "generation_seconds_successful_only": 0.15606629779995274,
+        "input_tokens_successful_only": 880.6,
+        "questions": 10,
+        "selected_count_successful_only": 5.6,
+        "selection_seconds_successful_only": 0.032239902999981494
+      },
+      "milp_graph": {
+        "all_supporting_documents_successful_only": 0.6,
+        "answer_em": 0.4,
+        "answer_f1": 0.475,
+        "context_tokens_successful_only": 813.3,
+        "document_recall_successful_only": 0.75,
+        "failures": 0,
+        "generation_seconds_successful_only": 0.1552572243999748,
+        "input_tokens_successful_only": 899.3,
+        "questions": 10,
+        "selected_count_successful_only": 5.9,
+        "selection_seconds_successful_only": 0.015536929100153429
+      },
+      "mmr": {
+        "all_supporting_documents_successful_only": 0.6,
+        "answer_em": 0.5,
+        "answer_f1": 0.575,
+        "context_tokens_successful_only": 787.4,
+        "document_recall_successful_only": 0.8,
+        "failures": 0,
+        "generation_seconds_successful_only": 0.1585289032000219,
+        "input_tokens_successful_only": 873.4,
+        "questions": 10,
+        "selected_count_successful_only": 5.1,
+        "selection_seconds_successful_only": 0.00013773160007986008
+      },
+      "reranker": {
+        "all_supporting_documents_successful_only": 0.8,
+        "answer_em": 0.5,
+        "answer_f1": 0.6835714285714285,
+        "context_tokens_successful_only": 786.7,
+        "document_recall_successful_only": 0.9,
+        "failures": 0,
+        "generation_seconds_successful_only": 0.2048198444000718,
+        "input_tokens_successful_only": 872.7,
+        "questions": 10,
+        "selected_count_successful_only": 5.4,
+        "selection_seconds_successful_only": 5.744060003962659e-05
+      },
+      "top_k": {
+        "all_supporting_documents_successful_only": 0.7,
+        "answer_em": 0.6,
+        "answer_f1": 0.675,
+        "context_tokens_successful_only": 802.3,
+        "document_recall_successful_only": 0.85,
+        "failures": 0,
+        "generation_seconds_successful_only": 0.20562720160000936,
+        "input_tokens_successful_only": 888.3,
+        "questions": 10,
+        "selected_count_successful_only": 5.1,
+        "selection_seconds_successful_only": 5.502600010913739e-05
+      }
+    }
+  }
+}
