@@ -37,7 +37,7 @@ class LocalModels:
             "gpu": self.torch.cuda.get_device_name(0) if self.device == "cuda" else None,
             "embedding_snapshot": self.embedding_path,
             "generator_snapshot": self.generator_path,
-            "dtype": "float32", "threads": self.torch.get_num_threads(),
+            "dtype": self.config.generator_dtype, "threads": self.torch.get_num_threads(),
         }
 
     def prepare(self) -> dict:
@@ -52,7 +52,8 @@ class LocalModels:
             self.generator_path, local_files_only=True,
         )
         self.generator = AutoModelForCausalLM.from_pretrained(
-            self.generator_path, local_files_only=True, dtype=self.torch.float32,
+            self.generator_path, local_files_only=True,
+            dtype=getattr(self.torch, self.config.generator_dtype),
         ).to(self.device).eval()
         self.input_limit = min(
             self.config.max_input_tokens,
@@ -126,6 +127,7 @@ class LocalModels:
         return {
             "answer": self.tokenizer.decode(generated, skip_special_tokens=True).strip(),
             "input_tokens": int(input_tokens),
+            "input_ids": inputs.input_ids[0].tolist(),
             "context_tokens": len(self.tokenizer.encode(context, add_special_tokens=False)),
             "output_tokens": len(generated),
             "hit_output_limit": len(generated) == self.config.max_new_tokens,

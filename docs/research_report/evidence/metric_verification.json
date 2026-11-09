@@ -1,0 +1,14 @@
+{
+  "hotpotqa": {
+    "all_agree": true,
+    "pairs_checked": 1004,
+    "source": "https://raw.githubusercontent.com/hotpotqa/hotpot/master/hotpot_evaluate_v1.py",
+    "source_sha256": "d35fc91a6db21d791dbdda11daf3856e9359f5701d54e3eefba20d88fecc02c0"
+  },
+  "musique": {
+    "all_agree": true,
+    "pairs_checked": 1004,
+    "source": "https://raw.githubusercontent.com/StonyBrookNLP/musique/main/metrics/answer.py",
+    "source_sha256": "10368f619b4d5ef5d83748c05a96c0afd332a14ab5c010740c98d58dfaefe974"
+  }
+}

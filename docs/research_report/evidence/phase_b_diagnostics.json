@@ -1,0 +1,140 @@
+{
+  "device": "cuda",
+  "dtype": "float16",
+  "records": [
+    {
+      "answer": "Science News",
+      "context_tokens": 0,
+      "generation_seconds": 2.0775493690002804,
+      "hit_output_limit": false,
+      "input_tokens": 74,
+      "metrics": {
+        "answer_em": 1.0,
+        "answer_f1": 1.0,
+        "answer_precision": 1.0,
+        "answer_recall": 1.0
+      },
+      "mode": "empty",
+      "output_tokens": 3,
+      "question_id": "5a74d91455429916b016422a",
+      "selected_ids": []
+    },
+    {
+      "answer": "Science News",
+      "context_tokens": 329,
+      "generation_seconds": 0.0834515100000317,
+      "hit_output_limit": false,
+      "input_tokens": 403,
+      "metrics": {
+        "answer_em": 1.0,
+        "answer_f1": 1.0,
+        "answer_precision": 1.0,
+        "answer_recall": 1.0
+      },
+      "mode": "gold_evidence",
+      "output_tokens": 3,
+      "question_id": "5a74d91455429916b016422a",
+      "selected_ids": [
+        "5a74d91455429916b016422a:d0",
+        "5a74d91455429916b016422a:d9"
+      ]
+    },
+    {
+      "answer": "London",
+      "context_tokens": 0,
+      "generation_seconds": 0.031400885000039125,
+      "hit_output_limit": false,
+      "input_tokens": 92,
+      "metrics": {
+        "answer_em": 0.0,
+        "answer_f1": 0.0,
+        "answer_precision": 0.0,
+        "answer_recall": 0.0
+      },
+      "mode": "empty",
+      "output_tokens": 2,
+      "question_id": "5a8b922d55429950cd6afd19",
+      "selected_ids": []
+    },
+    {
+      "answer": "British high society in the 1960s.",
+      "context_tokens": 275,
+      "generation_seconds": 0.1867195120003089,
+      "hit_output_limit": false,
+      "input_tokens": 367,
+      "metrics": {
+        "answer_em": 0.0,
+        "answer_f1": 0.7499999999999999,
+        "answer_precision": 0.6,
+        "answer_recall": 1.0
+      },
+      "mode": "gold_evidence",
+      "output_tokens": 13,
+      "question_id": "5a8b922d55429950cd6afd19",
+      "selected_ids": [
+        "5a8b922d55429950cd6afd19:d0",
+        "5a8b922d55429950cd6afd19:d5"
+      ]
+    },
+    {
+      "answer": "Noanswer",
+      "context_tokens": 0,
+      "generation_seconds": 0.04112274099998103,
+      "hit_output_limit": false,
+      "input_tokens": 87,
+      "metrics": {
+        "answer_em": 0.0,
+        "answer_f1": 0.0,
+        "answer_precision": 0.0,
+        "answer_recall": 0.0
+      },
+      "mode": "empty",
+      "output_tokens": 3,
+      "question_id": "5ac5355f5542996feb3fea25",
+      "selected_ids": []
+    },
+    {
+      "answer": "Thamizhan",
+      "context_tokens": 217,
+      "generation_seconds": 0.262838197000292,
+      "hit_output_limit": false,
+      "input_tokens": 304,
+      "metrics": {
+        "answer_em": 1.0,
+        "answer_f1": 1.0,
+        "answer_precision": 1.0,
+        "answer_recall": 1.0
+      },
+      "mode": "gold_evidence",
+      "output_tokens": 5,
+      "question_id": "5ac5355f5542996feb3fea25",
+      "selected_ids": [
+        "5ac5355f5542996feb3fea25:d3",
+        "5ac5355f5542996feb3fea25:d9"
+      ]
+    }
+  ],
+  "scope": "three development questions; oracle is a labeled diagnostic, not normal inference",
+  "config": {
+    "dataset": "data/processed/dev_set.json",
+    "limit": 3,
+    "k": 5,
+    "short_pool_policy": "use_all",
+    "alpha": 1.0,
+    "beta": 0.2,
+    "seed": 42,
+    "device": "cuda",
+    "threads": 4,
+    "local_files_only": true,
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "embedding_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+    "generator_model": "Qwen/Qwen2.5-1.5B-Instruct",
+    "generator_revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+    "embedding_truncation": "error",
+    "max_input_tokens": 4096,
+    "max_new_tokens": 32,
+    "solver_time_limit": 10.0,
+    "generator_dtype": "float16"
+  },
+  "raw_artifact_sha256": "e30953ad3d72a3b81587e3443c5816b9d0acc67f66209c95035db8ceeaaacf20"
+}

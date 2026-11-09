@@ -26,6 +26,7 @@ class ExperimentConfig:
     max_input_tokens: int = 4096
     max_new_tokens: int = 32
     solver_time_limit: float = 10.0
+    generator_dtype: str = "float32"
 
     def __post_init__(self) -> None:
         for name in ("limit", "k", "threads", "max_input_tokens", "max_new_tokens"):
@@ -43,6 +44,8 @@ class ExperimentConfig:
             raise ValueError("solver_time_limit must be positive")
         if self.device not in {"cpu", "cuda", "auto"}:
             raise ValueError("device must be cpu, cuda or auto")
+        if self.generator_dtype not in {"float32", "float16", "bfloat16"}:
+            raise ValueError("generator_dtype must be float32, float16 or bfloat16")
         if self.short_pool_policy not in {"error", "use_all"}:
             raise ValueError("short_pool_policy must be error or use_all")
         if self.embedding_truncation not in {"error", "report"}:

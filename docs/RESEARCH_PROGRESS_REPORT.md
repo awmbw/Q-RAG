@@ -171,3 +171,15 @@ The [environment evidence](research_report/evidence/environment_20261110.json), 
 The contribution shortlist is evidence-guided interaction removal and its dependence on constraint encoding. Prior work already covers QUBO evidence selection and QAOA sparsification. An exact reproduction of the closest paper has not been achieved: its requirement estimators and original model configuration are different. A transparently labeled local adaptation is planned. No new answer-quality improvement or quantum advantage is claimed in this phase.
 
 Historical schedules are superseded by a quality-first execution order. The study will use laptop compute, frozen held-out IDs, paired comparisons and explicit simulation labels. Full literature novelty certification, external review and publication acceptance are not software acceptance criteria.
+
+## Phase B — data boundaries, frozen splits and scorer verification
+
+The new adapters preserve original HotpotQA sentences and supporting sentence indices. MuSiQue keeps paragraph identities separately from titles, because distinct paragraphs can share a title. Answer aliases and supporting annotations remain in evaluation-only objects. Invalid mappings fail validation.
+
+The [split manifest](../configs/splits/research_v1.json) freezes 100 development and 500 held-out questions per dataset, before model evaluation on the held-out data. Earlier local HotpotQA IDs and normalized questions were excluded. The new held-out material comes from official validation/dev partitions, not a hidden test set. Normalized exact matching and token-trigram Jaccard at 0.8 found no near matches between the selected new development questions and the evaluation candidate samples. This limited audit cannot rule out paraphrases, shared facts or model pretraining contamination. No structural rejection was needed in the sampled preparation pass.
+
+HotpotQA retains 228 supporting sentence annotations across the development sample and 1,223 across evaluation. MuSiQue has paragraph support, not sentence support; its 100 development questions include 44 answer aliases and its 500 evaluation questions include 199. Raw data remain outside Git. Sources, licenses, immutable HotpotQA revision, official MuSiQue archive hash, IDs and file hashes are recorded in the manifest.
+
+The [metric audit](research_report/evidence/metric_verification.json) compares 1,004 deterministic answer pairs per dataset against inspected official evaluator functions: every EM and F1 agrees. The offline suite now has 21 passing tests. A six-generation GPU diagnostic uses three development questions with empty or gold-evidence context; its [records](research_report/evidence/phase_b_diagnostics.json) preserve answers, token counts and metrics. These diagnostic contexts have different sizes and are not a fair selector comparison. Neither the diagnostic nor metric verification establishes a method improvement.
+
+Generation now records input token IDs and explicitly records its numeric precision. The new float16 GPU execution is a separate condition from the original float32 CPU experiment. No weights are trained or changed.

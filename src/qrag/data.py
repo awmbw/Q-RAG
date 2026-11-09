@@ -10,6 +10,8 @@ class Document:
     id: str
     title: str
     text: str
+    sentences: tuple[str, ...] = ()
+    source_id: str = ""
 
 
 @dataclass(frozen=True)
@@ -23,6 +25,10 @@ class QueryInput:
 class EvaluationLabels:
     answer: str
     supporting_titles: frozenset[str]
+    supporting_sentences: frozenset[tuple[str, int]] = frozenset()
+    aliases: tuple[str, ...] = ()
+    dataset: str = "hotpotqa"
+    supporting_ids: frozenset[str] = frozenset()
 
 
 def _string(value: object, name: str) -> str:
@@ -43,10 +49,12 @@ def adapt_example(raw: dict) -> tuple[QueryInput, EvaluationLabels]:
             id=f"{query_id}:d{i}",
             title=_string(doc["title"], "title"),
             text=_string(doc["text"], "text"),
+            sentences=tuple(doc.get("sentences", ())),
+            source_id=str(doc.get("source_id", f"{query_id}:d{i}")),
         )
         for i, doc in enumerate(raw_documents)
     )
-    if len({doc.title for doc in documents}) != len(documents):
+    if raw.get("dataset", "hotpotqa") != "musique" and len({doc.title for doc in documents}) != len(documents):
         raise ValueError(f"{query_id}: duplicate document titles are ambiguous")
     # Gold annotations are read only into the evaluation object.
     support = raw.get("supporting_facts", {}).get("titles")
@@ -54,7 +62,28 @@ def adapt_example(raw: dict) -> tuple[QueryInput, EvaluationLabels]:
         support = [doc["title"] for doc in raw_documents if doc.get("is_relevant")]
     if not isinstance(support, list) or any(not isinstance(t, str) for t in support):
         raise ValueError(f"{query_id}: invalid supporting titles")
-    labels = EvaluationLabels(_string(raw["answer"], "answer"), frozenset(support))
+    for doc in documents:
+        if any(not isinstance(s, str) for s in doc.sentences):
+            raise ValueError(f"{query_id}: sentences must be strings")
+        if doc.sentences and " ".join(doc.sentences) != doc.text:
+            raise ValueError(f"{query_id}: sentence join differs from source text")
+    details = raw.get("supporting_facts", {}).get("details", [])
+    sentence_labels = frozenset((d["title"], int(d["sent_id"])) for d in details)
+    by_title = {doc.title: doc for doc in documents}
+    for title, index in sentence_labels:
+        if title not in by_title or not 0 <= index < len(by_title[title].sentences):
+            raise ValueError(f"{query_id}: invalid supporting sentence mapping")
+    if not set(support) <= set(by_title):
+        raise ValueError(f"{query_id}: supporting title missing from candidates")
+    aliases = raw.get("answer_aliases", [])
+    if not isinstance(aliases, list) or any(not isinstance(a, str) for a in aliases):
+        raise ValueError(f"{query_id}: invalid answer aliases")
+    supporting_ids = frozenset(raw.get("supporting_ids", []))
+    if not supporting_ids <= {doc.id for doc in documents}:
+        raise ValueError(f"{query_id}: supporting ID missing from candidates")
+    labels = EvaluationLabels(_string(raw["answer"], "answer"), frozenset(support),
+                              sentence_labels, tuple(aliases), raw.get("dataset", "hotpotqa"),
+                              supporting_ids)
     return QueryInput(query_id, question, documents), labels
 
 

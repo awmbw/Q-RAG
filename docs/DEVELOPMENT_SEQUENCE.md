@@ -153,3 +153,11 @@ The [implementation plan](IMPLEMENTATION_PLAN.md) contains the full backlog. Upd
 5. Froze a protocol separating graph, sparsification and solver questions. Actual sample sizes will be chosen from development timing before held-out evaluation.
 
 Verification: 17 baseline tests passed; dependency consistency check passed. New evidence: environment report. This phase establishes the research/execution foundation; it does not finish data preparation or demonstrate an empirical method benefit. Next dependency: trustworthy dataset partitions and annotation-preserving data contracts.
+
+## November 10, 2026 — Phase B data and evaluation
+
+Extended the existing immutable data contracts without passing labels into inference. Added official-format HotpotQA and MuSiQue-Ans adapters, sentence validation, paragraph identities, aliases and dataset-specific answer scoring. Prepared fresh frozen splits from primary sources before any new held-out model run. Downloaded only public data/model artifacts; no paid compute was used.
+
+Verified the scoring implementation against 1,004 pairs per official evaluator, plus four new data-contract tests. All 21 offline tests pass. Executed six real GPU generations to establish empty/gold diagnostic paths and preservation of actual prompt IDs. The diagnostic is separate from the main benchmark and is not a claim of equal-budget quality improvement.
+
+The split preparation script refuses to overwrite existing frozen output. Its source revisions, IDs and hashes enable later reconstruction. Remaining independence limits include paraphrases, common source documents and unknown model pretraining data. Next dependency: token-safe representations, persistent caches, retrieval and explicit budget handling.
