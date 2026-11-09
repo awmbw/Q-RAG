@@ -1,0 +1,156 @@
+{
+  "compact_predictions_file": "phase_e_noise.jsonl",
+  "compact_predictions_sha256": "635706ce9b1c17bf006a8ecddd726e0f7ef1afd40b77112f3499fa59f3c78d16",
+  "git": {
+    "commit": "76e42a613951769101e465ad494eec182a9f2201",
+    "status": "M src/qrag/experiments/study.py\n?? configs/studies/phase_e_noise.json\n?? configs/studies/phase_e_qaoa.json\n?? src/qrag/quantum.py\n?? tests/test_quantum.py",
+    "tracked_diff_sha256": "e4f80af0d52cb499759c6ea7ab44fcfcd526bdbe3cc76ebc28ddcbe696111ce0"
+  },
+  "identity": {
+    "backend": {
+      "device": "cuda",
+      "dtype": "float16",
+      "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+      "embedding_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "generator_model": "Qwen/Qwen2.5-1.5B-Instruct",
+      "generator_revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
+    },
+    "data_sha256": "0d331f15f519d1329c5ec9a8617ed69eaa95d5b791f9b5d2fc0e929de6dde16a",
+    "environment": {
+      "packages": {
+        "huggingface-hub": "1.33.0",
+        "numpy": "2.5.3",
+        "safetensors": "0.8.0",
+        "scipy": "1.18.1",
+        "sentence-transformers": "6.1.0",
+        "tokenizers": "0.23.2",
+        "torch": "2.14.0+cu132",
+        "transformers": "5.17.0"
+      },
+      "platform": "Linux-7.0.0-42-generic-x86_64-with-glibc2.43",
+      "python": "3.14.4"
+    },
+    "question_ids": [
+      "5a74d91455429916b016422a",
+      "5a8b922d55429950cd6afd19",
+      "5ac5355f5542996feb3fea25"
+    ],
+    "source_sha256": "6b290d6d338d0d4c932c85840d596c16281a6f82d5e6a202ededce4abcee73c4",
+    "spec": {
+      "budget_mode": "count",
+      "candidate_limit": 8,
+      "methods": [
+        {
+          "name": "milp",
+          "solver": "milp"
+        },
+        {
+          "max_evals": 64,
+          "mixer": "xy",
+          "name": "qaoa_xy_ideal",
+          "p": 1,
+          "seed": 42,
+          "shots": 1024,
+          "solver": "qaoa"
+        },
+        {
+          "max_evals": 64,
+          "mixer": "xy",
+          "name": "qaoa_xy_noise",
+          "noise": 0.01,
+          "p": 1,
+          "seed": 42,
+          "shots": 1024,
+          "solver": "qaoa"
+        }
+      ],
+      "model": {
+        "alpha": 1.0,
+        "beta": 0.2,
+        "dataset": "data/processed/research/hotpotqa_development.json",
+        "device": "cuda",
+        "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+        "embedding_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+        "embedding_truncation": "error",
+        "generator_dtype": "float16",
+        "generator_model": "Qwen/Qwen2.5-1.5B-Instruct",
+        "generator_revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+        "k": 4,
+        "limit": 3,
+        "local_files_only": true,
+        "max_input_tokens": 4096,
+        "max_new_tokens": 32,
+        "seed": 42,
+        "short_pool_policy": "use_all",
+        "solver_time_limit": 10.0,
+        "threads": 4
+      },
+      "scope": "development synthetic-noise final-measurement diagnostic; top-8 relevance pool"
+    }
+  },
+  "invocations": [
+    {
+      "ended_at": "2026-11-09T20:45:50.377500+00:00",
+      "preparation": {
+        "document_embedding_cache": "not_implemented",
+        "embedding_max_sequence_tokens": 256,
+        "generator_input_limit": 4096,
+        "model_load_seconds": 1.2517224339999302
+      },
+      "started_at": "2026-11-09T20:45:45.006409+00:00",
+      "wall_seconds": 5.371087406999777
+    }
+  ],
+  "note": "Derived compact evidence. Original artifacts and exact prompts remain in the local run bundle; hashes identify their unchanged bytes.",
+  "original_hashes": {
+    "manifest.json": "dd44c3f86097cdf29e7df0c5d5b5fc6adb033efdc99b68b529eb7e6a1a6e0267",
+    "predictions.jsonl": "6af8690b1f2617efa86c44da2c601f80813b04b80fd7daf99da61db4d63a5b2a",
+    "source_snapshot.json": "7122ff139ccaddaaf39d85c39c551fc11e79eef57bb9e0a1aec8bb979ad23eb9",
+    "summary.json": "1c5acbf3fd891c8d39c61dbef24712b67924b3eeb8d861864d25e6aafc453637"
+  },
+  "run_id": "phase_e_noise",
+  "status": "completed",
+  "summary": {
+    "methods": {
+      "milp": {
+        "all_supporting_documents_successful_only": 1.0,
+        "answer_em": 0.6666666666666666,
+        "answer_f1": 0.9166666666666666,
+        "context_tokens_successful_only": 770.3333333333334,
+        "document_recall_successful_only": 1.0,
+        "failures": 0,
+        "generation_seconds_successful_only": 0.34776933966668366,
+        "input_tokens_successful_only": 854.6666666666666,
+        "questions": 3,
+        "selected_count_successful_only": 4.0,
+        "selection_seconds_successful_only": 0.007087701333299871
+      },
+      "qaoa_xy_ideal": {
+        "all_supporting_documents_successful_only": 1.0,
+        "answer_em": 0.6666666666666666,
+        "answer_f1": 0.9166666666666666,
+        "context_tokens_successful_only": 736.6666666666666,
+        "document_recall_successful_only": 1.0,
+        "failures": 0,
+        "generation_seconds_successful_only": 0.16443573833339542,
+        "input_tokens_successful_only": 821.0,
+        "questions": 3,
+        "selected_count_successful_only": 4.0,
+        "selection_seconds_successful_only": 0.04362872233332382
+      },
+      "qaoa_xy_noise": {
+        "all_supporting_documents_successful_only": 1.0,
+        "answer_em": 0.6666666666666666,
+        "answer_f1": 0.9166666666666666,
+        "context_tokens_successful_only": 847.6666666666666,
+        "document_recall_successful_only": 1.0,
+        "failures": 0,
+        "generation_seconds_successful_only": 0.3576613953334042,
+        "input_tokens_successful_only": 932.0,
+        "questions": 3,
+        "selected_count_successful_only": 4.0,
+        "selection_seconds_successful_only": 0.09732722633301212
+      }
+    }
+  }
+}

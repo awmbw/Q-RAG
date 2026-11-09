@@ -177,3 +177,11 @@ Extended the common problem with optional linear token costs, a variable-count m
 Built the graph from permitted text and question inputs only; stored exact mention spans and named the result an entity-link graph. Added cached extraction and explicit limitations. Integrated shared candidates, token-safe embeddings, classical comparators, full source snapshots and compact exports in a new study runner while retaining the historical baseline entry point.
 
 Executed 500 fixed-count development records (50 questions by 10 methods) and 100 token-budget records (10 by 10). All completed successfully; actual token caps were independently checked. The first graph weight worsened mean answer F1 relative to the base objective. That result is retained, and no graph improvement is claimed. Twenty-nine offline tests pass. Independent graph annotation and original-model prior reproduction remain limitations. Next dependency: exact quantum mapping, actual QAOA sampling and complete compiled-resource accounting.
+
+## November 10, 2026 — Phase E integrated quantum experiments
+
+Implemented the Ising map and exhaustive spectrum checks before QAOA. Added both dense cardinality penalties and a seeded count-preserving XY ring, then exact-expectation/finite-shot training and explicit final-sample selection. Added complete-circuit compilation on common synthetic targets and an optional final-measurement noise model.
+
+Executed 140 records on 10 development questions with two depths, two mixers and three seeds, plus a shot-training control. Executed a separate nine-record noise diagnostic on three questions after label-independent relevance reduction to eight candidates. All records completed successfully. Thirty-two offline tests pass. Observed that ideal feasibility and compiled cost trade off: XY preserves count but is costlier for these dense instances; synthetic noise substantially reduces its measured feasibility. No hardware or speedup claim is made.
+
+The next dependency is sparsification: retain a declared number of interactions, compare against generic rules, and always evaluate selected contexts under the original full target. Any claimed savings must survive the constraint encoding and compilation just measured.

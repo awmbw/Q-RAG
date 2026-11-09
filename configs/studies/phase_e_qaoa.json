@@ -1,0 +1,150 @@
+{
+  "budget_mode": "count",
+  "candidate_limit": 10,
+  "methods": [
+    {
+      "name": "milp",
+      "solver": "milp"
+    },
+    {
+      "max_evals": 64,
+      "mixer": "xy",
+      "name": "qaoa_xy_p1_s41",
+      "p": 1,
+      "seed": 41,
+      "shots": 1024,
+      "solver": "qaoa"
+    },
+    {
+      "max_evals": 64,
+      "mixer": "xy",
+      "name": "qaoa_xy_p1_s42",
+      "p": 1,
+      "seed": 42,
+      "shots": 1024,
+      "solver": "qaoa"
+    },
+    {
+      "max_evals": 64,
+      "mixer": "xy",
+      "name": "qaoa_xy_p1_s43",
+      "p": 1,
+      "seed": 43,
+      "shots": 1024,
+      "solver": "qaoa"
+    },
+    {
+      "max_evals": 64,
+      "mixer": "xy",
+      "name": "qaoa_xy_p2_s41",
+      "p": 2,
+      "seed": 41,
+      "shots": 1024,
+      "solver": "qaoa"
+    },
+    {
+      "max_evals": 64,
+      "mixer": "xy",
+      "name": "qaoa_xy_p2_s42",
+      "p": 2,
+      "seed": 42,
+      "shots": 1024,
+      "solver": "qaoa"
+    },
+    {
+      "max_evals": 64,
+      "mixer": "xy",
+      "name": "qaoa_xy_p2_s43",
+      "p": 2,
+      "seed": 43,
+      "shots": 1024,
+      "solver": "qaoa"
+    },
+    {
+      "max_evals": 64,
+      "mixer": "penalty",
+      "name": "qaoa_penalty_p1_s41",
+      "p": 1,
+      "seed": 41,
+      "shots": 1024,
+      "solver": "qaoa"
+    },
+    {
+      "max_evals": 64,
+      "mixer": "penalty",
+      "name": "qaoa_penalty_p1_s42",
+      "p": 1,
+      "seed": 42,
+      "shots": 1024,
+      "solver": "qaoa"
+    },
+    {
+      "max_evals": 64,
+      "mixer": "penalty",
+      "name": "qaoa_penalty_p1_s43",
+      "p": 1,
+      "seed": 43,
+      "shots": 1024,
+      "solver": "qaoa"
+    },
+    {
+      "max_evals": 64,
+      "mixer": "penalty",
+      "name": "qaoa_penalty_p2_s41",
+      "p": 2,
+      "seed": 41,
+      "shots": 1024,
+      "solver": "qaoa"
+    },
+    {
+      "max_evals": 64,
+      "mixer": "penalty",
+      "name": "qaoa_penalty_p2_s42",
+      "p": 2,
+      "seed": 42,
+      "shots": 1024,
+      "solver": "qaoa"
+    },
+    {
+      "max_evals": 64,
+      "mixer": "penalty",
+      "name": "qaoa_penalty_p2_s43",
+      "p": 2,
+      "seed": 43,
+      "shots": 1024,
+      "solver": "qaoa"
+    },
+    {
+      "max_evals": 64,
+      "mixer": "xy",
+      "name": "qaoa_shot_training",
+      "p": 1,
+      "seed": 42,
+      "shots": 1024,
+      "solver": "qaoa",
+      "training_shots": 256
+    }
+  ],
+  "model": {
+    "alpha": 1.0,
+    "beta": 0.2,
+    "dataset": "data/processed/research/hotpotqa_development.json",
+    "device": "cuda",
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "embedding_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+    "embedding_truncation": "error",
+    "generator_dtype": "float16",
+    "generator_model": "Qwen/Qwen2.5-1.5B-Instruct",
+    "generator_revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+    "k": 5,
+    "limit": 10,
+    "local_files_only": true,
+    "max_input_tokens": 4096,
+    "max_new_tokens": 32,
+    "seed": 42,
+    "short_pool_policy": "use_all",
+    "solver_time_limit": 10.0,
+    "threads": 4
+  },
+  "scope": "development QAOA encoding pilot"
+}

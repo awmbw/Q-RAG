@@ -70,7 +70,7 @@ def choose(problem, method, relevance, similarities, coverage, lexical, rerank):
     if solver == 'milp':
         return select_milp(problem, method.get('time_limit',10)), {}
     from qrag.quantum import solve_qaoa
-    return solve_qaoa(problem, **{k:v for k,v in method.items() if k in {'p','seed','shots','max_evals','mixer','noise'}})
+    return solve_qaoa(problem, **{k:v for k,v in method.items() if k in {'p','seed','shots','max_evals','mixer','noise','training_shots'}})
 
 
 def run_study(spec, output: Path, resume=False):

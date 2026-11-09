@@ -1,0 +1,51 @@
+{
+  "budget_mode": "count",
+  "candidate_limit": 8,
+  "methods": [
+    {
+      "name": "milp",
+      "solver": "milp"
+    },
+    {
+      "max_evals": 64,
+      "mixer": "xy",
+      "name": "qaoa_xy_ideal",
+      "p": 1,
+      "seed": 42,
+      "shots": 1024,
+      "solver": "qaoa"
+    },
+    {
+      "max_evals": 64,
+      "mixer": "xy",
+      "name": "qaoa_xy_noise",
+      "noise": 0.01,
+      "p": 1,
+      "seed": 42,
+      "shots": 1024,
+      "solver": "qaoa"
+    }
+  ],
+  "model": {
+    "alpha": 1.0,
+    "beta": 0.2,
+    "dataset": "data/processed/research/hotpotqa_development.json",
+    "device": "cuda",
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "embedding_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+    "embedding_truncation": "error",
+    "generator_dtype": "float16",
+    "generator_model": "Qwen/Qwen2.5-1.5B-Instruct",
+    "generator_revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+    "k": 4,
+    "limit": 3,
+    "local_files_only": true,
+    "max_input_tokens": 4096,
+    "max_new_tokens": 32,
+    "seed": 42,
+    "short_pool_policy": "use_all",
+    "solver_time_limit": 10.0,
+    "threads": 4
+  },
+  "scope": "development synthetic-noise final-measurement diagnostic; top-8 relevance pool"
+}

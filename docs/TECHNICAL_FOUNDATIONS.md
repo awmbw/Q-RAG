@@ -744,3 +744,39 @@ For relevance (0.8,0.5), anchor maximum 0.6 and a link, C=0.6*sqrt(0.4), approxi
 ### Timing and generation reuse
 
 When different selectors return exactly the same ordered source IDs for one question, their deterministic generation input is identical. The runner generates once and marks subsequent uses as reused. It records both the original generation duration and zero additional generation execution for reuse. Summing every copied duration would overestimate total work. End-to-end invocation time remains authoritative. Reusing generation does not make repeated selector records statistically independent observations.
+
+## Phase E foundations — deriving the implemented quantum calculation
+
+### From a binary decision to an Ising spin
+
+The computational basis state of qubit i represents x_i=0 or 1. Pauli Z has eigenvalue +1 on 0 and -1 on 1, so x_i=(1-Z_i)/2. Substitute this into E=sum(a_i*x_i)+sum over i<j of b_ij*x_i*x_j. A linear term becomes a_i/2-a_i*Z_i/2. A pair becomes b_ij*(1-Z_i-Z_j+Z_i*Z_j)/4. Collect constants, one-qubit terms and two-qubit terms:
+
+c = sum(a_i)/2 + sum(b_ij)/4;
+h_i = -a_i/2 - sum of all b touching i divided by 4;
+J_ij = b_ij/4.
+
+Thus H=c*I+sum(h_i*Z_i)+sum(J_ij*Z_i*Z_j) has the same basis-state energies as the binary objective. A constant changes reported energies but only adds a global phase to state evolution, so the circuit can omit that phase while energy evaluation retains it. Tests compare every bitstring on small signed problems rather than checking only the apparent best solution.
+
+Qiskit labels qubit 0 as the least significant bit. Integer state 1 therefore means x_0=1 and all other x_i=0. Reversing displayed bit strings without a fixed convention would choose the wrong passages. The energy table explicitly forms bit i as (state_index shifted right by i) AND 1.
+
+### Enforcing exactly k
+
+The penalty construction adds lambda*(sum(x_i)-k)^2. Because binary x_i squared equals x_i, expansion gives lambda*(1-2k)*sum(x_i)+2*lambda*sum over all i<j x_i*x_j+lambda*k^2. Every pair acquires a coupling, even if the original semantic interaction was removed. This is why objective sparsity alone does not establish circuit sparsity.
+
+Let B=sum(abs(a_i))+sum(abs(b_ij)). Between any two bitstrings, the objective changes by at most B because each binary monomial changes by at most 1. Any infeasible integer count differs from k by at least 1, so its penalty is at least lambda. Choosing lambda=B+1 ensures that no infeasible bitstring has lower encoded energy than every feasible bitstring, provided a feasible bitstring exists. This statement concerns the global minimum; a shallow QAOA circuit can still measure infeasible strings frequently. Its finite optimization budget does not magically attain that minimum.
+
+The alternative prepares a seeded basis state with exactly k ones using X gates and applies pairwise XY mixing. For a pair, XX+YY exchanges 01 and 10 while leaving their total number of ones unchanged. The product RXX(beta)*RYY(beta) equals exp(-i*beta*(XX+YY)/2), since XX and YY commute on that pair. A sequence along a ring therefore preserves the total count in an ideal circuit. It starts from a feasible basis state, not a uniform Dicke state; that affects expressivity at small depth. The ring order and initial indices are recorded. Noise can break count conservation in the implemented physical gate sequence.
+
+### Cost evolution and angle optimization
+
+One layer applies cost evolution then mixing. For cost fields h and couplings J, RZ(2*gamma*h/s) and RZZ(2*gamma*J/s) implement exp(-i*gamma*H/s) up to the omitted constant, where s is the recorded maximum absolute field/coupling or 1, whichever is largest. The factor 2 follows from RZ(theta)=exp(-i*theta*Z/2). Every layer has gamma and beta, giving 2p real parameters.
+
+For angles theta, statevector simulation gives probabilities P_theta(x). The ideal training objective is sum_x P_theta(x)*E_encoded(x). COBYLA adjusts angles using function evaluations without analytical derivatives. The main pilot allows 64 evaluations and records their energies and optimizer termination. A separate shot-training diagnostic estimates the expectation by averaging sampled energies, adding sampling variation. Neither procedure certifies a globally optimal angle vector.
+
+Final measurement draws 1,024 samples from the trained distribution. We count infeasible samples, do not repair them, and choose the lowest surrogate-energy feasible measured subset with deterministic index tie-breaking. This best-of-samples policy uses classical energy evaluation and must be included in the method description. It differs from reporting the mean sampled energy or drawing one answer context. Full target energies are evaluated independently when sparsification changes the training objective.
+
+### Complete resources and noise
+
+Count preparation, cost operations, mixer operations and routing together. An abstract RZZ is a two-qubit operation but its decomposition may need multiple native gates. A nonlocal interaction on a line may require SWAP/routing operations. We transpile the complete trained circuit to a common basis and record both depth and two-qubit gate count under synthetic all-to-all and line connectivity, with a fixed compilation seed and optimization level. These are comparable compiler outputs, not device calibration or runtime estimates.
+
+The diagnostic noise model applies depolarization probability 0.01 to compiled CX gates and 0.001 to X/SX gates, only during final all-to-all sampling. A density-matrix simulator computes the mixed state. Training remains ideal. Noise can change measured bit counts even for a mathematically count-preserving mixer. The reported feasible fractions therefore distinguish ideal operator conservation from noisy execution. Queueing, physical calibration and real quantum execution are absent and cannot be inferred from simulator timing.

@@ -207,3 +207,17 @@ The separate [900-token development pilot](research_report/evidence/phase_d_toke
 Twenty-nine offline tests pass. MILP matches exhaustive optima on signed-pair token-budget cases; infeasible minimum-count cases return no solution. The study runner preserves exact source snapshots, coefficients, graph provenance, prompts, token IDs and per-method failures. Identical selections reuse deterministic generation within a question, with explicit reuse and actual-execution timing fields. The exported compact evidence preserves outcomes without redistributing full passage prompts.
 
 An independent annotated entity-resolution audit and exact original-model prior-work reproduction are not completed. Neither graph labels nor gold reference fields enter the normal graph/solver/generator path.
+
+## Phase E — actual QAOA, feasibility and circuit resources
+
+Implemented and executed Qiskit QAOA using the same fixed-count selection instances as MILP. Exact statevector expectation optimization is distinguished from final finite-shot measurements. A separate method uses 256 training shots per objective evaluation. No quantum hardware, hardware speedup or noisy parameter optimization is claimed.
+
+The implementation verifies the QUBO/Ising spectrum and little-endian bit mapping, uses a sufficient cardinality-penalty strength or a count-preserving XY mixer, records every optimizer evaluation, and selects the lowest surrogate-energy feasible measured sample without repair. It compiles the complete circuit, including initialization and mixer, to rz/sx/x/cx on explicitly synthetic all-to-all and line targets. The line is not a calibrated device.
+
+The [10-question development experiment](research_report/evidence/phase_e_qaoa.json) contains 140 successful records: MILP, both mixers at p=1/2 and three seeds, plus finite-shot training. Mean answer F1 across the balanced three-seed groups: XY p=1 0.4167; XY p=2 0.4617; penalty p=1 0.4417; penalty p=2 0.4750. MILP is 0.4750. These small development figures support execution and diagnostics, not superiority claims.
+
+Ideal XY final shots are all feasible. Mean penalty feasible fractions are 0.3622 at p=1 and 0.5270 at p=2. Mean compiled line two-qubit gates are 261.03/546.07 for XY p=1/2 and 199.33/396.67 for penalty p=1/2. Thus preserving count did not make this dense circuit cheaper. Resource distributions and paired uncertainty belong to final evaluation.
+
+A separate [three-question, eight-candidate diagnostic](research_report/evidence/phase_e_noise.json) applies synthetic depolarizing noise only during final sampling. Ideal XY feasibility is 1; noisy feasible fractions are 0.6494, 0.6641 and 0.6270. Angles are still trained ideally. These are simulation results with an artificial noise model, not physical-device estimates. Quantum token-budget encoding remains conditional and is not implemented; token-budget comparisons currently use classical selectors.
+
+The offline suite now has 32 passing tests. The laptop statevector study is explicitly capped at 16 candidates, avoiding any suggestion that these simulations establish large-scale quantum performance.
