@@ -1,0 +1,19 @@
+# Development smoke run, not held-out evaluation or evidence of superiority.
+dataset = "data/processed/dev_set.json"
+limit = 3
+k = 5
+short_pool_policy = "use_all" # Exactly min(k, candidate count), for both selectors.
+alpha = 1.0
+beta = 0.2
+seed = 42
+device = "cpu"
+threads = 4
+local_files_only = true
+embedding_model = "sentence-transformers/all-MiniLM-L6-v2"
+embedding_revision = "1110a243fdf4706b3f48f1d95db1a4f5529b4d41"
+generator_model = "Qwen/Qwen2.5-1.5B-Instruct"
+generator_revision = "989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
+embedding_truncation = "error" # Until chunking exists, overlong inputs fail visibly.
+max_input_tokens = 4096
+max_new_tokens = 32
+solver_time_limit = 10.0

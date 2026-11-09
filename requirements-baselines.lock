@@ -1,0 +1,4 @@
+# Tested core baseline environment; model-runtime packages are recorded per run.
+# This is deliberately separate from the legacy broad requirements.txt.
+numpy==2.5.3
+scipy==1.18.1
