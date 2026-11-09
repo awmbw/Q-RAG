@@ -1,12 +1,12 @@
 """Offline checks for experimental and mathematical contracts, not model quality."""
 
-from contextlib import redirect_stdout
-from dataclasses import replace
 import io
 import json
+import unittest
+from contextlib import redirect_stdout
+from dataclasses import replace
 from pathlib import Path
 from tempfile import TemporaryDirectory
-import unittest
 from unittest.mock import patch
 
 import numpy as np
@@ -17,17 +17,35 @@ from qrag.data import adapt_example, load_examples
 from qrag.experiments.run import run_experiment
 from qrag.metrics import answer_metrics, evidence_metrics, normalize_answer
 from qrag.optimization import (
-    SelectionProblem, build_problem, select_exhaustive, select_milp, select_top_k,
+    SelectionProblem,
+    build_problem,
+    select_exhaustive,
+    select_milp,
+    select_top_k,
 )
 
 
 def example() -> dict:
     return {
-        "id": "q1", "question": "Where was the director born?", "answer": "India",
+        "id": "q1",
+        "question": "Where was the director born?",
+        "answer": "India",
         "documents": [
-            {"title": "Film", "text": "Film A was directed by Maya Rao.", "is_relevant": True},
-            {"title": "Director", "text": "Maya Rao was born in India.", "is_relevant": True},
-            {"title": "Release", "text": "Film A was released in 2010.", "is_relevant": False},
+            {
+                "title": "Film",
+                "text": "Film A was directed by Maya Rao.",
+                "is_relevant": True,
+            },
+            {
+                "title": "Director",
+                "text": "Maya Rao was born in India.",
+                "is_relevant": True,
+            },
+            {
+                "title": "Release",
+                "text": "Film A was released in 2010.",
+                "is_relevant": False,
+            },
         ],
         "supporting_facts": {"titles": ["Film", "Director"]},
     }
@@ -95,7 +113,9 @@ class OptimizationTests(unittest.TestCase):
             for k in sorted({0, n // 2, n}):
                 with self.subTest(n=n, k=k):
                     problem = SelectionProblem(
-                        rng.normal(size=n), np.triu(rng.normal(size=(n, n)), 1), k,
+                        rng.normal(size=n),
+                        np.triu(rng.normal(size=(n, n)), 1),
+                        k,
                     )
                     exact, mip = select_exhaustive(problem), select_milp(problem)
                     self.assertTrue(mip.optimal)
@@ -131,10 +151,16 @@ class OptimizationTests(unittest.TestCase):
 
     def test_limit_incumbent_does_not_claim_optimality(self):
         problem = SelectionProblem(np.array([-1.0, -0.5]), np.zeros((2, 2)), 1)
-        with patch("qrag.optimization.milp", return_value=OptimizeResult(
-            status=1, x=np.array([1.0, 0]), message="Time limit",
-            mip_dual_bound=-2.0, mip_gap=1.0,
-        )):
+        with patch(
+            "qrag.optimization.milp",
+            return_value=OptimizeResult(
+                status=1,
+                x=np.array([1.0, 0]),
+                message="Time limit",
+                mip_dual_bound=-2.0,
+                mip_gap=1.0,
+            ),
+        ):
             result = select_milp(problem)
         self.assertEqual(result.indices, (0,))
         self.assertEqual(result.status, "limit")
@@ -142,13 +168,23 @@ class OptimizationTests(unittest.TestCase):
 
     def test_limit_without_incumbent_and_fractional_result(self):
         problem = SelectionProblem(np.array([-1.0, -0.5]), np.zeros((2, 2)), 1)
-        with patch("qrag.optimization.milp", return_value=OptimizeResult(
-            status=1, x=None, message="Time limit",
-        )):
+        with patch(
+            "qrag.optimization.milp",
+            return_value=OptimizeResult(
+                status=1,
+                x=None,
+                message="Time limit",
+            ),
+        ):
             self.assertIsNone(select_milp(problem).indices)
-        with patch("qrag.optimization.milp", return_value=OptimizeResult(
-            status=1, x=np.array([0.5, 0.5]), message="Invalid incumbent",
-        )):
+        with patch(
+            "qrag.optimization.milp",
+            return_value=OptimizeResult(
+                status=1,
+                x=np.array([0.5, 0.5]),
+                message="Invalid incumbent",
+            ),
+        ):
             with self.assertRaisesRegex(RuntimeError, "nonintegral"):
                 select_milp(problem)
 
@@ -160,14 +196,21 @@ class ConfigTests(unittest.TestCase):
             path.write_text("limti = 3\n")
             with self.assertRaisesRegex(ValueError, "Unknown"):
                 load_config(path)
-        for changes in ({"k": 0}, {"k": True}, {"seed": -1}, {"beta": float("nan")},
-                        {"generator_revision": "main"}, {"device": "gpu"}):
+        for changes in (
+            {"k": 0},
+            {"k": True},
+            {"seed": -1},
+            {"beta": float("nan")},
+            {"generator_revision": "main"},
+            {"device": "gpu"},
+        ):
             with self.subTest(changes=changes), self.assertRaises(ValueError):
                 ExperimentConfig(**changes)
 
 
 class FakeBackend:
     """Explicit test double, never an option in the research CLI."""
+
     def __init__(self, *, fail_generation=False, fail_prepare=False):
         self.prepared = self.scored = self.generated = 0
         self.fail_generation = fail_generation
@@ -190,8 +233,14 @@ class FakeBackend:
         self.generated += 1
         if self.fail_generation:
             raise RuntimeError("Test generation failure")
-        return {"answer": "India", "context_tokens": 20, "input_tokens": 50,
-                "output_tokens": 1, "generation_seconds": 0.0, "prompt": "test fixture"}
+        return {
+            "answer": "India",
+            "context_tokens": 20,
+            "input_tokens": 50,
+            "output_tokens": 1,
+            "generation_seconds": 0.0,
+            "prompt": "test fixture",
+        }
 
 
 class RunnerTests(unittest.TestCase):
@@ -219,13 +268,17 @@ class RunnerTests(unittest.TestCase):
         next_backend = FakeBackend()
         self.run_quiet(self.config, self.output, resume=True, backend=next_backend)
         self.assertEqual(next_backend.prepared, 0)
-        self.assertEqual(rows, (self.output / "predictions.jsonl").read_text().splitlines())
+        self.assertEqual(
+            rows, (self.output / "predictions.jsonl").read_text().splitlines()
+        )
 
     def test_partial_resume_keeps_completed_record(self):
         self.run_quiet(self.config, self.output, backend=FakeBackend())
         path = self.output / "predictions.jsonl"
         first = path.read_text().splitlines()[0]
-        path.write_text(first + "\n")  # Simulate interruption after one completed method.
+        path.write_text(
+            first + "\n"
+        )  # Simulate interruption after one completed method.
         backend = FakeBackend()
         self.run_quiet(self.config, self.output, resume=True, backend=backend)
         self.assertEqual(backend.generated, 1)
@@ -235,8 +288,12 @@ class RunnerTests(unittest.TestCase):
     def test_changed_config_and_changed_data_reject_resume(self):
         self.run_quiet(self.config, self.output, backend=FakeBackend())
         with self.assertRaisesRegex(ValueError, "identity mismatch"):
-            self.run_quiet(replace(self.config, beta=0.8), self.output,
-                           resume=True, backend=FakeBackend())
+            self.run_quiet(
+                replace(self.config, beta=0.8),
+                self.output,
+                resume=True,
+                backend=FakeBackend(),
+            )
         data = example()
         data["answer"] = "Changed reference"
         Path(self.config.dataset).write_text(json.dumps([data]))
@@ -244,8 +301,9 @@ class RunnerTests(unittest.TestCase):
             self.run_quiet(self.config, self.output, resume=True, backend=FakeBackend())
 
     def test_failures_remain_in_answer_denominator(self):
-        summary = self.run_quiet(self.config, self.output,
-                                 backend=FakeBackend(fail_generation=True))
+        summary = self.run_quiet(
+            self.config, self.output, backend=FakeBackend(fail_generation=True)
+        )
         for result in summary["methods"].values():
             self.assertEqual(result["questions"], 1)
             self.assertEqual(result["failed"], 1)
@@ -255,7 +313,9 @@ class RunnerTests(unittest.TestCase):
 
     def test_startup_failure_is_recorded(self):
         with self.assertRaises(RuntimeError):
-            self.run_quiet(self.config, self.output, backend=FakeBackend(fail_prepare=True))
+            self.run_quiet(
+                self.config, self.output, backend=FakeBackend(fail_prepare=True)
+            )
         self.assertTrue((self.output / "failure.json").exists())
         manifest = json.loads((self.output / "manifest.json").read_text())
         self.assertEqual(manifest["status"], "interrupted_or_failed")
@@ -267,8 +327,11 @@ class RunnerTests(unittest.TestCase):
             self.assertEqual(record["effective_k"], 3)
             self.assertEqual(record["selected_count"], 3)
         error_output = self.root / "error"
-        summary = self.run_quiet(replace(self.config, k=5, short_pool_policy="error"),
-                                 error_output, backend=FakeBackend())
+        summary = self.run_quiet(
+            replace(self.config, k=5, short_pool_policy="error"),
+            error_output,
+            backend=FakeBackend(),
+        )
         self.assertEqual(summary["methods"]["top_k"]["failed"], 1)
 
 

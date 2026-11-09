@@ -4,9 +4,9 @@ Reference semantics: https://github.com/hotpotqa/hotpot/blob/master/hotpot_evalu
 No supporting-sentence prediction is claimed by this first implementation.
 """
 
-from collections import Counter
 import re
 import string
+from collections import Counter
 
 from qrag.data import Document, EvaluationLabels
 
@@ -42,8 +42,11 @@ def evidence_metrics(
     predicted = {doc.title for doc in selected}
     gold = labels.supporting_titles
     if not gold:
-        return {"document_precision": None, "document_recall": None,
-                "all_supporting_documents": None}
+        return {
+            "document_precision": None,
+            "document_recall": None,
+            "all_supporting_documents": None,
+        }
     correct = len(predicted & gold)
     return {
         "document_precision": correct / len(predicted) if predicted else 0.0,

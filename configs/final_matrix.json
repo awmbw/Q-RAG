@@ -1,0 +1,99 @@
+{
+  "configs": [
+    {
+      "config": "configs/final/final_hotpotqa_qwen15_count.json",
+      "role": "primary classical answer evaluation; 500 questions",
+      "sha256": "cfee02073136477199d85e6be4f14bea1d7941d6dc5993d3cdc38a8bad1f0e62"
+    },
+    {
+      "config": "configs/final/final_hotpotqa_qwen15_tokens.json",
+      "role": "secondary token-budget study; first 100 frozen IDs",
+      "sha256": "0751dd5a58ce95dfefcd6134549981e6e4affd6f5acfc679189ff1776757d191"
+    },
+    {
+      "config": "configs/final/final_hotpotqa_qwen3_count.json",
+      "role": "primary classical answer evaluation; 500 questions",
+      "sha256": "a6cb9e2de1a61bb56e3321d55de90201cf16f0698728e64d5dcf4e9134866c7e"
+    },
+    {
+      "config": "configs/final/final_hotpotqa_qwen3_tokens.json",
+      "role": "secondary token-budget study; first 100 frozen IDs",
+      "sha256": "6cbeb0c2470f7b5818974f06c87061537f33d463ca328e7f82e7c101eb6c072f"
+    },
+    {
+      "config": "configs/final/final_hotpotqa_quantum.json",
+      "role": "primary quantum comparison; same reduced pool for all methods",
+      "sha256": "1b0d3f9b74db06da25c0cf4ac1e77b93de54d6a561a0d21d33d31ea972db3e67"
+    },
+    {
+      "config": "configs/final/final_hotpotqa_corpus25.json",
+      "role": "bounded corpus, 25 candidates; MILP 1-second limit, 100 questions",
+      "sha256": "bf855dec013b5e7e53748ac8c7a1c05e83ca974401d0cd9afbfaf25974f145bf"
+    },
+    {
+      "config": "configs/final/final_hotpotqa_corpus50.json",
+      "role": "bounded corpus, 50 candidates; MILP 1-second limit, 30 questions",
+      "sha256": "e9a104b65e62550ca5bcd0c78d024aebcca548b7c7a20556444df2ec214048e6"
+    },
+    {
+      "config": "configs/final/final_hotpotqa_corpus100.json",
+      "role": "bounded corpus, 100 candidates; MILP 1-second limit, 30 questions",
+      "sha256": "7774bc5162beab28c8b0023c61bb4f1f9b87e054d8e1411d212e6747afcd7e0a"
+    },
+    {
+      "config": "configs/final/final_musique_qwen15_count.json",
+      "role": "primary classical answer evaluation; 500 questions",
+      "sha256": "eb857b7a0caa9cd7dcf4d8e5774d6992b2ac44bc565a8752ce53f66395f6fa63"
+    },
+    {
+      "config": "configs/final/final_musique_qwen15_tokens.json",
+      "role": "secondary token-budget study; first 100 frozen IDs",
+      "sha256": "474319252b9da669d5b3ec5a56d62bb8920e98097db7eef699aad2b41127a655"
+    },
+    {
+      "config": "configs/final/final_musique_qwen3_count.json",
+      "role": "primary classical answer evaluation; 500 questions",
+      "sha256": "519fa27e508476c49f1c8c5d7b982e4316b524e4f818e01f80837e63cca885f4"
+    },
+    {
+      "config": "configs/final/final_musique_qwen3_tokens.json",
+      "role": "secondary token-budget study; first 100 frozen IDs",
+      "sha256": "d5396d037933628accff6f3eba311c3dc4516f018fd6a7087cd6df55ca59b621"
+    },
+    {
+      "config": "configs/final/final_musique_quantum.json",
+      "role": "primary quantum comparison; same reduced pool for all methods",
+      "sha256": "cf4306472e6d14a7fde89e9d40f3f00d72d1cbc4d06cb0fab3e80cecb00a3d62"
+    },
+    {
+      "config": "configs/final/final_musique_corpus25.json",
+      "role": "bounded corpus, 25 candidates; MILP 1-second limit, 100 questions",
+      "sha256": "bf9b97813cbe0f21bf53b4ee34de63b96b5ca9204d8cf4ccd98bda9ae728e5aa"
+    },
+    {
+      "config": "configs/final/final_musique_corpus50.json",
+      "role": "bounded corpus, 50 candidates; MILP 1-second limit, 30 questions",
+      "sha256": "fdd4c538b7bffb1a92fe130f68fff4074848299d45d32ad717575ace4b198bcd"
+    },
+    {
+      "config": "configs/final/final_musique_corpus100.json",
+      "role": "bounded corpus, 100 candidates; MILP 1-second limit, 30 questions",
+      "sha256": "1debc411fe8558cb0a50c4f89aa9cec015c7f6902f9b418a7e7b4d72db98e1f5"
+    },
+    {
+      "config": "configs/final/final_musique_quantum12.json",
+      "role": "small scaling sensitivity, not a powered answer-quality study",
+      "sha256": "adaa28ada62c4b010113c22a39da2395e877629b8494b526f9040ad0e224cca4"
+    },
+    {
+      "config": "configs/final/final_musique_quantum16.json",
+      "role": "small scaling sensitivity, not a powered answer-quality study",
+      "sha256": "0e6fa145621e9cd072250960440ef6ba39ca41fb2a6ec366d77e384beb685ab8"
+    }
+  ],
+  "frozen_before_held_out_execution": true,
+  "gamma": 0.2,
+  "notes": "No noninferiority tolerance adopted. Negative findings retained. Larger quantum/corpus and token studies have separate sample counts.",
+  "primary_generators": "Qwen 1.5B and 3B on full classical supplied pools; primary quantum uses 1.5B",
+  "principal_comparison": "xy_evidence_f0.5 versus xy_absolute_f0.5 on same 50 questions per dataset; three seeds averaged within question"
+}

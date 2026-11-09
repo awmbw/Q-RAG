@@ -1,0 +1,40 @@
+{
+  "config": {
+    "alpha": 1.0,
+    "beta": 0.2,
+    "dataset": "data/processed/dev_set.json",
+    "device": "cuda",
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "embedding_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+    "embedding_truncation": "error",
+    "generator_dtype": "float16",
+    "generator_model": "Qwen/Qwen2.5-3B-Instruct",
+    "generator_revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+    "k": 5,
+    "limit": 3,
+    "local_files_only": true,
+    "max_input_tokens": 4096,
+    "max_new_tokens": 32,
+    "seed": 42,
+    "short_pool_policy": "use_all",
+    "solver_time_limit": 10.0,
+    "threads": 4
+  },
+  "preparation": {
+    "document_embedding_cache": "not_implemented",
+    "embedding_max_sequence_tokens": 256,
+    "generator_input_limit": 4096,
+    "model_load_seconds": 8.141124318000038
+  },
+  "result": {
+    "answer": "noanswer",
+    "context_tokens": 563,
+    "generation_seconds": 1.2945428490002087,
+    "gpu_peak_allocated_bytes": 6488809984,
+    "hit_output_limit": false,
+    "input_tokens": 635,
+    "output_tokens": 3,
+    "process_peak_rss_bytes": 12760469504
+  },
+  "scope": "one development smoke; not a quality benchmark"
+}

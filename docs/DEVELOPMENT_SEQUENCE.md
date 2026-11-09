@@ -193,3 +193,7 @@ Implemented all four hard-budget sparsifiers and checked signs, masks and the el
 Ran 1,400 calibration records across 200 development questions, selecting gamma=0.2 before held-out evaluation. Ran 900 sparsification/encoding development records across 30 questions. The results support a compiler/encoding effect but not a reliable superiority claim for evidence guidance. Continued the study as a controlled comparison, retaining unfavorable outcomes and original settings.
 
 Replaced quadratic-cost artifact rewrites for the new study runner with a durable append journal and explicit retry semantics; the legacy runner remains historically compatible. Added a restore-by-manifest script and verified all four dataset hashes after independent reconstruction. Thirty-eight offline tests pass. Next: freeze the complete evaluation matrix, run new held-out questions, quantify paired uncertainty, then write the manuscript around observed findings.
+
+## November 10, 2026 — Phase G freeze checkpoint
+
+Added bounded-corpus retrieval and explicit evaluation of missing support, then constructed the common candidate files before answer generation. Added memory high-water marks and stage timing fields. Formatted and linted the Python sources and reran all 39 tests before freezing the final configurations. Completed a separate Qwen 3B GPU smoke and a 16-candidate development quantum profile. The frozen matrix is now ready for execution; no held-out result is claimed at this checkpoint.

@@ -1,0 +1,119 @@
+{
+  "original_candidates": 20,
+  "question_id": "2hop__847354_135703",
+  "resources": {
+    "all_to_all": {
+      "depth": 214,
+      "operations": {
+        "cx": 236,
+        "rz": 230,
+        "sx": 80,
+        "x": 5
+      },
+      "qubits": 16,
+      "two_qubit_gates": 236
+    },
+    "angles": [
+      2.4528689513790862,
+      0.00011131898773041353
+    ],
+    "basis_gates": [
+      "rz",
+      "sx",
+      "x",
+      "cx"
+    ],
+    "best_training_energy": -0.5907735707673087,
+    "encoded_offset": 0.0,
+    "encoded_pair_count": 86,
+    "evaluations": 21,
+    "execution_mode": "ideal expectation optimization; finite-shot final sampling",
+    "feasible_fraction": 1.0,
+    "feasible_shots": 1024,
+    "hardware": false,
+    "ideal_feasible_probability": 1.0000000000000022,
+    "initial_indices": [
+      1,
+      6,
+      9,
+      10,
+      15
+    ],
+    "ising_constant": -0.8088992189586861,
+    "line": {
+      "depth": 298,
+      "operations": {
+        "cx": 567,
+        "rz": 230,
+        "sx": 82,
+        "x": 5
+      },
+      "qubits": 16,
+      "two_qubit_gates": 567
+    },
+    "max_evals": 64,
+    "mixer": "xy",
+    "noise_note": "Final all-to-all compiled sampling only; no noisy parameter optimization or device calibration is claimed.",
+    "noise_one_qubit_probability": 0.0,
+    "noise_two_qubit_depolarizing_probability": 0.0,
+    "optimization_level": 1,
+    "optimizer_message": "Return from COBYLA because the trust region radius reaches its lower bound.",
+    "optimizer_success": true,
+    "p": 1,
+    "penalty_strength": 0.0,
+    "phase_scale": 1.0,
+    "sampled_counts": {
+      "34370": 1024
+    },
+    "seed": 42,
+    "selection_policy": "minimum surrogate energy among all measured feasible samples; deterministic index tie-break; no repair",
+    "shots": 1024,
+    "targets": "synthetic all-to-all and bidirectional line; not calibrated physical devices",
+    "training_energies": [
+      -0.5462639509369631,
+      -0.5462639509369638,
+      -0.5842410841168701,
+      -0.5616880250216935,
+      -0.5903580467289056,
+      -0.5703933274883604,
+      -0.5822363458454615,
+      -0.5905439940670439,
+      -0.5903120830918915,
+      -0.5895668739688968,
+      -0.590445088273751,
+      -0.5903923292520457,
+      -0.5907343268760961,
+      -0.5907668553398157,
+      -0.5907581862642746,
+      -0.5907210244594487,
+      -0.5907735707673087,
+      -0.5907679048891885,
+      -0.5907735649273516,
+      -0.5907721900876642,
+      -0.5907729532286481
+    ],
+    "training_shots_per_evaluation": 0,
+    "transpiler_seed": 42,
+    "unique_feasible_samples": 1
+  },
+  "retained_indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    10,
+    13,
+    14,
+    16,
+    17,
+    18,
+    19
+  ],
+  "scope": "one development MuSiQue instance; relevance-only candidate reduction; not a general scaling result",
+  "seconds": 1.0542616969996743
+}

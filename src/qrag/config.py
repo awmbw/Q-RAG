@@ -1,9 +1,9 @@
 """Small, strict TOML configuration with no optional framework dependency."""
 
-from dataclasses import asdict, dataclass, fields
 import math
-from pathlib import Path
 import tomllib
+from dataclasses import asdict, dataclass, fields
+from pathlib import Path
 
 
 @dataclass(frozen=True)
@@ -51,12 +51,17 @@ class ExperimentConfig:
         if self.embedding_truncation not in {"error", "report"}:
             raise ValueError("embedding_truncation must be error or report")
         for name in ("dataset", "embedding_model", "generator_model"):
-            if not isinstance(getattr(self, name), str) or not getattr(self, name).strip():
+            if (
+                not isinstance(getattr(self, name), str)
+                or not getattr(self, name).strip()
+            ):
                 raise ValueError(f"{name} must be a nonempty string")
         for name in ("embedding_revision", "generator_revision"):
             value = getattr(self, name)
-            if not isinstance(value, str) or len(value) != 40 or any(
-                ch not in "0123456789abcdef" for ch in value
+            if (
+                not isinstance(value, str)
+                or len(value) != 40
+                or any(ch not in "0123456789abcdef" for ch in value)
             ):
                 raise ValueError(f"{name} must be an immutable 40-character commit")
 

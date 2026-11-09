@@ -1,0 +1,119 @@
+{
+  "budget_mode": "tokens",
+  "context_budget": 1200,
+  "dataset_sha256": "c51e7b15ec50a6c6bd1171ff31904a494b13addca34ea1e334206caff9c1e327",
+  "methods": [
+    {
+      "name": "top_k",
+      "solver": "top_k"
+    },
+    {
+      "name": "bm25",
+      "solver": "bm25"
+    },
+    {
+      "name": "hybrid",
+      "solver": "hybrid"
+    },
+    {
+      "name": "reranker",
+      "solver": "reranker"
+    },
+    {
+      "name": "mmr",
+      "solver": "mmr"
+    },
+    {
+      "name": "coverage",
+      "solver": "coverage"
+    },
+    {
+      "name": "greedy",
+      "solver": "greedy"
+    },
+    {
+      "name": "milp_base",
+      "solver": "milp"
+    },
+    {
+      "gamma": 0.2,
+      "name": "milp_full",
+      "solver": "milp"
+    },
+    {
+      "gamma": 0.2,
+      "name": "annealing_full_s41",
+      "seed": 41,
+      "shots": 1024,
+      "solver": "annealing"
+    },
+    {
+      "gamma": 0.2,
+      "name": "annealing_full_s42",
+      "seed": 42,
+      "shots": 1024,
+      "solver": "annealing"
+    },
+    {
+      "gamma": 0.2,
+      "name": "annealing_full_s43",
+      "seed": 43,
+      "shots": 1024,
+      "solver": "annealing"
+    },
+    {
+      "edge_fraction": 0.5,
+      "gamma": 0.2,
+      "name": "milp_absolute_f0.5",
+      "solver": "milp",
+      "sparsifier": "absolute"
+    },
+    {
+      "edge_fraction": 0.75,
+      "gamma": 0.2,
+      "name": "milp_absolute_f0.75",
+      "solver": "milp",
+      "sparsifier": "absolute"
+    },
+    {
+      "edge_fraction": 0.5,
+      "gamma": 0.2,
+      "name": "milp_evidence_f0.5",
+      "solver": "milp",
+      "sparsifier": "evidence"
+    },
+    {
+      "edge_fraction": 0.75,
+      "gamma": 0.2,
+      "name": "milp_evidence_f0.75",
+      "solver": "milp",
+      "sparsifier": "evidence"
+    }
+  ],
+  "model": {
+    "alpha": 1.0,
+    "beta": 0.2,
+    "dataset": "data/processed/research/musique_evaluation.json",
+    "device": "cuda",
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "embedding_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+    "embedding_truncation": "error",
+    "generator_dtype": "float16",
+    "generator_model": "Qwen/Qwen2.5-3B-Instruct",
+    "generator_revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+    "k": 5,
+    "limit": 100,
+    "local_files_only": true,
+    "max_input_tokens": 4096,
+    "max_new_tokens": 32,
+    "seed": 42,
+    "short_pool_policy": "use_all",
+    "solver_time_limit": 10.0,
+    "threads": 4
+  },
+  "reranker": {
+    "model": "cross-encoder/ms-marco-MiniLM-L6-v2",
+    "revision": "233902d25c440f23af6f7d6e94d2946bac0bee0a"
+  },
+  "scope": "frozen held-out token-budget evaluation; separate from count study"
+}

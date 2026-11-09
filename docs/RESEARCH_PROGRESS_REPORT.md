@@ -235,3 +235,11 @@ Mean line two-qubit gates fall from 263.87 for full XY-QAOA to 176.43 for absolu
 Research decision: continue as an encoding-aware comparative study rather than promise a positive evidence-preservation result. The [analysis](research_report/evidence/phase_f_analysis.json) retains paired uncertainty. Add uniform feasible sampling to final comparisons because best-of-many measurements can cover much of a small feasible space. No quantum advantage is inferred from finding a good subset after many classical energy evaluations.
 
 The study runner now uses an append/fsync journal with explicit error retries and torn-tail recovery. Successful records cannot be overwritten; a changed resume identity fails before file mutation. Report generation groups repeated solver seeds within question before resampling. Thirty-eight offline tests pass. A reconstruction check rebuilt all four frozen dataset files in a separate directory and matched their exact hashes.
+
+## Phase G preparation — frozen evaluation matrix
+
+Before new held-out execution, froze [18 configurations](../configs/final_matrix.json) specifying 50,290 method/question evaluations. The main classical comparison uses 500 questions per dataset with Qwen 1.5B and Qwen 3B. Token studies use the first 100 frozen IDs per dataset/generator. The principal quantum comparison uses 50 frozen IDs per dataset, a common label-independent top-10 pool, and three solver seeds. Larger MuSiQue quantum sensitivities use five questions at 12/16 real candidates. Bounded corpus studies use 25/50/100 candidates with separately stated sample sizes and one-second MILP limits.
+
+The bounded corpora contain 5,941 HotpotQA documents/6,270 chunks and 8,582 MuSiQue documents/8,972 chunks, deduplicated by title plus text from permitted benchmark input passages. They are not full Wikipedia. Candidate retrieval uses only the question and corpus; supporting labels are mapped afterward for evaluation, including retrieval misses.
+
+Qwen 3B completed a development generation using approximately 6.49 billion peak allocated GPU bytes. One 16-candidate development QAOA profile took 1.05 seconds. These are smoke/profile checks, not general resource or accuracy conclusions. Thirty-nine offline tests and the configured lint checks pass. The evaluation results are not yet complete at this preparation checkpoint.
