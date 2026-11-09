@@ -1,3 +1,5 @@
+> Execution update, November 10, 2026: all phases and post-manuscript engineering are authorized. Research quality takes priority over the historical dates below. Laptop compute only; no paid allocation or quantum hardware. Evidence-based changes of research direction are permitted. See [protocol](EXPERIMENT_PROTOCOL.md) and [literature matrix](LITERATURE_REVIEW.md).
+
 **Q-RAG implementation plan — November 4, 2026**
 
 This is the detailed execution plan for the publication, research software, demonstration and teaching work. It supersedes the November 1 roadmap's schedule and venue status where they differ. The proposed research method remains conditional on a literature review and development experiments. This document does not report new experimental results. The commands and module layout below describe planned interfaces, not features already implemented.

@@ -1,6 +1,8 @@
 # Quantum RAG research progress and mathematical formulation
 
-**Version 0.3 | Updated November 9 2026**
+**Version 0.4 | Updated November 10 2026**
+
+Current execution updates follow the historical baseline account. Phase A now has a measured GPU environment, research protocol and literature matrix; phases B–I are in progress or pending. The status table below describes the pre-run baseline.
 
 The current implementation establishes a controlled classical baseline for context selection in retrieval augmented generation. Relevance ranking and a constrained mixed integer linear program (MILP) select from the same candidates, generate actual answers and record answer quality separately from evidence coverage and objective values.
 
@@ -159,3 +161,13 @@ Detailed derivations and worked examples are in [Technical foundations and imple
 7. HotpotQA. [Official answer and supporting-fact evaluator](https://github.com/hotpotqa/hotpot/blob/master/hotpot_evaluate_v1.py).
 
 Current implementation pointers: [data boundaries](../src/qrag/data.py), [objective and MILP](../src/qrag/optimization.py), [model adapters](../src/qrag/models.py), [metrics](../src/qrag/metrics.py), [runner](../src/qrag/experiments/run.py), [artifacts](../src/qrag/experiments/artifacts.py), [configuration](../configs/dev_baselines.toml), [tests](../tests/test_baselines.py) and [legacy QAOA wrapper](../src/optimization/qaoa_solver.py).
+
+## Phase A — measured environment and research protocol (November 10, 2026)
+
+The execution environment now exposes CUDA. The measured RTX 5060 has approximately 7.53 GiB of PyTorch-visible device memory; the host provides 16 logical CPUs. The earlier CPU-only experiment remains unchanged. GPU tensor multiplication, a two-qubit Bell-state simulation and a HiGHS binary optimization were executed, rather than inferring compatibility from installed versions. The baseline's 17 offline tests pass and pip reports no broken requirements.
+
+The [environment evidence](research_report/evidence/environment_20261110.json), [host-specific dependency snapshot](../requirements-laptop.lock), [research protocol](EXPERIMENT_PROTOCOL.md) and [19-source literature matrix](LITERATURE_REVIEW.md) establish the execution foundation. The lock records installed transitive dependencies for this Linux/Python/CUDA host; it is not a universal GPU installation recipe.
+
+The contribution shortlist is evidence-guided interaction removal and its dependence on constraint encoding. Prior work already covers QUBO evidence selection and QAOA sparsification. An exact reproduction of the closest paper has not been achieved: its requirement estimators and original model configuration are different. A transparently labeled local adaptation is planned. No new answer-quality improvement or quantum advantage is claimed in this phase.
+
+Historical schedules are superseded by a quality-first execution order. The study will use laptop compute, frozen held-out IDs, paired comparisons and explicit simulation labels. Full literature novelty certification, external review and publication acceptance are not software acceptance criteria.

@@ -672,3 +672,13 @@ Primary sources support the transformer, generation, optimization and quantum ba
 - [Official HotpotQA evaluator](https://github.com/hotpotqa/hotpot/blob/master/hotpot_evaluate_v1.py)
 
 For project execution, use [Baseline guide](BASELINE_GUIDE.md). For completed versus remaining work, use [Development sequence](DEVELOPMENT_SEQUENCE.md) and the [implementation plan](IMPLEMENTATION_PLAN.md).
+
+## Phase A foundations — what reproducibility establishes
+
+An environment snapshot answers “which software was installed?” An execution check answers the different question “could these packages perform the needed calculation on this host?” A CUDA package can exist without a usable GPU. The environment script therefore multiplies tensors on the selected device, simulates a known Bell state, and solves a one-variable binary problem. For that problem, minimize -x with x in {0,1}: the two energies are 0 and -1, so the expected solution is x=1. The Bell state has probabilities (1/2,0,0,1/2), which provides a simple simulation check independent of the RAG application.
+
+A fixed seed initializes a pseudorandom sequence. It does not fix every floating-point reduction, GPU kernel or future package implementation. A lock fixes package versions; a model revision fixes weights/tokenizer files; content hashes identify data and source bytes. Together these reduce ambiguity but do not establish that an experiment is correct. That requires mathematical checks and actual predictions.
+
+For paired evaluation, let d_q be method A's answer F1 minus method B's on question q. The estimated difference is the sum of d_q divided by the number N of questions. Bootstrap resampling draws N question IDs with replacement, computes that mean again, and repeats. The 2.5th and 97.5th percentiles give a 95% percentile interval. Pairing preserves each question's difficulty across methods. Solver seeds are repeated computations on one question, not new independent questions; average them within question before resampling. An interval spanning zero permits effects in both directions and does not prove equality.
+
+The full [protocol](EXPERIMENT_PROTOCOL.md) states the comparisons before final evaluation. This prevents choosing whichever metric, seed or subset looks most favorable afterward. Such a choice would change the question being tested and exaggerate apparent evidence.

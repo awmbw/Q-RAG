@@ -143,3 +143,13 @@ No complete formal phase A–I is claimed merely because the first working basel
 7. Evaluate the candidate sparsifier before freezing final experiments.
 
 The [implementation plan](IMPLEMENTATION_PLAN.md) contains the full backlog. Updating this sequence should record what actually changed, why it changed and which artifact verifies it, rather than marking work complete because a planned date has passed.
+
+## November 10, 2026 — Phase A execution foundation
+
+1. Re-read the plan and current inference, solver and artifact contracts. The working tree was clean at execution start.
+2. Verified the now-visible GPU, executed tensor/HiGHS/quantum checks, and preserved the earlier CPU experiment as historical evidence.
+3. Installed the missing testing/service tools in the project virtual environment and recorded the exact installed dependency graph. No system Python or driver change was made.
+4. Checked 19 primary research sources, distinguishing close-method inspection from abstract-level context. Recorded reproduction limits instead of claiming to have reproduced unavailable original settings.
+5. Froze a protocol separating graph, sparsification and solver questions. Actual sample sizes will be chosen from development timing before held-out evaluation.
+
+Verification: 17 baseline tests passed; dependency consistency check passed. New evidence: environment report. This phase establishes the research/execution foundation; it does not finish data preparation or demonstrate an empirical method benefit. Next dependency: trustworthy dataset partitions and annotation-preserving data contracts.

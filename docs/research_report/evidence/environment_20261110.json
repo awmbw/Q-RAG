@@ -1,0 +1,36 @@
+{
+  "cpu_count": 16,
+  "cuda_available": true,
+  "disk_free_gib": 128.26,
+  "gpu": "NVIDIA GeForce RTX 5060 Laptop GPU",
+  "gpu_total_gib": 7.52703857421875,
+  "memory": {
+    "MemAvailable_gib": 15.96,
+    "MemTotal_gib": 21.99
+  },
+  "packages": {
+    "faiss-cpu": "1.15.1",
+    "fastapi": "0.162.2",
+    "huggingface-hub": "1.33.0",
+    "networkx": "3.6.1",
+    "numpy": "2.5.3",
+    "pytest": "9.2.0",
+    "qiskit": "2.5.2",
+    "qiskit-aer": "0.17.2",
+    "qiskit-algorithms": "0.4.0",
+    "ruff": "0.17.4",
+    "scipy": "1.18.1",
+    "sentence-transformers": "6.1.0",
+    "torch": "2.14.0+cu132",
+    "transformers": "5.17.0"
+  },
+  "platform": "Linux-7.0.0-42-generic-x86_64-with-glibc2.43",
+  "python": "3.14.4",
+  "torch_cuda": "13.2",
+  "verification": [
+    "tensor matrix multiplication on selected device",
+    "Bell-state simulation",
+    "HiGHS binary optimization",
+    "pip check"
+  ]
+}
