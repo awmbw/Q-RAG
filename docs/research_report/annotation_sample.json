@@ -1,0 +1,2401 @@
+{
+  "policy": "first ten frozen development IDs per dataset, first two extracted edges per question; retain questions with no edges; convenience sample, not a representative accuracy estimate",
+  "reference_annotations_used": false,
+  "samples": [
+    {
+      "dataset": "hotpotqa",
+      "extractor_revision": "entity-link-regex-title-v2-surface-provenance",
+      "question": "Which magazine is published more frequently, Sojourners or Science News?",
+      "question_id": "5a74d91455429916b016422a",
+      "sampled_edges": [
+        {
+          "canonical_mentions_same_entity": null,
+          "entities": [
+            "science news"
+          ],
+          "jointly_required_for_question": null,
+          "mentions": {
+            "5a74d91455429916b016422a:d1": [
+              {
+                "end": 245,
+                "entity": "science news",
+                "kind": "candidate-title",
+                "source_excerpt": "ications, including the bi-weekly \"Science News\" magazine and the free-accessible ",
+                "start": 233,
+                "surface": "Science News"
+              },
+              {
+                "end": 245,
+                "entity": "science news",
+                "kind": "capitalized-span",
+                "source_excerpt": "ications, including the bi-weekly \"Science News\" magazine and the free-accessible ",
+                "start": 233,
+                "surface": "Science News"
+              },
+              {
+                "end": 300,
+                "entity": "science news",
+                "kind": "candidate-title",
+                "source_excerpt": "ne and the free-accessible online \"Science News for Students\".",
+                "start": 288,
+                "surface": "Science News"
+              },
+              {
+                "end": 300,
+                "entity": "science news",
+                "kind": "capitalized-span",
+                "source_excerpt": "ne and the free-accessible online \"Science News for Students\".",
+                "start": 288,
+                "surface": "Science News"
+              }
+            ],
+            "5a74d91455429916b016422a:d2": [
+              {
+                "end": 300,
+                "entity": "science news",
+                "kind": "candidate-title",
+                "source_excerpt": "on, \"StarDate\" is a self-contained science news feature interwoven with routine ra",
+                "start": 288,
+                "surface": "science news"
+              }
+            ]
+          },
+          "notes": null,
+          "reviewed_at": null,
+          "reviewer": null,
+          "source": "5a74d91455429916b016422a:d1",
+          "target": "5a74d91455429916b016422a:d2",
+          "weight": 0.1513170197853005
+        },
+        {
+          "canonical_mentions_same_entity": null,
+          "entities": [
+            "science news"
+          ],
+          "jointly_required_for_question": null,
+          "mentions": {
+            "5a74d91455429916b016422a:d1": [
+              {
+                "end": 245,
+                "entity": "science news",
+                "kind": "candidate-title",
+                "source_excerpt": "ications, including the bi-weekly \"Science News\" magazine and the free-accessible ",
+                "start": 233,
+                "surface": "Science News"
+              },
+              {
+                "end": 245,
+                "entity": "science news",
+                "kind": "capitalized-span",
+                "source_excerpt": "ications, including the bi-weekly \"Science News\" magazine and the free-accessible ",
+                "start": 233,
+                "surface": "Science News"
+              },
+              {
+                "end": 300,
+                "entity": "science news",
+                "kind": "candidate-title",
+                "source_excerpt": "ne and the free-accessible online \"Science News for Students\".",
+                "start": 288,
+                "surface": "Science News"
+              },
+              {
+                "end": 300,
+                "entity": "science news",
+                "kind": "capitalized-span",
+                "source_excerpt": "ne and the free-accessible online \"Science News for Students\".",
+                "start": 288,
+                "surface": "Science News"
+              }
+            ],
+            "5a74d91455429916b016422a:d3": [
+              {
+                "end": 349,
+                "entity": "science news",
+                "kind": "candidate-title",
+                "source_excerpt": "ars.  Workman is guest-hosting the science news show \"Daily Planet\" on Discovery C",
+                "start": 337,
+                "surface": "science news"
+              }
+            ]
+          },
+          "notes": null,
+          "reviewed_at": null,
+          "reviewer": null,
+          "source": "5a74d91455429916b016422a:d1",
+          "target": "5a74d91455429916b016422a:d3",
+          "weight": 0.15719872634412385
+        }
+      ],
+      "total_edges": 36
+    },
+    {
+      "dataset": "hotpotqa",
+      "extractor_revision": "entity-link-regex-title-v2-surface-provenance",
+      "question": "Playboy was forced to sell a club in 1982 that it had purchased from an English zoo owner who used gambling to move to the centre of what?",
+      "question_id": "5a8b922d55429950cd6afd19",
+      "sampled_edges": [
+        {
+          "canonical_mentions_same_entity": null,
+          "entities": [
+            "british"
+          ],
+          "jointly_required_for_question": null,
+          "mentions": {
+            "5a8b922d55429950cd6afd19:d0": [
+              {
+                "end": 179,
+                "entity": "british",
+                "kind": "capitalized-span",
+                "source_excerpt": " gambling to move to the centre of British high society in the 1960s.  He was",
+                "start": 172,
+                "surface": "British"
+              }
+            ],
+            "5a8b922d55429950cd6afd19:d3": [
+              {
+                "end": 76,
+                "entity": "british",
+                "kind": "capitalized-span",
+                "source_excerpt": "The John Aspinall Foundation) is a British charity (Registered Charity 326567",
+                "start": 69,
+                "surface": "British"
+              }
+            ]
+          },
+          "notes": null,
+          "reviewed_at": null,
+          "reviewer": null,
+          "source": "5a8b922d55429950cd6afd19:d0",
+          "target": "5a8b922d55429950cd6afd19:d3",
+          "weight": 0.2395168148686787
+        },
+        {
+          "canonical_mentions_same_entity": null,
+          "entities": [
+            "british"
+          ],
+          "jointly_required_for_question": null,
+          "mentions": {
+            "5a8b922d55429950cd6afd19:d0": [
+              {
+                "end": 179,
+                "entity": "british",
+                "kind": "capitalized-span",
+                "source_excerpt": " gambling to move to the centre of British high society in the 1960s.  He was",
+                "start": 172,
+                "surface": "British"
+              }
+            ],
+            "5a8b922d55429950cd6afd19:d5": [
+              {
+                "end": 55,
+                "entity": "british",
+                "kind": "capitalized-span",
+                "source_excerpt": "Set was an exclusive group of rich British gamblers who met at the Clermont C",
+                "start": 48,
+                "surface": "British"
+              },
+              {
+                "end": 387,
+                "entity": "british",
+                "kind": "capitalized-span",
+                "source_excerpt": "rmont Club had become famous among British celebrities at once but Aspinall s",
+                "start": 380,
+                "surface": "British"
+              }
+            ]
+          },
+          "notes": null,
+          "reviewed_at": null,
+          "reviewer": null,
+          "source": "5a8b922d55429950cd6afd19:d0",
+          "target": "5a8b922d55429950cd6afd19:d5",
+          "weight": 0.31114409643456925
+        }
+      ],
+      "total_edges": 4
+    },
+    {
+      "dataset": "hotpotqa",
+      "extractor_revision": "entity-link-regex-title-v2-surface-provenance",
+      "question": "Before working on Romeo Juliet, written and directed by Lakshman, D. Imman's first time as music director was which film?",
+      "question_id": "5ac5355f5542996feb3fea25",
+      "sampled_edges": [
+        {
+          "canonical_mentions_same_entity": null,
+          "entities": [
+            "d. imman",
+            "imman",
+            "tamil"
+          ],
+          "jointly_required_for_question": null,
+          "mentions": {
+            "5ac5355f5542996feb3fea25:d0": [
+              {
+                "end": 61,
+                "entity": "tamil",
+                "kind": "capitalized-span",
+                "source_excerpt": "lish: \"I Am Not Him 2\" ) is a 2009 Tamil romantic mystery film directed by ",
+                "start": 56,
+                "surface": "Tamil"
+              },
+              {
+                "end": 308,
+                "entity": "d. imman",
+                "kind": "candidate-title",
+                "source_excerpt": "ruthi Prakash and Rachana Maurya.  D. Imman, who did the film score for the fi",
+                "start": 300,
+                "surface": "D. Imman"
+              },
+              {
+                "end": 308,
+                "entity": "imman",
+                "kind": "capitalized-span",
+                "source_excerpt": "hi Prakash and Rachana Maurya.  D. Imman, who did the film score for the fi",
+                "start": 303,
+                "surface": "Imman"
+              }
+            ],
+            "5ac5355f5542996feb3fea25:d3": [
+              {
+                "end": 52,
+                "entity": "d. imman",
+                "kind": "candidate-title",
+                "source_excerpt": "Vasanth Dinakaran, better known as D. Imman, is an Indian film composer and si",
+                "start": 44,
+                "surface": "D. Imman"
+              },
+              {
+                "end": 52,
+                "entity": "imman",
+                "kind": "capitalized-span",
+                "source_excerpt": "anth Dinakaran, better known as D. Imman, is an Indian film composer and si",
+                "start": 47,
+                "surface": "Imman"
+              },
+              {
+                "end": 127,
+                "entity": "tamil",
+                "kind": "capitalized-span",
+                "source_excerpt": "nger, predominantly working in the Tamil film industry.  His first film as ",
+                "start": 122,
+                "surface": "Tamil"
+              }
+            ]
+          },
+          "notes": null,
+          "reviewed_at": null,
+          "reviewer": null,
+          "source": "5ac5355f5542996feb3fea25:d0",
+          "target": "5ac5355f5542996feb3fea25:d3",
+          "weight": 0.19471345224325717
+        },
+        {
+          "canonical_mentions_same_entity": null,
+          "entities": [
+            "d. imman",
+            "imman"
+          ],
+          "jointly_required_for_question": null,
+          "mentions": {
+            "5ac5355f5542996feb3fea25:d0": [
+              {
+                "end": 308,
+                "entity": "d. imman",
+                "kind": "candidate-title",
+                "source_excerpt": "ruthi Prakash and Rachana Maurya.  D. Imman, who did the film score for the fi",
+                "start": 300,
+                "surface": "D. Imman"
+              },
+              {
+                "end": 308,
+                "entity": "imman",
+                "kind": "capitalized-span",
+                "source_excerpt": "hi Prakash and Rachana Maurya.  D. Imman, who did the film score for the fi",
+                "start": 303,
+                "surface": "Imman"
+              }
+            ],
+            "5ac5355f5542996feb3fea25:d5": [
+              {
+                "end": 356,
+                "entity": "d. imman",
+                "kind": "candidate-title",
+                "source_excerpt": "g role.  Its music was composed by D. Imman, cinematography was handled by R. ",
+                "start": 348,
+                "surface": "D. Imman"
+              },
+              {
+                "end": 356,
+                "entity": "imman",
+                "kind": "capitalized-span",
+                "source_excerpt": "ole.  Its music was composed by D. Imman, cinematography was handled by R. ",
+                "start": 351,
+                "surface": "Imman"
+              }
+            ]
+          },
+          "notes": null,
+          "reviewed_at": null,
+          "reviewer": null,
+          "source": "5ac5355f5542996feb3fea25:d0",
+          "target": "5ac5355f5542996feb3fea25:d5",
+          "weight": 0.16310787032093851
+        }
+      ],
+      "total_edges": 18
+    },
+    {
+      "dataset": "hotpotqa",
+      "extractor_revision": "entity-link-regex-title-v2-surface-provenance",
+      "question": "What city has a football club head coach who An Sung-hun once played as temporary France national team player for?",
+      "question_id": "5abc3ff8554299658360042f",
+      "sampled_edges": [
+        {
+          "canonical_mentions_same_entity": null,
+          "entities": [
+            "april"
+          ],
+          "jointly_required_for_question": null,
+          "mentions": {
+            "5abc3ff8554299658360042f:d0": [
+              {
+                "end": 44,
+                "entity": "april",
+                "kind": "capitalized-span",
+                "source_excerpt": "ck Henry Pierre Rib\u00e9ry (] ; born 7 April 1983) is a French professional foo",
+                "start": 39,
+                "surface": "April"
+              }
+            ],
+            "5abc3ff8554299658360042f:d2": [
+              {
+                "end": 627,
+                "entity": "april",
+                "kind": "capitalized-span",
+                "source_excerpt": " was confirmed in this position in April 2007 after the election of a new P",
+                "start": 622,
+                "surface": "April"
+              }
+            ]
+          },
+          "notes": null,
+          "reviewed_at": null,
+          "reviewer": null,
+          "source": "5abc3ff8554299658360042f:d0",
+          "target": "5abc3ff8554299658360042f:d2",
+          "weight": 0.18215339877594186
+        },
+        {
+          "canonical_mentions_same_entity": null,
+          "entities": [
+            "france"
+          ],
+          "jointly_required_for_question": null,
+          "mentions": {
+            "5abc3ff8554299658360042f:d0": [
+              {
+                "end": 150,
+                "entity": "france",
+                "kind": "capitalized-span",
+                "source_excerpt": "lub Bayern Munich.  He is a former France national team player.  He primaril",
+                "start": 144,
+                "surface": "France"
+              }
+            ],
+            "5abc3ff8554299658360042f:d3": [
+              {
+                "end": 192,
+                "entity": "france",
+                "kind": "capitalized-span",
+                "source_excerpt": " Laporte was the head coach of the France national team.  In 2011, he became",
+                "start": 186,
+                "surface": "France"
+              },
+              {
+                "end": 422,
+                "entity": "france",
+                "kind": "capitalized-span",
+                "source_excerpt": "t fully professional head coach of France.  On December 3rd 2016, Bernard La",
+                "start": 416,
+                "surface": "France"
+              }
+            ]
+          },
+          "notes": null,
+          "reviewed_at": null,
+          "reviewer": null,
+          "source": "5abc3ff8554299658360042f:d0",
+          "target": "5abc3ff8554299658360042f:d3",
+          "weight": 0.18814284091330252
+        }
+      ],
+      "total_edges": 21
+    },
+    {
+      "dataset": "hotpotqa",
+      "extractor_revision": "entity-link-regex-title-v2-surface-provenance",
+      "question": "Radial, Inc. provides order management, payment processing, order routing, fulfillment, and analytics services for an American video game, consumer electronics, and wireless services retailer operating how many retail stores?",
+      "question_id": "5ac3133d5542995ef918c0ef",
+      "sampled_edges": [
+        {
+          "canonical_mentions_same_entity": null,
+          "entities": [
+            "consumer electronics"
+          ],
+          "jointly_required_for_question": null,
+          "mentions": {
+            "5ac3133d5542995ef918c0ef:d0": [
+              {
+                "end": 98,
+                "entity": "consumer electronics",
+                "kind": "candidate-title",
+                "source_excerpt": "meStop, is an American video game, consumer electronics, and wireless services retailer.  ",
+                "start": 78,
+                "surface": "consumer electronics"
+              }
+            ],
+            "5ac3133d5542995ef918c0ef:d2": [
+              {
+                "end": 20,
+                "entity": "consumer electronics",
+                "kind": "candidate-title",
+                "source_excerpt": "Consumer electronics or home electronics are electronic",
+                "start": 0,
+                "surface": "Consumer electronics"
+              },
+              {
+                "end": 163,
+                "entity": "consumer electronics",
+                "kind": "candidate-title",
+                "source_excerpt": " use, typically in private homes.  Consumer electronics include devices used for entertain",
+                "start": 143,
+                "surface": "Consumer electronics"
+              },
+              {
+                "end": 688,
+                "entity": "consumer electronics",
+                "kind": "candidate-title",
+                "source_excerpt": "ot always present in large big box consumer electronics stores, such as Best Buy, which se",
+                "start": 668,
+                "surface": "consumer electronics"
+              },
+              {
+                "end": 853,
+                "entity": "consumer electronics",
+                "kind": "candidate-title",
+                "source_excerpt": "appliances such as refrigerators.  Consumer electronics stores differ from professional au",
+                "start": 833,
+                "surface": "Consumer electronics"
+              }
+            ]
+          },
+          "notes": null,
+          "reviewed_at": null,
+          "reviewer": null,
+          "source": "5ac3133d5542995ef918c0ef:d0",
+          "target": "5ac3133d5542995ef918c0ef:d2",
+          "weight": 0.11733958481276512
+        },
+        {
+          "canonical_mentions_same_entity": null,
+          "entities": [
+            "united states"
+          ],
+          "jointly_required_for_question": null,
+          "mentions": {
+            "5ac3133d5542995ef918c0ef:d0": [
+              {
+                "end": 196,
+                "entity": "united states",
+                "kind": "capitalized-span",
+                "source_excerpt": "headquartered in Grapevine, Texas, United States, and operates 7,117 retail stores ",
+                "start": 183,
+                "surface": "United States"
+              },
+              {
+                "end": 259,
+                "entity": "united states",
+                "kind": "capitalized-span",
+                "source_excerpt": "7,117 retail stores throughout the United States, Canada, Australia, New Zealand, a",
+                "start": 246,
+                "surface": "United States"
+              }
+            ],
+            "5ac3133d5542995ef918c0ef:d5": [
+              {
+                "end": 95,
+                "entity": "united states",
+                "kind": "capitalized-span",
+                "source_excerpt": "y based in Phoenix, Arizona in the United States.  Founded in 2006, Entrust Bankcar",
+                "start": 82,
+                "surface": "United States"
+              }
+            ]
+          },
+          "notes": null,
+          "reviewed_at": null,
+          "reviewer": null,
+          "source": "5ac3133d5542995ef918c0ef:d0",
+          "target": "5ac3133d5542995ef918c0ef:d5",
+          "weight": 0.11192411566671168
+        }
+      ],
+      "total_edges": 7
+    },
+    {
+      "dataset": "hotpotqa",
+      "extractor_revision": "entity-link-regex-title-v2-surface-provenance",
+      "question": "What is a Totokia usually made of?",
+      "question_id": "5add59475542992200553ac9",
+      "sampled_edges": [
+        {
+          "canonical_mentions_same_entity": null,
+          "entities": [
+            "all"
+          ],
+          "jointly_required_for_question": null,
+          "mentions": {
+            "5add59475542992200553ac9:d0": [
+              {
+                "end": 119,
+                "entity": "all",
+                "kind": "capitalized-span",
+                "source_excerpt": " or other photographic equipment.  All photographic tripods have three le",
+                "start": 116,
+                "surface": "All"
+              }
+            ],
+            "5add59475542992200553ac9:d4": [
+              {
+                "end": 888,
+                "entity": "all",
+                "kind": "capitalized-span",
+                "source_excerpt": "ide to adjust tone while playing.  All bark stabules were usually made in",
+                "start": 885,
+                "surface": "All"
+              }
+            ]
+          },
+          "notes": null,
+          "reviewed_at": null,
+          "reviewer": null,
+          "source": "5add59475542992200553ac9:d0",
+          "target": "5add59475542992200553ac9:d4",
+          "weight": 0.14301765206974765
+        },
+        {
+          "canonical_mentions_same_entity": null,
+          "entities": [
+            "club"
+          ],
+          "jointly_required_for_question": null,
+          "mentions": {
+            "5add59475542992200553ac9:d1": [
+              {
+                "end": 32,
+                "entity": "club",
+                "kind": "candidate-title",
+                "source_excerpt": "The totokia (also pineapple club or beaked battle hammer) is a type",
+                "start": 28,
+                "surface": "club"
+              },
+              {
+                "end": 75,
+                "entity": "club",
+                "kind": "candidate-title",
+                "source_excerpt": "beaked battle hammer) is a type of club or battlehammer from Fiji.",
+                "start": 71,
+                "surface": "club"
+              }
+            ],
+            "5add59475542992200553ac9:d3": [
+              {
+                "end": 6,
+                "entity": "club",
+                "kind": "candidate-title",
+                "source_excerpt": "A club (also known as a cudgel, baton, tr",
+                "start": 2,
+                "surface": "club"
+              }
+            ]
+          },
+          "notes": null,
+          "reviewed_at": null,
+          "reviewer": null,
+          "source": "5add59475542992200553ac9:d1",
+          "target": "5add59475542992200553ac9:d3",
+          "weight": 0.2334941902604069
+        }
+      ],
+      "total_edges": 2
+    },
+    {
+      "dataset": "hotpotqa",
+      "extractor_revision": "entity-link-regex-title-v2-surface-provenance",
+      "question": "What is the name of the larger organization to which the ballet company \u00c9milie Cozette performs in is a part of?",
+      "question_id": "5ab69f52554299110f219a3e",
+      "sampled_edges": [
+        {
+          "canonical_mentions_same_entity": null,
+          "entities": [
+            "french",
+            "paris opera ballet"
+          ],
+          "jointly_required_for_question": null,
+          "mentions": {
+            "5ab69f52554299110f219a3e:d0": [
+              {
+                "end": 22,
+                "entity": "paris opera ballet",
+                "kind": "candidate-title",
+                "source_excerpt": "The Paris Opera Ballet (French: \"Ballet de l'Op\u00e9ra nation",
+                "start": 4,
+                "surface": "Paris Opera Ballet"
+              },
+              {
+                "end": 30,
+                "entity": "french",
+                "kind": "capitalized-span",
+                "source_excerpt": "The Paris Opera Ballet (French: \"Ballet de l'Op\u00e9ra national de Pa",
+                "start": 24,
+                "surface": "French"
+              }
+            ],
+            "5ab69f52554299110f219a3e:d1": [
+              {
+                "end": 38,
+                "entity": "french",
+                "kind": "capitalized-span",
+                "source_excerpt": "\u00c9milie Cozette (born 1981) is a French ballet dancer.  She joined the Par",
+                "start": 32,
+                "surface": "French"
+              },
+              {
+                "end": 88,
+                "entity": "paris opera ballet",
+                "kind": "candidate-title",
+                "source_excerpt": "nch ballet dancer.  She joined the Paris Opera Ballet in 1998, becoming a star (\u00e9toile) ",
+                "start": 70,
+                "surface": "Paris Opera Ballet"
+              },
+              {
+                "end": 88,
+                "entity": "paris opera ballet",
+                "kind": "capitalized-span",
+                "source_excerpt": "nch ballet dancer.  She joined the Paris Opera Ballet in 1998, becoming a star (\u00e9toile) ",
+                "start": 70,
+                "surface": "Paris Opera Ballet"
+              }
+            ]
+          },
+          "notes": null,
+          "reviewed_at": null,
+          "reviewer": null,
+          "source": "5ab69f52554299110f219a3e:d0",
+          "target": "5ab69f52554299110f219a3e:d1",
+          "weight": 0.2238217391856434
+        },
+        {
+          "canonical_mentions_same_entity": null,
+          "entities": [
+            "ballet"
+          ],
+          "jointly_required_for_question": null,
+          "mentions": {
+            "5ab69f52554299110f219a3e:d0": [
+              {
+                "end": 39,
+                "entity": "ballet",
+                "kind": "capitalized-span",
+                "source_excerpt": "The Paris Opera Ballet (French: \"Ballet de l'Op\u00e9ra national de Paris\") is ",
+                "start": 33,
+                "surface": "Ballet"
+              }
+            ],
+            "5ab69f52554299110f219a3e:d4": [
+              {
+                "end": 243,
+                "entity": "ballet",
+                "kind": "capitalized-span",
+                "source_excerpt": "rmingham Royal Ballet and Scottish Ballet, it is one of the four major balle",
+                "start": 237,
+                "surface": "Ballet"
+              },
+              {
+                "end": 990,
+                "entity": "ballet",
+                "kind": "capitalized-span",
+                "source_excerpt": "s.  The Patron of English National Ballet is HRH The Duke of York.",
+                "start": 984,
+                "surface": "Ballet"
+              }
+            ]
+          },
+          "notes": null,
+          "reviewed_at": null,
+          "reviewer": null,
+          "source": "5ab69f52554299110f219a3e:d0",
+          "target": "5ab69f52554299110f219a3e:d4",
+          "weight": 0.17452728934537065
+        }
+      ],
+      "total_edges": 7
+    },
+    {
+      "dataset": "hotpotqa",
+      "extractor_revision": "entity-link-regex-title-v2-surface-provenance",
+      "question": "Goulburn River National Park is located 213 km northwest of what state capital of New South Wales, which is the most populous city in Australia and Oceania?",
+      "question_id": "5abff0445542997d64295955",
+      "sampled_edges": [
+        {
+          "canonical_mentions_same_entity": null,
+          "entities": [
+            "australia"
+          ],
+          "jointly_required_for_question": null,
+          "mentions": {
+            "5abff0445542997d64295955:d0": [
+              {
+                "end": 225,
+                "entity": "australia",
+                "kind": "capitalized-span",
+                "source_excerpt": " Hunter Region in New South Wales, Australia.",
+                "start": 216,
+                "surface": "Australia"
+              }
+            ],
+            "5abff0445542997d64295955:d1": [
+              {
+                "end": 114,
+                "entity": "australia",
+                "kind": "capitalized-span",
+                "source_excerpt": "lburn Valley district of Victoria, Australia.  The 9310 ha linear national park",
+                "start": 105,
+                "surface": "Australia"
+              }
+            ]
+          },
+          "notes": null,
+          "reviewed_at": null,
+          "reviewer": null,
+          "source": "5abff0445542997d64295955:d0",
+          "target": "5abff0445542997d64295955:d1",
+          "weight": 0.30622006776443084
+        },
+        {
+          "canonical_mentions_same_entity": null,
+          "entities": [
+            "australia",
+            "goulburn river national park",
+            "new south wales"
+          ],
+          "jointly_required_for_question": null,
+          "mentions": {
+            "5abff0445542997d64295955:d0": [
+              {
+                "end": 136,
+                "entity": "goulburn river national park",
+                "kind": "candidate-title",
+                "source_excerpt": "e Great Dividing Range between the Goulburn River National Park and Wollemi National Park, west of",
+                "start": 108,
+                "surface": "Goulburn River National Park"
+              },
+              {
+                "end": 214,
+                "entity": "new south wales",
+                "kind": "candidate-title",
+                "source_excerpt": "west of the upper Hunter Region in New South Wales, Australia.",
+                "start": 199,
+                "surface": "New South Wales"
+              },
+              {
+                "end": 214,
+                "entity": "new south wales",
+                "kind": "capitalized-span",
+                "source_excerpt": "west of the upper Hunter Region in New South Wales, Australia.",
+                "start": 199,
+                "surface": "New South Wales"
+              },
+              {
+                "end": 225,
+                "entity": "australia",
+                "kind": "capitalized-span",
+                "source_excerpt": " Hunter Region in New South Wales, Australia.",
+                "start": 216,
+                "surface": "Australia"
+              }
+            ],
+            "5abff0445542997d64295955:d2": [
+              {
+                "end": 35,
+                "entity": "new south wales",
+                "kind": "candidate-title",
+                "source_excerpt": "Wollar is a town in New South Wales, Australia.  The town is located 3",
+                "start": 20,
+                "surface": "New South Wales"
+              },
+              {
+                "end": 35,
+                "entity": "new south wales",
+                "kind": "capitalized-span",
+                "source_excerpt": "Wollar is a town in New South Wales, Australia.  The town is located 3",
+                "start": 20,
+                "surface": "New South Wales"
+              },
+              {
+                "end": 46,
+                "entity": "australia",
+                "kind": "capitalized-span",
+                "source_excerpt": "llar is a town in New South Wales, Australia.  The town is located 316 km north",
+                "start": 37,
+                "surface": "Australia"
+              },
+              {
+                "end": 207,
+                "entity": "goulburn river national park",
+                "kind": "candidate-title",
+                "source_excerpt": "egional centre of Mudgee, near the Goulburn River National Park.  At the 2006 census , Wollar and ",
+                "start": 179,
+                "surface": "Goulburn River National Park"
+              },
+              {
+                "end": 207,
+                "entity": "goulburn river national park",
+                "kind": "capitalized-span",
+                "source_excerpt": "egional centre of Mudgee, near the Goulburn River National Park.  At the 2006 census , Wollar and ",
+                "start": 179,
+                "surface": "Goulburn River National Park"
+              }
+            ]
+          },
+          "notes": null,
+          "reviewed_at": null,
+          "reviewer": null,
+          "source": "5abff0445542997d64295955:d0",
+          "target": "5abff0445542997d64295955:d2",
+          "weight": 0.37440741697339736
+        }
+      ],
+      "total_edges": 35
+    },
+    {
+      "dataset": "hotpotqa",
+      "extractor_revision": "entity-link-regex-title-v2-surface-provenance",
+      "question": "What is the name of the movie  directed by Vernon Sewell in 1971 that is based on 16 murders commited over a period of 10 months in1828 in Edinburgh, Scotland?",
+      "question_id": "5a7559465542993748c89839",
+      "sampled_edges": [
+        {
+          "canonical_mentions_same_entity": null,
+          "entities": [
+            "british",
+            "vernon sewell and"
+          ],
+          "jointly_required_for_question": null,
+          "mentions": {
+            "5a7559465542993748c89839:d0": [
+              {
+                "end": 30,
+                "entity": "british",
+                "kind": "capitalized-span",
+                "source_excerpt": "Uneasy Terms is a 1948 British thriller film directed by Vernon S",
+                "start": 23,
+                "surface": "British"
+              },
+              {
+                "end": 74,
+                "entity": "vernon sewell and",
+                "kind": "capitalized-span",
+                "source_excerpt": " British thriller film directed by Vernon Sewell and starring Michael Rennie, Moira Lis",
+                "start": 57,
+                "surface": "Vernon Sewell and"
+              }
+            ],
+            "5a7559465542993748c89839:d1": [
+              {
+                "end": 33,
+                "entity": "british",
+                "kind": "capitalized-span",
+                "source_excerpt": "The Black Widow is a 1951 British thriller, directed by Vernon Sewel",
+                "start": 26,
+                "surface": "British"
+              },
+              {
+                "end": 73,
+                "entity": "vernon sewell and",
+                "kind": "capitalized-span",
+                "source_excerpt": "1951 British thriller, directed by Vernon Sewell and starring Christine Norden and Robe",
+                "start": 56,
+                "surface": "Vernon Sewell and"
+              }
+            ]
+          },
+          "notes": null,
+          "reviewed_at": null,
+          "reviewer": null,
+          "source": "5a7559465542993748c89839:d0",
+          "target": "5a7559465542993748c89839:d1",
+          "weight": 0.08945521660614353
+        },
+        {
+          "canonical_mentions_same_entity": null,
+          "entities": [
+            "british",
+            "vernon sewell and"
+          ],
+          "jointly_required_for_question": null,
+          "mentions": {
+            "5a7559465542993748c89839:d0": [
+              {
+                "end": 30,
+                "entity": "british",
+                "kind": "capitalized-span",
+                "source_excerpt": "Uneasy Terms is a 1948 British thriller film directed by Vernon S",
+                "start": 23,
+                "surface": "British"
+              },
+              {
+                "end": 74,
+                "entity": "vernon sewell and",
+                "kind": "capitalized-span",
+                "source_excerpt": " British thriller film directed by Vernon Sewell and starring Michael Rennie, Moira Lis",
+                "start": 57,
+                "surface": "Vernon Sewell and"
+              }
+            ],
+            "5a7559465542993748c89839:d2": [
+              {
+                "end": 39,
+                "entity": "british",
+                "kind": "capitalized-span",
+                "source_excerpt": "The Floating Dutchman is a 1952 British crime film directed by Vernon Sewe",
+                "start": 32,
+                "surface": "British"
+              },
+              {
+                "end": 80,
+                "entity": "vernon sewell and",
+                "kind": "capitalized-span",
+                "source_excerpt": "952 British crime film directed by Vernon Sewell and starring Dermot Walsh, Sydney Tafl",
+                "start": 63,
+                "surface": "Vernon Sewell and"
+              },
+              {
+                "end": 250,
+                "entity": "british",
+                "kind": "capitalized-span",
+                "source_excerpt": " product of Merton Park Studios, a British company best known for its Edgar W",
+                "start": 243,
+                "surface": "British"
+              }
+            ]
+          },
+          "notes": null,
+          "reviewed_at": null,
+          "reviewer": null,
+          "source": "5a7559465542993748c89839:d0",
+          "target": "5a7559465542993748c89839:d2",
+          "weight": 0.08250611173014641
+        }
+      ],
+      "total_edges": 30
+    },
+    {
+      "dataset": "hotpotqa",
+      "extractor_revision": "entity-link-regex-title-v2-surface-provenance",
+      "question": "Coko and Justine Frischmann both enjoyed what music profession?",
+      "question_id": "5ae3e8c65542992f92d823a7",
+      "sampled_edges": [
+        {
+          "canonical_mentions_same_entity": null,
+          "entities": [
+            "arular",
+            "justine frischmann",
+            "roland mc-505"
+          ],
+          "jointly_required_for_question": null,
+          "mentions": {
+            "5ae3e8c65542992f92d823a7:d0": [
+              {
+                "end": 6,
+                "entity": "arular",
+                "kind": "candidate-title",
+                "source_excerpt": "Arular is the debut studio album by Engli",
+                "start": 0,
+                "surface": "Arular"
+              },
+              {
+                "end": 6,
+                "entity": "arular",
+                "kind": "capitalized-span",
+                "source_excerpt": "Arular is the debut studio album by Engli",
+                "start": 0,
+                "surface": "Arular"
+              },
+              {
+                "end": 393,
+                "entity": "roland mc-505",
+                "kind": "capitalized-span",
+                "source_excerpt": "d the basic backing tracks using a Roland MC-505 sequencer/drum machine given to he",
+                "start": 380,
+                "surface": "Roland MC-505"
+              },
+              {
+                "end": 468,
+                "entity": "justine frischmann",
+                "kind": "candidate-title",
+                "source_excerpt": "e given to her by long-time friend Justine Frischmann.  Collaborators included Switch, D",
+                "start": 450,
+                "surface": "Justine Frischmann"
+              },
+              {
+                "end": 468,
+                "entity": "justine frischmann",
+                "kind": "capitalized-span",
+                "source_excerpt": "e given to her by long-time friend Justine Frischmann.  Collaborators included Switch, D",
+                "start": 450,
+                "surface": "Justine Frischmann"
+              }
+            ],
+            "5ae3e8c65542992f92d823a7:d1": [
+              {
+                "end": 74,
+                "entity": "arular",
+                "kind": "candidate-title",
+                "source_excerpt": "ician M.I.A. from her debut album \"Arular\".  It was released on Showbiz Reco",
+                "start": 68,
+                "surface": "Arular"
+              },
+              {
+                "end": 74,
+                "entity": "arular",
+                "kind": "capitalized-span",
+                "source_excerpt": "ician M.I.A. from her debut album \"Arular\".  It was released on Showbiz Reco",
+                "start": 68,
+                "surface": "Arular"
+              },
+              {
+                "end": 597,
+                "entity": "justine frischmann",
+                "kind": "candidate-title",
+                "source_excerpt": "ten by Maya \"M.I.A.\" Arulpragasam, Justine Frischmann, Ross Orton and Steve Mackey.  It ",
+                "start": 579,
+                "surface": "Justine Frischmann"
+              },
+              {
+                "end": 597,
+                "entity": "justine frischmann",
+                "kind": "capitalized-span",
+                "source_excerpt": "ten by Maya \"M.I.A.\" Arulpragasam, Justine Frischmann, Ross Orton and Steve Mackey.  It ",
+                "start": 579,
+                "surface": "Justine Frischmann"
+              },
+              {
+                "end": 891,
+                "entity": "roland mc-505",
+                "kind": "capitalized-span",
+                "source_excerpt": "he second song M.I.A. wrote on her Roland MC-505, intending for the piece to be per",
+                "start": 878,
+                "surface": "Roland MC-505"
+              }
+            ]
+          },
+          "notes": null,
+          "reviewed_at": null,
+          "reviewer": null,
+          "source": "5ae3e8c65542992f92d823a7:d0",
+          "target": "5ae3e8c65542992f92d823a7:d1",
+          "weight": 0.06696652986771164
+        },
+        {
+          "canonical_mentions_same_entity": null,
+          "entities": [
+            "english",
+            "justine frischmann",
+            "roland mc-505"
+          ],
+          "jointly_required_for_question": null,
+          "mentions": {
+            "5ae3e8c65542992f92d823a7:d0": [
+              {
+                "end": 43,
+                "entity": "english",
+                "kind": "capitalized-span",
+                "source_excerpt": "rular is the debut studio album by English recording artist M.I.A..  It was r",
+                "start": 36,
+                "surface": "English"
+              },
+              {
+                "end": 393,
+                "entity": "roland mc-505",
+                "kind": "capitalized-span",
+                "source_excerpt": "d the basic backing tracks using a Roland MC-505 sequencer/drum machine given to he",
+                "start": 380,
+                "surface": "Roland MC-505"
+              },
+              {
+                "end": 468,
+                "entity": "justine frischmann",
+                "kind": "candidate-title",
+                "source_excerpt": "e given to her by long-time friend Justine Frischmann.  Collaborators included Switch, D",
+                "start": 450,
+                "surface": "Justine Frischmann"
+              },
+              {
+                "end": 468,
+                "entity": "justine frischmann",
+                "kind": "capitalized-span",
+                "source_excerpt": "e given to her by long-time friend Justine Frischmann.  Collaborators included Switch, D",
+                "start": 450,
+                "surface": "Justine Frischmann"
+              }
+            ],
+            "5ae3e8c65542992f92d823a7:d3": [
+              {
+                "end": 7,
+                "entity": "english",
+                "kind": "capitalized-span",
+                "source_excerpt": "English singer, songwriter and rapper M.I.",
+                "start": 0,
+                "surface": "English"
+              },
+              {
+                "end": 424,
+                "entity": "justine frischmann",
+                "kind": "candidate-title",
+                "source_excerpt": " in 2001.  The band's lead singer, Justine Frischmann, lent her a Roland MC-505 sequence",
+                "start": 406,
+                "surface": "Justine Frischmann"
+              },
+              {
+                "end": 424,
+                "entity": "justine frischmann",
+                "kind": "capitalized-span",
+                "source_excerpt": " in 2001.  The band's lead singer, Justine Frischmann, lent her a Roland MC-505 sequence",
+                "start": 406,
+                "surface": "Justine Frischmann"
+              },
+              {
+                "end": 450,
+                "entity": "roland mc-505",
+                "kind": "capitalized-span",
+                "source_excerpt": "er, Justine Frischmann, lent her a Roland MC-505 sequencer/drum machine which she u",
+                "start": 437,
+                "surface": "Roland MC-505"
+              }
+            ]
+          },
+          "notes": null,
+          "reviewed_at": null,
+          "reviewer": null,
+          "source": "5ae3e8c65542992f92d823a7:d0",
+          "target": "5ae3e8c65542992f92d823a7:d3",
+          "weight": 0.08540938091955948
+        }
+      ],
+      "total_edges": 37
+    },
+    {
+      "dataset": "musique",
+      "extractor_revision": "entity-link-regex-title-v2-surface-provenance",
+      "question": "The country with the town of Agulu was named for what?",
+      "question_id": "2hop__847354_135703",
+      "sampled_edges": [
+        {
+          "canonical_mentions_same_entity": null,
+          "entities": [
+            "country"
+          ],
+          "jointly_required_for_question": null,
+          "mentions": {
+            "2hop__847354_135703:d1": [
+              {
+                "end": 38,
+                "entity": "country",
+                "kind": "capitalized-span",
+                "source_excerpt": "Left Grouping of the Valencian Country (in Catalan: \"Agrupament d'Esquerr",
+                "start": 31,
+                "surface": "Country"
+              },
+              {
+                "end": 216,
+                "entity": "country",
+                "kind": "capitalized-span",
+                "source_excerpt": "e Communist Party of the Valencian Country (PCPV), the 'possibilist' sector o",
+                "start": 209,
+                "surface": "Country"
+              },
+              {
+                "end": 513,
+                "entity": "country",
+                "kind": "capitalized-span",
+                "source_excerpt": "Nationalist Party of the Valencian Country (PNPV) and the Left Unity of the V",
+                "start": 506,
+                "surface": "Country"
+              },
+              {
+                "end": 564,
+                "entity": "country",
+                "kind": "capitalized-span",
+                "source_excerpt": "nd the Left Unity of the Valencian Country (UEPV), with whom AEPV founded the",
+                "start": 557,
+                "surface": "Country"
+              }
+            ],
+            "2hop__847354_135703:d8": [
+              {
+                "end": 357,
+                "entity": "country",
+                "kind": "capitalized-span",
+                "source_excerpt": "s and their subdivisions \u2013 Part 1: Country codes\". It defines three sets of c",
+                "start": 350,
+                "surface": "Country"
+              }
+            ]
+          },
+          "notes": null,
+          "reviewed_at": null,
+          "reviewer": null,
+          "source": "2hop__847354_135703:d1",
+          "target": "2hop__847354_135703:d8",
+          "weight": 0.01819507402393748
+        },
+        {
+          "canonical_mentions_same_entity": null,
+          "entities": [
+            "world war ii"
+          ],
+          "jointly_required_for_question": null,
+          "mentions": {
+            "2hop__847354_135703:d2": [
+              {
+                "end": 98,
+                "entity": "world war ii",
+                "kind": "capitalized-span",
+                "source_excerpt": "vy officer killed in action during World War II for whom a U.S. Navy high-speed tr",
+                "start": 86,
+                "surface": "World War II"
+              }
+            ],
+            "2hop__847354_135703:d6": [
+              {
+                "end": 101,
+                "entity": "world war ii",
+                "kind": "capitalized-span",
+                "source_excerpt": "avy sailor killed in action during World War II for whom a destroyer escort was na",
+                "start": 89,
+                "surface": "World War II"
+              }
+            ]
+          },
+          "notes": null,
+          "reviewed_at": null,
+          "reviewer": null,
+          "source": "2hop__847354_135703:d2",
+          "target": "2hop__847354_135703:d6",
+          "weight": 0.010280664005041672
+        }
+      ],
+      "total_edges": 6
+    },
+    {
+      "dataset": "musique",
+      "extractor_revision": "entity-link-regex-title-v2-surface-provenance",
+      "question": "When did the civil war start in the country where Maicao is located?",
+      "question_id": "2hop__826185_46487",
+      "sampled_edges": [
+        {
+          "canonical_mentions_same_entity": null,
+          "entities": [
+            "western"
+          ],
+          "jointly_required_for_question": null,
+          "mentions": {
+            "2hop__826185_46487:d1": [
+              {
+                "end": 81,
+                "entity": "western",
+                "kind": "capitalized-span",
+                "source_excerpt": "boom to many countries, especially Western ones. There is some disagreement a",
+                "start": 74,
+                "surface": "Western"
+              }
+            ],
+            "2hop__826185_46487:d8": [
+              {
+                "end": 302,
+                "entity": "western",
+                "kind": "capitalized-span",
+                "source_excerpt": "es but it was not supported by the Western powers due to the British-led poli",
+                "start": 295,
+                "surface": "Western"
+              }
+            ]
+          },
+          "notes": null,
+          "reviewed_at": null,
+          "reviewer": null,
+          "source": "2hop__826185_46487:d1",
+          "target": "2hop__826185_46487:d8",
+          "weight": 0.11625032954233877
+        },
+        {
+          "canonical_mentions_same_entity": null,
+          "entities": [
+            "united states"
+          ],
+          "jointly_required_for_question": null,
+          "mentions": {
+            "2hop__826185_46487:d1": [
+              {
+                "end": 403,
+                "entity": "united states",
+                "kind": "capitalized-span",
+                "source_excerpt": "d to decline as birth rates in the United States started to decline in 1958, though",
+                "start": 390,
+                "surface": "United States"
+              }
+            ],
+            "2hop__826185_46487:d13": [
+              {
+                "end": 497,
+                "entity": "united states",
+                "kind": "capitalized-span",
+                "source_excerpt": "re multinational companies and the United States.",
+                "start": 484,
+                "surface": "United States"
+              }
+            ]
+          },
+          "notes": null,
+          "reviewed_at": null,
+          "reviewer": null,
+          "source": "2hop__826185_46487:d1",
+          "target": "2hop__826185_46487:d13",
+          "weight": 0.04089586763676177
+        }
+      ],
+      "total_edges": 17
+    },
+    {
+      "dataset": "musique",
+      "extractor_revision": "entity-link-regex-title-v2-surface-provenance",
+      "question": "Who sings with the performer of It Would Be You on Every Storm?",
+      "question_id": "2hop__447914_46366",
+      "sampled_edges": [
+        {
+          "canonical_mentions_same_entity": null,
+          "entities": [
+            "black american national anthem''",
+            "james weldon johnson",
+            "john rosamond johnson",
+            "lift every voice and sing"
+          ],
+          "jointly_required_for_question": null,
+          "mentions": {
+            "2hop__447914_46366:d10": [
+              {
+                "end": 27,
+                "entity": "lift every voice and sing",
+                "kind": "candidate-title",
+                "source_excerpt": "``Lift Every Voice and Sing ''-- often referred to as the`` Bl",
+                "start": 2,
+                "surface": "Lift Every Voice and Sing"
+              },
+              {
+                "end": 27,
+                "entity": "lift every voice and sing",
+                "kind": "capitalized-span",
+                "source_excerpt": "``Lift Every Voice and Sing ''-- often referred to as the`` Bl",
+                "start": 2,
+                "surface": "Lift Every Voice and Sing"
+              },
+              {
+                "end": 92,
+                "entity": "black american national anthem''",
+                "kind": "capitalized-span",
+                "source_excerpt": "ng ''-- often referred to as the`` Black American National Anthem'' -- is a song written as a poem by ",
+                "start": 60,
+                "surface": "Black American National Anthem''"
+              },
+              {
+                "end": 147,
+                "entity": "james weldon johnson",
+                "kind": "capitalized-span",
+                "source_excerpt": " -- is a song written as a poem by James Weldon Johnson (1871 -- 1938) in 1900 and set to ",
+                "start": 127,
+                "surface": "James Weldon Johnson"
+              },
+              {
+                "end": 224,
+                "entity": "john rosamond johnson",
+                "kind": "capitalized-span",
+                "source_excerpt": "00 and set to music by his brother John Rosamond Johnson (1873 -- 1954) in 1905.",
+                "start": 203,
+                "surface": "John Rosamond Johnson"
+              }
+            ],
+            "2hop__447914_46366:d13": [
+              {
+                "end": 27,
+                "entity": "lift every voice and sing",
+                "kind": "candidate-title",
+                "source_excerpt": "``Lift Every Voice and Sing ''-- often referred to as the`` Bl",
+                "start": 2,
+                "surface": "Lift Every Voice and Sing"
+              },
+              {
+                "end": 27,
+                "entity": "lift every voice and sing",
+                "kind": "capitalized-span",
+                "source_excerpt": "``Lift Every Voice and Sing ''-- often referred to as the`` Bl",
+                "start": 2,
+                "surface": "Lift Every Voice and Sing"
+              },
+              {
+                "end": 92,
+                "entity": "black american national anthem''",
+                "kind": "capitalized-span",
+                "source_excerpt": "ng ''-- often referred to as the`` Black American National Anthem'' -- is a song written as a poem by ",
+                "start": 60,
+                "surface": "Black American National Anthem''"
+              },
+              {
+                "end": 147,
+                "entity": "james weldon johnson",
+                "kind": "capitalized-span",
+                "source_excerpt": " -- is a song written as a poem by James Weldon Johnson (1871 -- 1938) in 1899 and set to ",
+                "start": 127,
+                "surface": "James Weldon Johnson"
+              },
+              {
+                "end": 224,
+                "entity": "john rosamond johnson",
+                "kind": "capitalized-span",
+                "source_excerpt": "99 and set to music by his brother John Rosamond Johnson (1873 -- 1954) in 1905.",
+                "start": 203,
+                "surface": "John Rosamond Johnson"
+              }
+            ]
+          },
+          "notes": null,
+          "reviewed_at": null,
+          "reviewer": null,
+          "source": "2hop__447914_46366:d10",
+          "target": "2hop__447914_46366:d13",
+          "weight": 0.05713531994391563
+        },
+        {
+          "canonical_mentions_same_entity": null,
+          "entities": [
+            "lift every voice and sing"
+          ],
+          "jointly_required_for_question": null,
+          "mentions": {
+            "2hop__447914_46366:d10": [
+              {
+                "end": 27,
+                "entity": "lift every voice and sing",
+                "kind": "candidate-title",
+                "source_excerpt": "``Lift Every Voice and Sing ''-- often referred to as the`` Bl",
+                "start": 2,
+                "surface": "Lift Every Voice and Sing"
+              },
+              {
+                "end": 27,
+                "entity": "lift every voice and sing",
+                "kind": "capitalized-span",
+                "source_excerpt": "``Lift Every Voice and Sing ''-- often referred to as the`` Bl",
+                "start": 2,
+                "surface": "Lift Every Voice and Sing"
+              }
+            ],
+            "2hop__447914_46366:d18": [
+              {
+                "end": 209,
+                "entity": "lift every voice and sing",
+                "kind": "candidate-title",
+                "source_excerpt": "s well known for its recording of \"Lift Every Voice and Sing\", later released as a single.",
+                "start": 184,
+                "surface": "Lift Every Voice and Sing"
+              },
+              {
+                "end": 209,
+                "entity": "lift every voice and sing",
+                "kind": "capitalized-span",
+                "source_excerpt": "s well known for its recording of \"Lift Every Voice and Sing\", later released as a single.",
+                "start": 184,
+                "surface": "Lift Every Voice and Sing"
+              }
+            ]
+          },
+          "notes": null,
+          "reviewed_at": null,
+          "reviewer": null,
+          "source": "2hop__447914_46366:d10",
+          "target": "2hop__447914_46366:d18",
+          "weight": 0.057339011427973804
+        }
+      ],
+      "total_edges": 3
+    },
+    {
+      "dataset": "musique",
+      "extractor_revision": "entity-link-regex-title-v2-surface-provenance",
+      "question": "What minister of health shares a country with Ntenjeru County?",
+      "question_id": "2hop__791985_90697",
+      "sampled_edges": [
+        {
+          "canonical_mentions_same_entity": null,
+          "entities": [
+            "she"
+          ],
+          "jointly_required_for_question": null,
+          "mentions": {
+            "2hop__791985_90697:d0": [
+              {
+                "end": 124,
+                "entity": "she",
+                "kind": "capitalized-span",
+                "source_excerpt": "the Minister for Health of Latvia. She is a member of Unity.",
+                "start": 121,
+                "surface": "She"
+              }
+            ],
+            "2hop__791985_90697:d7": [
+              {
+                "end": 179,
+                "entity": "she",
+                "kind": "capitalized-span",
+                "source_excerpt": "ernment of Cheikh Hadjibou Soumar\u00e9.She later became Executive Secretary o",
+                "start": 176,
+                "surface": "She"
+              }
+            ]
+          },
+          "notes": null,
+          "reviewed_at": null,
+          "reviewer": null,
+          "source": "2hop__791985_90697:d0",
+          "target": "2hop__791985_90697:d7",
+          "weight": 0.12470247380402366
+        },
+        {
+          "canonical_mentions_same_entity": null,
+          "entities": [
+            "december"
+          ],
+          "jointly_required_for_question": null,
+          "mentions": {
+            "2hop__791985_90697:d0": [
+              {
+                "end": 32,
+                "entity": "december",
+                "kind": "capitalized-span",
+                "source_excerpt": "Ingr\u012bda Circene (born 6 December 1956 in R\u012bga) is a Latvian politic",
+                "start": 24,
+                "surface": "December"
+              }
+            ],
+            "2hop__791985_90697:d11": [
+              {
+                "end": 36,
+                "entity": "december",
+                "kind": "capitalized-span",
+                "source_excerpt": "Alain B\u00e9douma Yoda (born 31 December 1951) is a Burkinab\u00e9 politician. H",
+                "start": 28,
+                "surface": "December"
+              }
+            ]
+          },
+          "notes": null,
+          "reviewed_at": null,
+          "reviewer": null,
+          "source": "2hop__791985_90697:d0",
+          "target": "2hop__791985_90697:d11",
+          "weight": 0.13122512050013352
+        }
+      ],
+      "total_edges": 38
+    },
+    {
+      "dataset": "musique",
+      "extractor_revision": "entity-link-regex-title-v2-surface-provenance",
+      "question": "What is the period of revolution of the planet where Caloris Montes is located, in earth years?",
+      "question_id": "2hop__132018_91253",
+      "sampled_edges": [
+        {
+          "canonical_mentions_same_entity": null,
+          "entities": [
+            "mercury"
+          ],
+          "jointly_required_for_question": null,
+          "mentions": {
+            "2hop__132018_91253:d0": [
+              {
+                "end": 85,
+                "entity": "mercury",
+                "kind": "candidate-title",
+                "source_excerpt": "ains\") are a range of mountains on Mercury. They are a system of linear hills",
+                "start": 78,
+                "surface": "Mercury"
+              },
+              {
+                "end": 85,
+                "entity": "mercury",
+                "kind": "capitalized-span",
+                "source_excerpt": "ains\") are a range of mountains on Mercury. They are a system of linear hills",
+                "start": 78,
+                "surface": "Mercury"
+              }
+            ],
+            "2hop__132018_91253:d16": [
+              {
+                "end": 7,
+                "entity": "mercury",
+                "kind": "candidate-title",
+                "source_excerpt": "Mercury is the smallest and innermost plan",
+                "start": 0,
+                "surface": "Mercury"
+              },
+              {
+                "end": 7,
+                "entity": "mercury",
+                "kind": "capitalized-span",
+                "source_excerpt": "Mercury is the smallest and innermost plan",
+                "start": 0,
+                "surface": "Mercury"
+              },
+              {
+                "end": 208,
+                "entity": "mercury",
+                "kind": "candidate-title",
+                "source_excerpt": " It is named after the Roman deity Mercury, the messenger to the gods.",
+                "start": 201,
+                "surface": "Mercury"
+              },
+              {
+                "end": 208,
+                "entity": "mercury",
+                "kind": "capitalized-span",
+                "source_excerpt": " It is named after the Roman deity Mercury, the messenger to the gods.",
+                "start": 201,
+                "surface": "Mercury"
+              }
+            ]
+          },
+          "notes": null,
+          "reviewed_at": null,
+          "reviewer": null,
+          "source": "2hop__132018_91253:d0",
+          "target": "2hop__132018_91253:d16",
+          "weight": 0.11619354059121427
+        },
+        {
+          "canonical_mentions_same_entity": null,
+          "entities": [
+            "latin"
+          ],
+          "jointly_required_for_question": null,
+          "mentions": {
+            "2hop__132018_91253:d0": [
+              {
+                "end": 25,
+                "entity": "latin",
+                "kind": "capitalized-span",
+                "source_excerpt": "The Caloris Montes (Latin for \"Heat's Mountains\") are a rang",
+                "start": 20,
+                "surface": "Latin"
+              }
+            ],
+            "2hop__132018_91253:d17": [
+              {
+                "end": 212,
+                "entity": "latin",
+                "kind": "capitalized-span",
+                "source_excerpt": "ons. Mons (plural \"montes\") is the Latin word for mountain; it is a descrip",
+                "start": 207,
+                "surface": "Latin"
+              }
+            ]
+          },
+          "notes": null,
+          "reviewed_at": null,
+          "reviewer": null,
+          "source": "2hop__132018_91253:d0",
+          "target": "2hop__132018_91253:d17",
+          "weight": 0.12026047446092393
+        }
+      ],
+      "total_edges": 72
+    },
+    {
+      "dataset": "musique",
+      "extractor_revision": "entity-link-regex-title-v2-surface-provenance",
+      "question": "Who has the power of legislative action in the city where Robert Gli\u0144ski was born?",
+      "question_id": "2hop__144949_42292",
+      "sampled_edges": [
+        {
+          "canonical_mentions_same_entity": null,
+          "entities": [
+            "legislative"
+          ],
+          "jointly_required_for_question": null,
+          "mentions": {
+            "2hop__144949_42292:d0": [
+              {
+                "end": 141,
+                "entity": "legislative",
+                "kind": "capitalized-span",
+                "source_excerpt": "er is exercised by the government. Legislative power is vested in both government",
+                "start": 130,
+                "surface": "Legislative"
+              }
+            ],
+            "2hop__144949_42292:d2": [
+              {
+                "end": 11,
+                "entity": "legislative",
+                "kind": "capitalized-span",
+                "source_excerpt": "Legislative power in Warsaw is vested in a uni",
+                "start": 0,
+                "surface": "Legislative"
+              }
+            ]
+          },
+          "notes": null,
+          "reviewed_at": null,
+          "reviewer": null,
+          "source": "2hop__144949_42292:d0",
+          "target": "2hop__144949_42292:d2",
+          "weight": 0.14597351723989807
+        },
+        {
+          "canonical_mentions_same_entity": null,
+          "entities": [
+            "executive",
+            "legislative"
+          ],
+          "jointly_required_for_question": null,
+          "mentions": {
+            "2hop__144949_42292:d0": [
+              {
+                "end": 91,
+                "entity": "executive",
+                "kind": "capitalized-span",
+                "source_excerpt": "of the Democrats for Andorra (DA). Executive power is exercised by the governme",
+                "start": 82,
+                "surface": "Executive"
+              },
+              {
+                "end": 141,
+                "entity": "legislative",
+                "kind": "capitalized-span",
+                "source_excerpt": "er is exercised by the government. Legislative power is vested in both government",
+                "start": 130,
+                "surface": "Legislative"
+              }
+            ],
+            "2hop__144949_42292:d9": [
+              {
+                "end": 130,
+                "entity": "executive",
+                "kind": "capitalized-span",
+                "source_excerpt": "emocratic constitutional monarchy. Executive power is exercised by the Council ",
+                "start": 121,
+                "surface": "Executive"
+              },
+              {
+                "end": 236,
+                "entity": "legislative",
+                "kind": "capitalized-span",
+                "source_excerpt": "d by the Prime Minister of Norway. Legislative power is vested in both the govern",
+                "start": 225,
+                "surface": "Legislative"
+              }
+            ]
+          },
+          "notes": null,
+          "reviewed_at": null,
+          "reviewer": null,
+          "source": "2hop__144949_42292:d0",
+          "target": "2hop__144949_42292:d9",
+          "weight": 0.08993274429995315
+        }
+      ],
+      "total_edges": 35
+    },
+    {
+      "dataset": "musique",
+      "extractor_revision": "entity-link-regex-title-v2-surface-provenance",
+      "question": "When did the torch visit the location where the Mann School is located?",
+      "question_id": "2hop__335385_3752",
+      "sampled_edges": [
+        {
+          "canonical_mentions_same_entity": null,
+          "entities": [
+            "germany"
+          ],
+          "jointly_required_for_question": null,
+          "mentions": {
+            "2hop__335385_3752:d0": [
+              {
+                "end": 28,
+                "entity": "germany",
+                "kind": "capitalized-span",
+                "source_excerpt": "Born in Duesseldorf, Germany, as the son of Elisabeth Br\u00fcggeman",
+                "start": 21,
+                "surface": "Germany"
+              }
+            ],
+            "2hop__335385_3752:d14": [
+              {
+                "end": 251,
+                "entity": "germany",
+                "kind": "capitalized-span",
+                "source_excerpt": "tuguese ancestry, who emigrated to Germany with her family when she was seven",
+                "start": 244,
+                "surface": "Germany"
+              }
+            ]
+          },
+          "notes": null,
+          "reviewed_at": null,
+          "reviewer": null,
+          "source": "2hop__335385_3752:d0",
+          "target": "2hop__335385_3752:d14",
+          "weight": 0.09878394645780883
+        },
+        {
+          "canonical_mentions_same_entity": null,
+          "entities": [
+            "india",
+            "new delhi"
+          ],
+          "jointly_required_for_question": null,
+          "mentions": {
+            "2hop__335385_3752:d1": [
+              {
+                "end": 96,
+                "entity": "new delhi",
+                "kind": "capitalized-span",
+                "source_excerpt": "ipur on National Highway 1 (NH 1), New Delhi, India. Its inception was in 1989.",
+                "start": 87,
+                "surface": "New Delhi"
+              },
+              {
+                "end": 103,
+                "entity": "india",
+                "kind": "capitalized-span",
+                "source_excerpt": "ional Highway 1 (NH 1), New Delhi, India. Its inception was in 1989. The sc",
+                "start": 98,
+                "surface": "India"
+              }
+            ],
+            "2hop__335385_3752:d2": [
+              {
+                "end": 5,
+                "entity": "india",
+                "kind": "capitalized-span",
+                "source_excerpt": "India: Due to concerns about pro-Tibet p",
+                "start": 0,
+                "surface": "India"
+              },
+              {
+                "end": 76,
+                "entity": "new delhi",
+                "kind": "capitalized-span",
+                "source_excerpt": "-Tibet protests, the relay through New Delhi on April 17 was cut to just 2.3 km",
+                "start": 67,
+                "surface": "New Delhi"
+              }
+            ]
+          },
+          "notes": null,
+          "reviewed_at": null,
+          "reviewer": null,
+          "source": "2hop__335385_3752:d1",
+          "target": "2hop__335385_3752:d2",
+          "weight": 0.20713157942053964
+        }
+      ],
+      "total_edges": 34
+    },
+    {
+      "dataset": "musique",
+      "extractor_revision": "entity-link-regex-title-v2-surface-provenance",
+      "question": "What series is model 7 of the maker of Dacia Sandero?",
+      "question_id": "2hop__132853_842239",
+      "sampled_edges": [
+        {
+          "canonical_mentions_same_entity": null,
+          "entities": [
+            "dacia",
+            "egypt",
+            "french",
+            "logan",
+            "mexico",
+            "renault and",
+            "romanian",
+            "russia",
+            "south africa"
+          ],
+          "jointly_required_for_question": null,
+          "mentions": {
+            "2hop__132853_842239:d0": [
+              {
+                "end": 114,
+                "entity": "french",
+                "kind": "capitalized-span",
+                "source_excerpt": "icle (SUV) produced jointly by the French manufacturer Renault and its Roman",
+                "start": 108,
+                "surface": "French"
+              },
+              {
+                "end": 139,
+                "entity": "renault and",
+                "kind": "capitalized-span",
+                "source_excerpt": "jointly by the French manufacturer Renault and its Romanian subsidiary Dacia sinc",
+                "start": 128,
+                "surface": "Renault and"
+              },
+              {
+                "end": 152,
+                "entity": "romanian",
+                "kind": "capitalized-span",
+                "source_excerpt": "rench manufacturer Renault and its Romanian subsidiary Dacia since 2010. It is",
+                "start": 144,
+                "surface": "Romanian"
+              },
+              {
+                "end": 169,
+                "entity": "dacia",
+                "kind": "capitalized-span",
+                "source_excerpt": "enault and its Romanian subsidiary Dacia since 2010. It is currently in its",
+                "start": 164,
+                "surface": "Dacia"
+              },
+              {
+                "end": 351,
+                "entity": "russia",
+                "kind": "capitalized-span",
+                "source_excerpt": "s such as India, Iran, Kazakhstan, Russia, Mexico, Egypt, South Africa, Ukra",
+                "start": 345,
+                "surface": "Russia"
+              },
+              {
+                "end": 359,
+                "entity": "mexico",
+                "kind": "capitalized-span",
+                "source_excerpt": "s India, Iran, Kazakhstan, Russia, Mexico, Egypt, South Africa, Ukraine, the",
+                "start": 353,
+                "surface": "Mexico"
+              },
+              {
+                "end": 366,
+                "entity": "egypt",
+                "kind": "capitalized-span",
+                "source_excerpt": " Iran, Kazakhstan, Russia, Mexico, Egypt, South Africa, Ukraine, the UAE an",
+                "start": 361,
+                "surface": "Egypt"
+              },
+              {
+                "end": 380,
+                "entity": "south africa",
+                "kind": "capitalized-span",
+                "source_excerpt": "Kazakhstan, Russia, Mexico, Egypt, South Africa, Ukraine, the UAE and South Americ",
+                "start": 368,
+                "surface": "South Africa"
+              },
+              {
+                "end": 529,
+                "entity": "dacia",
+                "kind": "capitalized-span",
+                "source_excerpt": "ndia. It is the third model of the Dacia brand based on the Logan platform,",
+                "start": 524,
+                "surface": "Dacia"
+              },
+              {
+                "end": 554,
+                "entity": "logan",
+                "kind": "capitalized-span",
+                "source_excerpt": "el of the Dacia brand based on the Logan platform, after the Sandero.",
+                "start": 549,
+                "surface": "Logan"
+              }
+            ],
+            "2hop__132853_842239:d5": [
+              {
+                "end": 68,
+                "entity": "french",
+                "kind": "capitalized-span",
+                "source_excerpt": "ompact car produced jointly by the French manufacturer Renault and its Roman",
+                "start": 62,
+                "surface": "French"
+              },
+              {
+                "end": 93,
+                "entity": "renault and",
+                "kind": "capitalized-span",
+                "source_excerpt": "jointly by the French manufacturer Renault and its Romanian subsidiary Dacia sinc",
+                "start": 82,
+                "surface": "Renault and"
+              },
+              {
+                "end": 106,
+                "entity": "romanian",
+                "kind": "capitalized-span",
+                "source_excerpt": "rench manufacturer Renault and its Romanian subsidiary Dacia since 2007, curre",
+                "start": 98,
+                "surface": "Romanian"
+              },
+              {
+                "end": 123,
+                "entity": "dacia",
+                "kind": "capitalized-span",
+                "source_excerpt": "enault and its Romanian subsidiary Dacia since 2007, currently at its secon",
+                "start": 118,
+                "surface": "Dacia"
+              },
+              {
+                "end": 249,
+                "entity": "russia",
+                "kind": "capitalized-span",
+                "source_excerpt": "andero in certain markets, such as Russia, Egypt, South Africa, Mexico, and ",
+                "start": 243,
+                "surface": "Russia"
+              },
+              {
+                "end": 256,
+                "entity": "egypt",
+                "kind": "capitalized-span",
+                "source_excerpt": "n certain markets, such as Russia, Egypt, South Africa, Mexico, and South A",
+                "start": 251,
+                "surface": "Egypt"
+              },
+              {
+                "end": 270,
+                "entity": "south africa",
+                "kind": "capitalized-span",
+                "source_excerpt": "in markets, such as Russia, Egypt, South Africa, Mexico, and South America. It was",
+                "start": 258,
+                "surface": "South Africa"
+              },
+              {
+                "end": 278,
+                "entity": "mexico",
+                "kind": "capitalized-span",
+                "source_excerpt": "ch as Russia, Egypt, South Africa, Mexico, and South America. It was introdu",
+                "start": 272,
+                "surface": "Mexico"
+              },
+              {
+                "end": 361,
+                "entity": "logan",
+                "kind": "capitalized-span",
+                "source_excerpt": "eptember 2007, and is based on the Logan platform.",
+                "start": 356,
+                "surface": "Logan"
+              }
+            ]
+          },
+          "notes": null,
+          "reviewed_at": null,
+          "reviewer": null,
+          "source": "2hop__132853_842239:d0",
+          "target": "2hop__132853_842239:d5",
+          "weight": 0.31035871206484933
+        },
+        {
+          "canonical_mentions_same_entity": null,
+          "entities": [
+            "dacia"
+          ],
+          "jointly_required_for_question": null,
+          "mentions": {
+            "2hop__132853_842239:d0": [
+              {
+                "end": 169,
+                "entity": "dacia",
+                "kind": "capitalized-span",
+                "source_excerpt": "enault and its Romanian subsidiary Dacia since 2010. It is currently in its",
+                "start": 164,
+                "surface": "Dacia"
+              },
+              {
+                "end": 529,
+                "entity": "dacia",
+                "kind": "capitalized-span",
+                "source_excerpt": "ndia. It is the third model of the Dacia brand based on the Logan platform,",
+                "start": 524,
+                "surface": "Dacia"
+              }
+            ],
+            "2hop__132853_842239:d18": [
+              {
+                "end": 339,
+                "entity": "dacia",
+                "kind": "capitalized-span",
+                "source_excerpt": "of Arabia Petraea. His conquest of Dacia enriched the empire greatly, as th",
+                "start": 334,
+                "surface": "Dacia"
+              }
+            ]
+          },
+          "notes": null,
+          "reviewed_at": null,
+          "reviewer": null,
+          "source": "2hop__132853_842239:d0",
+          "target": "2hop__132853_842239:d18",
+          "weight": 0.13998879783973772
+        }
+      ],
+      "total_edges": 19
+    },
+    {
+      "dataset": "musique",
+      "extractor_revision": "entity-link-regex-title-v2-surface-provenance",
+      "question": "When did the performer of Kristofferson release his first album?",
+      "question_id": "2hop__679482_58115",
+      "sampled_edges": [
+        {
+          "canonical_mentions_same_entity": null,
+          "entities": [
+            "kris kristofferson",
+            "kristofferson"
+          ],
+          "jointly_required_for_question": null,
+          "mentions": {
+            "2hop__679482_58115:d0": [
+              {
+                "end": 260,
+                "entity": "kris kristofferson",
+                "kind": "capitalized-span",
+                "source_excerpt": "ter (s) Steve Goodman Producer (s) Kris Kristofferson, Norbert Putnam",
+                "start": 242,
+                "surface": "Kris Kristofferson"
+              },
+              {
+                "end": 260,
+                "entity": "kristofferson",
+                "kind": "candidate-title",
+                "source_excerpt": "s) Steve Goodman Producer (s) Kris Kristofferson, Norbert Putnam",
+                "start": 247,
+                "surface": "Kristofferson"
+              }
+            ],
+            "2hop__679482_58115:d1": [
+              {
+                "end": 84,
+                "entity": "kris kristofferson",
+                "kind": "capitalized-span",
+                "source_excerpt": " Story Ends ''is a song written by Kris Kristofferson, and recorded by American country ",
+                "start": 66,
+                "surface": "Kris Kristofferson"
+              },
+              {
+                "end": 84,
+                "entity": "kristofferson",
+                "kind": "candidate-title",
+                "source_excerpt": "y Ends ''is a song written by Kris Kristofferson, and recorded by American country ",
+                "start": 71,
+                "surface": "Kristofferson"
+              },
+              {
+                "end": 416,
+                "entity": "kristofferson",
+                "kind": "candidate-title",
+                "source_excerpt": "f nine weeks on the country chart. Kristofferson recorded the song with Rita Coolid",
+                "start": 403,
+                "surface": "Kristofferson"
+              },
+              {
+                "end": 416,
+                "entity": "kristofferson",
+                "kind": "capitalized-span",
+                "source_excerpt": "f nine weeks on the country chart. Kristofferson recorded the song with Rita Coolid",
+                "start": 403,
+                "surface": "Kristofferson"
+              }
+            ]
+          },
+          "notes": null,
+          "reviewed_at": null,
+          "reviewer": null,
+          "source": "2hop__679482_58115:d0",
+          "target": "2hop__679482_58115:d1",
+          "weight": 0.1120803440251686
+        },
+        {
+          "canonical_mentions_same_entity": null,
+          "entities": [
+            "kristofferson"
+          ],
+          "jointly_required_for_question": null,
+          "mentions": {
+            "2hop__679482_58115:d0": [
+              {
+                "end": 260,
+                "entity": "kristofferson",
+                "kind": "candidate-title",
+                "source_excerpt": "s) Steve Goodman Producer (s) Kris Kristofferson, Norbert Putnam",
+                "start": 247,
+                "surface": "Kristofferson"
+              }
+            ],
+            "2hop__679482_58115:d2": [
+              {
+                "end": 106,
+                "entity": "kristofferson",
+                "kind": "candidate-title",
+                "source_excerpt": "allad written and composed by Kris Kristofferson and released on his 1970 album Kri",
+                "start": 93,
+                "surface": "Kristofferson"
+              },
+              {
+                "end": 151,
+                "entity": "kristofferson",
+                "kind": "candidate-title",
+                "source_excerpt": "son and released on his 1970 album Kristofferson. It was covered later in 1970 by S",
+                "start": 138,
+                "surface": "Kristofferson"
+              },
+              {
+                "end": 151,
+                "entity": "kristofferson",
+                "kind": "capitalized-span",
+                "source_excerpt": "son and released on his 1970 album Kristofferson. It was covered later in 1970 by S",
+                "start": 138,
+                "surface": "Kristofferson"
+              }
+            ]
+          },
+          "notes": null,
+          "reviewed_at": null,
+          "reviewer": null,
+          "source": "2hop__679482_58115:d0",
+          "target": "2hop__679482_58115:d2",
+          "weight": 0.16267297715305618
+        }
+      ],
+      "total_edges": 63
+    },
+    {
+      "dataset": "musique",
+      "extractor_revision": "entity-link-regex-title-v2-surface-provenance",
+      "question": "When did the banking system setting monetary policy for the country to where Logan returns start quantitative easing?",
+      "question_id": "3hop1__159600_91799_73100",
+      "sampled_edges": [
+        {
+          "canonical_mentions_same_entity": null,
+          "entities": [
+            "june"
+          ],
+          "jointly_required_for_question": null,
+          "mentions": {
+            "3hop1__159600_91799_73100:d0": [
+              {
+                "end": 143,
+                "entity": "june",
+                "kind": "capitalized-span",
+                "source_excerpt": "ks evidenced by a rapid rise on 20 June 2013 in the Shanghai interbank ove",
+                "start": 139,
+                "surface": "June"
+              },
+              {
+                "end": 411,
+                "entity": "june",
+                "kind": "capitalized-span",
+                "source_excerpt": "a decline in inflow of cash. On 19 June 2013, instead of injecting additio",
+                "start": 407,
+                "surface": "June"
+              },
+              {
+                "end": 641,
+                "entity": "june",
+                "kind": "capitalized-span",
+                "source_excerpt": "d revitalize stock options.\" On 24 June 2014 the PBOC told commercial bank",
+                "start": 637,
+                "surface": "June"
+              }
+            ],
+            "3hop1__159600_91799_73100:d1": [
+              {
+                "end": 23,
+                "entity": "june",
+                "kind": "capitalized-span",
+                "source_excerpt": "Susan George (born June 29, 1934) is an American and Frenc",
+                "start": 19,
+                "surface": "June"
+              }
+            ]
+          },
+          "notes": null,
+          "reviewed_at": null,
+          "reviewer": null,
+          "source": "3hop1__159600_91799_73100:d0",
+          "target": "3hop1__159600_91799_73100:d1",
+          "weight": 0.07552589137666067
+        },
+        {
+          "canonical_mentions_same_entity": null,
+          "entities": [
+            "june"
+          ],
+          "jointly_required_for_question": null,
+          "mentions": {
+            "3hop1__159600_91799_73100:d0": [
+              {
+                "end": 143,
+                "entity": "june",
+                "kind": "capitalized-span",
+                "source_excerpt": "ks evidenced by a rapid rise on 20 June 2013 in the Shanghai interbank ove",
+                "start": 139,
+                "surface": "June"
+              },
+              {
+                "end": 411,
+                "entity": "june",
+                "kind": "capitalized-span",
+                "source_excerpt": "a decline in inflow of cash. On 19 June 2013, instead of injecting additio",
+                "start": 407,
+                "surface": "June"
+              },
+              {
+                "end": 641,
+                "entity": "june",
+                "kind": "capitalized-span",
+                "source_excerpt": "d revitalize stock options.\" On 24 June 2014 the PBOC told commercial bank",
+                "start": 637,
+                "surface": "June"
+              }
+            ],
+            "3hop1__159600_91799_73100:d7": [
+              {
+                "end": 453,
+                "entity": "june",
+                "kind": "capitalized-span",
+                "source_excerpt": " Union of the European Union on 19 June 2000, and in January 2001 adopted ",
+                "start": 449,
+                "surface": "June"
+              }
+            ]
+          },
+          "notes": null,
+          "reviewed_at": null,
+          "reviewer": null,
+          "source": "3hop1__159600_91799_73100:d0",
+          "target": "3hop1__159600_91799_73100:d7",
+          "weight": 0.09939897973488572
+        }
+      ],
+      "total_edges": 21
+    }
+  ],
+  "source_prediction_hashes": {
+    "hotpotqa": "6227728ae7a1e40f31427d5542e876d46025daf045648d2d6dd2adf01db14e86",
+    "musique": "d43ff6e3c1dee05c92fe4f5e6c6f0367b8a4fb7b0af05f89d172ebe24a635ad0"
+  },
+  "status": "unjudged worksheet; not measured semantic extraction accuracy"
+}

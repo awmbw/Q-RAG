@@ -11,6 +11,8 @@ docs
 paper
 build
 dist
+output
+tmp
 *.egg-info
 **/__pycache__
 **/*.pyc

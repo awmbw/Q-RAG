@@ -1,5 +1,6 @@
 """Protect the mathematical diagnosis without changing the frozen quantum core."""
 
+import importlib.util
 import sys
 import unittest
 from pathlib import Path
@@ -13,6 +14,9 @@ from qrag.optimization import SelectionProblem
 from qrag.quantum import diagonal_energies, qaoa_circuit
 
 
+@unittest.skipUnless(
+    importlib.util.find_spec("qiskit"), "optional Qiskit not installed"
+)
 class PreparationControlTests(unittest.TestCase):
     def test_first_cost_phase_and_feasible_superposition(self):
         from qiskit.quantum_info import Statevector

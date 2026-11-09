@@ -46,6 +46,7 @@ def main():
             "configs/secondary/final_musique_prepared.json",
         ],
         ["scripts/audit_final_runs.py"],
+        ["scripts/error_analysis.py"],
         ["scripts/assemble_results.py"],
         ["scripts/analyze_sampling_coverage.py"],
         ["scripts/reproduce_public_tables.py", "--verify"],

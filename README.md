@@ -1,45 +1,45 @@
 # Q-RAG: research on context selection for RAG
 
-Q-RAG investigates how mathematical optimization and quantum algorithms can select useful context for multi-hop question answering. The current research foundation compares relevance ranking with a constrained classical MILP, generates actual answers, and records answer quality separately from document-selection metrics.
+Q-RAG studies how classical optimization and simulated quantum algorithms select context for multi-hop question answering. It combines token-safe retrieval, an entity-link scoring proxy, constrained subset selection, sparse QAOA circuits and real local language-model answer evaluation.
 
-This is research in progress. The existing experiments do not establish quantum advantage. A QAOA wrapper exists in the legacy code; the new baseline runner currently uses classical methods. See the [implementation plan](docs/IMPLEMENTATION_PLAN.md) for the proposed graph and quantum experiments.
+The current study is an encoding-aware empirical comparison, with unfavorable outcomes retained. All quantum execution is classical simulation. No physical quantum hardware, practical quantum advantage or guaranteed evidence preservation is claimed. The frozen main evaluation covers two datasets, two generators, matched budgets and strong classical references; final artifact checks are in progress.
 
 The [research progress report](docs/RESEARCH_PROGRESS_REPORT.md) records the mathematical formulation, implementation status, audited results and research decisions. Update it at each phase boundary using the [report maintenance checklist](docs/research_report/MAINTENANCE.md).
 
 The [technical companion](docs/TECHNICAL_FOUNDATIONS.md) explains concepts, derivations and worked examples. The [development sequence](docs/DEVELOPMENT_SEQUENCE.md) connects those concepts to the implementation order and decisions. See the [documentation index](docs/README.md) for the full set.
 
-## Run the first baseline
+## Start here
 
-From the repository root, using the existing environment:
+From the repository root, using the existing laptop environment:
 
 ```bash
-venv/bin/python -m pip install --no-deps --no-build-isolation -e .
 venv/bin/python -m unittest discover -s tests -v
-HF_HUB_OFFLINE=1 TOKENIZERS_PARALLELISM=false venv/bin/python -m qrag.experiments.run \
-  --config configs/dev_baselines.toml --output results/my_baseline_run
+venv/bin/python scripts/download_models.py --core-only
+venv/bin/uvicorn qrag_service.app:app --host 127.0.0.1 --port 8000 --workers 1
 ```
 
-The provided configuration uses the first three **development** questions, exactly five passages per method, and locally cached, revision-pinned MiniLM and Qwen weights. For pools smaller than five, the explicit `use_all` policy uses all candidates for both methods. A fresh output directory is required unless `--resume` is supplied. Model weights and processed data are not bundled with the repository.
+Open the local dashboard at `http://127.0.0.1:8000`. Its first job loads pinned local MiniLM and Qwen 1.5B weights. Cold readiness returns 503 until that succeeds. API inputs contain no reference answers. The [service guide](docs/SERVICE_GUIDE.md) explains the API, container, queue, limits and explicit fallback policy.
 
-For a fresh environment, install the core with `requirements-baselines.lock` and the package with its `models` extra. The core lock covers NumPy/SciPy; model-runtime versions are recorded in each manifest, rather than supplied as a portable full-environment lock. See the [baseline guide](docs/BASELINE_GUIDE.md) for prerequisites and limitations.
+For a fresh installation, input restoration and model-free result reconstruction, follow [reproducibility](docs/REPRODUCIBILITY.md). Weights and datasets are not bundled. CPU container, CI and CUDA laptop dependencies have distinct recorded snapshots. The [historical baseline guide](docs/BASELINE_GUIDE.md) documents the original three-question experiment rather than the complete current study.
 
 ## What is implemented
 
-- Separate inference inputs and evaluation labels.
-- A common relevance–redundancy objective, with native exact-count constraints.
-- Stable relevance top-k and MILP, with solver status, bounds and independent feasibility checks.
-- HotpotQA-compatible answer EM/token F1 and document-level supporting-evidence metrics.
-- Shared per-question embeddings, consistent context ordering and deterministic decoding settings.
-- Explicit errors for overlong embedding inputs and overlong generation prompts.
-- Manifests, per-question predictions, aggregate summaries, failure reporting and guarded resume.
-- Offline correctness tests and a CI workflow that does not download models.
+- Sentence-aware token-safe chunks, source offsets, content-addressed embedding/graph caches and checked FAISS/SQLite indexes.
+- Dense, BM25, hybrid, cross-encoder, MMR, coverage, greedy, MILP, annealing and uniform feasible-sampling references.
+- Common relevance/redundancy/entity-link coefficients, native count/token constraints and certified solver-status accounting.
+- Signed sparsification with absolute, random, degree and evidence-guided edge rules; original and surrogate energies retained.
+- Actual Qiskit statevector/shot/noise diagnostics, penalty/XY encodings and complete synthetic-target compilation.
+- Explicit diagnosis of the basis-start depth-one global-phase limitation, plus a separately labeled feasible-preparation control.
+- HotpotQA/MuSiQue answer EM/F1, supporting-document metrics, question-level paired intervals and failure-inclusive answer denominators.
+- Pinned MiniLM/Qwen revisions, actual prompts/token IDs, frozen split/corpus manifests, journal recovery and source snapshots.
+- FastAPI jobs, persistence, local dashboard, OpenTelemetry stage traces, a nonroot CPU container and remote correctness/build CI.
 
-Each completed output directory contains `manifest.json`, `predictions.jsonl` and `summary.json`. Run-level failures after artifact-store creation also produce `failure.json`; earlier configuration, data or model-resolution failures may only produce a CLI error. Answer averages retain failed questions in the denominator. Evidence and token averages are explicitly labeled as successful-only.
+Each main study output contains a manifest, append-only predictions journal, summary and scientific source snapshot. The [primary matrix](configs/final_matrix.json) fixes 18 conditions and 50,290 method/question evaluations over 1,000 distinct held-out questions. Solver seeds, methods and generator repeats are not additional independent questions. Secondary controls have separate scopes and manifests.
 
 ## Research interpretation
 
-Equal passage counts do not imply equal token counts. The first runner isolates passage-count differences; a token-budget experiment is a later milestone. Better QUBO energy does not imply better answers. Dropping nonpositive similarity terms alone does not establish useful quantum circuit savings.
+Equal passage counts do not imply equal tokens; equal caps do not imply equal consumption. Better objective energy does not imply better answers. A squared count penalty can make a sparse cost graph dense again. Count-preserving mixing has preparation and mixer costs, and a basis-start first diagonal cost layer is only a global phase. Complete compiler measurements are not minimum-cost proofs or hardware speedups.
 
 The legacy `notebooks/` scripts remain available. Their recall/F1 figures concern document selection, their main optimization experiments use the classical exact solver, and their unequal context sizes cannot establish answer-quality or quantum improvements. The new runner provides the controlled starting point for subsequent studies.
 
-The [first-session notes](docs/FIRST_BASELINE_SESSION.md) record the actual smoke-run results and data-quality observations. Three development questions validate execution, not scientific superiority.
+The [manuscript source](paper/manuscript.md) separates principal and exploratory comparisons. The [publication guide](docs/PUBLICATION_GUIDE.md) records current venue options and the remaining author/submission decisions. [Rights and attribution](docs/RIGHTS_AND_ATTRIBUTION.md) identify upstream terms; a project-wide license has not been invented on the owners' behalf. No scholarly submission or acceptance is claimed.

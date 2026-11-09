@@ -9,6 +9,7 @@ import matplotlib
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+from figure_export import save_figure
 
 from qrag.evaluation import paired_interval
 from qrag.experiments.artifacts import atomic_text, write_json
@@ -85,11 +86,12 @@ def main():
         },
     )
     lookup = {(r["n"], r["mixer"], r["samples"]): r for r in summary}
-    fig, axes = plt.subplots(1, 4, figsize=(11, 3), sharey=True)
+    fig, grid = plt.subplots(2, 2, figsize=(7.5, 5.4), sharey=True)
+    axes = grid.ravel()
     budgets = evidence["spec"]["sample_budgets"]
     for axis, n in zip(axes, evidence["spec"]["candidate_sizes"]):
         for mixer, color, label in [
-            ("xy", "#178272", "XY QAOA"),
+            ("xy", "#178272", "Basis-start XY"),
             ("penalty", "#cb8a31", "Penalty QAOA"),
         ]:
             axis.plot(
@@ -114,11 +116,13 @@ def main():
             label="Uniform feasible",
         )
         axis.set_xscale("log", base=2)
+        axis.set_xticks([1, 16, 256, 1024], ["1", "16", "256", "1,024"])
         axis.set_ylim(0, 1.03)
         axis.set_title(f"n={n}, k=5")
         axis.set_xlabel("Final draws")
         axis.grid(alpha=0.18)
-    axes[0].set_ylabel("Probability of sampling a full optimum")
+    axes[0].set_ylabel("P(sample a full optimum)")
+    axes[2].set_ylabel("P(sample a full optimum)")
     axes[-1].legend(fontsize=7, loc="upper left")
     fig.suptitle(
         "Repeated sampling on 20 development-derived instances (ideal distributions)",
@@ -128,9 +132,7 @@ def main():
     figures = Path("paper/figures")
     figures.mkdir(parents=True, exist_ok=True)
     for suffix in ["png", "svg"]:
-        fig.savefig(
-            figures / ("sampling_coverage." + suffix), dpi=240, bbox_inches="tight"
-        )
+        save_figure(fig, figures / ("sampling_coverage." + suffix))
     plt.close(fig)
     lines = [
         "### Development-derived sampling mechanism study",

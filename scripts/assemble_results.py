@@ -11,6 +11,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 from export_run import export
+from figure_export import save_figure
 from resource_summary import add_circuit_summaries
 
 from qrag.evaluation import latest_records, paired_interval, question_scores
@@ -213,9 +214,7 @@ def main():
     )
     fig.tight_layout()
     for suffix in ["png", "svg"]:
-        fig.savefig(
-            figures / ("quality_resources." + suffix), dpi=240, bbox_inches="tight"
-        )
+        save_figure(fig, figures / ("quality_resources." + suffix))
     plt.close(fig)
     # Traceable main text, using a bounded set of headline rows and full linked appendices.
     classical = [
