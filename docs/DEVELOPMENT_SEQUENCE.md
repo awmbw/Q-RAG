@@ -161,3 +161,11 @@ Extended the existing immutable data contracts without passing labels into infer
 Verified the scoring implementation against 1,004 pairs per official evaluator, plus four new data-contract tests. All 21 offline tests pass. Executed six real GPU generations to establish empty/gold diagnostic paths and preservation of actual prompt IDs. The diagnostic is separate from the main benchmark and is not a claim of equal-budget quality improvement.
 
 The split preparation script refuses to overwrite existing frozen output. Its source revisions, IDs and hashes enable later reconstruction. Remaining independence limits include paraphrases, common source documents and unknown model pretraining data. Next dependency: token-safe representations, persistent caches, retrieval and explicit budget handling.
+
+## November 10, 2026 — Phase C retrieval foundation
+
+Implemented token-aware source-preserving chunks first, then reused their exact text in the cache, dense scoring, index and reranker. This order prevents caching a silently truncated representation. Added immutable FAISS/SQLite bundles, lexical scores and rank fusion. The cross-encoder's paired input length is checked with its own tokenizer, because another model's safe input is not automatically safe for it.
+
+The first real profile encoded 534 chunks plus 50 questions: 584 misses, followed by 584 hits on repetition. Encoding time fell from 1.587 to 0.296 seconds under this measured condition. Index restoration returned identical results. Twenty-five offline tests pass. Two initial retrieval-test expectations were corrected before this milestone: reciprocal-rank fusion is nonlinear in rank, and an intentionally tiny test chunk needed an appropriately small overlap.
+
+No answer-quality conclusion follows from this profile. Native token constraints and comparable generated-answer runs remain coupled to Phase D's solver work. Full corpus evaluation comes later after the common candidate construction is frozen.

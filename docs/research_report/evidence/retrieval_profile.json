@@ -1,0 +1,39 @@
+{
+  "chunks": 534,
+  "device": "cuda",
+  "first_query_retrieved_ids": [
+    "5a74d91455429916b016422a:d9:c0",
+    "5a74d91455429916b016422a:d7:c0",
+    "5a74d91455429916b016422a:d4:c0",
+    "5a74d91455429916b016422a:d0:c0",
+    "5a75efa755429976ec32bcae:d4:c0",
+    "5a74d91455429916b016422a:d5:c1",
+    "5a74d91455429916b016422a:d1:c0",
+    "5a74d91455429916b016422a:d8:c0",
+    "5a7df3cd5542995f4f402347:d8:c0",
+    "5a74d91455429916b016422a:d5:c0"
+  ],
+  "index_roundtrip_identical": true,
+  "passes": [
+    {
+      "hits": 0,
+      "misses": 584,
+      "seconds": 1.586893573999987
+    },
+    {
+      "hits": 584,
+      "misses": 0,
+      "seconds": 0.29603120599995236
+    }
+  ],
+  "representation": {
+    "document_aggregation": "mean-chunks-then-unit-normalize",
+    "dtype": "float32",
+    "max_tokens": 240,
+    "model": "sentence-transformers/all-MiniLM-L6-v2",
+    "normalize": true,
+    "policy": "sentence-greedy-v1-title64-long-sentence-offset-window-overlap32",
+    "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41"
+  },
+  "scope": "50 development questions; model already loaded; first pass cache state explicitly recorded"
+}
