@@ -12,9 +12,10 @@ from qrag.config import ExperimentConfig
 from qrag.data import load_examples
 from qrag.datasets import score_answer, score_evidence
 from qrag.evidence import cached_evidence, interaction_problem
-from qrag.experiments.artifacts import RunStore, environment, file_hash, source_hash, utc_now, write_json
+from qrag.experiments.artifacts import environment, file_hash, source_hash, utc_now, write_json
+from qrag.experiments.journal import JournalRunStore
 from qrag.models import LocalModels
-from qrag.optimization import select_top_k, select_greedy, select_annealing, select_milp
+from qrag.optimization import select_top_k, select_greedy, select_annealing, select_milp,select_random_samples
 from qrag.retrieval import ChunkEncoder, ChunkReranker, bm25_scores, reciprocal_rank_fusion
 
 
@@ -45,7 +46,7 @@ def validate_spec(spec):
     if not methods or len({m['name'] for m in methods}) != len(methods):
         raise ValueError('Method names must be nonempty and unique')
     for m in methods:
-        if m['solver'] not in {'top_k','bm25','hybrid','reranker','mmr','coverage','greedy','annealing','milp','qaoa'}:
+        if m['solver'] not in {'top_k','bm25','hybrid','reranker','mmr','coverage','greedy','annealing','milp','qaoa','random'}:
             raise ValueError('Unknown solver')
     if spec.get('budget_mode','count') not in {'count','tokens'}:
         raise ValueError('Unknown budget mode')
@@ -69,27 +70,29 @@ def choose(problem, method, relevance, similarities, coverage, lexical, rerank):
         return select_annealing(problem, method.get('seed',42), method.get('steps',2000)), {}
     if solver == 'milp':
         return select_milp(problem, method.get('time_limit',10)), {}
+    if solver == 'random':
+        return select_random_samples(problem,method.get('seed',42),method.get('shots',1024))
     from qrag.quantum import solve_qaoa
     return solve_qaoa(problem, **{k:v for k,v in method.items() if k in {'p','seed','shots','max_evals','mixer','noise','training_shots'}})
 
 
-def run_study(spec, output: Path, resume=False):
+def run_study(spec, output: Path, resume=False, backend=None):
     config = validate_spec(spec)
     path = Path(config.dataset)
     if spec.get('dataset_sha256') and file_hash(path) != spec['dataset_sha256']:
         raise ValueError('Dataset hash mismatch')
     examples = load_examples(path)[:config.limit]
-    model = LocalModels(config)
+    model = backend if backend is not None else LocalModels(config)
     identity = {'spec':spec, 'data_sha256':file_hash(path), 'source_sha256':source_hash(),
                 'question_ids':[q.id for q,_ in examples], 'environment':environment(),
                 'backend': {'device':model.device,'dtype':config.generator_dtype,
                             'embedding_model':config.embedding_model,'embedding_revision':config.embedding_revision,
                             'generator_model':config.generator_model,'generator_revision':config.generator_revision}}
-    store = RunStore(output, identity, resume)
+    store = JournalRunStore(output, identity, resume)
     expected = {(q.id,m['name']) for q,_ in examples for m in spec['methods']}
     if not set(store.records) <= expected:
         raise ValueError('Unexpected records')
-    if set(store.records) == expected:
+    if set(store.records) == expected and all(r['status']=='success' for r in store.records.values()):
         result = summarize(list(store.records.values())); write_json(output/'summary.json',result)
         return result
     # Retain exact source bytes even when implementation changes in later phases.
@@ -110,11 +113,14 @@ def run_study(spec, output: Path, resume=False):
             reranker = ChunkReranker(r['model'],r['revision'],encoder,model.device)
         store.save_manifest()
         for query, labels in examples:
-            pending = [m for m in spec['methods'] if (query.id,m['name']) not in store.records]
+            pending = [m for m in spec['methods'] if (query.id,m['name']) not in store.records or
+                       store.records[(query.id,m['name'])]['status']!='success']
             if not pending:
                 continue
             shared_error = None
             try:
+                if len(query.documents)<config.k and config.short_pool_policy=='error' and spec.get('budget_mode','count')=='count':
+                    raise ValueError('Candidate pool smaller than requested k')
                 relevance, similarities, features = encoder.score(query)
                 candidate_limit = spec.get('candidate_limit',100)
                 if len(query.documents) > candidate_limit:

@@ -1,0 +1,186 @@
+{
+  "interpretation": "Exploratory intervals unless a comparison is explicitly primary in the frozen protocol. No noninferiority or hardware-speedup claim.",
+  "paired_differences_to_reference": {
+    "coverage": {
+      "ci95": [
+        -0.042305631926683705,
+        0.09328047740835464
+      ],
+      "mean_difference": 0.024664017781025453,
+      "method": "paired question bootstrap; solver repeats averaged within question",
+      "questions": 100,
+      "resamples": 10000,
+      "seed": 20261110
+    },
+    "milp_g0.1": {
+      "ci95": [
+        -0.044000000000000004,
+        0.05541666666666666
+      ],
+      "mean_difference": 0.005416666666666665,
+      "method": "paired question bootstrap; solver repeats averaged within question",
+      "questions": 100,
+      "resamples": 10000,
+      "seed": 20261110
+    },
+    "milp_g0.2": {
+      "ci95": [
+        -0.045202380952380945,
+        0.08000119047619046
+      ],
+      "mean_difference": 0.017464285714285713,
+      "method": "paired question bootstrap; solver repeats averaged within question",
+      "questions": 100,
+      "resamples": 10000,
+      "seed": 20261110
+    },
+    "milp_g0.4": {
+      "ci95": [
+        -0.09097935696017537,
+        0.05754632733528193
+      ],
+      "mean_difference": -0.016597886980879308,
+      "method": "paired question bootstrap; solver repeats averaged within question",
+      "questions": 100,
+      "resamples": 10000,
+      "seed": 20261110
+    },
+    "milp_g0.8": {
+      "ci95": [
+        -0.12157164855072464,
+        0.03929910714285712
+      ],
+      "mean_difference": -0.04118892339544513,
+      "method": "paired question bootstrap; solver repeats averaged within question",
+      "questions": 100,
+      "resamples": 10000,
+      "seed": 20261110
+    },
+    "top_k": {
+      "ci95": [
+        -0.08015933833678399,
+        0.03973961352657003
+      ],
+      "mean_difference": -0.01960058661145618,
+      "method": "paired question bootstrap; solver repeats averaged within question",
+      "questions": 100,
+      "resamples": 10000,
+      "seed": 20261110
+    }
+  },
+  "reference": "milp_g0.0",
+  "table": {
+    "coverage": {
+      "actual_generation_seconds_successful_only": 0.0672347234299923,
+      "all_supporting_documents_successful_only": 0.87,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_f1": 0.660478545041205,
+      "attempted_method_records": 100,
+      "context_tokens_successful_only": 795.4,
+      "document_recall_successful_only": 0.935,
+      "failures": 0,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": -1.7029555128747598,
+      "input_tokens_successful_only": 879.91,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 100,
+      "selection_seconds_successful_only": 0.00022039691002646579
+    },
+    "milp_g0.0": {
+      "actual_generation_seconds_successful_only": 0.12180420778007829,
+      "all_supporting_documents_successful_only": 0.78,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_f1": 0.6358145272601794,
+      "attempted_method_records": 100,
+      "context_tokens_successful_only": 792.25,
+      "document_recall_successful_only": 0.89,
+      "failures": 0,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": -1.7561946876184082,
+      "input_tokens_successful_only": 876.76,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 100,
+      "selection_seconds_successful_only": 0.02199004902001434
+    },
+    "milp_g0.1": {
+      "actual_generation_seconds_successful_only": 0.040906790310009454,
+      "all_supporting_documents_successful_only": 0.83,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_f1": 0.641231193926846,
+      "attempted_method_records": 100,
+      "context_tokens_successful_only": 794.89,
+      "document_recall_successful_only": 0.915,
+      "failures": 0,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": -1.935343548011426,
+      "input_tokens_successful_only": 879.4,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 100,
+      "selection_seconds_successful_only": 0.015257123789970137
+    },
+    "milp_g0.2": {
+      "actual_generation_seconds_successful_only": 0.02272344513000462,
+      "all_supporting_documents_successful_only": 0.84,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_f1": 0.6532788129744651,
+      "attempted_method_records": 100,
+      "context_tokens_successful_only": 791.48,
+      "document_recall_successful_only": 0.92,
+      "failures": 0,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": -2.1285945315622445,
+      "input_tokens_successful_only": 875.99,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 100,
+      "selection_seconds_successful_only": 0.01053757379999297
+    },
+    "milp_g0.4": {
+      "actual_generation_seconds_successful_only": 0.041882256950002555,
+      "all_supporting_documents_successful_only": 0.84,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_f1": 0.6192166402793001,
+      "attempted_method_records": 100,
+      "context_tokens_successful_only": 806.71,
+      "document_recall_successful_only": 0.915,
+      "failures": 0,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": -2.5342688001221036,
+      "input_tokens_successful_only": 891.22,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 100,
+      "selection_seconds_successful_only": 0.009088691080050922
+    },
+    "milp_g0.8": {
+      "actual_generation_seconds_successful_only": 0.04070399348998763,
+      "all_supporting_documents_successful_only": 0.73,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_f1": 0.5946256038647342,
+      "attempted_method_records": 100,
+      "context_tokens_successful_only": 804.7,
+      "document_recall_successful_only": 0.855,
+      "failures": 0,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": -3.3845293735706754,
+      "input_tokens_successful_only": 889.21,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 100,
+      "selection_seconds_successful_only": 0.019495969350009544
+    },
+    "top_k": {
+      "actual_generation_seconds_successful_only": 0.16501674447006734,
+      "all_supporting_documents_successful_only": 0.79,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_f1": 0.6162139406487233,
+      "attempted_method_records": 100,
+      "context_tokens_successful_only": 784.17,
+      "document_recall_successful_only": 0.885,
+      "failures": 0,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": -1.706206915517978,
+      "input_tokens_successful_only": 868.68,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 100,
+      "selection_seconds_successful_only": 3.237699001147121e-05
+    }
+  }
+}

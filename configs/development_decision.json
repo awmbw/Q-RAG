@@ -1,0 +1,12 @@
+{
+  "criterion": "highest unweighted mean development F1 over two datasets, 100 questions each; ties favor smaller gamma",
+  "gamma": 0.2,
+  "held_out_evaluation_seen": false,
+  "scores": {
+    "0.0": 0.4113208957496042,
+    "0.1": 0.4153166222453307,
+    "0.2": 0.43690709843580683,
+    "0.4": 0.43278063393696387,
+    "0.8": 0.4121517823963476
+  }
+}

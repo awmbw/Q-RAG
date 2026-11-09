@@ -37,3 +37,7 @@ The laptop is the execution host; no paid services or purchases. Download public
 Keep unfavorable results. Save failure records and use all attempted questions in primary answer denominators. Specify successful-only resource summaries. Freeze a main evaluation configuration before viewing outcomes; any later scientific change starts a declared new cycle. A method name containing "evidence" is a hypothesis, not proof of preservation.
 
 Maintain a claim-to-artifact map in the final paper package. Submission, authorship approval, independent manual annotation and unavailable hardware remain explicit handoffs. No external messages or submissions are authorized by this protocol.
+
+## Development decision recorded before final evaluation
+
+Gamma=0.2 is selected by equal-weight mean development F1 over 100 questions per dataset. Evidence-guided half-edge versus absolute half-edge remains the principal sparsification comparison. Add a same-shot uniform feasible-sampling baseline because n=10,k=5 has only 252 feasible subsets. Report the study as an encoding-aware comparison; no noninferiority tolerance or quantum-superiority claim is adopted. Larger-candidate and corpus results are separately bounded settings.

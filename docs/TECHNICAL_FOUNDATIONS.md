@@ -780,3 +780,35 @@ Final measurement draws 1,024 samples from the trained distribution. We count in
 Count preparation, cost operations, mixer operations and routing together. An abstract RZZ is a two-qubit operation but its decomposition may need multiple native gates. A nonlocal interaction on a line may require SWAP/routing operations. We transpile the complete trained circuit to a common basis and record both depth and two-qubit gate count under synthetic all-to-all and line connectivity, with a fixed compilation seed and optimization level. These are comparable compiler outputs, not device calibration or runtime estimates.
 
 The diagnostic noise model applies depolarization probability 0.01 to compiled CX gates and 0.001 to X/SX gates, only during final all-to-all sampling. A density-matrix simulator computes the mixed state. Training remains ideal. Noise can change measured bit counts even for a mathematically count-preserving mixer. The reported feasible fractions therefore distinguish ideal operator conservation from noisy execution. Queueing, physical calibration and real quantum execution are absent and cannot be inferred from simulator timing.
+
+## Phase F foundations — exact edge budgets and what sparsification can prove
+
+### The four rules
+
+Take the nonzero upper-triangular interactions as unordered edges. If there are m edges and retained fraction f, keep floor(f*m) edges exactly. Absolute retention sorts by |b_ij|. Random retention uses a recorded seeded permutation. The degree rule ranks each edge in each endpoint's incident list, takes the smaller endpoint rank as its symmetric priority, then breaks ties by magnitude and indices until the same hard budget is filled. It is a degree-oriented heuristic, not a guaranteed degree-regular graph.
+
+Evidence guidance ranks linked pairs by C_ij*sqrt(|b_ij|), protects at most ceil(budget/2) such edges, and fills remaining slots from the absolute ordering. When there are too many bridge candidates, only the highest-ranked fit. When none exist, the rule reduces to magnitude retention. Both positive and negative retained coefficients are unchanged. All linear relevance terms remain. The method can protect mistaken links; the graph's name is not a preservation guarantee.
+
+### Step-by-step objective bound
+
+Let R be the removed edge set and define delta as the sum over R of |b_ij|. For a binary vector, every x_i*x_j is either 0 or 1. Therefore the absolute value of the removed sum is at most the sum of absolute removed coefficients: |E_full(x)-E_sparse(x)| <= delta. This holds for any binary x, regardless of whether the coefficients are positive or negative.
+
+Let x_star minimize the full objective over feasible set F, and let x_hat be within epsilon of the minimum sparse energy over that SAME F. First, E_full(x_hat) <= E_sparse(x_hat)+delta. Second, E_sparse(x_hat) <= E_sparse(x_star)+epsilon, because the sparse optimum is no worse than the sparse energy of x_star. Third, E_sparse(x_star) <= E_full(x_star)+delta. Combining gives E_full(x_hat)-E_full(x_star) <= 2*delta+epsilon.
+
+The assumptions matter: budgets and candidates must match, epsilon concerns the sparse objective, and both energies use the same coefficient scale and offsets. This is an elementary sanity bound, not a new theorem. It can be loose and gives no guarantee about answer F1. A measured QAOA state is not known epsilon-optimal unless a separate exact solver/bound establishes epsilon.
+
+### Why a random control matters for small quantum cases
+
+With n candidates and exactly k selected, there are n!/(k!*(n-k)!) feasible subsets. For n=10,k=5, this is 252, much less than all 1,024 bitstrings. If independent uniform feasible draws are used, the probability of seeing one particular optimal subset at least once in S draws is 1-(1-1/252)^S. With S=1,024 this is about 98.3%. That calculation assumes uniform independent draws and one fixed optimum; QAOA draws generally follow a nonuniform distribution.
+
+A best-of-1,024-shot quantum policy can therefore appear strong simply because many small-case candidates are tested. The uniform feasible-sampling comparator uses the same number of draws and objective evaluations, with a recorded seed. It is a stronger control than comparing QAOA only to one random subset. At larger n the feasible space grows, so this coverage explanation changes; the final scaling study must state sizes and budgets rather than generalize from ten candidates.
+
+### Calibrating without reusing the test set
+
+For each candidate gamma, compute development mean F1 separately on HotpotQA and MuSiQue, average those two means with equal weight, and choose the highest score; ties favor smaller gamma. The selected value is 0.2. Unequal candidate-pool sizes do not give MuSiQue extra weight under this rule. Development tuning makes those development estimates optimistic. Only the frozen held-out evaluation can test whether the choice transfers. The main edge fraction remains the predeclared 0.5, with 0.25/0.75 as secondary sensitivity settings.
+
+### Durable progress and repeated seeds
+
+Appending one JSON record and flushing it avoids rewriting a growing file after each result. Fsync asks the operating system to commit the write. A crash can still interrupt the final line. Resume checks the immutable identity first, retains incomplete tail bytes for audit, then recomputes that unfinished record. Error retries get incremented attempt numbers; successful records cannot be replaced. Analysis uses the latest validated attempt for each question/method.
+
+Repeated seeds describe solver variability on one question. For a method with three seeds, average its three F1 values inside that question, counting failures as zero, then bootstrap question means. Treating those three seeds as three unrelated questions would inflate the apparent sample size. The confidence intervals describe sampling variation over the observed question population and do not account for unknown pretrained-model contamination or every modeling choice.

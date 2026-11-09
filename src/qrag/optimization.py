@@ -256,3 +256,15 @@ def select_annealing(problem, seed=42, steps=2000):
         if energy < best_energy:
             best, best_energy = indices, energy
     return SelectionResult(best, best_energy, 'annealing', False, perf_counter()-start)
+
+
+def select_random_samples(problem,seed=42,shots=1024):
+    """Strong small-instance control: best of the same number of feasible samples."""
+    if problem.k is None or problem.token_costs is not None or shots<1:
+        raise ValueError('Uniform feasible sampling requires a fixed count and positive shots')
+    start=perf_counter();rng=np.random.default_rng(seed)
+    candidates={tuple(sorted(int(i) for i in rng.choice(len(problem.linear),problem.k,replace=False))) for _ in range(shots)}
+    best=min(candidates,key=lambda indices:(problem.energy(indices),indices))
+    return SelectionResult(best,problem.energy(best),'random_best_of_samples',False,perf_counter()-start),{
+        'classical_baseline':'uniform feasible fixed-count sampling', 'seed':seed,'shots':shots,
+        'unique_subsets':len(candidates),'selection_policy':'minimum common objective over all sampled feasible subsets'}

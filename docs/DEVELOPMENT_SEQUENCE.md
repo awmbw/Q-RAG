@@ -185,3 +185,11 @@ Implemented the Ising map and exhaustive spectrum checks before QAOA. Added both
 Executed 140 records on 10 development questions with two depths, two mixers and three seeds, plus a shot-training control. Executed a separate nine-record noise diagnostic on three questions after label-independent relevance reduction to eight candidates. All records completed successfully. Thirty-two offline tests pass. Observed that ideal feasibility and compiled cost trade off: XY preserves count but is costlier for these dense instances; synthetic noise substantially reduces its measured feasibility. No hardware or speedup claim is made.
 
 The next dependency is sparsification: retain a declared number of interactions, compare against generic rules, and always evaluate selected contexts under the original full target. Any claimed savings must survive the constraint encoding and compilation just measured.
+
+## November 10, 2026 — Phase F development decisions and sparsification
+
+Implemented all four hard-budget sparsifiers and checked signs, masks and the elementary full-energy bound against exhaustive optima. Added a best-of-feasible-random-samples control because the quantum policy also evaluates many measured candidates. Added paired question-level analysis and tests preventing seed repeats from becoming artificial sample size.
+
+Ran 1,400 calibration records across 200 development questions, selecting gamma=0.2 before held-out evaluation. Ran 900 sparsification/encoding development records across 30 questions. The results support a compiler/encoding effect but not a reliable superiority claim for evidence guidance. Continued the study as a controlled comparison, retaining unfavorable outcomes and original settings.
+
+Replaced quadratic-cost artifact rewrites for the new study runner with a durable append journal and explicit retry semantics; the legacy runner remains historically compatible. Added a restore-by-manifest script and verified all four dataset hashes after independent reconstruction. Thirty-eight offline tests pass. Next: freeze the complete evaluation matrix, run new held-out questions, quantify paired uncertainty, then write the manuscript around observed findings.

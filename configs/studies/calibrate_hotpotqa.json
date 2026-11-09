@@ -1,0 +1,60 @@
+{
+  "budget_mode": "count",
+  "methods": [
+    {
+      "name": "top_k",
+      "solver": "top_k"
+    },
+    {
+      "name": "coverage",
+      "solver": "coverage"
+    },
+    {
+      "gamma": 0.0,
+      "name": "milp_g0.0",
+      "solver": "milp"
+    },
+    {
+      "gamma": 0.1,
+      "name": "milp_g0.1",
+      "solver": "milp"
+    },
+    {
+      "gamma": 0.2,
+      "name": "milp_g0.2",
+      "solver": "milp"
+    },
+    {
+      "gamma": 0.4,
+      "name": "milp_g0.4",
+      "solver": "milp"
+    },
+    {
+      "gamma": 0.8,
+      "name": "milp_g0.8",
+      "solver": "milp"
+    }
+  ],
+  "model": {
+    "alpha": 1.0,
+    "beta": 0.2,
+    "dataset": "data/processed/research/hotpotqa_development.json",
+    "device": "cuda",
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "embedding_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+    "embedding_truncation": "error",
+    "generator_dtype": "float16",
+    "generator_model": "Qwen/Qwen2.5-1.5B-Instruct",
+    "generator_revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+    "k": 5,
+    "limit": 100,
+    "local_files_only": true,
+    "max_input_tokens": 4096,
+    "max_new_tokens": 32,
+    "seed": 42,
+    "short_pool_policy": "use_all",
+    "solver_time_limit": 10.0,
+    "threads": 4
+  },
+  "scope": "development calibration of graph reward; no held-out outcomes used"
+}

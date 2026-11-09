@@ -221,3 +221,17 @@ Ideal XY final shots are all feasible. Mean penalty feasible fractions are 0.362
 A separate [three-question, eight-candidate diagnostic](research_report/evidence/phase_e_noise.json) applies synthetic depolarizing noise only during final sampling. Ideal XY feasibility is 1; noisy feasible fractions are 0.6494, 0.6641 and 0.6270. Angles are still trained ideally. These are simulation results with an artificial noise model, not physical-device estimates. Quantum token-budget encoding remains conditional and is not implemented; token-budget comparisons currently use classical selectors.
 
 The offline suite now has 32 passing tests. The laptop statevector study is explicitly capped at 16 candidates, avoiding any suggestion that these simulations establish large-scale quantum performance.
+
+## Phase F — calibrated weights, sparsification and research decision
+
+A development-only sweep used 100 questions per dataset and gamma in {0,0.1,0.2,0.4,0.8}. Gamma=0.2 maximized the unweighted mean answer F1 across the two development datasets; the decision and all scores are [recorded](../configs/development_decision.json). HotpotQA base/selected-weight F1 is 0.6358/0.6533; MuSiQue is 0.1868/0.2205. These are tuned development results, not held-out gains. Greedy lexical coverage remains a strong comparator. The earlier gamma=0.8 negative result is not removed.
+
+Implemented exact unordered-edge budgets for absolute magnitude, seeded random, endpoint-degree ranking and evidence-guided protection. Evidence guidance reserves at most half the hard edge budget for high-priority possible bridges and fills the rest by coefficient magnitude. It never silently exceeds the budget, even if more links are candidates for protection. Retained coefficients keep their signs. Every solution is scored under both its sparse surrogate and the original full objective.
+
+The [30-question development ablation](research_report/evidence/phase_f_sparsification.json) contains 900 successful records. Full graph MILP mean F1 is 0.6203; full XY-QAOA is 0.5634; uniform best-of-1,024 feasible samples is 0.6203. At half edges, QAOA absolute and evidence-guided selection both score 0.4834; the corresponding sparse MILPs score 0.4491 and 0.4891. Small-sample/tuning limitations prevent a general ranking claim.
+
+Mean line two-qubit gates fall from 263.87 for full XY-QAOA to 176.43 for absolute and 176.63 for evidence-guided half-edge variants. The half-edge penalty variants both have 45 encoded pairs and 199 mean line gates. Thus edge removal does reduce complete compiled cost in one encoding while the penalty can erase structural savings. It does not establish preserved answer quality.
+
+Research decision: continue as an encoding-aware comparative study rather than promise a positive evidence-preservation result. The [analysis](research_report/evidence/phase_f_analysis.json) retains paired uncertainty. Add uniform feasible sampling to final comparisons because best-of-many measurements can cover much of a small feasible space. No quantum advantage is inferred from finding a good subset after many classical energy evaluations.
+
+The study runner now uses an append/fsync journal with explicit error retries and torn-tail recovery. Successful records cannot be overwritten; a changed resume identity fails before file mutation. Report generation groups repeated solver seeds within question before resampling. Thirty-eight offline tests pass. A reconstruction check rebuilt all four frozen dataset files in a separate directory and matched their exact hashes.
