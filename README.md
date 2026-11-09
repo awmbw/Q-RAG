@@ -1,72 +1,45 @@
-# Quantum-Enhanced Retrieval-Augmented Generation (Q-RAG)
+# Q-RAG: research on context selection for RAG
 
-## Overview
-This project bridges the gap between **Quantum Computing** and **Generative AI**. It implements a Quantum-Enhanced Retrieval-Augmented Generation (Q-RAG) pipeline that maps the problem of "Document Selection" into a Quantum Physics problem (Ising Hamiltonian) to dynamically optimize Large Language Model (LLM) context windows.
+Q-RAG investigates how mathematical optimization and quantum algorithms can select useful context for multi-hop question answering. The current research foundation compares relevance ranking with a constrained classical MILP, generates actual answers, and records answer quality separately from document-selection metrics.
 
-## The Problem: Greedy RAG
-Standard RAG systems use a greedy "Top-K" selection method based purely on the cosine similarity between a query and a document. 
-This leads to two critical flaws:
-1. **Redundancy & Token Waste**: The top 5 documents might all contain the exact same information, wasting precious LLM token budget.
-2. **Static Context**: Top-K forces the LLM to read exactly $K$ documents every time, whether the question requires 1 document or 10.
+This is research in progress. The existing experiments do not establish quantum advantage. A QAOA wrapper exists in the legacy code; the new baseline runner currently uses classical methods. See the [implementation plan](docs/IMPLEMENTATION_PLAN.md) for the proposed graph and quantum experiments.
 
-## The Quantum Solution: QUBO Formulation
-We reformulate document selection as a **Quadratic Unconstrained Binary Optimization (QUBO)** problem. We ask a quantum optimizer to find the perfect subset of documents that maximizes relevance to the query, while simultaneously penalizing documents that are redundant to each other.
+The [research progress report](docs/RESEARCH_PROGRESS_REPORT.md) records the mathematical formulation, implementation status, audited results and research decisions. Update it at each phase boundary using the [report maintenance checklist](docs/research_report/MAINTENANCE.md).
 
-### The Mathematics
-Let $N$ be the number of candidate documents. We define a binary variable $x_i \in \{0, 1\}$ for each document, where $x_i = 1$ means the document is selected.
+The [technical companion](docs/TECHNICAL_FOUNDATIONS.md) explains concepts, derivations and worked examples. The [development sequence](docs/DEVELOPMENT_SEQUENCE.md) connects those concepts to the implementation order and decisions. See the [documentation index](docs/README.md) for the full set.
 
-The objective function to **minimize** is:
+## Run the first baseline
 
-$$ \min_{x} \left( -\alpha \sum_{i=1}^{N} r_i x_i + \beta \sum_{i=1}^{N} \sum_{j=i+1}^{N} S_{ij} x_i x_j \right) $$
+From the repository root, using the existing environment:
 
-Where:
-- $r_i$: Relevance score (Dot product between Query embedding and Document $i$ embedding).
-- $S_{ij}$: Redundancy score (Dot product between Document $i$ embedding and Document $j$ embedding).
-- $\alpha$: Hyperparameter controlling the weight of Relevance.
-- $\beta$: Hyperparameter controlling the penalty for Redundancy.
+```bash
+venv/bin/python -m pip install --no-deps --no-build-isolation -e .
+venv/bin/python -m unittest discover -s tests -v
+HF_HUB_OFFLINE=1 TOKENIZERS_PARALLELISM=false venv/bin/python -m qrag.experiments.run \
+  --config configs/dev_baselines.toml --output results/my_baseline_run
+```
 
----
+The provided configuration uses the first three **development** questions, exactly five passages per method, and locally cached, revision-pinned MiniLM and Qwen weights. For pools smaller than five, the explicit `use_all` policy uses all candidates for both methods. A fresh output directory is required unless `--resume` is supplied. Model weights and processed data are not bundled with the repository.
 
-## Architecture & Execution Flow
+For a fresh environment, install the core with `requirements-baselines.lock` and the package with its `models` extra. The core lock covers NumPy/SciPy; model-runtime versions are recorded in each manifest, rather than supplied as a portable full-environment lock. See the [baseline guide](docs/BASELINE_GUIDE.md) for prerequisites and limitations.
 
-### 1. Data Pipeline (`notebooks/01`, `02`)
-- **Dataset**: `HotpotQA` (a multi-hop reasoning dataset requiring synthesis across multiple documents).
-- **Process**: Extracted a subset (1000 dev, 500 eval). Each question was paired with its 2 Ground Truth documents and 8 highly-ranked "Distractor" documents.
+## What is implemented
 
-### 2. Dense Retrieval (`src/retrieval/dense_retriever.py`)
-- **Model**: `all-MiniLM-L6-v2` (SentenceTransformers).
-- **Process**: Embeds the query and the 10 candidate documents. It computes the relevance vector ($r_i$) and the crucial pairwise similarity matrix ($S_{ij}$) which maps the redundancy graph.
+- Separate inference inputs and evaluation labels.
+- A common relevance–redundancy objective, with native exact-count constraints.
+- Stable relevance top-k and MILP, with solver status, bounds and independent feasibility checks.
+- HotpotQA-compatible answer EM/token F1 and document-level supporting-evidence metrics.
+- Shared per-question embeddings, consistent context ordering and deterministic decoding settings.
+- Explicit errors for overlong embedding inputs and overlong generation prompts.
+- Manifests, per-question predictions, aggregate summaries, failure reporting and guarded resume.
+- Offline correctness tests and a CI workflow that does not download models.
 
-### 3. QUBO Formulation (`src/optimization/qubo_builder.py`)
-- **Process**: Translates the matrices into a Qiskit `QuadraticProgram`. 
-- **Graph Sparsification**: The script dynamically drops quadratic terms where $S_{ij} \le 0$, removing graph edges and making the problem significantly easier to map onto quantum hardware.
+Each completed output directory contains `manifest.json`, `predictions.jsonl` and `summary.json`. Run-level failures after artifact-store creation also produce `failure.json`; earlier configuration, data or model-resolution failures may only produce a CLI error. Answer averages retain failed questions in the denominator. Evidence and token averages are explicitly labeled as successful-only.
 
-### 4. Quantum Optimization (`src/optimization/qaoa_solver.py` & `exact_solver.py`)
-- **QAOA Solver**: Implements the Quantum Approximate Optimization Algorithm (QAOA) using Qiskit's `StatevectorSampler` and a classical `COBYLA` optimizer to find the minimum energy state.
-- **Exact Solver**: Implements `NumPyMinimumEigensolver` to rapidly compute the true ground state for hyperparameter tuning.
+## Research interpretation
 
-### 5. LLM Generation (`src/generation/llm_generator.py`)
-- **Model**: `Qwen/Qwen2.5-1.5B-Instruct`
-- **Process**: The optimal subset of documents chosen by the Quantum Optimizer is concatenated into a context prompt. The SLM performs inference on the local GPU (RTX 5060) to synthesize the final answer.
+Equal passage counts do not imply equal token counts. The first runner isolates passage-count differences; a token-budget experiment is a later milestone. Better QUBO energy does not imply better answers. Dropping nonpositive similarity terms alone does not establish useful quantum circuit savings.
 
----
+The legacy `notebooks/` scripts remain available. Their recall/F1 figures concern document selection, their main optimization experiments use the classical exact solver, and their unequal context sizes cannot establish answer-quality or quantum improvements. The new runner provides the controlled starting point for subsequent studies.
 
-## Evaluation & Results
-
-To prove the efficacy of the QUBO formulation, we run a Hyperparameter Grid Search (tuning $\beta$) and evaluate the pipeline on a 500-question subset of HotpotQA.
-
-### The "Goldilocks" Tune ($\alpha=1.0, \beta=0.2$)
-By tuning $\beta$ to 0.2, the quantum optimizer was allowed to dynamically size the context window. 
-
-| Metric | Standard RAG (Top-5) | Q-RAG ($\beta=0.2$) |
-|--------|----------------------|----------------------|
-| **Average Docs Selected** | 5.00 | **6.27** (Dynamic) |
-| **Recall** | 83.4% | **87.3%** |
-
-### Conclusion
-1. **Dynamic Sizing**: Q-RAG proved it can dynamically adapt the number of selected documents based on the complexity of the redundancy matrix.
-2. **Rescuing Relevant Documents**: By penalizing redundancy, Q-RAG successfully avoided grabbing 5 redundant distractor documents, opting instead for a diverse set that increased total Recall by nearly 4%.
-3. **End-to-End Speed**: The complete pipeline (Embedding $\rightarrow$ Quantum Optimization $\rightarrow$ LLM Inference) executes in ~3.4 seconds locally.
-
----
-*Built with Qiskit, HuggingFace Transformers, and PyTorch.*
+The [first-session notes](docs/FIRST_BASELINE_SESSION.md) record the actual smoke-run results and data-quality observations. Three development questions validate execution, not scientific superiority.

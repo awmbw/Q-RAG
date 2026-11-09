@@ -1,0 +1,161 @@
+# Quantum RAG research progress and mathematical formulation
+
+**Version 0.3 | Updated November 9 2026**
+
+The current implementation establishes a controlled classical baseline for context selection in retrieval augmented generation. Relevance ranking and a constrained mixed integer linear program (MILP) select from the same candidates, generate actual answers and record answer quality separately from evidence coverage and objective values.
+
+The first run completed six method–question executions on three development questions. Both methods selected five passages and achieved answer EM/token F1 of 0.3333. MILP achieved lower objective values on all three instances. This execution check establishes neither general answer superiority nor quantum advantage.
+
+## Research objective
+
+The proposed study asks whether question-specific evidence relationships can guide sparsification of the context-selection objective while preserving multi-hop answer quality and reducing compiled QAOA resource costs.
+
+A passage can be topically relevant without supplying a needed fact. Complementary passages may jointly answer a question. The proposed graph model would distinguish these relationships from repeated information.
+
+The contribution remains conditional on the literature review and experiments. Prior work covers QUBO evidence selection, passage set selection, graph retrieval and QAOA sparsification [1–4]. Combining those ideas alone does not establish novelty.
+
+## Implementation status
+
+The implemented flow is supplied candidates → shared MiniLM features → fixed-count ranking or MILP → consistently ordered context → Qwen generation → evaluation and artifacts. Gold annotations enter only the evaluator.
+
+| Phase | Current status | Implemented scope and remaining work |
+| --- | --- | --- |
+| A reproducibility and protocol | Partial | Package, config, manifests, tests and CI workflow exist; full dependency locking, profiling and literature matrix remain |
+| B data and answer evaluation | Partial | Label isolation, answer/document metrics and real generation exist; fresh frozen splits, sentence mappings and diagnostics remain |
+| C retrieval and caching | Started | Fixed-count controls exist; chunking, persistent cache/index, retrieval baselines and token-budget mode remain |
+| D optimization and evidence modeling | Partial | MILP, linearization and exhaustive checks exist; other baselines, token constraints and graph features remain |
+| E QAOA and resources | Legacy wrapper only | Integrated experiments, mapping checks and full circuit accounting remain |
+| F sparsification method | Planned | Method, generic comparisons and ablations remain |
+| G frozen evaluation | Planned | Multi-dataset runs, additional generator and uncertainty analysis remain |
+| H manuscript and demonstration | Planned | Progress documentation exists; full manuscript and demonstration remain |
+| I submission package | Planned | Reviewed manuscript and reproducible release remain |
+
+No complete formal phase A–I is claimed. The first working baseline spans parts of several phases. Earlier exploratory document-recall comparisons used classical optimization and unequal selection sizes; their figures are not directly comparable to the controlled answer evaluation below.
+
+## Implemented mathematical formulation
+
+For normalized question and passage embeddings u and vᵢ, define relevance and nonnegative redundancy:
+
+$$
+r_i=u^\top v_i,\qquad S_{ij}=\max(v_i^\top v_j,0).
+$$
+
+The current count-constrained selection model minimizes:
+
+$$
+E(x)=-\alpha\sum_i r_i x_i+\beta\sum_{i<j}S_{ij}x_ix_j,
+\qquad \sum_i x_i=k,\quad x_i\in\{0,1\}.
+$$
+
+Each passage pair is counted once. The negative term rewards relevance; the positive term penalizes similar selected passages. These scores are proxies for useful evidence, not answer probabilities.
+
+MILP replaces each product by a continuous auxiliary variable and imposes:
+
+$$
+0\le y_{ij}\le1,\quad y_{ij}\le x_i,\quad y_{ij}\le x_j,\quad
+y_{ij}\ge x_i+x_j-1.
+$$
+
+With binary x, these inequalities enforce yᵢⱼ = xᵢxⱼ exactly. SciPy/HiGHS solves the resulting linear formulation with the native count constraint [5]. Status, bounds and feasibility distinguish certified optima from limited executions.
+
+Ranking maximizes individual relevance under the same count budget; its selection is additionally scored under the full energy. It is a policy baseline, while a future MILP–QAOA solver comparison must keep the full objective and feasible set fixed.
+
+The proposed graph extension would add a complementarity reward. Token-budget constraints and quantum encodings are not part of the measured run. The legacy QAOA wrapper simulates quantum states; no integrated quantum or hardware result is reported.
+
+## Evaluation and experimental controls
+
+Answer exact match compares normalized strings. Token F1 uses multiset overlap with HotpotQA's normalization and special-answer rules [7]. Document recall measures the fraction of annotated supporting titles selected; complete support records whether all such titles are present. These document metrics are not sentence-level supporting-fact F1.
+
+The common model revisions, candidate pools, ordering and prompt policy control several variables. Exactly five selected passages controls count, but not token length. Failed executions remain in answer denominators; evidence and token summaries are successful-only and labeled accordingly.
+
+## Verified development experiment
+
+The experiment ran on November 4. Its saved predictions, coefficients, references and hashes were audited on November 9. No new model inference was performed during documentation updates.
+
+<!-- BEGIN VERIFIED BASELINE RESULTS -->
+
+Run identifier: baseline_dev_001. The input is the first three already inspected questions in the processed development set, drawn from HotpotQA's training partition. The same candidates, normalized embeddings, ordering policy and generator settings were used for both methods. These examples are not an untouched evaluation set.
+
+| Setting | Recorded value |
+| --- | --- |
+| Embedding model | sentence-transformers/all-MiniLM-L6-v2 |
+| Generator | Qwen/Qwen2.5-1.5B-Instruct |
+| Selection budget | Exactly five passages per method on each example |
+| Weights and seed | α = 1.0, β = 0.2, seed = 42 |
+| Execution | CPU float32, four PyTorch threads |
+| Generation | Deterministic decoding, at most 32 new tokens |
+| Input policy | 4,096-token total limit with output space reserved |
+| MILP limit | 10 seconds per selection, zero requested relative gap |
+| Model preparation | 4.72 seconds |
+| Recorded invocation wall time | 61.32 seconds |
+
+The model revisions and runtime versions are preserved in the evidence snapshot. Models loaded from local snapshots; document embeddings were recomputed once per question and shared between selectors. A persistent embedding cache is not implemented.
+
+| Measurement over three questions | Relevance top k | MILP |
+| --- | ---: | ---: |
+| Successful executions | 3 of 3 | 3 of 3 |
+| Mean passages selected | 5.00 | 5.00 |
+| Answer exact match | 0.3333 | 0.3333 |
+| Answer token F1 | 0.3333 | 0.3333 |
+| Supporting-document recall | 0.6667 | 0.8333 |
+| Complete supporting-document coverage | 0.3333 | 0.6667 |
+| Mean context tokens | 615.33 | 710.00 |
+| Mean generation time in seconds | 8.54 | 9.15 |
+
+No embedding truncation or generated-output-limit hit occurred. All three MILP selections reported optimal status for the specified count-constrained objective.
+
+| Example | Ranking energy | MILP energy |
+| --- | ---: | ---: |
+| Q1 body double | −1.317200 | −1.842702 |
+| Q2 literary movement | −1.657102 | −1.749583 |
+| Q3 film | −1.663005 | −1.727368 |
+
+All energies use the same full objective for each question. Lower values are better under that objective. They are not answer probabilities or evidence of a quantum improvement.
+
+| Example | Reference | Ranking answer | MILP answer | Token F1 for both |
+| --- | --- | --- | --- | ---: |
+| Q1 body double | Rosie Mac | Rosie Mac | Rosie Mac | 1.0 |
+| Q2 literary movement | Romantic | Romanticism | Modernismo | 0.0 |
+| Q3 film | Richard E. Grant | Jack and Sarah | Jack and Sarah | 0.0 |
+
+Q1 corresponds to 5abed9f45542994516f4545a, Q2 to 5ab1dd6c5542993be8fa9860 and Q3 to 5adfa059554299025d62a2f8.
+
+<!-- END VERIFIED BASELINE RESULTS -->
+
+## Interpretation and limitations
+
+MILP improved objective values and annotated document recall on this sample without improving aggregate answer EM/F1. Its contexts were longer in tokens despite identical passage counts. A token-budget comparison is needed to isolate that difference.
+
+Q2 illustrates metric sensitivity: Romanticism and Romantic have no exact normalized token overlap. MILP's Modernismo prediction is a separate error requiring evidence inspection. Q3 asks for a film but has a person as its reference; the November 4 investigation found the same inconsistency in the cached upstream record. The original primary reference is retained.
+
+Three inspected development questions, one seed and one generator cannot establish significance or general superiority. No corpus-scale benefit, novel graph result or quantum advantage has been demonstrated.
+
+## Correctness and reproducibility
+
+Seventeen offline test methods passed again on November 9, covering label isolation, metric edge cases, signed-pair optimization, count boundaries, MILP/exhaustive agreement, solver limits, configuration and resume/failure behavior. The CI workflow exists; a completed remote CI run is not claimed.
+
+The manifest records model revisions, configuration, question IDs, runtime/device and source/data hashes. Question-level records retain prompts, predictions, selections, coefficients, metrics and status. Saved energies and metrics were independently recomputed, aggregates checked and recorded source/data hashes verified.
+
+Full local artifacts are in results/baseline_dev_001. A [compact evidence snapshot](research_report/evidence/baseline_dev_001.json) preserves configuration, artifact hashes and six outcomes. Hashes identify an execution state but do not archive the source, dataset or complete software environment.
+
+## Planned work
+
+Immediate work includes the structured prior-work comparison, data provenance and frozen splits, token-aware chunking, persistent embeddings and token-budget selection. Further classical baselines will precede graph-feature and QAOA comparisons.
+
+The quantum study will account for mapping, constraints, state preparation, mixers, compilation and noise. Cardinality penalties can introduce all-pairs couplings, so a sparse semantic graph alone cannot establish circuit savings. Full and sparse objective values will be reported separately.
+
+The final evaluation targets an additional multi-hop dataset and generator, fresh examples, multiple seeds, ablations, corpus retrieval and paired uncertainty estimates. An API and evidence-inspection demonstration will reuse the research library.
+
+Detailed derivations and worked examples are in [Technical foundations and implementation notes](TECHNICAL_FOUNDATIONS.md). The [development sequence](DEVELOPMENT_SEQUENCE.md) records component dependencies, decisions and phase status.
+
+## References and implementation pointers
+
+1. Singh and Vadlamani. [QUBO Optimized Evidence Selection for Retrieval Augmented Question Answering with Unconventional Solvers](https://arxiv.org/abs/2607.12334). 2026 preprint; a direct formulation-overlap lead for the literature review.
+2. Lee and colleagues. [Shifting from Ranking to Set Selection for Retrieval Augmented Generation](https://aclanthology.org/2025.acl-long.861/). ACL 2025.
+3. Melo and colleagues. [Do Not Forget the Base Retriever](https://aclanthology.org/2025.emnlp-industry.174/). EMNLP Industry 2025.
+4. Moondra and colleagues. [Promise of Graph Sparsification and Decomposition for Noise Reduction in QAOA](https://arxiv.org/abs/2406.14330). Relevant sparsification research; not evidence for the proposed RAG method.
+5. SciPy. [MILP interface and solver status documentation](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.milp.html).
+6. IBM Quantum. [Quantum approximate optimization algorithm](https://quantum.cloud.ibm.com/docs/en/tutorials/quantum-approximate-optimization-algorithm).
+7. HotpotQA. [Official answer and supporting-fact evaluator](https://github.com/hotpotqa/hotpot/blob/master/hotpot_evaluate_v1.py).
+
+Current implementation pointers: [data boundaries](../src/qrag/data.py), [objective and MILP](../src/qrag/optimization.py), [model adapters](../src/qrag/models.py), [metrics](../src/qrag/metrics.py), [runner](../src/qrag/experiments/run.py), [artifacts](../src/qrag/experiments/artifacts.py), [configuration](../configs/dev_baselines.toml), [tests](../tests/test_baselines.py) and [legacy QAOA wrapper](../src/optimization/qaoa_solver.py).

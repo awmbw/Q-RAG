@@ -1,0 +1,145 @@
+# Development sequence and implementation decisions
+
+**Version 0.1 | Updated November 9 2026**
+
+This document records the progression from the exploratory prototype to the first controlled baseline. The baseline was implemented during one November 4 session. Its steps below are arranged by dependency and explain how the components fit together; they are not presented as separate commits or separately timestamped releases.
+
+The [progress report](RESEARCH_PROGRESS_REPORT.md) records outcomes. [Technical foundations](TECHNICAL_FOUNDATIONS.md) supplies derivations and worked examples.
+
+## Starting point before the baseline
+
+The prototype already had processed HotpotQA subsets, MiniLM retrieval, a relevance–redundancy QUBO, classical exact optimization, a local generator and a QAOA wrapper.
+
+Its principal evaluation used the classical solver and measured selected-document quality. It did not evaluate generated answers. Its unconstrained optimizer could select more documents than top-five ranking, so higher recall could not establish a better selection policy at equal context size.
+
+The objective was retained as a starting model, while the evaluation and execution contracts were rebuilt.
+
+## Stage one explicit data and configuration contracts
+
+**Added:** [data.py](../src/qrag/data.py), [config.py](../src/qrag/config.py), [configuration](../configs/dev_baselines.toml), and package metadata.
+
+The source JSON is adapted into separate QueryInput and EvaluationLabels objects. IDs, titles, text and questions are validated; gold fields do not reach the normal inference interface. Configuration makes weights, seed, model revisions, limits and short-pool behavior explicit.
+
+**Why this came first:** every later comparison depends on knowing its inputs and settings. A selector that can inspect reference labels or inherit hidden script constants cannot support a reliable experiment.
+
+**Remaining:** source-sentence offsets, full duplicate checks and frozen fresh evaluation partitions. The dependency lock currently covers only the core numeric pair rather than the complete model stack.
+
+## Stage two answer and evidence metrics
+
+**Added:** [metrics.py](../src/qrag/metrics.py).
+
+Answer exact match and token F1 are calculated separately from document precision, recall and complete-support coverage. Reference-normalization fixtures include repeated words, punctuation and special answers.
+
+**Why:** document selection is an intermediate task. The project needs generated-answer measurements before claiming that a selection improvement benefits RAG.
+
+**Verification:** offline metric fixtures and the later real generation run. Semantic near-matches and annotation inconsistencies remain visible in error analysis.
+
+## Stage three a common objective and controlled classical selection
+
+**Added:** [optimization.py](../src/qrag/optimization.py).
+
+SelectionProblem stores one linear vector and a strict upper-triangular interaction matrix. An exact-count constraint prevents the optimizer from improving recall merely by choosing more passages.
+
+The module implements stable relevance top-k, MILP with product linearization, and a tiny exhaustive oracle. SelectionResult distinguishes ranking, optimal and limited outcomes and retains bounds when available.
+
+**Why:** formulation and solver effects must be separable. A tested energy evaluator also gives the future quantum mapping a reference independent of circuit software.
+
+**Verification:** MILP agrees with exhaustive enumeration on tiny positive/negative-pair cases and count boundaries. Tests also cover time-limited solutions without falsely labeling them optimal.
+
+**Remaining:** native token constraints and additional classical baselines.
+
+## Stage four common real-model adapters
+
+**Added:** [models.py](../src/qrag/models.py).
+
+The model adapter resolves immutable MiniLM/Qwen snapshots, loads once, produces shared per-question features, constructs a consistent chat prompt and generates actual short answers. Embedding overlength and generation-prompt overflow fail explicitly by default.
+
+**Why:** the compared selectors must use the same models and prompt policy. Model loading, feature generation and answer generation are distinct timing stages.
+
+**Remaining:** chunking, persistent embedding reuse, hardware profiling and generation diagnostics with empty or oracle evidence.
+
+## Stage five experiment orchestration and artifact integrity
+
+**Added:** [runner](../src/qrag/experiments/run.py) and [artifact handling](../src/qrag/experiments/artifacts.py).
+
+Each question is scored once; both methods consume the same candidate pool and features. Selected context uses original candidate order. Labels are applied only after selection/generation.
+
+The runner saves manifests, question-level JSONL records and summaries. The manifest identifies data bytes, qrag source files, models, settings and runtime. Atomic writes and guarded resume prevent partial files and accidental mixing of incompatible runs.
+
+**Why:** an aggregate result without the predictions and settings behind it cannot explain what changed or support a reproducibility check.
+
+**Boundary:** completed error records are retained and skipped on resume. Failures before the run store exists may have only a CLI error; not every possible startup failure produces a manifest.
+
+## Stage six independent correctness and package checks
+
+**Added:** [offline tests](../tests/test_baselines.py), an editable package and [CI configuration](../.github/workflows/baselines.yml).
+
+The seventeen test methods exercise contracts and mathematics without downloading language models. An explicitly labeled fake backend tests orchestration; it is unavailable as an experimental CLI mode.
+
+The package installed locally without downloads. A configured CI workflow is not evidence of a completed remote CI run.
+
+**Why:** a real model can produce plausible answers while masking a wrong objective or metric. Mathematical and interface checks need independent expected outcomes.
+
+## Stage seven the real development run
+
+**Experiment date:** November 4 2026. **Run:** baseline_dev_001.
+
+MiniLM and Qwen ran locally on CPU with four PyTorch threads. There were three development questions and two methods per question. All six records succeeded with exactly five selected passages and no recorded embedding truncation or output-limit hit.
+
+Both methods obtained answer EM/F1 of 0.3333. MILP obtained lower energy on each instance and higher average annotated document recall. Context-token consumption differed, so this was a fixed-count experiment rather than a token-matched comparison.
+
+**What this established:** the complete baseline execution path works and exposes optimization, evidence and answer quality as different measurements.
+
+**What remains unestablished:** general superiority, statistical significance, corpus-scale retrieval benefits, a novel graph method and a quantum advantage.
+
+## Stage eight audit and objective documentation
+
+**Documentation and audit date:** November 9 2026.
+
+The saved objective energies and answer/evidence metrics were recomputed against the recorded coefficients and unchanged references. Dataset and qrag source hashes matched the saved run. The seventeen offline tests passed again.
+
+One question had a semantic near-match rejected by token scoring. Another asked for a film but recorded a person as its answer; the earlier investigation located the same inconsistency in the cached upstream record. Neither primary label nor scoring rule was silently altered.
+
+Added the objective progress report, compact evidence snapshot and detailed companion. No new model inference result is implied by this documentation work.
+
+## Decisions and alternatives
+
+| Decision | Reason | Consequence or limitation |
+| --- | --- | --- |
+| Use supplied pools first | Isolates context selection | Does not evaluate corpus search |
+| Separate labels in data objects | Reduces accidental answer leakage | Still requires split and contamination checks |
+| Start with exact-count budgets | Removes passage-count imbalance | Token lengths remain unequal |
+| Use native MILP count constraints | Gives a strong checkable classical reference | Quantum encodings still require separate work |
+| Use continuous product auxiliaries | Exact with binary original variables | The continuous relaxation allows more points |
+| Keep original context ordering | Controls a generation variable | Order sensitivity remains an experimental question |
+| Fail overlong inputs visibly | Avoids hidden representation loss | Chunking is required for larger runs |
+| Use JSON artifacts before tracking infrastructure | Keeps individual outcomes auditable | Rich experiment dashboards remain later work |
+| Preserve problematic references in primary scoring | Avoids result-driven label changes | Annotation errors must be reported separately |
+
+## Status against the implementation plan
+
+| Phase | Current status | Principal gap |
+| --- | --- | --- |
+| A reproducibility and research protocol | Partial | Literature matrix, contribution assessment, fuller profiling and full dependency lock |
+| B data and answer evaluation | Partial | Fresh frozen splits, source mappings and diagnostic experiments |
+| C retrieval and caching | Started | Chunking, cache, index, retrieval baselines and token-budget mode |
+| D classical optimization and evidence model | Partial | Other classical selectors, token constraints and graph features |
+| E QAOA integration and resources | Pending beyond legacy wrapper | Shared-problem quantum experiments and full cost accounting |
+| F candidate sparsification method | Pending | Method, generic comparisons and development ablations |
+| G frozen evaluation | Pending | Multi-dataset controlled runs and uncertainty analysis |
+| H manuscript and demonstration | Pending beyond progress documentation | Complete paper, research figures and demonstration |
+| I submission package | Pending | Reviewed manuscript and reproducible release |
+
+No complete formal phase A–I is claimed merely because the first working baseline exists.
+
+## Next dependency sequence
+
+1. Complete the structured prior-work comparison and make the novelty hypothesis explicit.
+2. Finalize data provenance, frozen splits and diagnostic evaluation.
+3. Add token-aware chunking, source mappings and persistent embedding caching.
+4. Implement token-budget selection and additional classical comparisons.
+5. Add graph-derived features and evaluate their contribution classically.
+6. Integrate QAOA with the same problems, constraints and resource reporting.
+7. Evaluate the candidate sparsifier before freezing final experiments.
+
+The [implementation plan](IMPLEMENTATION_PLAN.md) contains the full backlog. Updating this sequence should record what actually changed, why it changed and which artifact verifies it, rather than marking work complete because a planned date has passed.

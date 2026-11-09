@@ -1,0 +1,350 @@
+{
+  "artifact_audit_date": "2026-11-09",
+  "artifact_sha256": {
+    "manifest.json": "7c6e960e49fbc6695a0a45b060fd96a5af4709f18dd4303c0117dea934a9b3ca",
+    "predictions.jsonl": "1e01ffed79027f49a8852dab829136b8e2b3a272e9c3fac01dd67c94629b11a1",
+    "summary.json": "f518f1f09aaa66a78f14a8e8d48ac8b0b43e3ac3b9465acacc72e6b54ac0209b"
+  },
+  "backend": {
+    "device": "cpu",
+    "dtype": "float32",
+    "embedding_snapshot": "sentence-transformers/all-MiniLM-L6-v2@1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+    "generator_snapshot": "Qwen/Qwen2.5-1.5B-Instruct@989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+    "gpu": null,
+    "kind": "local_huggingface_models",
+    "threads": 4
+  },
+  "checks": [
+    "dataset and current package source hashes match recorded run",
+    "six unique successful method/question records",
+    "exactly five selected documents in each record",
+    "objective energies recomputed from saved coefficients",
+    "answer and document metrics recomputed against unchanged reference labels",
+    "aggregate metrics recomputed from question records"
+  ],
+  "config": {
+    "alpha": 1.0,
+    "beta": 0.2,
+    "dataset": "data/processed/dev_set.json",
+    "device": "cpu",
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "embedding_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+    "embedding_truncation": "error",
+    "generator_model": "Qwen/Qwen2.5-1.5B-Instruct",
+    "generator_revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+    "k": 5,
+    "limit": 3,
+    "local_files_only": true,
+    "max_input_tokens": 4096,
+    "max_new_tokens": 32,
+    "seed": 42,
+    "short_pool_policy": "use_all",
+    "solver_time_limit": 10.0,
+    "threads": 4
+  },
+  "dataset_sha256": "c4ade34cb2c5c9a9a7b95db26f25a30212741c0aa5fa645782c93b455bdc4ad0",
+  "environment": {
+    "packages": {
+      "huggingface-hub": "1.33.0",
+      "numpy": "2.5.3",
+      "safetensors": "0.8.0",
+      "scipy": "1.18.1",
+      "sentence-transformers": "6.1.0",
+      "tokenizers": "0.23.2",
+      "torch": "2.14.0+cu132",
+      "transformers": "5.17.0"
+    },
+    "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.43",
+    "python": "3.14.4"
+  },
+  "experiment_date": "2026-11-04",
+  "invocations": [
+    {
+      "ended_at": "2026-11-04T18:10:08.889193+00:00",
+      "preparation": {
+        "document_embedding_cache": "not_implemented",
+        "embedding_max_sequence_tokens": 256,
+        "generator_input_limit": 4096,
+        "model_load_seconds": 4.720611332999397
+      },
+      "started_at": "2026-11-04T18:09:07.572445+00:00",
+      "wall_seconds": 61.31675117300256
+    }
+  ],
+  "question_records": [
+    {
+      "context_tokens": 655,
+      "energy": -1.3171995729207993,
+      "generation_seconds": 9.610706690997176,
+      "hit_output_limit": false,
+      "input_tokens": 736,
+      "method": "top_k",
+      "metrics": {
+        "all_supporting_documents": 1.0,
+        "answer_em": 1.0,
+        "answer_f1": 1.0,
+        "answer_precision": 1.0,
+        "answer_recall": 1.0,
+        "document_precision": 0.4,
+        "document_recall": 1.0
+      },
+      "optimal": false,
+      "prediction": "Rosie Mac",
+      "question": "Who was the body double for Emilia Clarke playing Daenerys Targaryen in Game of Thrones?",
+      "question_id": "5abed9f45542994516f4545a",
+      "reference_answer": "Rosie Mac",
+      "selected_count": 5,
+      "selected_ids": [
+        "5abed9f45542994516f4545a:d0",
+        "5abed9f45542994516f4545a:d2",
+        "5abed9f45542994516f4545a:d5",
+        "5abed9f45542994516f4545a:d6",
+        "5abed9f45542994516f4545a:d7"
+      ],
+      "selected_titles": [
+        "List of A Song of Ice and Fire characters",
+        "A Game of Thrones",
+        "Rosie Mac",
+        "Stormborn",
+        "Daenerys Targaryen"
+      ],
+      "solver_status": "ranking",
+      "truncated_embedding_positions": []
+    },
+    {
+      "context_tokens": 754,
+      "energy": -1.8427020746748894,
+      "generation_seconds": 9.989594889997534,
+      "hit_output_limit": false,
+      "input_tokens": 835,
+      "method": "milp",
+      "metrics": {
+        "all_supporting_documents": 1.0,
+        "answer_em": 1.0,
+        "answer_f1": 1.0,
+        "answer_precision": 1.0,
+        "answer_recall": 1.0,
+        "document_precision": 0.4,
+        "document_recall": 1.0
+      },
+      "optimal": true,
+      "prediction": "Rosie Mac",
+      "question": "Who was the body double for Emilia Clarke playing Daenerys Targaryen in Game of Thrones?",
+      "question_id": "5abed9f45542994516f4545a",
+      "reference_answer": "Rosie Mac",
+      "selected_count": 5,
+      "selected_ids": [
+        "5abed9f45542994516f4545a:d1",
+        "5abed9f45542994516f4545a:d4",
+        "5abed9f45542994516f4545a:d5",
+        "5abed9f45542994516f4545a:d6",
+        "5abed9f45542994516f4545a:d7"
+      ],
+      "selected_titles": [
+        "Ted Mapes",
+        "Julie Wagner",
+        "Rosie Mac",
+        "Stormborn",
+        "Daenerys Targaryen"
+      ],
+      "solver_status": "optimal",
+      "truncated_embedding_positions": []
+    },
+    {
+      "context_tokens": 577,
+      "energy": -1.6571019738912582,
+      "generation_seconds": 7.890082559999428,
+      "hit_output_limit": false,
+      "input_tokens": 656,
+      "method": "top_k",
+      "metrics": {
+        "all_supporting_documents": 0.0,
+        "answer_em": 0.0,
+        "answer_f1": 0.0,
+        "answer_precision": 0.0,
+        "answer_recall": 0.0,
+        "document_precision": 0.2,
+        "document_recall": 0.5
+      },
+      "optimal": false,
+      "prediction": "Romanticism",
+      "question": "In what literary movement was the nineteenth century writer featured in Alicia Ramsey's historical play a leading figure?",
+      "question_id": "5ab1dd6c5542993be8fa9860",
+      "reference_answer": "Romantic",
+      "selected_count": 5,
+      "selected_ids": [
+        "5ab1dd6c5542993be8fa9860:d0",
+        "5ab1dd6c5542993be8fa9860:d2",
+        "5ab1dd6c5542993be8fa9860:d4",
+        "5ab1dd6c5542993be8fa9860:d5",
+        "5ab1dd6c5542993be8fa9860:d8"
+      ],
+      "selected_titles": [
+        "Byron (play)",
+        "James Malcolm Rymer",
+        "Rudolph de Cordova",
+        "J. G. M. Ramsey",
+        "A Prince of Lovers"
+      ],
+      "solver_status": "ranking",
+      "truncated_embedding_positions": []
+    },
+    {
+      "context_tokens": 741,
+      "energy": -1.74958255328238,
+      "generation_seconds": 9.113692013001128,
+      "hit_output_limit": false,
+      "input_tokens": 820,
+      "method": "milp",
+      "metrics": {
+        "all_supporting_documents": 0.0,
+        "answer_em": 0.0,
+        "answer_f1": 0.0,
+        "answer_precision": 0.0,
+        "answer_recall": 0.0,
+        "document_precision": 0.2,
+        "document_recall": 0.5
+      },
+      "optimal": true,
+      "prediction": "Modernismo",
+      "question": "In what literary movement was the nineteenth century writer featured in Alicia Ramsey's historical play a leading figure?",
+      "question_id": "5ab1dd6c5542993be8fa9860",
+      "reference_answer": "Romantic",
+      "selected_count": 5,
+      "selected_ids": [
+        "5ab1dd6c5542993be8fa9860:d0",
+        "5ab1dd6c5542993be8fa9860:d1",
+        "5ab1dd6c5542993be8fa9860:d2",
+        "5ab1dd6c5542993be8fa9860:d4",
+        "5ab1dd6c5542993be8fa9860:d5"
+      ],
+      "selected_titles": [
+        "Byron (play)",
+        "Nicaraguan literature",
+        "James Malcolm Rymer",
+        "Rudolph de Cordova",
+        "J. G. M. Ramsey"
+      ],
+      "solver_status": "optimal",
+      "truncated_embedding_positions": []
+    },
+    {
+      "context_tokens": 614,
+      "energy": -1.6630054116249084,
+      "generation_seconds": 8.113333334000345,
+      "hit_output_limit": false,
+      "input_tokens": 690,
+      "method": "top_k",
+      "metrics": {
+        "all_supporting_documents": 0.0,
+        "answer_em": 0.0,
+        "answer_f1": 0.0,
+        "answer_precision": 0.0,
+        "answer_recall": 0.0,
+        "document_precision": 0.2,
+        "document_recall": 0.5
+      },
+      "optimal": false,
+      "prediction": "Jack and Sarah",
+      "question": "Richard E. Grant starred in what 1995 British romantic comedy film?",
+      "question_id": "5adfa059554299025d62a2f8",
+      "reference_answer": "Richard E. Grant",
+      "selected_count": 5,
+      "selected_ids": [
+        "5adfa059554299025d62a2f8:d0",
+        "5adfa059554299025d62a2f8:d2",
+        "5adfa059554299025d62a2f8:d4",
+        "5adfa059554299025d62a2f8:d7",
+        "5adfa059554299025d62a2f8:d9"
+      ],
+      "selected_titles": [
+        "Richard E. Grant's Hotel Secrets",
+        "Love Hurts (2009 film)",
+        "Jack and Sarah",
+        "Four Weddings and a Funeral",
+        "Notting Hill (film)"
+      ],
+      "solver_status": "ranking",
+      "truncated_embedding_positions": []
+    },
+    {
+      "context_tokens": 635,
+      "energy": -1.7273678965866566,
+      "generation_seconds": 8.355705801997829,
+      "hit_output_limit": false,
+      "input_tokens": 711,
+      "method": "milp",
+      "metrics": {
+        "all_supporting_documents": 1.0,
+        "answer_em": 0.0,
+        "answer_f1": 0.0,
+        "answer_precision": 0.0,
+        "answer_recall": 0.0,
+        "document_precision": 0.4,
+        "document_recall": 1.0
+      },
+      "optimal": true,
+      "prediction": "Jack and Sarah",
+      "question": "Richard E. Grant starred in what 1995 British romantic comedy film?",
+      "question_id": "5adfa059554299025d62a2f8",
+      "reference_answer": "Richard E. Grant",
+      "selected_count": 5,
+      "selected_ids": [
+        "5adfa059554299025d62a2f8:d0",
+        "5adfa059554299025d62a2f8:d2",
+        "5adfa059554299025d62a2f8:d4",
+        "5adfa059554299025d62a2f8:d5",
+        "5adfa059554299025d62a2f8:d9"
+      ],
+      "selected_titles": [
+        "Richard E. Grant's Hotel Secrets",
+        "Love Hurts (2009 film)",
+        "Jack and Sarah",
+        "Richard E. Grant",
+        "Notting Hill (film)"
+      ],
+      "solver_status": "optimal",
+      "truncated_embedding_positions": []
+    }
+  ],
+  "run_id": "baseline_dev_001",
+  "publication_note": "Machine-specific model-cache paths are replaced with model identifiers and immutable revisions in this public snapshot. Artifact hashes identify the unchanged original local run files, not this derived snapshot. Experimental outcomes are unchanged.",
+  "scope": "three previously inspected development questions; no superiority inference",
+  "source_sha256": "57dbfef09ad73b549c11ea17490deb3a121276fe4983998657ade6145fce9e41",
+  "summary": {
+    "methods": {
+      "milp": {
+        "all_supporting_documents_successful_only": 0.6666666666666666,
+        "answer_em_all_questions": 0.3333333333333333,
+        "answer_f1_all_questions": 0.3333333333333333,
+        "document_recall_successful_only": 0.8333333333333334,
+        "failed": 0,
+        "mean_context_tokens_successful_only": 710.0,
+        "mean_generation_seconds_successful_only": 9.152997568332163,
+        "mean_input_tokens_successful_only": 788.6666666666666,
+        "mean_selected_count_successful_only": 5.0,
+        "questions": 3,
+        "successful": 3
+      },
+      "top_k": {
+        "all_supporting_documents_successful_only": 0.3333333333333333,
+        "answer_em_all_questions": 0.3333333333333333,
+        "answer_f1_all_questions": 0.3333333333333333,
+        "document_recall_successful_only": 0.6666666666666666,
+        "failed": 0,
+        "mean_context_tokens_successful_only": 615.3333333333334,
+        "mean_generation_seconds_successful_only": 8.53804086166565,
+        "mean_input_tokens_successful_only": 694.0,
+        "mean_selected_count_successful_only": 5.0,
+        "questions": 3,
+        "successful": 3
+      }
+    },
+    "scope": "development_smoke_run"
+  },
+  "test_verification": {
+    "command": "venv/bin/python -m unittest discover -s tests -v",
+    "date": "2026-11-09",
+    "tests_passed": 17
+  }
+}
