@@ -1,0 +1,3486 @@
+{
+  "cost_boundary": "QAOA additionally uses up to 64 exact-expectation objective evaluations. Uniform feasible draws require no angle training. Counts compare final draws, not equal total computation.",
+  "rows": [
+    {
+      "mixer": "penalty",
+      "n": 8,
+      "qaoa_expected_gap_given_feasible": {
+        "mean": 0.26701100184213855,
+        "question_bootstrap": {
+          "ci95": [
+            0.22605127896545385,
+            0.31280263225524096
+          ],
+          "mean_difference": 0.26701100184213855,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_minus_uniform_optimum_probability": {
+        "ci95": [
+          -0.013985754778451265,
+          -0.01334448980828748
+        ],
+        "mean_difference": -0.013657453132440702,
+        "method": "paired question bootstrap; solver repeats averaged within question",
+        "questions": 20,
+        "resamples": 10000,
+        "seed": 20261110
+      },
+      "qaoa_no_feasible_probability": {
+        "mean": 0.7749648934601002,
+        "question_bootstrap": {
+          "ci95": [
+            0.7609835985046329,
+            0.7897953470518019
+          ],
+          "mean_difference": 0.7749648934601003,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_optimum_probability": {
+        "mean": 0.00419968972470215,
+        "question_bootstrap": {
+          "ci95": [
+            0.003871388078691589,
+            0.004512653048855379
+          ],
+          "mean_difference": 0.00419968972470215,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "questions": 20,
+      "samples": 1,
+      "uniform_expected_gap": {
+        "mean": 0.2713271332629692,
+        "question_bootstrap": {
+          "ci95": [
+            0.22920699793611554,
+            0.3182103693245272
+          ],
+          "mean_difference": 0.27132713326296926,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "uniform_optimum_probability": {
+        "mean": 0.017857142857142856,
+        "question_bootstrap": {
+          "ci95": [
+            0.017857142857142856,
+            0.017857142857142856
+          ],
+          "mean_difference": 0.017857142857142856,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      }
+    },
+    {
+      "mixer": "penalty",
+      "n": 8,
+      "qaoa_expected_gap_given_feasible": {
+        "mean": 0.1383011317573078,
+        "question_bootstrap": {
+          "ci95": [
+            0.11744836147055797,
+            0.16225612547853785
+          ],
+          "mean_difference": 0.1383011317573078,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_minus_uniform_optimum_probability": {
+        "ci95": [
+          -0.19045668912867486,
+          -0.18088307335046883
+        ],
+        "mean_difference": -0.18554479001198937,
+        "method": "paired question bootstrap; solver repeats averaged within question",
+        "questions": 20,
+        "resamples": 10000,
+        "seed": 20261110
+      },
+      "qaoa_no_feasible_probability": {
+        "mean": 0.03418019017094755,
+        "question_bootstrap": {
+          "ci95": [
+            0.01830155953352804,
+            0.0570240010973342
+          ],
+          "mean_difference": 0.03418019017094755,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_optimum_probability": {
+        "mean": 0.06491558032956712,
+        "question_bootstrap": {
+          "ci95": [
+            0.06000368121288162,
+            0.06957729699108767
+          ],
+          "mean_difference": 0.06491558032956711,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "questions": 20,
+      "samples": 16,
+      "uniform_expected_gap": {
+        "mean": 0.042489000714051636,
+        "question_bootstrap": {
+          "ci95": [
+            0.034778941605735886,
+            0.05105149076620569
+          ],
+          "mean_difference": 0.042489000714051636,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "uniform_optimum_probability": {
+        "mean": 0.2504603703415565,
+        "question_bootstrap": {
+          "ci95": [
+            0.25046037034155655,
+            0.25046037034155655
+          ],
+          "mean_difference": 0.25046037034155655,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      }
+    },
+    {
+      "mixer": "penalty",
+      "n": 8,
+      "qaoa_expected_gap_given_feasible": {
+        "mean": 0.0502411918196504,
+        "question_bootstrap": {
+          "ci95": [
+            0.0410559275919425,
+            0.06043126189797096
+          ],
+          "mean_difference": 0.0502411918196504,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_minus_uniform_optimum_probability": {
+        "ci95": [
+          -0.466966247109881,
+          -0.4361029903668148
+        ],
+        "mean_difference": -0.4509939621165369,
+        "method": "paired question bootstrap; solver repeats averaged within question",
+        "questions": 20,
+        "resamples": 10000,
+        "seed": 20261110
+      },
+      "qaoa_no_feasible_probability": {
+        "mean": 0.0015263703997644938,
+        "question_bootstrap": {
+          "ci95": [
+            2.848275282653541e-07,
+            0.004173797667642705
+          ],
+          "mean_difference": 0.0015263703997644936,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_optimum_probability": {
+        "mean": 0.2333759478271352,
+        "question_bootstrap": {
+          "ci95": [
+            0.21740366283379103,
+            0.24826691957685723
+          ],
+          "mean_difference": 0.2333759478271352,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "questions": 20,
+      "samples": 64,
+      "uniform_expected_gap": {
+        "mean": 0.008362822787346468,
+        "question_bootstrap": {
+          "ci95": [
+            0.0065131669490605705,
+            0.010229557745186144
+          ],
+          "mean_difference": 0.008362822787346468,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "uniform_optimum_probability": {
+        "mean": 0.6843699099436721,
+        "question_bootstrap": {
+          "ci95": [
+            0.6843699099436722,
+            0.6843699099436722
+          ],
+          "mean_difference": 0.6843699099436722,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      }
+    },
+    {
+      "mixer": "penalty",
+      "n": 8,
+      "qaoa_expected_gap_given_feasible": {
+        "mean": 0.010990427385476901,
+        "question_bootstrap": {
+          "ci95": [
+            0.008193448566712997,
+            0.01430068746338116
+          ],
+          "mean_difference": 0.010990427385476901,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_minus_uniform_optimum_probability": {
+        "ci95": [
+          -0.38109564513604793,
+          -0.32216061132453566
+        ],
+        "mean_difference": -0.3494926243856923,
+        "method": "paired question bootstrap; solver repeats averaged within question",
+        "questions": 20,
+        "resamples": 10000,
+        "seed": 20261110
+      },
+      "qaoa_no_feasible_probability": {
+        "mean": 3.4787812014123806e-07,
+        "question_bootstrap": {
+          "ci95": [
+            4.820077606612529e-25,
+            1.037895231331761e-06
+          ],
+          "mean_difference": 3.4787812014123806e-07,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_optimum_probability": {
+        "mean": 0.6405827622478236,
+        "question_bootstrap": {
+          "ci95": [
+            0.608979741497468,
+            0.6679147753089804
+          ],
+          "mean_difference": 0.6405827622478237,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "questions": 20,
+      "samples": 256,
+      "uniform_expected_gap": {
+        "mean": 0.00018881416299839637,
+        "question_bootstrap": {
+          "ci95": [
+            0.00012976697931157827,
+            0.00025271049519593884
+          ],
+          "mean_difference": 0.00018881416299839637,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "uniform_optimum_probability": {
+        "mean": 0.9900753866335159,
+        "question_bootstrap": {
+          "ci95": [
+            0.9900753866335161,
+            0.9900753866335161
+          ],
+          "mean_difference": 0.9900753866335161,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      }
+    },
+    {
+      "mixer": "penalty",
+      "n": 8,
+      "qaoa_expected_gap_given_feasible": {
+        "mean": 0.0007981888126232646,
+        "question_bootstrap": {
+          "ci95": [
+            0.00025646057484822655,
+            0.0016802283300886196
+          ],
+          "mean_difference": 0.0007981888126232645,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_minus_uniform_optimum_probability": {
+        "ci95": [
+          -0.05213263572608264,
+          -0.016484522178292993
+        ],
+        "mean_difference": -0.0310829748145365,
+        "method": "paired question bootstrap; solver repeats averaged within question",
+        "questions": 20,
+        "resamples": 10000,
+        "seed": 20261110
+      },
+      "qaoa_no_feasible_probability": {
+        "mean": 2.959811592840822e-21,
+        "question_bootstrap": {
+          "ci95": [
+            1.4297813745132885e-94,
+            8.879434544187161e-21
+          ],
+          "mean_difference": 2.959811592840822e-21,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_optimum_probability": {
+        "mean": 0.9689170154836173,
+        "question_bootstrap": {
+          "ci95": [
+            0.9478673545720712,
+            0.9835154681198608
+          ],
+          "mean_difference": 0.9689170154836171,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "questions": 20,
+      "samples": 1024,
+      "uniform_expected_gap": {
+        "mean": 1.829817741771933e-10,
+        "question_bootstrap": {
+          "ci95": [
+            1.248687331312226e-10,
+            2.4581734425765947e-10
+          ],
+          "mean_difference": 1.829817741771933e-10,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "uniform_optimum_probability": {
+        "mean": 0.9999999902981538,
+        "question_bootstrap": {
+          "ci95": [
+            0.9999999902981538,
+            0.9999999902981538
+          ],
+          "mean_difference": 0.9999999902981538,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      }
+    },
+    {
+      "mixer": "xy",
+      "n": 8,
+      "qaoa_expected_gap_given_feasible": {
+        "mean": 0.20269467088586687,
+        "question_bootstrap": {
+          "ci95": [
+            0.16093124385074672,
+            0.25115289252155754
+          ],
+          "mean_difference": 0.20269467088586687,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_minus_uniform_optimum_probability": {
+        "ci95": [
+          -0.01754224208455884,
+          -0.009915606241683072
+        ],
+        "mean_difference": -0.014286670951448218,
+        "method": "paired question bootstrap; solver repeats averaged within question",
+        "questions": 20,
+        "resamples": 10000,
+        "seed": 20261110
+      },
+      "qaoa_no_feasible_probability": {
+        "mean": 3.3491727909525555e-16,
+        "question_bootstrap": {
+          "ci95": [
+            2.0169051614023675e-16,
+            4.903485025427774e-16
+          ],
+          "mean_difference": 3.3491727909525555e-16,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_optimum_probability": {
+        "mean": 0.0035704719056946373,
+        "question_bootstrap": {
+          "ci95": [
+            0.0003149007725840207,
+            0.007941536615459786
+          ],
+          "mean_difference": 0.0035704719056946373,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "questions": 20,
+      "samples": 1,
+      "uniform_expected_gap": {
+        "mean": 0.2713271332629692,
+        "question_bootstrap": {
+          "ci95": [
+            0.22920699793611554,
+            0.3182103693245272
+          ],
+          "mean_difference": 0.27132713326296926,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "uniform_optimum_probability": {
+        "mean": 0.017857142857142856,
+        "question_bootstrap": {
+          "ci95": [
+            0.017857142857142856,
+            0.017857142857142856
+          ],
+          "mean_difference": 0.017857142857142856,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      }
+    },
+    {
+      "mixer": "xy",
+      "n": 8,
+      "qaoa_expected_gap_given_feasible": {
+        "mean": 0.1556182353949607,
+        "question_bootstrap": {
+          "ci95": [
+            0.12087721685268098,
+            0.19414052673903157
+          ],
+          "mean_difference": 0.15561823539496072,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_minus_uniform_optimum_probability": {
+        "ci95": [
+          -0.24557444722025742,
+          -0.17674389945567132
+        ],
+        "mean_difference": -0.2151556539625726,
+        "method": "paired question bootstrap; solver repeats averaged within question",
+        "questions": 20,
+        "resamples": 10000,
+        "seed": 20261110
+      },
+      "qaoa_no_feasible_probability": {
+        "mean": 4.6135589807193176e-238,
+        "question_bootstrap": {
+          "ci95": [
+            5.191884945769236e-240,
+            1.3423061178731586e-237
+          ],
+          "mean_difference": 4.613558980719318e-238,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_optimum_probability": {
+        "mean": 0.035304716378983886,
+        "question_bootstrap": {
+          "ci95": [
+            0.004885923121299115,
+            0.0737164708858852
+          ],
+          "mean_difference": 0.03530471637898389,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "questions": 20,
+      "samples": 16,
+      "uniform_expected_gap": {
+        "mean": 0.042489000714051636,
+        "question_bootstrap": {
+          "ci95": [
+            0.034778941605735886,
+            0.05105149076620569
+          ],
+          "mean_difference": 0.042489000714051636,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "uniform_optimum_probability": {
+        "mean": 0.2504603703415565,
+        "question_bootstrap": {
+          "ci95": [
+            0.25046037034155655,
+            0.25046037034155655
+          ],
+          "mean_difference": 0.25046037034155655,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      }
+    },
+    {
+      "mixer": "xy",
+      "n": 8,
+      "qaoa_expected_gap_given_feasible": {
+        "mean": 0.1436303797403068,
+        "question_bootstrap": {
+          "ci95": [
+            0.108062425896106,
+            0.18180718834947374
+          ],
+          "mean_difference": 0.1436303797403068,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_minus_uniform_optimum_probability": {
+        "ci95": [
+          -0.6679887214563568,
+          -0.5671275428031092
+        ],
+        "mean_difference": -0.6228057526871462,
+        "method": "paired question bootstrap; solver repeats averaged within question",
+        "questions": 20,
+        "resamples": 10000,
+        "seed": 20261110
+      },
+      "qaoa_no_feasible_probability": {
+        "mean": 0.0,
+        "question_bootstrap": {
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "mean_difference": 0.0,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_optimum_probability": {
+        "mean": 0.06156415725652593,
+        "question_bootstrap": {
+          "ci95": [
+            0.016381188487315373,
+            0.11724236714056291
+          ],
+          "mean_difference": 0.06156415725652592,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "questions": 20,
+      "samples": 64,
+      "uniform_expected_gap": {
+        "mean": 0.008362822787346468,
+        "question_bootstrap": {
+          "ci95": [
+            0.0065131669490605705,
+            0.010229557745186144
+          ],
+          "mean_difference": 0.008362822787346468,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "uniform_optimum_probability": {
+        "mean": 0.6843699099436721,
+        "question_bootstrap": {
+          "ci95": [
+            0.6843699099436722,
+            0.6843699099436722
+          ],
+          "mean_difference": 0.6843699099436722,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      }
+    },
+    {
+      "mixer": "xy",
+      "n": 8,
+      "qaoa_expected_gap_given_feasible": {
+        "mean": 0.1382010579753414,
+        "question_bootstrap": {
+          "ci95": [
+            0.10199725873045082,
+            0.17659324818536887
+          ],
+          "mean_difference": 0.13820105797534138,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_minus_uniform_optimum_probability": {
+        "ci95": [
+          -0.958330236885228,
+          -0.8309043294685383
+        ],
+        "mean_difference": -0.9004037871678185,
+        "method": "paired question bootstrap; solver repeats averaged within question",
+        "questions": 20,
+        "resamples": 10000,
+        "seed": 20261110
+      },
+      "qaoa_no_feasible_probability": {
+        "mean": 0.0,
+        "question_bootstrap": {
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "mean_difference": 0.0,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_optimum_probability": {
+        "mean": 0.08967159946569735,
+        "question_bootstrap": {
+          "ci95": [
+            0.031745149748288036,
+            0.1591710571649776
+          ],
+          "mean_difference": 0.08967159946569733,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "questions": 20,
+      "samples": 256,
+      "uniform_expected_gap": {
+        "mean": 0.00018881416299839637,
+        "question_bootstrap": {
+          "ci95": [
+            0.00012976697931157827,
+            0.00025271049519593884
+          ],
+          "mean_difference": 0.00018881416299839637,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "uniform_optimum_probability": {
+        "mean": 0.9900753866335159,
+        "question_bootstrap": {
+          "ci95": [
+            0.9900753866335161,
+            0.9900753866335161
+          ],
+          "mean_difference": 0.9900753866335161,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      }
+    },
+    {
+      "mixer": "xy",
+      "n": 8,
+      "qaoa_expected_gap_given_feasible": {
+        "mean": 0.13429420269444353,
+        "question_bootstrap": {
+          "ci95": [
+            0.09818709607518007,
+            0.1723479197158581
+          ],
+          "mean_difference": 0.13429420269444353,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_minus_uniform_optimum_probability": {
+        "ci95": [
+          -0.9622588279050673,
+          -0.7898868321392088
+        ],
+        "mean_difference": -0.882218905407681,
+        "method": "paired question bootstrap; solver repeats averaged within question",
+        "questions": 20,
+        "resamples": 10000,
+        "seed": 20261110
+      },
+      "qaoa_no_feasible_probability": {
+        "mean": 0.0,
+        "question_bootstrap": {
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "mean_difference": 0.0,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_optimum_probability": {
+        "mean": 0.11778108489047287,
+        "question_bootstrap": {
+          "ci95": [
+            0.03774116239308644,
+            0.2101131581589449
+          ],
+          "mean_difference": 0.11778108489047287,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "questions": 20,
+      "samples": 1024,
+      "uniform_expected_gap": {
+        "mean": 1.829817741771933e-10,
+        "question_bootstrap": {
+          "ci95": [
+            1.248687331312226e-10,
+            2.4581734425765947e-10
+          ],
+          "mean_difference": 1.829817741771933e-10,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "uniform_optimum_probability": {
+        "mean": 0.9999999902981538,
+        "question_bootstrap": {
+          "ci95": [
+            0.9999999902981538,
+            0.9999999902981538
+          ],
+          "mean_difference": 0.9999999902981538,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      }
+    },
+    {
+      "mixer": "penalty",
+      "n": 10,
+      "qaoa_expected_gap_given_feasible": {
+        "mean": 0.3619018401342117,
+        "question_bootstrap": {
+          "ci95": [
+            0.31417986278422383,
+            0.41084907263195974
+          ],
+          "mean_difference": 0.3619018401342117,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_minus_uniform_optimum_probability": {
+        "ci95": [
+          -0.0024550442702317926,
+          -0.0022787664373242673
+        ],
+        "mean_difference": -0.0023730735785249344,
+        "method": "paired question bootstrap; solver repeats averaged within question",
+        "questions": 20,
+        "resamples": 10000,
+        "seed": 20261110
+      },
+      "qaoa_no_feasible_probability": {
+        "mean": 0.6337609668576449,
+        "question_bootstrap": {
+          "ci95": [
+            0.6131449364318263,
+            0.6506694457824174
+          ],
+          "mean_difference": 0.6337609668576449,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_optimum_probability": {
+        "mean": 0.0015951803897290336,
+        "question_bootstrap": {
+          "ci95": [
+            0.0015132096980221758,
+            0.0016894875309297003
+          ],
+          "mean_difference": 0.0015951803897290336,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "questions": 20,
+      "samples": 1,
+      "uniform_expected_gap": {
+        "mean": 0.36743978292720103,
+        "question_bootstrap": {
+          "ci95": [
+            0.31808639450064385,
+            0.41815535724604
+          ],
+          "mean_difference": 0.36743978292720103,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "uniform_optimum_probability": {
+        "mean": 0.003968253968253968,
+        "question_bootstrap": {
+          "ci95": [
+            0.003968253968253968,
+            0.003968253968253968
+          ],
+          "mean_difference": 0.003968253968253968,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      }
+    },
+    {
+      "mixer": "penalty",
+      "n": 10,
+      "qaoa_expected_gap_given_feasible": {
+        "mean": 0.16825300465713416,
+        "question_bootstrap": {
+          "ci95": [
+            0.14593431215187963,
+            0.1901943317999114
+          ],
+          "mean_difference": 0.16825300465713416,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_minus_uniform_optimum_probability": {
+        "ci95": [
+          -0.03777498488229601,
+          -0.03502468858597077
+        ],
+        "mean_difference": -0.03649547545113706,
+        "method": "paired question bootstrap; solver repeats averaged within question",
+        "questions": 20,
+        "resamples": 10000,
+        "seed": 20261110
+      },
+      "qaoa_no_feasible_probability": {
+        "mean": 0.011732264870763065,
+        "question_bootstrap": {
+          "ci95": [
+            0.005901547628004452,
+            0.022498538761327447
+          ],
+          "mean_difference": 0.011732264870763065,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_optimum_probability": {
+        "mean": 0.02514148967837264,
+        "question_bootstrap": {
+          "ci95": [
+            0.02386198024721368,
+            0.026612276543538923
+          ],
+          "mean_difference": 0.025141489678372635,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "questions": 20,
+      "samples": 16,
+      "uniform_expected_gap": {
+        "mean": 0.08763048766321999,
+        "question_bootstrap": {
+          "ci95": [
+            0.07523136373989175,
+            0.10040048332649275
+          ],
+          "mean_difference": 0.08763048766321999,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "uniform_optimum_probability": {
+        "mean": 0.061636965129509697,
+        "question_bootstrap": {
+          "ci95": [
+            0.06163696512950969,
+            0.06163696512950969
+          ],
+          "mean_difference": 0.06163696512950969,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      }
+    },
+    {
+      "mixer": "penalty",
+      "n": 10,
+      "qaoa_expected_gap_given_feasible": {
+        "mean": 0.07537764635651856,
+        "question_bootstrap": {
+          "ci95": [
+            0.06443401925720449,
+            0.08624785056971622
+          ],
+          "mean_difference": 0.07537764635651856,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_minus_uniform_optimum_probability": {
+        "ci95": [
+          -0.13345508839050987,
+          -0.12333726302598363
+        ],
+        "mean_difference": -0.12875873722091905,
+        "method": "paired question bootstrap; solver repeats averaged within question",
+        "questions": 20,
+        "resamples": 10000,
+        "seed": 20261110
+      },
+      "qaoa_no_feasible_probability": {
+        "mean": 0.00018167498579600613,
+        "question_bootstrap": {
+          "ci95": [
+            7.559847410319562e-09,
+            0.0005450068366291295
+          ],
+          "mean_difference": 0.00018167498579600607,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_optimum_probability": {
+        "mean": 0.09591666098758642,
+        "question_bootstrap": {
+          "ci95": [
+            0.09122030981799557,
+            0.1013381351825218
+          ],
+          "mean_difference": 0.09591666098758642,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "questions": 20,
+      "samples": 64,
+      "uniform_expected_gap": {
+        "mean": 0.03525385492278895,
+        "question_bootstrap": {
+          "ci95": [
+            0.02988094251534247,
+            0.04066851362799275
+          ],
+          "mean_difference": 0.03525385492278895,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "uniform_optimum_probability": {
+        "mean": 0.22467539820850546,
+        "question_bootstrap": {
+          "ci95": [
+            0.22467539820850552,
+            0.22467539820850552
+          ],
+          "mean_difference": 0.22467539820850552,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      }
+    },
+    {
+      "mixer": "penalty",
+      "n": 10,
+      "qaoa_expected_gap_given_feasible": {
+        "mean": 0.028483803927679973,
+        "question_bootstrap": {
+          "ci95": [
+            0.023750861077442918,
+            0.032961335747591705
+          ],
+          "mean_difference": 0.028483803927679973,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_minus_uniform_optimum_probability": {
+        "ci95": [
+          -0.33084345103502383,
+          -0.30155969620375467
+        ],
+        "mean_difference": -0.31723648044315506,
+        "method": "paired question bootstrap; solver repeats averaged within question",
+        "questions": 20,
+        "resamples": 10000,
+        "seed": 20261110
+      },
+      "qaoa_no_feasible_probability": {
+        "mean": 2.352570075340262e-10,
+        "question_bootstrap": {
+          "ci95": [
+            2.265460706230129e-32,
+            7.057710226020785e-10
+          ],
+          "mean_difference": 2.352570075340262e-10,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_optimum_probability": {
+        "mean": 0.32140836086376984,
+        "question_bootstrap": {
+          "ci95": [
+            0.3078013902719011,
+            0.3370851451031702
+          ],
+          "mean_difference": 0.32140836086376984,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "questions": 20,
+      "samples": 256,
+      "uniform_expected_gap": {
+        "mean": 0.008243503085495962,
+        "question_bootstrap": {
+          "ci95": [
+            0.006608828044250295,
+            0.009902709859550574
+          ],
+          "mean_difference": 0.008243503085495962,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "uniform_optimum_probability": {
+        "mean": 0.6386448413069249,
+        "question_bootstrap": {
+          "ci95": [
+            0.638644841306925,
+            0.638644841306925
+          ],
+          "mean_difference": 0.638644841306925,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      }
+    },
+    {
+      "mixer": "penalty",
+      "n": 10,
+      "qaoa_expected_gap_given_feasible": {
+        "mean": 0.00607782271158613,
+        "question_bootstrap": {
+          "ci95": [
+            0.004737398382397186,
+            0.0073893005545512605
+          ],
+          "mean_difference": 0.0060778227115861295,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_minus_uniform_optimum_probability": {
+        "ci95": [
+          -0.2617862590680847,
+          -0.22115322706291168
+        ],
+        "mean_difference": -0.24143103814046393,
+        "method": "paired question bootstrap; solver repeats averaged within question",
+        "questions": 20,
+        "resamples": 10000,
+        "seed": 20261110
+      },
+      "qaoa_no_feasible_probability": {
+        "mean": 6.616434616237012e-34,
+        "question_bootstrap": {
+          "ci95": [
+            1.0701800162663317e-125,
+            1.9849303848711038e-33
+          ],
+          "mean_difference": 6.616434616237012e-34,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_optimum_probability": {
+        "mean": 0.7415184651090433,
+        "question_bootstrap": {
+          "ci95": [
+            0.7211632441814225,
+            0.7617962761865955
+          ],
+          "mean_difference": 0.7415184651090432,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "questions": 20,
+      "samples": 1024,
+      "uniform_expected_gap": {
+        "mean": 0.00027691923807710017,
+        "question_bootstrap": {
+          "ci95": [
+            0.00019991307911700035,
+            0.0003582359253289091
+          ],
+          "mean_difference": 0.00027691923807710017,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "uniform_optimum_probability": {
+        "mean": 0.9829495032495073,
+        "question_bootstrap": {
+          "ci95": [
+            0.9829495032495073,
+            0.9829495032495073
+          ],
+          "mean_difference": 0.9829495032495073,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      }
+    },
+    {
+      "mixer": "xy",
+      "n": 10,
+      "qaoa_expected_gap_given_feasible": {
+        "mean": 0.25789969654154504,
+        "question_bootstrap": {
+          "ci95": [
+            0.2086900498648452,
+            0.3165063906641247
+          ],
+          "mean_difference": 0.25789969654154504,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_minus_uniform_optimum_probability": {
+        "ci95": [
+          -0.003961089778036243,
+          -0.0032750350072817793
+        ],
+        "mean_difference": -0.0036985625616367855,
+        "method": "paired question bootstrap; solver repeats averaged within question",
+        "questions": 20,
+        "resamples": 10000,
+        "seed": 20261110
+      },
+      "qaoa_no_feasible_probability": {
+        "mean": 8.548717289613706e-16,
+        "question_bootstrap": {
+          "ci95": [
+            6.013708050052931e-16,
+            1.1250259982868252e-15
+          ],
+          "mean_difference": 8.548717289613707e-16,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_optimum_probability": {
+        "mean": 0.00026969140661718265,
+        "question_bootstrap": {
+          "ci95": [
+            7.164190217725178e-06,
+            0.0006932189609721894
+          ],
+          "mean_difference": 0.00026969140661718265,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "questions": 20,
+      "samples": 1,
+      "uniform_expected_gap": {
+        "mean": 0.36743978292720103,
+        "question_bootstrap": {
+          "ci95": [
+            0.31808639450064385,
+            0.41815535724604
+          ],
+          "mean_difference": 0.36743978292720103,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "uniform_optimum_probability": {
+        "mean": 0.003968253968253968,
+        "question_bootstrap": {
+          "ci95": [
+            0.003968253968253968,
+            0.003968253968253968
+          ],
+          "mean_difference": 0.003968253968253968,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      }
+    },
+    {
+      "mixer": "xy",
+      "n": 10,
+      "qaoa_expected_gap_given_feasible": {
+        "mean": 0.196334496414093,
+        "question_bootstrap": {
+          "ci95": [
+            0.15852909838898063,
+            0.23788978489330329
+          ],
+          "mean_difference": 0.19633449641409303,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_minus_uniform_optimum_probability": {
+        "ci95": [
+          -0.06152253006928874,
+          -0.051318290848902146
+        ],
+        "mean_difference": -0.05758433280339361,
+        "method": "paired question bootstrap; solver repeats averaged within question",
+        "questions": 20,
+        "resamples": 10000,
+        "seed": 20261110
+      },
+      "qaoa_no_feasible_probability": {
+        "mean": 7.613043645573244e-233,
+        "question_bootstrap": {
+          "ci95": [
+            2.678171613483336e-234,
+            2.1885854241212947e-232
+          ],
+          "mean_difference": 7.613043645573245e-233,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_optimum_probability": {
+        "mean": 0.004052632326116082,
+        "question_bootstrap": {
+          "ci95": [
+            0.00011443506022095788,
+            0.010318674280607537
+          ],
+          "mean_difference": 0.004052632326116082,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "questions": 20,
+      "samples": 16,
+      "uniform_expected_gap": {
+        "mean": 0.08763048766321999,
+        "question_bootstrap": {
+          "ci95": [
+            0.07523136373989175,
+            0.10040048332649275
+          ],
+          "mean_difference": 0.08763048766321999,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "uniform_optimum_probability": {
+        "mean": 0.061636965129509697,
+        "question_bootstrap": {
+          "ci95": [
+            0.06163696512950969,
+            0.06163696512950969
+          ],
+          "mean_difference": 0.06163696512950969,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      }
+    },
+    {
+      "mixer": "xy",
+      "n": 10,
+      "qaoa_expected_gap_given_feasible": {
+        "mean": 0.18010911197029295,
+        "question_bootstrap": {
+          "ci95": [
+            0.14353579117790405,
+            0.220908903207799
+          ],
+          "mean_difference": 0.18010911197029297,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_minus_uniform_optimum_probability": {
+        "ci95": [
+          -0.22422010033652726,
+          -0.19109195053030978
+        ],
+        "mean_difference": -0.21115816194569464,
+        "method": "paired question bootstrap; solver repeats averaged within question",
+        "questions": 20,
+        "resamples": 10000,
+        "seed": 20261110
+      },
+      "qaoa_no_feasible_probability": {
+        "mean": 0.0,
+        "question_bootstrap": {
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "mean_difference": 0.0,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_optimum_probability": {
+        "mean": 0.013517236262810865,
+        "question_bootstrap": {
+          "ci95": [
+            0.0004552978719782275,
+            0.03358344767819566
+          ],
+          "mean_difference": 0.013517236262810867,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "questions": 20,
+      "samples": 64,
+      "uniform_expected_gap": {
+        "mean": 0.03525385492278895,
+        "question_bootstrap": {
+          "ci95": [
+            0.02988094251534247,
+            0.04066851362799275
+          ],
+          "mean_difference": 0.03525385492278895,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "uniform_optimum_probability": {
+        "mean": 0.22467539820850546,
+        "question_bootstrap": {
+          "ci95": [
+            0.22467539820850552,
+            0.22467539820850552
+          ],
+          "mean_difference": 0.22467539820850552,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      }
+    },
+    {
+      "mixer": "xy",
+      "n": 10,
+      "qaoa_expected_gap_given_feasible": {
+        "mean": 0.17035527139055623,
+        "question_bootstrap": {
+          "ci95": [
+            0.13349728528694838,
+            0.21229952913194838
+          ],
+          "mean_difference": 0.17035527139055623,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_minus_uniform_optimum_probability": {
+        "ci95": [
+          -0.6368618298016784,
+          -0.5642081460585887
+        ],
+        "mean_difference": -0.6057914839070271,
+        "method": "paired question bootstrap; solver repeats averaged within question",
+        "questions": 20,
+        "resamples": 10000,
+        "seed": 20261110
+      },
+      "qaoa_no_feasible_probability": {
+        "mean": 0.0,
+        "question_bootstrap": {
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "mean_difference": 0.0,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_optimum_probability": {
+        "mean": 0.03285335739989802,
+        "question_bootstrap": {
+          "ci95": [
+            0.0017830115052467,
+            0.07443669524833632
+          ],
+          "mean_difference": 0.03285335739989802,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "questions": 20,
+      "samples": 256,
+      "uniform_expected_gap": {
+        "mean": 0.008243503085495962,
+        "question_bootstrap": {
+          "ci95": [
+            0.006608828044250295,
+            0.009902709859550574
+          ],
+          "mean_difference": 0.008243503085495962,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "uniform_optimum_probability": {
+        "mean": 0.6386448413069249,
+        "question_bootstrap": {
+          "ci95": [
+            0.638644841306925,
+            0.638644841306925
+          ],
+          "mean_difference": 0.638644841306925,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      }
+    },
+    {
+      "mixer": "xy",
+      "n": 10,
+      "qaoa_expected_gap_given_feasible": {
+        "mean": 0.16470673299463,
+        "question_bootstrap": {
+          "ci95": [
+            0.12699611126064855,
+            0.20765375654277746
+          ],
+          "mean_difference": 0.16470673299463,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_minus_uniform_optimum_probability": {
+        "ci95": [
+          -0.9763750098878606,
+          -0.8505040412024949
+        ],
+        "mean_difference": -0.9205418850394341,
+        "method": "paired question bootstrap; solver repeats averaged within question",
+        "questions": 20,
+        "resamples": 10000,
+        "seed": 20261110
+      },
+      "qaoa_no_feasible_probability": {
+        "mean": 0.0,
+        "question_bootstrap": {
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "mean_difference": 0.0,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_optimum_probability": {
+        "mean": 0.0624076182100731,
+        "question_bootstrap": {
+          "ci95": [
+            0.006574493361646609,
+            0.13244546204701232
+          ],
+          "mean_difference": 0.0624076182100731,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "questions": 20,
+      "samples": 1024,
+      "uniform_expected_gap": {
+        "mean": 0.00027691923807710017,
+        "question_bootstrap": {
+          "ci95": [
+            0.00019991307911700035,
+            0.0003582359253289091
+          ],
+          "mean_difference": 0.00027691923807710017,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "uniform_optimum_probability": {
+        "mean": 0.9829495032495073,
+        "question_bootstrap": {
+          "ci95": [
+            0.9829495032495073,
+            0.9829495032495073
+          ],
+          "mean_difference": 0.9829495032495073,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      }
+    },
+    {
+      "mixer": "penalty",
+      "n": 12,
+      "qaoa_expected_gap_given_feasible": {
+        "mean": 0.46233115623897825,
+        "question_bootstrap": {
+          "ci95": [
+            0.40194838049059456,
+            0.5218319948140119
+          ],
+          "mean_difference": 0.4623311562389782,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_minus_uniform_optimum_probability": {
+        "ci95": [
+          -0.0010629320660980953,
+          -0.0010382463337647735
+        ],
+        "mean_difference": -0.0010496377794079648,
+        "method": "paired question bootstrap; solver repeats averaged within question",
+        "questions": 20,
+        "resamples": 10000,
+        "seed": 20261110
+      },
+      "qaoa_no_feasible_probability": {
+        "mean": 0.8212538069029349,
+        "question_bootstrap": {
+          "ci95": [
+            0.8120777529786514,
+            0.8320974081967164
+          ],
+          "mean_difference": 0.8212538069029349,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_optimum_probability": {
+        "mean": 0.0002129884832182978,
+        "question_bootstrap": {
+          "ci95": [
+            0.00019969419652816773,
+            0.00022437992886148935
+          ],
+          "mean_difference": 0.00021298848321829781,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "questions": 20,
+      "samples": 1,
+      "uniform_expected_gap": {
+        "mean": 0.45578171958899677,
+        "question_bootstrap": {
+          "ci95": [
+            0.39792327863841775,
+            0.51332356984562
+          ],
+          "mean_difference": 0.4557817195889968,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "uniform_optimum_probability": {
+        "mean": 0.0012626262626262627,
+        "question_bootstrap": {
+          "ci95": [
+            0.001262626262626263,
+            0.001262626262626263
+          ],
+          "mean_difference": 0.001262626262626263,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      }
+    },
+    {
+      "mixer": "penalty",
+      "n": 12,
+      "qaoa_expected_gap_given_feasible": {
+        "mean": 0.32009390230953105,
+        "question_bootstrap": {
+          "ci95": [
+            0.27783147228501726,
+            0.3616433357428951
+          ],
+          "mean_difference": 0.320093902309531,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_minus_uniform_optimum_probability": {
+        "ci95": [
+          -0.01682196540329531,
+          -0.016427902626951565
+        ],
+        "mean_difference": -0.01660976393600256,
+        "method": "paired question bootstrap; solver repeats averaged within question",
+        "questions": 20,
+        "resamples": 10000,
+        "seed": 20261110
+      },
+      "qaoa_no_feasible_probability": {
+        "mean": 0.0701201767780356,
+        "question_bootstrap": {
+          "ci95": [
+            0.03801762411082465,
+            0.1131972379944006
+          ],
+          "mean_difference": 0.07012017677803559,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_optimum_probability": {
+        "mean": 0.0034020718747398144,
+        "question_bootstrap": {
+          "ci95": [
+            0.0031898704074470583,
+            0.0035839331837908047
+          ],
+          "mean_difference": 0.003402071874739815,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "questions": 20,
+      "samples": 16,
+      "uniform_expected_gap": {
+        "mean": 0.13465832214709347,
+        "question_bootstrap": {
+          "ci95": [
+            0.1176864922402485,
+            0.15162987626505126
+          ],
+          "mean_difference": 0.1346583221470935,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "uniform_optimum_probability": {
+        "mean": 0.02001183581074237,
+        "question_bootstrap": {
+          "ci95": [
+            0.020011835810742375,
+            0.020011835810742375
+          ],
+          "mean_difference": 0.020011835810742375,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      }
+    },
+    {
+      "mixer": "penalty",
+      "n": 12,
+      "qaoa_expected_gap_given_feasible": {
+        "mean": 0.17493164356196844,
+        "question_bootstrap": {
+          "ci95": [
+            0.1477599057535382,
+            0.20500394206948636
+          ],
+          "mean_difference": 0.17493164356196841,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_minus_uniform_optimum_probability": {
+        "ci95": [
+          -0.06498440222992324,
+          -0.06341899540558596
+        ],
+        "mean_difference": -0.06414127917182082,
+        "method": "paired question bootstrap; solver repeats averaged within question",
+        "questions": 20,
+        "resamples": 10000,
+        "seed": 20261110
+      },
+      "qaoa_no_feasible_probability": {
+        "mean": 0.02254553679107387,
+        "question_bootstrap": {
+          "ci95": [
+            8.549164797773808e-06,
+            0.06164051547965802
+          ],
+          "mean_difference": 0.02254553679107387,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_optimum_probability": {
+        "mean": 0.013535119102488653,
+        "question_bootstrap": {
+          "ci95": [
+            0.01269199604438623,
+            0.014257402868723509
+          ],
+          "mean_difference": 0.013535119102488651,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "questions": 20,
+      "samples": 64,
+      "uniform_expected_gap": {
+        "mean": 0.06762784129343848,
+        "question_bootstrap": {
+          "ci95": [
+            0.05848907299053304,
+            0.07697303497628447
+          ],
+          "mean_difference": 0.06762784129343848,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "uniform_optimum_probability": {
+        "mean": 0.07767639827430947,
+        "question_bootstrap": {
+          "ci95": [
+            0.07767639827430946,
+            0.07767639827430946
+          ],
+          "mean_difference": 0.07767639827430946,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      }
+    },
+    {
+      "mixer": "penalty",
+      "n": 12,
+      "qaoa_expected_gap_given_feasible": {
+        "mean": 0.09494360012468976,
+        "question_bootstrap": {
+          "ci95": [
+            0.07513061240852566,
+            0.12094362356661452
+          ],
+          "mean_difference": 0.09494360012468976,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_minus_uniform_optimum_probability": {
+        "ci95": [
+          -0.2266399793420368,
+          -0.2205434613541857
+        ],
+        "mean_difference": -0.22335115077205892,
+        "method": "paired question bootstrap; solver repeats averaged within question",
+        "questions": 20,
+        "resamples": 10000,
+        "seed": 20261110
+      },
+      "qaoa_no_feasible_probability": {
+        "mean": 0.016801216960397023,
+        "question_bootstrap": {
+          "ci95": [
+            1.5775985021879252e-16,
+            0.05014921425689091
+          ],
+          "mean_difference": 0.016801216960397027,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_optimum_probability": {
+        "mean": 0.05299098099306465,
+        "question_bootstrap": {
+          "ci95": [
+            0.049702152423086746,
+            0.05579867041093787
+          ],
+          "mean_difference": 0.05299098099306465,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "questions": 20,
+      "samples": 256,
+      "uniform_expected_gap": {
+        "mean": 0.026514529908462824,
+        "question_bootstrap": {
+          "ci95": [
+            0.022376979058570622,
+            0.030893423303870612
+          ],
+          "mean_difference": 0.026514529908462824,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "uniform_optimum_probability": {
+        "mean": 0.27634213176512357,
+        "question_bootstrap": {
+          "ci95": [
+            0.2763421317651236,
+            0.2763421317651236
+          ],
+          "mean_difference": 0.2763421317651236,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      }
+    },
+    {
+      "mixer": "penalty",
+      "n": 12,
+      "qaoa_expected_gap_given_feasible": {
+        "mean": 0.0472123754515591,
+        "question_bootstrap": {
+          "ci95": [
+            0.03252279705064656,
+            0.07043081352420726
+          ],
+          "mean_difference": 0.0472123754515591,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_minus_uniform_optimum_probability": {
+        "ci95": [
+          -0.5427456173341451,
+          -0.5209319115129406
+        ],
+        "mean_difference": -0.5309058909075379,
+        "method": "paired question bootstrap; solver repeats averaged within question",
+        "questions": 20,
+        "resamples": 10000,
+        "seed": 20261110
+      },
+      "qaoa_no_feasible_probability": {
+        "mean": 0.016192271670751705,
+        "question_bootstrap": {
+          "ci95": [
+            1.3368114892771124e-58,
+            0.04857681410699739
+          ],
+          "mean_difference": 0.016192271670751705,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_optimum_probability": {
+        "mean": 0.19485262279588136,
+        "question_bootstrap": {
+          "ci95": [
+            0.18301289636927429,
+            0.20482660219047874
+          ],
+          "mean_difference": 0.1948526227958814,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "questions": 20,
+      "samples": 1024,
+      "uniform_expected_gap": {
+        "mean": 0.0051394599852473966,
+        "question_bootstrap": {
+          "ci95": [
+            0.003927652898858052,
+            0.006433964133431661
+          ],
+          "mean_difference": 0.0051394599852473966,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "uniform_optimum_probability": {
+        "mean": 0.7257585137034193,
+        "question_bootstrap": {
+          "ci95": [
+            0.725758513703419,
+            0.725758513703419
+          ],
+          "mean_difference": 0.725758513703419,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      }
+    },
+    {
+      "mixer": "xy",
+      "n": 12,
+      "qaoa_expected_gap_given_feasible": {
+        "mean": 0.3396841950961524,
+        "question_bootstrap": {
+          "ci95": [
+            0.2740338070696963,
+            0.41183511629139347
+          ],
+          "mean_difference": 0.33968419509615233,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_minus_uniform_optimum_probability": {
+        "ci95": [
+          -0.001262626262626263,
+          -0.001247006137006951
+        ],
+        "mean_difference": -0.001257419050153456,
+        "method": "paired question bootstrap; solver repeats averaged within question",
+        "questions": 20,
+        "resamples": 10000,
+        "seed": 20261110
+      },
+      "qaoa_no_feasible_probability": {
+        "mean": 6.56881956236551e-16,
+        "question_bootstrap": {
+          "ci95": [
+            3.737750849571361e-16,
+            9.529414294699259e-16
+          ],
+          "mean_difference": 6.56881956236551e-16,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_optimum_probability": {
+        "mean": 5.207212472806697e-06,
+        "question_bootstrap": {
+          "ci95": [
+            9.51997913927952e-23,
+            1.5620125619311983e-05
+          ],
+          "mean_difference": 5.2072124728066975e-06,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "questions": 20,
+      "samples": 1,
+      "uniform_expected_gap": {
+        "mean": 0.45578171958899677,
+        "question_bootstrap": {
+          "ci95": [
+            0.39792327863841775,
+            0.51332356984562
+          ],
+          "mean_difference": 0.4557817195889968,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "uniform_optimum_probability": {
+        "mean": 0.0012626262626262627,
+        "question_bootstrap": {
+          "ci95": [
+            0.001262626262626263,
+            0.001262626262626263
+          ],
+          "mean_difference": 0.001262626262626263,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      }
+    },
+    {
+      "mixer": "xy",
+      "n": 12,
+      "qaoa_expected_gap_given_feasible": {
+        "mean": 0.2800173235556112,
+        "question_bootstrap": {
+          "ci95": [
+            0.23156186580181407,
+            0.33101100349568574
+          ],
+          "mean_difference": 0.28001732355561115,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_minus_uniform_optimum_probability": {
+        "ci95": [
+          -0.020011835810742375,
+          -0.01976220626205352
+        ],
+        "mean_difference": -0.01992861789825359,
+        "method": "paired question bootstrap; solver repeats averaged within question",
+        "questions": 20,
+        "resamples": 10000,
+        "seed": 20261110
+      },
+      "qaoa_no_feasible_probability": {
+        "mean": 2.0000062692784975e-232,
+        "question_bootstrap": {
+          "ci95": [
+            3.2439890031698993e-234,
+            4.736006180473459e-232
+          ],
+          "mean_difference": 2.000006269278497e-232,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_optimum_probability": {
+        "mean": 8.321791248878512e-05,
+        "question_bootstrap": {
+          "ci95": [
+            1.5231966622847232e-21,
+            0.0002496295486888554
+          ],
+          "mean_difference": 8.32179124887851e-05,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "questions": 20,
+      "samples": 16,
+      "uniform_expected_gap": {
+        "mean": 0.13465832214709347,
+        "question_bootstrap": {
+          "ci95": [
+            0.1176864922402485,
+            0.15162987626505126
+          ],
+          "mean_difference": 0.1346583221470935,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "uniform_optimum_probability": {
+        "mean": 0.02001183581074237,
+        "question_bootstrap": {
+          "ci95": [
+            0.020011835810742375,
+            0.020011835810742375
+          ],
+          "mean_difference": 0.020011835810742375,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      }
+    },
+    {
+      "mixer": "xy",
+      "n": 12,
+      "qaoa_expected_gap_given_feasible": {
+        "mean": 0.263342147998386,
+        "question_bootstrap": {
+          "ci95": [
+            0.21682445178396395,
+            0.30988483473056133
+          ],
+          "mean_difference": 0.26334214799838607,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_minus_uniform_optimum_probability": {
+        "ci95": [
+          -0.07767639827430946,
+          -0.076681611332821
+        ],
+        "mean_difference": -0.07734477037547843,
+        "method": "paired question bootstrap; solver repeats averaged within question",
+        "questions": 20,
+        "resamples": 10000,
+        "seed": 20261110
+      },
+      "qaoa_no_feasible_probability": {
+        "mean": 0.0,
+        "question_bootstrap": {
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "mean_difference": 0.0,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_optimum_probability": {
+        "mean": 0.00033162789883103513,
+        "question_bootstrap": {
+          "ci95": [
+            6.092786649138893e-21,
+            0.0009947869414884466
+          ],
+          "mean_difference": 0.00033162789883103513,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "questions": 20,
+      "samples": 64,
+      "uniform_expected_gap": {
+        "mean": 0.06762784129343848,
+        "question_bootstrap": {
+          "ci95": [
+            0.05848907299053304,
+            0.07697303497628447
+          ],
+          "mean_difference": 0.06762784129343848,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "uniform_optimum_probability": {
+        "mean": 0.07767639827430947,
+        "question_bootstrap": {
+          "ci95": [
+            0.07767639827430946,
+            0.07767639827430946
+          ],
+          "mean_difference": 0.07767639827430946,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      }
+    },
+    {
+      "mixer": "xy",
+      "n": 12,
+      "qaoa_expected_gap_given_feasible": {
+        "mean": 0.2532738611236546,
+        "question_bootstrap": {
+          "ci95": [
+            0.20645381359694653,
+            0.29975313519032043
+          ],
+          "mean_difference": 0.2532738611236546,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_minus_uniform_optimum_probability": {
+        "ci95": [
+          -0.2763421317651236,
+          -0.27242194474364123
+        ],
+        "mean_difference": -0.2750352737518517,
+        "method": "paired question bootstrap; solver repeats averaged within question",
+        "questions": 20,
+        "resamples": 10000,
+        "seed": 20261110
+      },
+      "qaoa_no_feasible_probability": {
+        "mean": 0.0,
+        "question_bootstrap": {
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "mean_difference": 0.0,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_optimum_probability": {
+        "mean": 0.001306858013271855,
+        "question_bootstrap": {
+          "ci95": [
+            2.437114659655557e-20,
+            0.003920187021482379
+          ],
+          "mean_difference": 0.001306858013271855,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "questions": 20,
+      "samples": 256,
+      "uniform_expected_gap": {
+        "mean": 0.026514529908462824,
+        "question_bootstrap": {
+          "ci95": [
+            0.022376979058570622,
+            0.030893423303870612
+          ],
+          "mean_difference": 0.026514529908462824,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "uniform_optimum_probability": {
+        "mean": 0.27634213176512357,
+        "question_bootstrap": {
+          "ci95": [
+            0.2763421317651236,
+            0.2763421317651236
+          ],
+          "mean_difference": 0.2763421317651236,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      }
+    },
+    {
+      "mixer": "xy",
+      "n": 12,
+      "qaoa_expected_gap_given_feasible": {
+        "mean": 0.24565501247775315,
+        "question_bootstrap": {
+          "ci95": [
+            0.19761644372727336,
+            0.2934984465535416
+          ],
+          "mean_difference": 0.24565501247775315,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_minus_uniform_optimum_probability": {
+        "ci95": [
+          -0.725758513703419,
+          -0.7109756307351007
+        ],
+        "mean_difference": -0.7208303700318577,
+        "method": "paired question bootstrap; solver repeats averaged within question",
+        "questions": 20,
+        "resamples": 10000,
+        "seed": 20261110
+      },
+      "qaoa_no_feasible_probability": {
+        "mean": 0.0,
+        "question_bootstrap": {
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "mean_difference": 0.0,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_optimum_probability": {
+        "mean": 0.004928143671561505,
+        "question_bootstrap": {
+          "ci95": [
+            9.748458638622229e-20,
+            0.014782882968318567
+          ],
+          "mean_difference": 0.004928143671561505,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "questions": 20,
+      "samples": 1024,
+      "uniform_expected_gap": {
+        "mean": 0.0051394599852473966,
+        "question_bootstrap": {
+          "ci95": [
+            0.003927652898858052,
+            0.006433964133431661
+          ],
+          "mean_difference": 0.0051394599852473966,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "uniform_optimum_probability": {
+        "mean": 0.7257585137034193,
+        "question_bootstrap": {
+          "ci95": [
+            0.725758513703419,
+            0.725758513703419
+          ],
+          "mean_difference": 0.725758513703419,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      }
+    },
+    {
+      "mixer": "penalty",
+      "n": 16,
+      "qaoa_expected_gap_given_feasible": {
+        "mean": 0.5973413866536701,
+        "question_bootstrap": {
+          "ci95": [
+            0.5178841218789642,
+            0.6752282744849653
+          ],
+          "mean_difference": 0.5973413866536701,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_minus_uniform_optimum_probability": {
+        "ci95": [
+          -0.00021641466674431268,
+          -0.00021638535351838818
+        ],
+        "mean_difference": -0.00021639966774514709,
+        "method": "paired question bootstrap; solver repeats averaged within question",
+        "questions": 20,
+        "resamples": 10000,
+        "seed": 20261110
+      },
+      "qaoa_no_feasible_probability": {
+        "mean": 0.9451345549855569,
+        "question_bootstrap": {
+          "ci95": [
+            0.9450752683793107,
+            0.9451962937427822
+          ],
+          "mean_difference": 0.9451345549855569,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_optimum_probability": {
+        "mean": 1.253806119258185e-05,
+        "question_bootstrap": {
+          "ci95": [
+            1.252306219341621e-05,
+            1.2552375419340723e-05
+          ],
+          "mean_difference": 1.2538061192581849e-05,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "questions": 20,
+      "samples": 1,
+      "uniform_expected_gap": {
+        "mean": 0.5970600603120825,
+        "question_bootstrap": {
+          "ci95": [
+            0.5176845896067395,
+            0.6748742448213645
+          ],
+          "mean_difference": 0.5970600603120826,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "uniform_optimum_probability": {
+        "mean": 0.00022893772893772894,
+        "question_bootstrap": {
+          "ci95": [
+            0.00022893772893772894,
+            0.00022893772893772894
+          ],
+          "mean_difference": 0.00022893772893772894,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      }
+    },
+    {
+      "mixer": "penalty",
+      "n": 16,
+      "qaoa_expected_gap_given_feasible": {
+        "mean": 0.5461035929108442,
+        "question_bootstrap": {
+          "ci95": [
+            0.47358424348728756,
+            0.6170602666197125
+          ],
+          "mean_difference": 0.5461035929108442,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_minus_uniform_optimum_probability": {
+        "ci95": [
+          -0.0034563724071100385,
+          -0.0034559034946674973
+        ],
+        "mean_difference": -0.0034561324695636777,
+        "method": "paired question bootstrap; solver repeats averaged within question",
+        "questions": 20,
+        "resamples": 10000,
+        "seed": 20261110
+      },
+      "qaoa_no_feasible_probability": {
+        "mean": 0.4208732211198183,
+        "question_bootstrap": {
+          "ci95": [
+            0.42049386475282724,
+            0.42125998452949476
+          ],
+          "mean_difference": 0.4208732211198182,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_optimum_probability": {
+        "mean": 0.00020058840994452296,
+        "question_bootstrap": {
+          "ci95": [
+            0.00020034847239816273,
+            0.0002008173848407035
+          ],
+          "mean_difference": 0.00020058840994452293,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "questions": 20,
+      "samples": 16,
+      "uniform_expected_gap": {
+        "mean": 0.2255883072596224,
+        "question_bootstrap": {
+          "ci95": [
+            0.1954081138794661,
+            0.2563356954998811
+          ],
+          "mean_difference": 0.22558830725962237,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "uniform_optimum_probability": {
+        "mean": 0.0036567208795082007,
+        "question_bootstrap": {
+          "ci95": [
+            0.003656720879508201,
+            0.003656720879508201
+          ],
+          "mean_difference": 0.003656720879508201,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      }
+    },
+    {
+      "mixer": "penalty",
+      "n": 16,
+      "qaoa_expected_gap_given_feasible": {
+        "mean": 0.41600367159162277,
+        "question_bootstrap": {
+          "ci95": [
+            0.360933639755941,
+            0.46995634130030745
+          ],
+          "mean_difference": 0.4160036715916228,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_minus_uniform_optimum_probability": {
+        "ci95": [
+          -0.013745718000231891,
+          -0.013743843619284091
+        ],
+        "mean_difference": -0.01374475884422317,
+        "method": "paired question bootstrap; solver repeats averaged within question",
+        "questions": 20,
+        "resamples": 10000,
+        "seed": 20261110
+      },
+      "qaoa_no_feasible_probability": {
+        "mean": 0.0504174866818549,
+        "question_bootstrap": {
+          "ci95": [
+            0.05019465181560875,
+            0.050617141957442734
+          ],
+          "mean_difference": 0.0504174866818549,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_optimum_probability": {
+        "mean": 0.0008020904344126352,
+        "question_bootstrap": {
+          "ci95": [
+            0.0008011312784039128,
+            0.0008030056593517115
+          ],
+          "mean_difference": 0.0008020904344126353,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "questions": 20,
+      "samples": 64,
+      "uniform_expected_gap": {
+        "mean": 0.13430276350528866,
+        "question_bootstrap": {
+          "ci95": [
+            0.11544721985041881,
+            0.15376004390490247
+          ],
+          "mean_difference": 0.13430276350528864,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "uniform_optimum_probability": {
+        "mean": 0.014546849278635804,
+        "question_bootstrap": {
+          "ci95": [
+            0.014546849278635804,
+            0.014546849278635804
+          ],
+          "mean_difference": 0.014546849278635804,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      }
+    },
+    {
+      "mixer": "penalty",
+      "n": 16,
+      "qaoa_expected_gap_given_feasible": {
+        "mean": 0.24882926231847738,
+        "question_bootstrap": {
+          "ci95": [
+            0.21573075346220194,
+            0.282212152934337
+          ],
+          "mean_difference": 0.24882926231847735,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_minus_uniform_optimum_probability": {
+        "ci95": [
+          -0.05372967230966118,
+          -0.05372219505157053
+        ],
+        "mean_difference": -0.053725845176686805,
+        "method": "paired question bootstrap; solver repeats averaged within question",
+        "questions": 20,
+        "resamples": 10000,
+        "seed": 20261110
+      },
+      "qaoa_no_feasible_probability": {
+        "mean": 8.581431282033347e-05,
+        "question_bootstrap": {
+          "ci95": [
+            8.396870951722902e-05,
+            8.74535093456626e-05
+          ],
+          "mean_difference": 8.581431282033347e-05,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_optimum_probability": {
+        "mean": 0.003204155298149586,
+        "question_bootstrap": {
+          "ci95": [
+            0.003200328165175204,
+            0.003207805423265852
+          ],
+          "mean_difference": 0.003204155298149586,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "questions": 20,
+      "samples": 256,
+      "uniform_expected_gap": {
+        "mean": 0.07390596206077273,
+        "question_bootstrap": {
+          "ci95": [
+            0.0629517102950323,
+            0.08501040779050847
+          ],
+          "mean_difference": 0.07390596206077273,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "uniform_optimum_probability": {
+        "mean": 0.05693000047483639,
+        "question_bootstrap": {
+          "ci95": [
+            0.05693000047483639,
+            0.05693000047483639
+          ],
+          "mean_difference": 0.05693000047483639,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      }
+    },
+    {
+      "mixer": "penalty",
+      "n": 16,
+      "qaoa_expected_gap_given_feasible": {
+        "mean": 0.14629297773944405,
+        "question_bootstrap": {
+          "ci95": [
+            0.12595762443692976,
+            0.1671695639414779
+          ],
+          "mean_difference": 0.14629297773944405,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_minus_uniform_optimum_probability": {
+        "ci95": [
+          -0.1962669126255999,
+          -0.19623732982205494
+        ],
+        "mean_difference": -0.19625176696778152,
+        "method": "paired question bootstrap; solver repeats averaged within question",
+        "questions": 20,
+        "resamples": 10000,
+        "seed": 20261110
+      },
+      "qaoa_no_feasible_probability": {
+        "mean": 1.4809860103425267e-15,
+        "question_bootstrap": {
+          "ci95": [
+            1.3620608874677095e-15,
+            1.5882896444741298e-15
+          ],
+          "mean_difference": 1.4809860103425267e-15,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_optimum_probability": {
+        "mean": 0.012749627173117409,
+        "question_bootstrap": {
+          "ci95": [
+            0.012734481515299058,
+            0.012764064318844009
+          ],
+          "mean_difference": 0.012749627173117409,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "questions": 20,
+      "samples": 1024,
+      "uniform_expected_gap": {
+        "mean": 0.03221155847545689,
+        "question_bootstrap": {
+          "ci95": [
+            0.026998358281911702,
+            0.037580535507971996
+          ],
+          "mean_difference": 0.03221155847545689,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "uniform_optimum_probability": {
+        "mean": 0.20900139414089894,
+        "question_bootstrap": {
+          "ci95": [
+            0.20900139414089894,
+            0.20900139414089894
+          ],
+          "mean_difference": 0.20900139414089894,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      }
+    },
+    {
+      "mixer": "xy",
+      "n": 16,
+      "qaoa_expected_gap_given_feasible": {
+        "mean": 0.47375067138253074,
+        "question_bootstrap": {
+          "ci95": [
+            0.3966609870369415,
+            0.5510797567418946
+          ],
+          "mean_difference": 0.4737506713825308,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_minus_uniform_optimum_probability": {
+        "ci95": [
+          -0.00022893772893772894,
+          -0.0002289377289374452
+        ],
+        "mean_difference": -0.00022893772893763437,
+        "method": "paired question bootstrap; solver repeats averaged within question",
+        "questions": 20,
+        "resamples": 10000,
+        "seed": 20261110
+      },
+      "qaoa_no_feasible_probability": {
+        "mean": 9.251858538542972e-16,
+        "question_bootstrap": {
+          "ci95": [
+            5.958196898821673e-16,
+            1.2730557349035126e-15
+          ],
+          "mean_difference": 9.251858538542972e-16,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_optimum_probability": {
+        "mean": 9.457544172647895e-17,
+        "question_bootstrap": {
+          "ci95": [
+            1.6529732566950268e-34,
+            2.8372632485726484e-16
+          ],
+          "mean_difference": 9.457544172647895e-17,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "questions": 20,
+      "samples": 1,
+      "uniform_expected_gap": {
+        "mean": 0.5970600603120825,
+        "question_bootstrap": {
+          "ci95": [
+            0.5176845896067395,
+            0.6748742448213645
+          ],
+          "mean_difference": 0.5970600603120826,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "uniform_optimum_probability": {
+        "mean": 0.00022893772893772894,
+        "question_bootstrap": {
+          "ci95": [
+            0.00022893772893772894,
+            0.00022893772893772894
+          ],
+          "mean_difference": 0.00022893772893772894,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      }
+    },
+    {
+      "mixer": "xy",
+      "n": 16,
+      "qaoa_expected_gap_given_feasible": {
+        "mean": 0.38113823412265735,
+        "question_bootstrap": {
+          "ci95": [
+            0.3178050774860331,
+            0.4459172466947027
+          ],
+          "mean_difference": 0.38113823412265735,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_minus_uniform_optimum_probability": {
+        "ci95": [
+          -0.003656720879508201,
+          -0.003656720879503661
+        ],
+        "mean_difference": -0.0036567208795066876,
+        "method": "paired question bootstrap; solver repeats averaged within question",
+        "questions": 20,
+        "resamples": 10000,
+        "seed": 20261110
+      },
+      "qaoa_no_feasible_probability": {
+        "mean": 2.509447925769579e-229,
+        "question_bootstrap": {
+          "ci95": [
+            3.5480161602916383e-233,
+            7.5234383357045e-229
+          ],
+          "mean_difference": 2.5094479257695793e-229,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_optimum_probability": {
+        "mean": 1.5132070676235985e-15,
+        "question_bootstrap": {
+          "ci95": [
+            2.644757210712043e-33,
+            4.5396211977160426e-15
+          ],
+          "mean_difference": 1.5132070676235985e-15,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "questions": 20,
+      "samples": 16,
+      "uniform_expected_gap": {
+        "mean": 0.2255883072596224,
+        "question_bootstrap": {
+          "ci95": [
+            0.1954081138794661,
+            0.2563356954998811
+          ],
+          "mean_difference": 0.22558830725962237,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "uniform_optimum_probability": {
+        "mean": 0.0036567208795082007,
+        "question_bootstrap": {
+          "ci95": [
+            0.003656720879508201,
+            0.003656720879508201
+          ],
+          "mean_difference": 0.003656720879508201,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      }
+    },
+    {
+      "mixer": "xy",
+      "n": 16,
+      "qaoa_expected_gap_given_feasible": {
+        "mean": 0.348545724853123,
+        "question_bootstrap": {
+          "ci95": [
+            0.28946375799509216,
+            0.41086668285941397
+          ],
+          "mean_difference": 0.3485457248531231,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_minus_uniform_optimum_probability": {
+        "ci95": [
+          -0.014546849278635804,
+          -0.014546849278617647
+        ],
+        "mean_difference": -0.01454684927862975,
+        "method": "paired question bootstrap; solver repeats averaged within question",
+        "questions": 20,
+        "resamples": 10000,
+        "seed": 20261110
+      },
+      "qaoa_no_feasible_probability": {
+        "mean": 0.0,
+        "question_bootstrap": {
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "mean_difference": 0.0,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_optimum_probability": {
+        "mean": 6.05282827049357e-15,
+        "question_bootstrap": {
+          "ci95": [
+            1.0579028842848172e-32,
+            1.81584847908617e-14
+          ],
+          "mean_difference": 6.05282827049357e-15,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "questions": 20,
+      "samples": 64,
+      "uniform_expected_gap": {
+        "mean": 0.13430276350528866,
+        "question_bootstrap": {
+          "ci95": [
+            0.11544721985041881,
+            0.15376004390490247
+          ],
+          "mean_difference": 0.13430276350528864,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "uniform_optimum_probability": {
+        "mean": 0.014546849278635804,
+        "question_bootstrap": {
+          "ci95": [
+            0.014546849278635804,
+            0.014546849278635804
+          ],
+          "mean_difference": 0.014546849278635804,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      }
+    },
+    {
+      "mixer": "xy",
+      "n": 16,
+      "qaoa_expected_gap_given_feasible": {
+        "mean": 0.3257448825355355,
+        "question_bootstrap": {
+          "ci95": [
+            0.2692954311867887,
+            0.3864688164936915
+          ],
+          "mean_difference": 0.3257448825355356,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_minus_uniform_optimum_probability": {
+        "ci95": [
+          -0.05693000047483639,
+          -0.05693000047476375
+        ],
+        "mean_difference": -0.056930000474812184,
+        "method": "paired question bootstrap; solver repeats averaged within question",
+        "questions": 20,
+        "resamples": 10000,
+        "seed": 20261110
+      },
+      "qaoa_no_feasible_probability": {
+        "mean": 0.0,
+        "question_bootstrap": {
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "mean_difference": 0.0,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_optimum_probability": {
+        "mean": 2.421131308196109e-14,
+        "question_bootstrap": {
+          "ci95": [
+            4.2316115371392686e-32,
+            7.263393916340724e-14
+          ],
+          "mean_difference": 2.421131308196109e-14,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "questions": 20,
+      "samples": 256,
+      "uniform_expected_gap": {
+        "mean": 0.07390596206077273,
+        "question_bootstrap": {
+          "ci95": [
+            0.0629517102950323,
+            0.08501040779050847
+          ],
+          "mean_difference": 0.07390596206077273,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "uniform_optimum_probability": {
+        "mean": 0.05693000047483639,
+        "question_bootstrap": {
+          "ci95": [
+            0.05693000047483639,
+            0.05693000047483639
+          ],
+          "mean_difference": 0.05693000047483639,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      }
+    },
+    {
+      "mixer": "xy",
+      "n": 16,
+      "qaoa_expected_gap_given_feasible": {
+        "mean": 0.31406509267724064,
+        "question_bootstrap": {
+          "ci95": [
+            0.25848275528275594,
+            0.3745841112133592
+          ],
+          "mean_difference": 0.3140650926772406,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_minus_uniform_optimum_probability": {
+        "ci95": [
+          -0.20900139414089894,
+          -0.20900139414060837
+        ],
+        "mean_difference": -0.20900139414080207,
+        "method": "paired question bootstrap; solver repeats averaged within question",
+        "questions": 20,
+        "resamples": 10000,
+        "seed": 20261110
+      },
+      "qaoa_no_feasible_probability": {
+        "mean": 0.0,
+        "question_bootstrap": {
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "mean_difference": 0.0,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "qaoa_optimum_probability": {
+        "mean": 9.684525232763333e-14,
+        "question_bootstrap": {
+          "ci95": [
+            1.6926446148557075e-31,
+            2.9053575665299586e-13
+          ],
+          "mean_difference": 9.684525232763333e-14,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "questions": 20,
+      "samples": 1024,
+      "uniform_expected_gap": {
+        "mean": 0.03221155847545689,
+        "question_bootstrap": {
+          "ci95": [
+            0.026998358281911702,
+            0.037580535507971996
+          ],
+          "mean_difference": 0.03221155847545689,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      },
+      "uniform_optimum_probability": {
+        "mean": 0.20900139414089894,
+        "question_bootstrap": {
+          "ci95": [
+            0.20900139414089894,
+            0.20900139414089894
+          ],
+          "mean_difference": 0.20900139414089894,
+          "method": "paired question bootstrap; solver repeats averaged within question",
+          "questions": 20,
+          "resamples": 10000,
+          "seed": 20261110
+        }
+      }
+    }
+  ],
+  "scope": "20 development questions, nested candidate sizes, exact trained simulation distributions; no answer labels, held-out claim or hardware advantage"
+}

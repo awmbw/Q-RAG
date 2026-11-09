@@ -30,7 +30,7 @@ data/raw/
 data/processed/
 
 # Results (can get large)
-results/
+/results/
 
 # IDE
 .vscode/
@@ -49,3 +49,6 @@ Thumbs.db
 # Python build artifacts
 build/
 dist/
+
+# Temporary document renderings (curated final exports are tracked separately)
+/tmp/

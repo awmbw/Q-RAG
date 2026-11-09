@@ -1,40 +1,40 @@
 # Quantum RAG research progress and mathematical formulation
 
-**Version 0.4 | Updated November 10 2026**
+**Version 1.0 working edition | Updated November 10 2026**
 
-Current execution updates follow the historical baseline account. Phase A now has a measured GPU environment, research protocol and literature matrix; phases B–I are in progress or pending. The status table below describes the pre-run baseline.
+The research implementation now includes token-safe retrieval, persistent caches/indexes, classical constrained selection, entity-link features, sparsification, actual QAOA simulation, downstream answer evaluation, bounded corpus experiments and a separate local demonstration service. The frozen definitive evaluation is running. Final comparisons will be inserted only after its artifacts pass independent checks.
 
-The current implementation establishes a controlled classical baseline for context selection in retrieval augmented generation. Relevance ranking and a constrained mixed integer linear program (MILP) select from the same candidates, generate actual answers and record answer quality separately from evidence coverage and objective values.
+The study distinguishes three effects: the scoring formulation, the solver's ability to optimize that formulation, and the generator's ability to answer from the resulting passages. It does not assume that lower energy means better evidence or better answers. All quantum execution is simulated on the laptop; no practical quantum advantage or physical-device result is claimed.
 
-The first run completed six method–question executions on three development questions. Both methods selected five passages and achieved answer EM/token F1 of 0.3333. MILP achieved lower objective values on all three instances. This execution check establishes neither general answer superiority nor quantum advantage.
+The historical three-question baseline is retained below, followed by phase-by-phase methods, mathematics, development measurements and decisions. It is an execution check, not the final scientific result. The [technical foundations](TECHNICAL_FOUNDATIONS.md) provide longer derivations and worked examples; this report connects the implemented methods to measured outcomes and limitations.
 
 ## Research objective
 
 The proposed study asks whether question-specific evidence relationships can guide sparsification of the context-selection objective while preserving multi-hop answer quality and reducing compiled QAOA resource costs.
 
-A passage can be topically relevant without supplying a needed fact. Complementary passages may jointly answer a question. The proposed graph model would distinguish these relationships from repeated information.
+A passage can be topically relevant without supplying a needed fact. Complementary passages may jointly answer a question. The implemented graph feature is a transparent entity-link proxy for such relationships, not verified semantic evidence or a guarantee of factual reasoning.
 
 The contribution remains conditional on the literature review and experiments. Prior work covers QUBO evidence selection, passage set selection, graph retrieval and QAOA sparsification [1–4]. Combining those ideas alone does not establish novelty.
 
 ## Implementation status
 
-The implemented flow is supplied candidates → shared MiniLM features → fixed-count ranking or MILP → consistently ordered context → Qwen generation → evaluation and artifacts. Gold annotations enter only the evaluator.
+The implemented flow is supplied or commonly retrieved candidates → token-safe MiniLM features → entity-link coefficients → count/token-constrained selection → consistently ordered context → fixed Qwen generation → evaluation and artifacts. Reference annotations enter only the evaluator. Quantum conditions use count constraints; token-budget quantum encoding is not claimed.
 
 | Phase | Current status | Implemented scope and remaining work |
 | --- | --- | --- |
-| A reproducibility and protocol | Partial | Package, config, manifests, tests and CI workflow exist; full dependency locking, profiling and literature matrix remain |
-| B data and answer evaluation | Partial | Label isolation, answer/document metrics and real generation exist; fresh frozen splits, sentence mappings and diagnostics remain |
-| C retrieval and caching | Started | Fixed-count controls exist; chunking, persistent cache/index, retrieval baselines and token-budget mode remain |
-| D optimization and evidence modeling | Partial | MILP, linearization and exhaustive checks exist; other baselines, token constraints and graph features remain |
-| E QAOA and resources | Legacy wrapper only | Integrated experiments, mapping checks and full circuit accounting remain |
-| F sparsification method | Planned | Method, generic comparisons and ablations remain |
-| G frozen evaluation | Planned | Multi-dataset runs, additional generator and uncertainty analysis remain |
-| H manuscript and demonstration | Planned | Progress documentation exists; full manuscript and demonstration remain |
-| I submission package | Planned | Reviewed manuscript and reproducible release remain |
+| A reproducibility and protocol | Implemented | Measured CUDA environment, pinned model revisions, laptop package snapshot, protocol, 19-source comparison and remote CI |
+| B data and answer evaluation | Implemented | Two frozen dataset splits, source mappings, aliases, official-score agreement and real diagnostics |
+| C retrieval and caching | Implemented | Token-safe chunks, content-addressed embeddings, FAISS/SQLite persistence, lexical/hybrid/reranking baselines |
+| D optimization and evidence modeling | Implemented with scope limits | Signed MILP, token/count budgets, heuristics, entity-link features and provenance; independent semantic graph annotation remains external |
+| E QAOA and resources | Implemented | Ising/spectrum checks, penalty/XY circuits, exact/shot/noisy simulations and complete compilation |
+| F sparsification method | Implemented | Four rules, hard edge budgets, development calibration and negative-result research decision |
+| G frozen evaluation | Running | 18 primary conditions plus separately identified controls; statistical assembly follows completed runs |
+| H manuscript and demonstration | In progress | Editable manuscript, figure tooling, API/dashboard, tests and working container; final results and real-model HTTP benchmark pending |
+| I submission package | In progress | Restoration/audit/export tooling prepared; final reproducible release and external authorship/submission decisions remain |
 
-No complete formal phase A–I is claimed. The first working baseline spans parts of several phases. Earlier exploratory document-recall comparisons used classical optimization and unequal selection sizes; their figures are not directly comparable to the controlled answer evaluation below.
+Implementation status does not establish scientific superiority or publication acceptance. Earlier exploratory document-recall comparisons used classical optimization and unequal selection sizes; their figures are not directly comparable to the controlled answer evaluation. The following initial derivation and three-question result are historical; later phase sections describe their extensions.
 
-## Implemented mathematical formulation
+## Historical baseline formulation and its reusable foundations
 
 For normalized question and passage embeddings u and vᵢ, define relevance and nonnegative redundancy:
 
@@ -42,7 +42,7 @@ $$
 r_i=u^\top v_i,\qquad S_{ij}=\max(v_i^\top v_j,0).
 $$
 
-The current count-constrained selection model minimizes:
+The first count-constrained selection model minimized:
 
 $$
 E(x)=-\alpha\sum_i r_i x_i+\beta\sum_{i<j}S_{ij}x_ix_j,
@@ -60,9 +60,9 @@ $$
 
 With binary x, these inequalities enforce yᵢⱼ = xᵢxⱼ exactly. SciPy/HiGHS solves the resulting linear formulation with the native count constraint [5]. Status, bounds and feasibility distinguish certified optima from limited executions.
 
-Ranking maximizes individual relevance under the same count budget; its selection is additionally scored under the full energy. It is a policy baseline, while a future MILP–QAOA solver comparison must keep the full objective and feasible set fixed.
+Ranking maximizes individual relevance under the same count budget; its selection is additionally scored under the full energy. It is a policy baseline. The later MILP–QAOA comparisons keep the objective and feasible set fixed within each condition.
 
-The proposed graph extension would add a complementarity reward. Token-budget constraints and quantum encodings are not part of the measured run. The legacy QAOA wrapper simulates quantum states; no integrated quantum or hardware result is reported.
+The later graph extension adds a complementarity reward. Token-budget constraints and quantum encodings were absent from this historical six-record run; their actual implementations and measured diagnostics are described in Phases D–F below.
 
 ## Evaluation and experimental controls
 
@@ -124,7 +124,7 @@ Q1 corresponds to 5abed9f45542994516f4545a, Q2 to 5ab1dd6c5542993be8fa9860 and Q
 
 <!-- END VERIFIED BASELINE RESULTS -->
 
-## Interpretation and limitations
+## Historical baseline interpretation and limitations
 
 MILP improved objective values and annotated document recall on this sample without improving aggregate answer EM/F1. Its contexts were longer in tokens despite identical passage counts. A token-budget comparison is needed to isolate that difference.
 
@@ -132,7 +132,7 @@ Q2 illustrates metric sensitivity: Romanticism and Romantic have no exact normal
 
 Three inspected development questions, one seed and one generator cannot establish significance or general superiority. No corpus-scale benefit, novel graph result or quantum advantage has been demonstrated.
 
-## Correctness and reproducibility
+## Historical baseline correctness and reproducibility
 
 Seventeen offline test methods passed again on November 9, covering label isolation, metric edge cases, signed-pair optimization, count boundaries, MILP/exhaustive agreement, solver limits, configuration and resume/failure behavior. The CI workflow exists; a completed remote CI run is not claimed.
 
@@ -140,7 +140,7 @@ The manifest records model revisions, configuration, question IDs, runtime/devic
 
 Full local artifacts are in results/baseline_dev_001. A [compact evidence snapshot](research_report/evidence/baseline_dev_001.json) preserves configuration, artifact hashes and six outcomes. Hashes identify an execution state but do not archive the source, dataset or complete software environment.
 
-## Planned work
+## Backlog recorded after the first baseline
 
 Immediate work includes the structured prior-work comparison, data provenance and frozen splits, token-aware chunking, persistent embeddings and token-budget selection. Further classical baselines will precede graph-feature and QAOA comparisons.
 
@@ -257,3 +257,15 @@ A separate service package now calls the common frozen research library. It prov
 The full CPU container builds successfully from a pinned Python image and resolves both immutable local model snapshots through a read-only model-cache mount. HTTP checks verify the dashboard, health and truthful cold readiness responses. Forty-five local tests pass, including validation, queue-full behavior, failure recording, restart handling and explicit fallback. Real-model HTTP benchmarking is scheduled after the research jobs to avoid competing for model memory. No enabled browser is available for visual dashboard review.
 
 An editable manuscript source and a ReportLab PDF renderer are prepared. Final results and conclusions remain unfilled until the definitive matrix and separately declared controls complete. The secondary controls add a common complete-compiled-gate cap and base-versus-graph QAOA comparison without changing the 18 primary configurations.
+
+## Phase G numerical diagnostic — sampling and preparation
+
+A separate development-only mechanism study completed 480 circuit solves: 20 genuine MuSiQue coefficient instances, four nested candidate counts (8/10/12/16), two encodings and three seeds. It uses exact feasible energies and trained ideal statevector probabilities; it does not generate or evaluate additional answers. [Numerical evidence](research_report/evidence/sampling_coverage.json), [derived table](../paper/results/sampling_coverage.md) and [driver](../scripts/sampling_coverage_study.py) retain the settings and outputs.
+
+If a single draw hits any optimum with probability u, S independent draws hit one with probability 1-(1-u)^S. Uniform feasible draws with n=10,k=5 have 252 possible subsets and approximately 0.9829 optimum coverage after 1,024 draws when the optimum is unique. At n=16,k=5, there are 4,368 subsets and coverage is approximately 0.2090. This is a strong classical control at the small sizes used here, even before comparing solver training cost.
+
+The study exposed a structural limitation in the original circuit. For a computational basis state |x0>, the diagonal cost layer gives exp(-i gamma E(x0))|x0>, which is only a global phase. Later mixing does not make that common factor observable. The original p=1 XY probabilities therefore do not depend on the first cost angle. Optimizing its mixer angle can still depend on the energy coefficients; this is not equivalent to saying its entire output ignores the objective. At p=2, the later cost layer can create relative phases.
+
+This limitation is now explicitly documented and regression-tested. The original primary matrix is retained unchanged. An exploratory [preparation control](../configs/preparation_control.json) adds a fixed pi/4 XY ring sweep before cost evolution, creating a generally nonuniform feasible superposition. Its entire preparation circuit is included in compilation. It uses the same first 50 frozen quantum questions per dataset and fixed existing weights; it does not tune preparation against held-out answers. The extension's source bytes and composite identity are saved independently of the frozen core.
+
+Generic compilation counts are measurements under a stated compiler policy, not minimum required circuit costs. A compiler aware of the original known basis state could remove first-layer diagonal work. The final interpretation must include this limitation and distinguish the prepared control from the preregistered comparison.

@@ -1,10 +1,10 @@
 # Technical foundations and implementation notes
 
-**Version 0.1 | Updated November 9 2026**
+**Version 1.0 working edition | Updated November 10 2026**
 
-This companion explains the mathematics, ML concepts and engineering decisions behind the working baseline. It connects definitions to source functions, derives the important equations and provides numerical examples. [Research progress](RESEARCH_PROGRESS_REPORT.md) contains the concise experimental account; [Development sequence](DEVELOPMENT_SEQUENCE.md) records how the current system was assembled.
+This companion explains the mathematics, ML concepts and engineering decisions behind the implemented research pipeline. It connects definitions to source functions, derives equations and provides numerical examples. [Research progress](RESEARCH_PROGRESS_REPORT.md) contains the experimental account; [Development sequence](DEVELOPMENT_SEQUENCE.md) records implementation order and decisions.
 
-Coverage follows the implementation rather than the full proposed architecture. The current runner uses supplied passage pools, MiniLM, fixed-count ranking or MILP, and Qwen generation. Graph features, corpus retrieval, persistent embedding caches, token-budget selection and integrated quantum experiments are future work. Sections describing them are explicitly labeled.
+The implemented pipeline now includes token-safe chunking, embedding and graph caches, persistent exact corpus search, lexical/dense/reranking baselines, count/token constraints, MILP and heuristic selection, entity-link features, sparsification, QAOA simulation, two generators, answer evaluation and a separate local API. The early worked baseline remains useful for understanding the equations; phase-specific sections explain the later extensions. Typed factual relation extraction, physical quantum execution and quantum token-budget circuits are not implemented. Final evaluation and artifact assembly are currently running.
 
 **Contents**
 
@@ -41,7 +41,7 @@ Processed question and candidate passages
   → evaluate against reference annotations and save artifacts
 ~~~
 
-This is initially a selection experiment: the dataset supplies the candidate pool. Searching a large corpus to obtain that pool is a different stage and is not implemented in the new runner.
+This diagram starts at a supplied candidate pool. The separate corpus mode first searches a persistent, deduplicated union of benchmark passages using exact FAISS search and BM25 rank fusion. Both modes then use the same selection/generation library. This is a bounded corpus experiment, not an unrestricted web or full-Wikipedia search.
 
 Three questions must remain separate. Is useful evidence present among the candidates? Does the selector retain it? Can the generator answer from the selected context? A wrong answer can originate at any of these stages.
 
@@ -75,7 +75,7 @@ The reference answer and is_relevant fields are absent from inference objects. T
 
 This boundary prevents the normal pipeline from being handed the answer key. The label-isolation test changes the references and relevance flags while keeping text unchanged, then verifies that QueryInput is identical. That test protects the adapter contract; it is not a universal proof against all possible leakage, model pretraining contamination or future misuse.
 
-The current adapter validates nonempty fields, distinct titles within a question and distinct question IDs across the dataset. It does not yet preserve sentence offsets in Document or perform full near-duplicate detection. These are remaining requirements.
+The adapters validate required fields, stable IDs and annotation mappings. Documents preserve available source sentence strings; chunks preserve exact character offsets and sentence IDs. MuSiQue support uses paragraph IDs rather than assuming every title is unique. Frozen splits have exact normalized-question and token-trigram duplicate audits; these do not rule out every semantic paraphrase or shared source.
 
 Frozen dataclasses make field reassignment difficult, but type annotations do not automatically validate values. Runtime checks in the adapter and configuration are separate. See the [Python dataclass documentation](https://docs.python.org/3/library/dataclasses.html).
 
@@ -134,7 +134,7 @@ This distinction also separates two kinds of optimization in the project: MILP c
 
 ## Similarity derivation and array shapes
 
-**Implementation:** LocalModels.score in [models.py](../src/qrag/models.py).
+**Implementation:** the historical whole-passage LocalModels.score is in [models.py](../src/qrag/models.py). The main study uses ChunkEncoder.score in [retrieval.py](../src/qrag/retrieval.py), which aggregates token-safe chunks into one unit vector per document before computing the same r and S shapes below.
 
 For nonzero vectors a and b, cosine similarity is:
 
@@ -373,7 +373,7 @@ The legacy classes use lazy loading: weights are loaded when first needed. The n
 
 Batching groups multiple inputs into a model operation. The embedding adapter uses batches of up to 32 texts. Larger batches may improve throughput but consume more memory, especially with long padded sequences. The generation adapter currently handles one selected context at a time; it is not a continuously batched inference server.
 
-Cold model startup, model-ready inference and cached-embedding execution are different conditions. The current run loads models at invocation start and recomputes document embeddings. A cached model file on disk is not the same as a loaded model or a cached document embedding.
+Cold model startup, model-ready inference and cached-embedding execution are different conditions. The historical first run recomputed passage embeddings. The main study reuses content-addressed query/document embeddings, and the service loads models lazily on its first job. A cached weight file on disk is not the same as a loaded model or a cached document embedding.
 
 ## Evaluation with worked calculations
 
@@ -440,7 +440,7 @@ These observations motivate error analysis. They do not justify a general rankin
 
 The package configuration in [pyproject.toml](../pyproject.toml) makes qrag importable. An editable installation points imports at the source tree. Installing the package does not download model weights.
 
-[requirements-baselines.lock](../requirements-baselines.lock) pins the tested NumPy/SciPy pair. The broader model stack is recorded per run but not supplied as a portable full-environment lock. Model snapshot revisions identify weights/configuration; package pins identify software. Both matter. [pip documentation](https://pip.pypa.io/en/stable/topics/repeatable-installs/)
+[requirements-baselines.lock](../requirements-baselines.lock) pins the small historical core. [requirements-laptop.lock](../requirements-laptop.lock) records the tested laptop environment, including transitive packages, while [requirements-ci.txt](../requirements-ci.txt) pins the lighter CI environment. The CUDA laptop snapshot is host-specific, not a guarantee of portable installation on every platform. Model snapshot revisions identify weights/configuration; package pins identify software. Both matter. [pip documentation](https://pip.pypa.io/en/stable/topics/repeatable-installs/)
 
 ### Manifest versus configuration
 
@@ -448,7 +448,7 @@ A configuration states what is requested. A manifest records that configuration 
 
 The runner seeds Python, NumPy and PyTorch in the real backend. Seeds do not repair dataset leakage, ensure correct metrics or guarantee identical floating-point results on every platform.
 
-SHA-256 maps file bytes to an identifying digest. A changed dataset produces a different expected identity even if the filename stays the same. The package source hash covers qrag Python files; it does not archive those files or every external dependency. Git metadata and model revisions add context but are not substitutes for preserving source and data.
+SHA-256 maps file bytes to an identifying digest. A changed dataset produces a different expected identity even if the filename stays the same. The package source hash covers qrag Python files. Main-study outputs also save their exact source snapshot; the hash alone would not archive the bytes or external dependencies. Git metadata and model revisions add context but are not substitutes for preserving source and data.
 
 ### Atomic files and resume
 
@@ -456,17 +456,17 @@ SHA-256 maps file bytes to an identifying digest. A changed dataset produces a d
 
 RunStore keys each prediction by question ID and method. Duplicate keys are rejected. Resume checks configuration, dataset, question IDs, source, environment and backend identity before reusing records.
 
-Current behavior skips all completed records, including error records. It does not automatically retry failed predictions. A corrected run needs a new directory. A fully completed resume can recreate the summary without loading model weights.
+The historical RunStore skips recorded successes and errors. The later study runner uses JournalRunStore in [journal.py](../src/qrag/experiments/journal.py): it appends and fsyncs each record, protects successful keys, records explicit attempts for retried errors, and saves a torn final line before recovery. Resume checks scientific identity first. Final reporting takes the latest attempt for each key; the append history remains inspectable. Runs have one writer; this journal is not a distributed database or a multiwriter locking protocol.
 
 Per-method failures after startup are recorded and retained in the answer denominator. Exceptions during model preparation produce failure artifacts after the store exists. Configuration, dataset loading or snapshot-resolution errors occurring before store creation may only produce a CLI error. This is an implementation boundary, not an assurance that every failure has a manifest.
 
 ### Tests and their limits
 
-The seventeen test methods cover adapter boundaries, configuration errors, metric edge cases, MILP/exhaustive agreement, signed pairs, solver limits and resume/failure behavior. Several methods contain multiple cases.
+The first seventeen tests covered the baseline. The expanded suite has 45 tests covering data, caches/indexes, provenance, signed MILP, budgets, quantum spectra and mixers, sparsification, statistics, journaling and service behavior. Several methods contain multiple cases.
 
 Offline tests use an explicitly labeled fake model backend. They verify orchestration, not language-model quality. The separate real MiniLM/Qwen run verifies the integrated inference path on three development examples.
 
-The CI workflow exists in [.github/workflows/baselines.yml](../.github/workflows/baselines.yml). Its presence does not establish that a remote GitHub Actions run has completed. It installs the core and runs offline tests without fetching models.
+The baseline workflow and the expanded [research workflow](../.github/workflows/research.yml) have completed successfully on GitHub Actions. These checks do not download model weights or reproduce full scientific inference; local real-model runs provide that separate evidence. Container and wheel checks exercise packaging as well as Python tests.
 
 ## A complete trace through the actual first question
 
@@ -495,7 +495,7 @@ All values trace to the [evidence snapshot](research_report/evidence/baseline_de
 
 ## Foundations for the planned graph and quantum work
 
-**Status:** the following concepts explain planned extensions and the legacy wrapper. They are not features of the new baseline experiment.
+**Reading order:** these are the introductory derivations originally written before the quantum implementation. The implemented versions, actual settings, limitations and checks are detailed in the Phase D–F sections below. The historical three-question baseline did not execute QAOA.
 
 ### Graph features and complementarity
 
@@ -622,7 +622,7 @@ Circuit resources must include state preparation, mixers, routing and constraint
 
 ## Upcoming engineering concepts and their status
 
-The following designs are planned, not claims about the present runner.
+The table summarizes engineering requirements that are now implemented in the main study or service. Detailed mechanisms and measurements follow in the phase sections.
 
 | Concept | Purpose | Design issue to verify |
 | --- | --- | --- |
@@ -635,7 +635,7 @@ The following designs are planned, not claims about the present runner.
 
 For example, caching document embeddings by filename alone is unsafe: content can change without a rename. Caching by content alone is also insufficient when the embedding model changes. A correct cache entry represents a computation identity.
 
-[FAISS](https://faiss.ai/) is a library for vector similarity search and clustering. It would supply the planned corpus index, while the current supplied-pool baseline directly computes its small score matrices. Exact search avoids approximation error during initial selector comparisons; approximate indexes can later trade retrieval accuracy for resources. Installing FAISS alone does not mean that persistent corpus retrieval exists.
+[FAISS](https://faiss.ai/) is a library for vector similarity search and clustering. The implemented corpus mode uses IndexFlatIP over unit chunk vectors, with checked SQLite metadata and file hashes. Supplied-pool experiments directly compute their small score matrices. Exact search avoids approximation error during these selector comparisons; approximate indexes could later trade retrieval accuracy for resources.
 
 An API makes the pipeline accessible; it does not improve its scientific quality. A classical fallback can improve service reliability but must not be silently counted as a successful QAOA experiment.
 
@@ -709,7 +709,7 @@ A vector index stores vectors for searching; a cache stores the result of comput
 
 BM25 is lexical retrieval. For each query term t, it combines an inverse-document-frequency weight with tf*(k1+1)/(tf+k1*(1-b+b*L/Lavg)), where tf is term frequency, L is document length, Lavg is average length, k1 controls frequency saturation, and b controls length normalization. The implementation uses rank-bm25's documented BM25Okapi convention. Lexical and dense scores have incompatible units. Reciprocal-rank fusion instead adds 1/(60+rank) from each ranking; rank begins at 1. This makes fusion depend on ranks rather than raw score scales. Stable sorting defines ties.
 
-A cross-encoder reads the question and passage together and produces a relevance logit. It is more expensive than comparing already stored dense vectors. We score token-safe chunks and use the maximum chunk score per document. This emphasizes a strong local match, whereas mean-pooled embeddings summarize chunks. Both are approximations; neither sees reference labels. Final candidate retrieval and downstream selection must be held constant when attributing effects to an optimizer.
+A cross-encoder reads the question and passage together and produces a scalar relevance score, not a calibrated probability that the passage contains a true answer. It is more expensive than comparing already stored dense vectors. We score token-safe chunks and use the maximum chunk score per document. This emphasizes a strong local match, whereas mean-pooled embeddings summarize chunks. Both are approximations; neither sees reference labels. Final candidate retrieval and downstream selection must be held constant when attributing effects to an optimizer.
 
 The measured cache speedup covers an already-loaded embedding model and 50 development questions. It excludes generator loading, answer generation, graph construction and service overhead. Calling it a global “warm run” would hide which component was reused; the precise description is model-ready encoding with cache misses versus model-ready encoding with cache hits.
 
@@ -840,3 +840,77 @@ Deadlines are checked between bounded stages. Generation has an output-token bou
 A trace groups stage spans under one request. Spans measure preparation, embedding, graph construction, selection and generation; structured logs identify job completion/failure without logging source text. OpenTelemetry can export local console spans. Queue time is start minus acceptance time; service time is completion minus start; total latency includes both. The operational p50 is the median of retained completed jobs, while p95 is the value below approximately 95% of that measured population. Mixed ingestion/query jobs and cold starts must not be confused with a homogeneous warm-query latency target. No unmeasured service-level promise is made.
 
 Persistent corpus ingestion stores a checked FAISS/SQLite bundle through the same library used in experiments. Query requests retrieve candidates, then use the common selector and generator. Corpus IDs are constrained to simple names rather than arbitrary filesystem paths. This service is a local demonstration; its inference inputs contain no reference answers.
+
+## Sampling, state preparation and a weak depth-one circuit
+
+### Why a global phase cannot change an answer sample
+
+A computational basis state corresponds to one exact binary subset. Write it as |x0>. The cost Hamiltonian is diagonal: H_C|x0> = E(x0)|x0>. Exponentiating this relation gives:
+
+$$
+e^{-i\gamma H_C}|x_0\rangle=e^{-i\gamma E(x_0)}|x_0\rangle.
+$$
+
+The multiplier has magnitude one and applies to the entire state. Measurement uses squared magnitudes, so multiplying every amplitude by that same complex number changes no probability. Applying a later linear mixer U_M cannot recover an observable difference:
+
+$$
+U_M e^{-i\gamma H_C}|x_0\rangle=e^{-i\gamma E(x_0)}U_M|x_0\rangle.
+$$
+
+Consequently, the frozen basis-start p=1 XY circuit has probabilities that depend on its mixer angle beta and starting subset, but not its first cost angle gamma. This gamma is a circuit angle, distinct from the graph-weight gamma in the selection objective. At p=2, mixing has created a superposition before the second cost layer, so the second cost angle can matter. The first remains inactive. This is an expressivity limitation, not a claim that QAOA generally ignores its objective. The classical optimizer still evaluates the expected energy under the chosen objective and can choose a different beta when that objective changes.
+
+This diagnosis is verified in [the preparation regression check](../tests/test_preparation_control.py) by changing the first cost angle while holding the mixer angle fixed and comparing every state probability. The test then inserts feasible preparation and verifies that changing the cost angle does change probabilities, while all probability mass remains at the required count.
+
+### Preparing a feasible superposition
+
+The exploratory extension in [prepared_qaoa_study.py](../scripts/prepared_qaoa_study.py) keeps the original seeded subset but first applies one XY ring sweep at fixed angle pi/4. Every paired RXX/RYY exchange preserves the number of ones. Starting with k ones therefore produces a superposition of states that still have k ones. This is generally neither a uniform superposition nor a Dicke state.
+
+If preparation produces sum_x c_x|x>, the cost layer produces sum_x c_x exp(-i gamma E(x))|x>. Different energies now receive different phases. A subsequent mixer can turn those relative phases into changed measurement probabilities through interference. This is the mechanism missing from the original first layer.
+
+Preparation is not free: its gates, routing and depth are included when compiling the complete circuit. The fixed angle is not selected by looking for a favorable held-out answer result. This control is explicitly exploratory because the diagnosis occurred after the primary matrix was frozen. Both original and prepared results are retained. It would be misleading to silently replace the weaker implementation and describe the new outcome as the original principal experiment.
+
+Generic compiled gate counts are also not lower bounds. A compiler that recognizes a known basis state could remove diagonal operations that only add a global phase. We report the actual fixed compiler policy and this limitation. Sparse symbolic interactions do not alone establish a necessary hardware cost reduction.
+
+### How repeated samples can look like optimization
+
+Suppose one draw has probability u of being an optimal feasible subset. Independent draws miss every optimum with probability (1-u)^S. Therefore:
+
+$$
+P(\text{at least one optimum})=1-(1-u)^S.
+$$
+
+For uniform feasible sampling with one optimum among M subsets, u=1/M. With n=10 and k=5, M=10!/(5!5!)=252. At S=1,024, optimum coverage is approximately 0.9829. This is already high without a learned distribution. With n=16,k=5, M=4,368 and coverage is approximately 0.2090. A small exact-solver comparison can hide this distinction if it reports only the best of many samples.
+
+Uniform feasible sampling is easy here: choose exactly k distinct indices uniformly, evaluate their objective, and keep the best. This baseline has no variational-angle training. QAOA's final 1,024 draws are additional to up to 64 objective evaluations used to choose angles. An equal-final-draw comparison is useful but is not equal-total-compute or a hardware speed comparison.
+
+### Feasibility and expected best energy
+
+Let F be the total single-draw probability on feasible subsets. Then the probability of obtaining no feasible subset in S draws is (1-F)^S. Ideal count-preserving execution gives F=1 up to numerical roundoff. A squared penalty gives no such finite-depth guarantee. We keep zero-feasible outcomes as failures; reporting only the successful subset of circuits would censor this cost.
+
+To compute the expected best feasible energy, sort feasible states by energy e_1 <= ... <= e_M and let their raw probabilities be p_1,...,p_M. They sum to F and need not sum to one. Write C_j=sum from t=1 to j of p_t, with C_0=0. The probability that the best feasible sample has energy e_j is:
+
+$$
+w_j=(1-C_{j-1})^S-(1-C_j)^S.
+$$
+
+To see why, the first term says no sample has an energy smaller than e_j; the second removes the case where none has energy at most e_j either. Ties may be listed in any stable order because their energy is identical. These weights sum to 1-(1-F)^S, the chance of at least one feasible draw. Thus the conditional expected best energy is sum_j(e_j*w_j) divided by 1-(1-F)^S. Subtracting the exact feasible optimum gives the conditional expected energy gap. The conditioning must be shown beside no-feasible probability so it does not hide failure risk.
+
+The [sampling study](../scripts/sampling_coverage_study.py) evaluates these expressions using trained ideal statevectors on 20 real development-derived instances, four nested candidate sizes, two encodings and three seeds: 480 circuit solves. It uses no generated answers and no support labels. Floating-point probability sums are clipped to [0,1] at their numerical boundary, preventing an impossible negative failure probability of order 10^-15. The first numerical export is retained locally as an archive; this is a roundoff correction, not an outcome-based algorithm change.
+
+## Reading statistical comparisons correctly
+
+For question q, let d_q be method A's F1 minus method B's F1 after averaging each method's seeds. The estimated difference is the arithmetic mean of d_q across the N common questions. A paired bootstrap samples N question IDs with replacement, recomputes that mean, and repeats 10,000 times. The 2.5th and 97.5th percentiles give the reported 95% interval. Pairing preserves the fact that both methods face the same easy or difficult question.
+
+If three seeds on one question score 1, 0.5 and 0, that question contributes 0.5. It does not become three independently sampled questions. If the last seed fails, its F1 remains zero and the mean is still 0.5. In contrast, missing resource measurements remain missing: inventing a gate count of zero for an unexecuted circuit would also bias a resource mean. Completed circuits with measured zero feasibility do contribute their actual zero.
+
+An interval entirely above zero supports a positive difference under this sample and analysis. An interval spanning zero leaves both positive and negative effects plausible. It does not establish that the methods are equal. Noninferiority would require a chosen acceptable loss and a suitable interval bound declared before looking at the result. This project does not retrospectively invent such a tolerance.
+
+The question is the resampling unit, but source passages and compositional question templates can still be shared across questions. The bootstrap does not model every such cluster. The two generators are from one family, and numerical simulator training is not physical-device execution. These limits restrict generalization even when a difference looks clear. Secondary exploratory tables are not a large collection of independent confirmatory discoveries.
+
+## Artifact checks and independent reconstruction
+
+A result is traceable when a table cell can be followed to question scores, predictions, selected IDs, objective coefficients and the exact code/configuration that produced them. Checksums detect changed bytes; they do not establish scientific correctness. The [final auditor](../scripts/audit_final_runs.py) additionally recomputes answer scores, source membership, count/token constraints and pair-sum energies, and retokenizes saved prompts against pinned tokenizers. A failed invariant stops assembly rather than silently correcting a scientific record.
+
+Compact public predictions omit large prompts and parameter traces but preserve the fields needed to regenerate tables, with a SHA-256 digest of their compressed file. [Public-table reconstruction](../scripts/reproduce_public_tables.py) needs neither model weights nor raw dataset text. This tests statistical reconstruction from released outcomes; it is different from rerunning retrieval, selection and generation. Full local artifacts and split/corpus restoration scripts support that more expensive route.
+
+For numbers that are mathematically equivalent but differ slightly in floating-point reduction order on another machine, reconstruction accepts an absolute/relative tolerance of 10^-12. It still requires identical structure, IDs, counts and file hashes. Tolerance is not permission to substitute different predictions.

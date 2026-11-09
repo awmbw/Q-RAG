@@ -80,6 +80,8 @@ The penalty encoding adds lambda*(sum(x_i)-k)^2. With B the sum of absolute orig
 
 The alternative starts from a seeded feasible basis state and applies a ring of RXX(beta) followed by RYY(beta) on each edge. Their paired product implements XY exchange and preserves the number of ones ideally. It is not uniform feasible-state preparation, and its shallow expressivity depends on the initial basis state. Preparation and mixer operations are included in resource counts.
 
+There is a specific limitation of this frozen basis-start circuit. A diagonal cost unitary acting first on one computational basis state produces only a global phase. Thus the first cost angle is inactive in probabilities, and p=1 has only mixer-dependent probabilities. Its optimized mixer angle can still depend on which objective is minimized. We retain this diagnostic implementation and add an explicitly exploratory control: one fixed pi/4 XY ring sweep prepares a generally nonuniform feasible superposition before cost evolution. Its full preparation cost is compiled. This control is not presented as uniform Dicke-state preparation, a globally optimized ansatz, or a preregistered replacement for the primary comparison.
+
 We compile complete circuits to rz/sx/x/cx with fixed settings and seeds on synthetic all-to-all and line connectivity. We report qubits, two-qubit gates, depth and feasible-shot fractions. These targets are not calibrated devices. Simulation time is a classical implementation measurement and is never presented as a quantum hardware speedup.
 
 The final selected context is the minimum-surrogate-energy feasible measured sample, with deterministic tie-breaking and no repair. This best-of-many policy includes classical energy evaluation. A uniform feasible-sampling control uses the same number of draws. For n=10,k=5 there are only 252 feasible subsets, and 1,024 uniform feasible draws have about 98.3% probability of including one particular optimum. Larger candidate sensitivities therefore remain important even when small-case solutions look strong.
@@ -104,6 +106,28 @@ An initial execution cycle was stopped after a Unicode provenance assertion fail
 Definitive tables and interpretation are generated only after all frozen runs finish.
 <!-- END RESULTS -->
 
+<!-- BEGIN SAMPLING -->
+### Development-derived sampling mechanism study
+
+To separate trained distribution quality from best-of-many selection, we train p=1 circuits on 20 development-derived coefficient instances at each of n=8,10,12,16, with k=5 and three seeds per encoding. These are 480 numerical circuit solves, not additional held-out answer evaluations. For single-draw optimum mass u, the probability of seeing an optimum in S draws is 1-(1-u)^S. We compute this directly from the trained ideal statevector distribution and enumerate feasible energies. This calculation does not estimate a physical device's output distribution.
+
+| Candidates | Encoding | Uniform P(optimum), 1,024 draws | QAOA P(optimum), 1,024 draws | Conditional QAOA energy gap |
+| --- | --- | ---: | ---: | ---: |
+| 8 | xy | 1.0000 | 0.1178 | 0.1343 |
+| 8 | penalty | 1.0000 | 0.9689 | 0.0008 |
+| 10 | xy | 0.9829 | 0.0624 | 0.1647 |
+| 10 | penalty | 0.9829 | 0.7415 | 0.0061 |
+| 12 | xy | 0.7258 | 0.0049 | 0.2457 |
+| 12 | penalty | 0.7258 | 0.1949 | 0.0472 |
+| 16 | xy | 0.2090 | 0.0000 | 0.3141 |
+| 16 | penalty | 0.2090 | 0.0127 | 0.1463 |
+
+Means average seeds within question first. Conditional gaps describe the best feasible sample given that at least one is drawn; no-feasible probabilities and paired question intervals are also released. This development diagnostic compares final draws only: QAOA additionally performs angle training with up to 64 exact-expectation evaluations, whereas uniform feasible sampling does not. The same 20 questions recur across sizes, so the four size groups are not independent replications.
+
+![Figure 2. Optimum coverage from trained ideal distributions and uniform feasible draws. These development-derived probabilities describe the full objective, not answer correctness.](figures/sampling_coverage.png)
+
+<!-- END SAMPLING -->
+
 ## 9. Limitations and threats to validity
 
 The entity-link proxy lacks independent semantic annotation and can reward spurious links. Its query-term anchors are lexical, not a verified decomposition of information requirements. No original-model reproduction of SetR or the closest QUBO selector is claimed. Small open generators and one embedding model limit generalization. Reference normalization can penalize semantically related answers, and reference annotations themselves can contain errors.
@@ -112,6 +136,8 @@ The quantum subset is much smaller than the classical evaluation and includes id
 
 The full objective is a proxy. Better energy, more annotated support and better answer F1 are different observations. A sparse surrogate may change selected contexts even when its objective gap is small. The elementary coefficient bound does not establish semantic preservation. A nonsignificant paired difference does not establish equality. Resource measurements on a laptop are descriptive and do not establish industrial throughput or hardware advantage.
 
+The original basis-start p=1 circuit is structurally weak because its first cost phase is global. Complete gate counts use a fixed generic compilation policy, not a proof of minimum circuit cost; a semantics-aware compiler could remove known-basis diagonal work. The added preparation control addresses this particular degeneracy but is exploratory. Beta is held at 0.2 while gamma receives a limited development sweep; neither the objective nor the variational circuit is claimed to be the strongest possible classical or quantum method. Question-level bootstrap intervals also do not model every dependency caused by shared source passages or question composition.
+
 Corpora are bounded unions of benchmark inputs with known source inclusion, not a deployment-scale open collection. Question deduplication cannot eliminate source overlap or pretrained-model contamination. The service is a local demonstration with bounded jobs and labeled fallbacks; its reliability behavior is excluded from QAOA-only research results.
 
 ## 10. Reproducibility and release
@@ -119,6 +145,8 @@ Corpora are bounded unions of benchmark inputs with known source inclusion, not 
 The software exposes configuration-driven study and report commands, immutable model revisions, source snapshots, checksums, per-question predictions, actual prompts/token IDs, solver traces and complete-circuit resources. A durable append journal supports interrupted-write recovery and explicit failure retries without replacing successful outcomes. Compact public evidence links to hashes of full local artifacts. Raw datasets and weights are obtained from their primary hosts under their own licenses.
 
 Tests cover official-scorer agreement, label isolation, offsets, cache/index invalidation, signed MILP correctness, quantum spectra, count preservation, feasible sampling, sparsification budgets, statistics and service failure paths. A separate FastAPI package uses the same research library, avoiding a second implementation of scientific scoring. The artifact package documents tested environments and remaining external review requirements.
+
+AI assistance was used to develop software, orchestrate local experiments, inspect artifacts and draft technical documentation and this manuscript. This involved substantive generation beyond copy editing. Numerical statements are computed from saved artifacts rather than supplied by the assistant from memory. Human authors must independently review and take responsibility for the full methods, code, results, citations and final text before submission; that external review is not represented as completed here.
 
 ## 11. Conclusion
 
@@ -138,7 +166,7 @@ The final conclusion follows the completed frozen evidence and is not predetermi
 
 [5] Melo et al. Don't Forget the Base Retriever! A Low-Resource Graph-based Retriever for Multi-hop Question Answering. EMNLP Industry 2025. https://aclanthology.org/2025.emnlp-industry.174/
 
-[6] Gutierrez et al. HippoRAG: Neurobiologically Inspired Long-Term Memory for Large Language Models. 2024. https://arxiv.org/abs/2405.14831
+[6] Jiménez Gutiérrez et al. HippoRAG: Neurobiologically Inspired Long-Term Memory for Large Language Models. 2024. https://arxiv.org/abs/2405.14831
 
 [7] Liu et al. Lost in the Middle: How Language Models Use Long Contexts. 2023. https://arxiv.org/abs/2307.03172
 

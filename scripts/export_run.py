@@ -1,13 +1,14 @@
 """Export compact reviewable predictions and metadata without full dataset passages."""
 
 import argparse
+import gzip
 import json
 from pathlib import Path
 
 from qrag.experiments.artifacts import atomic_text, file_hash, write_json
 
 
-def export(run, output):
+def export(run, output, compress=False):
     manifest = json.loads((run / "manifest.json").read_text())
     summary = json.loads((run / "summary.json").read_text())
     attempts = [
@@ -30,6 +31,7 @@ def export(run, output):
         "context_tokens",
         "input_tokens",
         "output_tokens",
+        "hit_output_limit",
         "full_energy",
         "surrogate_energy",
         "selection_seconds",
@@ -43,6 +45,7 @@ def export(run, output):
         "sparsification",
         "attempt",
         "candidate_metrics",
+        "candidate_ids",
         "gpu_peak_allocated_bytes",
         "process_peak_rss_bytes",
     }
@@ -66,6 +69,11 @@ def export(run, output):
         predictions,
         "".join(json.dumps(r, sort_keys=True, allow_nan=False) + "\n" for r in compact),
     )
+    if compress:
+        compressed = predictions.with_suffix(".jsonl.gz")
+        compressed.write_bytes(gzip.compress(predictions.read_bytes(), mtime=0))
+        predictions.unlink()
+        predictions = compressed
     write_json(
         output,
         {
@@ -97,5 +105,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--run", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--compress", action="store_true")
     args = parser.parse_args()
-    print("Exported", export(args.run, args.output), "records")
+    print("Exported", export(args.run, args.output, args.compress), "records")

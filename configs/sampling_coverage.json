@@ -1,0 +1,14 @@
+{
+  "scope": "development-derived numerical mechanism study; no generated-answer or hardware advantage claim",
+  "source_run": "results/calibrate_musique",
+  "source_method": "milp_g0.2",
+  "questions": 20,
+  "candidate_sizes": [8, 10, 12, 16],
+  "k": 5,
+  "seeds": [41, 42, 43],
+  "mixers": ["xy", "penalty"],
+  "sample_budgets": [1, 16, 64, 256, 1024],
+  "p": 1,
+  "max_evals": 64,
+  "note": "Use real development coefficient arrays, label-independent relevance reduction, exact feasible energies, and trained statevector probabilities. Average seeds within question. Uniform feasible sampling has no angle-training cost; QAOA does."
+}

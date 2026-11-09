@@ -1,8 +1,8 @@
 # Development sequence and implementation decisions
 
-**Version 0.1 | Updated November 9 2026**
+**Version 1.0 working edition | Updated November 10 2026**
 
-This document records the progression from the exploratory prototype to the first controlled baseline. The baseline was implemented during one November 4 session. Its steps below are arranged by dependency and explain how the components fit together; they are not presented as separate commits or separately timestamped releases.
+This document records the progression from the exploratory prototype through the current research implementation. The first baseline was implemented during one November 4 session; its dependency-ordered account comes first. The November 10 phase entries then record the larger data, retrieval, optimization, quantum, service and research work. Early status tables are labeled historical and do not override later measured progress.
 
 The [progress report](RESEARCH_PROGRESS_REPORT.md) records outcomes. [Technical foundations](TECHNICAL_FOUNDATIONS.md) supplies derivations and worked examples.
 
@@ -116,7 +116,7 @@ Added the objective progress report, compact evidence snapshot and detailed comp
 | Use JSON artifacts before tracking infrastructure | Keeps individual outcomes auditable | Rich experiment dashboards remain later work |
 | Preserve problematic references in primary scoring | Avoids result-driven label changes | Annotation errors must be reported separately |
 
-## Status against the implementation plan
+## Historical status after the first baseline
 
 | Phase | Current status | Principal gap |
 | --- | --- | --- |
@@ -132,7 +132,7 @@ Added the objective progress report, compact evidence snapshot and detailed comp
 
 No complete formal phase A–I is claimed merely because the first working baseline exists.
 
-## Next dependency sequence
+## Dependency sequence recorded after the first baseline
 
 1. Complete the structured prior-work comparison and make the novelty hypothesis explicit.
 2. Finalize data provenance, frozen splits and diagnostic evaluation.
@@ -205,3 +205,13 @@ A real held-out input revealed the Unicode surface/canonical distinction. Stoppe
 ## Phase H parallel preparation while frozen runs execute
 
 Placed the API in a separate package so service changes do not alter the frozen research source fingerprint. Implemented input validation, bounded jobs, persistence, readiness, fallback accounting, corpus ingestion/query and local tracing. Built and started the full CPU container, verified HTTP endpoints and checked read-only access to the pinned model snapshots. The browser inventory is empty, so visual UI review is not claimed. Prepared the manuscript source and PDF renderer, deferring numerical claims until the full results exist.
+
+## Phase G diagnostic extension — check what a shallow circuit can express
+
+Added an answer-free development mechanism study rather than interpreting the final best-of-1,024 sample alone. It trains 480 circuits across 20 questions and nested sizes, then computes optimum coverage and expected best feasible energy directly from each ideal distribution. The first export exposed a roughly 10^-15 negative no-feasible probability from normalization roundoff; clamped probability sums at their mathematical [0,1] boundary, retained the initial local export, and regenerated the diagnostic. No scoring coefficients or training policy changed.
+
+The result prompted an analytic circuit check: the original first cost layer acts on a basis state and is a global phase. Confirmed this by varying the angle and comparing complete probability vectors. Added a regression showing that a fixed feasible preparation sweep makes the first cost angle observable while preserving count. This was a mathematical diagnosis, not a search for a favorable answer score.
+
+Kept every original frozen condition. Added separately hashed, explicitly exploratory prepared-circuit configurations, with one fixed pi/4 XY ring sweep before cost evolution. Archived extension source separately and included its hash in the study identity. This avoids changing the core while original experiments are active and makes the difference reproducible. The forthcoming analysis must compare the original and prepared circuits, disclose the post-freeze scope, and include preparation costs. Forty-six correctness tests are now defined; the new mathematical regression passes.
+
+Prepared independent final artifact audits, compressed prediction exports, restoration of all six corpus-candidate files and model-free table reconstruction. The restored corpus inputs matched their frozen hashes exactly. Circuit summaries include measured zero-feasibility failures, preventing a successful-only denominator from overstating feasibility. Final answer comparison assembly remains dependent on completion of the frozen runs.

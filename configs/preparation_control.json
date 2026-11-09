@@ -1,0 +1,14 @@
+{
+  "configs": [
+    {
+      "config": "configs/secondary/final_hotpotqa_prepared.json",
+      "sha256": "27f577f4d7df295dd54afd60bb0cc5f99e3d3693fe01581554928e6461b53df1"
+    },
+    {
+      "config": "configs/secondary/final_musique_prepared.json",
+      "sha256": "46c793f4b196bfac1f573709e0f06e66e66b3dd3ecd970a7433c7cd4c17e2a03"
+    }
+  ],
+  "preparation_angle": "pi/4, one fixed ring sweep",
+  "scope": "Post-freeze exploratory preparation control prompted by the analytic first-cost global-phase diagnosis. One fixed pi/4 XY sweep prepares a feasible superposition before cost evolution. Same frozen first 50 quantum IDs, graph weights, generation and budgets. No outcome-based parameter tuning or confirmatory claim."
+}
