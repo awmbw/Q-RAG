@@ -1,6 +1,6 @@
-**First baseline runner**
+**Historical first baseline runner**
 
-This is the first implemented research slice: fixed-count relevance ranking versus MILP on the same candidate pools, followed by local answer generation. Graph features, QAOA experiments, token-budget selection, chunking, persistent embedding caches and corpus search are later milestones. The legacy modules remain available separately.
+This guide describes the preserved first research slice: fixed-count relevance ranking versus MILP on the same candidate pools, followed by local answer generation. Its limits refer to that runner. The current study also implements graph features, QAOA, token budgets, chunking, caches and corpus search; use the [reproducibility guide](REPRODUCIBILITY.md) for that pipeline. The original prototype was retired from the current checkout and remains in the [research release snapshot](https://github.com/awmbw/Q-RAG/tree/v0.1.0-research).
 
 **Environment and installation**
 
@@ -22,7 +22,7 @@ python -m venv .venv
 .venv/bin/python -m unittest discover -s tests -v
 ```
 
-The core lock pins the tested NumPy/SciPy pair. The fresh model installation resolves its own runtime dependencies; compare them with the recorded environment before trying to reproduce a particular result. Manifests capture tested runtime versions. A portable model/GPU dependency lock is not yet supplied. The existing broad requirements.txt serves the legacy notebooks.
+The core lock pins the tested NumPy/SciPy pair. The fresh model installation resolves its own runtime dependencies; compare them with the recorded environment before trying to reproduce a particular result. Manifests capture tested runtime versions. The later laptop, CI and CPU-container locks are described in the [reproducibility guide](REPRODUCIBILITY.md); the laptop snapshot is host-specific. The original broad requirements list is retained with the [archived prototype](https://github.com/awmbw/Q-RAG/blob/v0.1.0-research/requirements.txt), rather than serving as the current installation contract.
 
 The real experiment requires the existing processed development JSON and the exact model snapshots configured in configs/dev_baselines.toml. The CLI defaults to local-only model resolution. If a snapshot is unavailable, obtain the specified model revision before running; the offline command will fail rather than quietly download or substitute another revision. Unit tests need neither models nor the real dataset.
 

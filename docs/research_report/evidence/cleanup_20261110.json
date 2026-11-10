@@ -1,0 +1,90 @@
+{
+  "date": "2026-11-10",
+  "scope": "Recoverable retirement of the original prototype, consolidated documentation and disposable local working files.",
+  "preserved_release_tag": "v0.1.0-research",
+  "preserved_release_commit": "e8b992118d0e027d07f7991be1e37521c6a95198",
+  "removed_tracked_paths": [
+    "docs/Aum_Problem_Statement.docx",
+    "docs/FIRST_BASELINE_SESSION.md",
+    "docs/RESEARCH_ROADMAP.md",
+    "notebooks/01_explore_hotpotqa.py",
+    "notebooks/02_prepare_subset.py",
+    "notebooks/03_test_retriever.py",
+    "notebooks/04_test_qubo.py",
+    "notebooks/05_test_qaoa.py",
+    "notebooks/06_tune_hyperparameters.py",
+    "notebooks/07_test_full_pipeline.py",
+    "notebooks/08_evaluate.py",
+    "requirements.txt",
+    "src/evaluation/__init__.py",
+    "src/generation/__init__.py",
+    "src/generation/llm_generator.py",
+    "src/optimization/__init__.py",
+    "src/optimization/exact_solver.py",
+    "src/optimization/qaoa_solver.py",
+    "src/optimization/qubo_builder.py",
+    "src/retrieval/__init__.py",
+    "src/retrieval/dense_retriever.py"
+  ],
+  "recovery": {
+    "mechanism": "System Trash via gio trash",
+    "trash_emptied": false,
+    "moved_top_level_items": 28,
+    "content_hash_verification": true,
+    "allocated_bytes_moved": 102494208,
+    "local_restore_manifest": "results/cleanup_review_20261110/trash_manifest.json (ignored, local only)",
+    "original_proposal_private_copy": "Private ignored local archive; checksum matches the original tracked proposal.",
+    "disk_space_note": "Moving to Trash on the same filesystem reorganizes working files; it does not reclaim their disk allocation while they remain in Trash."
+  },
+  "documentation": {
+    "version": "1.3",
+    "consolidated_topics": [
+      "Binary-to-Ising substitution and bit ordering",
+      "Sparsification objective bound and assumptions",
+      "Uniform feasible sampling and small-case coverage",
+      "Paired bootstrap procedure"
+    ],
+    "historical_baseline_observations": "Consolidated into the progress report; original note remains in release history.",
+    "archived_links": "Prototype references point to the preserved release tag.",
+    "private_notes": "Reference updated locally; notes remain excluded from Git."
+  },
+  "verification": {
+    "python_tests_passed": 46,
+    "subtests_passed": 34,
+    "public_tables_and_paired_intervals_reconstructed": 24,
+    "actual_qaoa_reproductions": [
+      "Original full XY",
+      "Prepared full XY"
+    ],
+    "python_lint": "passed",
+    "python_format_files_checked": 67,
+    "document_refresh_preserves_consolidation": true,
+    "scientific_source_sha256": "8d6bf4c5739869e525a7222714332b1b2972637d4c04524b6a3df320133dd287",
+    "scientific_source_unchanged": true,
+    "installed_package_metadata_independent_of_removed_build_files": true,
+    "system_trash_probe_restored_successfully": true,
+    "local_markdown_links_checked": 338,
+    "broken_local_links": 0,
+    "original_foundations_headings_preserved": true
+  },
+  "preserved": [
+    "Current qrag package and qrag_service",
+    "Historical first-baseline runner and its tests",
+    "Full scientific run records and failed-run archives",
+    "Datasets, model weights/caches and frozen configurations",
+    "Public compact evidence and original release assets",
+    "Private learning notes and midsemester draft",
+    "Registered secondary Git worktree"
+  ],
+  "service_state": {
+    "container_already_stopped_before_cleanup": true,
+    "stopped_at_utc": "2026-11-10T04:22:16.295173208Z",
+    "containers_and_persistent_volumes_changed": false,
+    "current_app_and_asset_routes_covered_by_service_tests": true
+  },
+  "limits": [
+    "No new full neural inference experiment; this maintenance revision does not create new scientific outcomes.",
+    "Git history and the preserved release still contain the retired prototype; this is checkout cleanup, not privacy erasure.",
+    "Restoring into an existing path may require conflict resolution; no forced overwrite was used."
+  ]
+}

@@ -1,6 +1,6 @@
 # Development sequence and implementation decisions
 
-**Version 1.2 working edition | Updated November 10 2026**
+**Version 1.3 working edition | Updated November 10 2026**
 
 This document records the progression from the exploratory prototype through the current research implementation. The first baseline was implemented during one November 4 session; its dependency-ordered account comes first. The November 10 phase entries then record the larger data, retrieval, optimization, quantum, service and research work. Early status tables are labeled historical and do not override later measured progress.
 
@@ -288,3 +288,13 @@ Split the page into HTML, CSS and JavaScript; added a static asset route and whe
 Verified nine DOM behavior groups, all 46 Python tests and 34 subtests, JavaScript syntax, Python lint, packaged wheel contents and byte-for-byte HTTP delivery of the page, styles, script and fonts. Updated the local container using the tested CPU runtime, retained its persistent state and preserved an old completed job response exactly. A real relevance/MILP/QAOA comparison returned India for all three without fallback. The old container is stopped and retained for rollback; unrelated services were untouched.
 
 Chrome inventory was visible, but browser navigation and screenshot calls failed. The interface therefore has implemented responsive CSS and passing DOM/HTTP checks, while visual desktop/mobile review remains unverified. This limitation is explicit in the [redesign receipt](research_report/evidence/dashboard_redesign_20261110.json). The [service guide](SERVICE_GUIDE.md#dashboard) documents the current interface and repeatable checks. The original research release remains unchanged.
+
+## Recoverable cleanup — preserve the study and retire the prototype
+
+First inspected imports and documentation references, then tested a temporary tracked-tree copy without the prototype bundle. All 46 tests passed. Verified the system Trash by moving a disposable probe, restoring it without overwrite and returning it to Trash. Every subsequent removal used the same Trash mechanism; no Trash-emptying operation was performed.
+
+Retired the original notebooks and standalone modules as one bundle, together with their obsolete requirements list and unused evaluation placeholder. The current first-baseline runner remains because tests and shared research contracts still use it. Replaced prototype links with release-tag links, consolidated the session-note observations into the report, and retained the original Word proposal in a private ignored archive. The original versions also remain in Git history. Updated the private learning-note reference without publishing that note.
+
+Consolidated repeated Ising substitutions, sparsification-bound proofs, feasible-sampling calculations and bootstrap explanations in the technical companion. Kept its worked examples, assumptions and implementation checks. Moved generated build/cache outputs and disposable release/audit verification copies to Trash, while preserving full scientific runs, failed-run archives, datasets, weights and service state. A local recovery manifest records exact Trash locations and verified content hashes; shared documentation contains no machine-specific Trash paths.
+
+Validation after actual retirement: 46 tests and 34 subtests passed; all 24 public statistical tables and intervals reconstructed; original and prepared QAOA reproductions matched; Python lint/format checks passed; documentation links and the unchanged scientific fingerprint were checked. The demo container had already stopped before this cleanup and was left in that state; no container or persistent volume was changed. The [cleanup receipt](research_report/evidence/cleanup_20261110.json) separates this maintenance work from new scientific experiments.

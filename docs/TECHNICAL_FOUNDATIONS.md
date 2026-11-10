@@ -1,8 +1,10 @@
 # Technical foundations and implementation notes
 
-**Version 1.2 working edition | Updated November 10 2026**
+**Version 1.3 working edition | Updated November 10 2026**
 
 This companion explains the mathematics, ML concepts and engineering decisions behind the implemented research pipeline. It connects definitions to source functions, derives equations and provides numerical examples. [Research progress](RESEARCH_PROGRESS_REPORT.md) contains the experimental account; [Development sequence](DEVELOPMENT_SEQUENCE.md) records implementation order and decisions.
+
+The maintenance revision consolidates repeated Ising substitutions, sparsification proofs, sampling examples and bootstrap explanations into their main sections, with links from the phase account. The formulas, numerical examples, assumptions and implementation-specific checks remain available. Prototype source links point to the preserved research release; current source links point to the maintained package.
 
 The implemented pipeline now includes token-safe chunking, embedding and graph caches, persistent exact corpus search, lexical/dense/reranking baselines, count/token constraints, MILP and heuristic selection, entity-link features, sparsification, QAOA simulation, two generators, answer evaluation and a separate local API. The early worked baseline remains useful for understanding the equations; phase-specific sections explain the later extensions. Typed factual relation extraction, physical quantum execution and quantum token-budget circuits are not implemented. Final evaluation is complete; the progress report and released tables contain the measured results and their limits.
 
@@ -547,7 +549,16 @@ E(x)=\sum_i a_i x_i+\sum_{i<j}b_{ij}x_i x_j,
 \qquad x_i=\frac{I-Z_i}{2}.
 $$
 
-Z has eigenvalue +1 on bit 0 and −1 on bit 1. Substitution yields:
+Z has eigenvalue +1 on bit 0 and −1 on bit 1. First substitute into a linear term and then a pair term:
+
+$$
+a_i x_i=\frac{a_i}{2}I-\frac{a_i}{2}Z_i,
+\qquad
+b_{ij}x_ix_j=\frac{b_{ij}}4
+\left(I-Z_i-Z_j+Z_iZ_j\right).
+$$
+
+Collect the constant pieces, every coefficient touching one qubit, and every two-qubit coefficient. This yields:
 
 $$
 H_C=cI+\sum_i h_i Z_i+\sum_{i<j}J_{ij}Z_i Z_j,
@@ -563,9 +574,11 @@ h_i=-\frac12a_i
 -\frac14\left(\sum_{j<i}b_{ji}+\sum_{j>i}b_{ij}\right).
 $$
 
-The constant does not change which bitstring minimizes energy, but it matters when comparing reported Hamiltonian energies with the original objective.
+The constant does not change which bitstring minimizes energy, but it matters when comparing reported Hamiltonian energies with the original objective. During state evolution it produces only a common global phase, which the circuit can omit while energy evaluation retains the offset. The binary and Ising expressions give the same computational-basis energies.
 
 For a = (−1,−0.5) and b₁₂ = 0.2, c = −0.7, h = (0.45,0.2) and J₁₂ = 0.05. Substitution gives energies 0, −1, −0.5 and −1.3 for bits (0,0), (1,0), (0,1) and (1,1). These values were checked algebraically and numerically. They are illustrative mapping checks, not quantum execution results.
+
+Qiskit labels qubit 0 as the least significant bit. Integer state 1 therefore means x_0=1 and all other x_i=0. The energy table forms bit i as `(state_index >> i) & 1`. A displayed bit string must be interpreted with this convention; reversing it incorrectly would choose different passages.
 
 Before mapping a constrained selection problem, handle its constraints. One option adds λ(sum xᵢ − k)²:
 
@@ -600,7 +613,7 @@ $$
 
 Sampling uncertainty, optimizer behavior and physical noise are separate issues. Minimizing expectation is also different from guaranteeing that a finite sample contains the best feasible bitstring.
 
-The [legacy wrapper](../src/optimization/qaoa_solver.py) uses StatevectorSampler, COBYLA and default p = 1 with a maximum-iteration setting of 50. Statevector sampling is classical simulation of quantum states, not quantum hardware. COBYLA adjusts circuit angles; it does not directly optimize LLM parameters. The [IBM QAOA tutorial](https://quantum.cloud.ibm.com/docs/en/tutorials/quantum-approximate-optimization-algorithm) provides the algorithmic reference.
+The retired [prototype wrapper](https://github.com/awmbw/Q-RAG/blob/v0.1.0-research/src/optimization/qaoa_solver.py) used StatevectorSampler, COBYLA and default p = 1 with a maximum-iteration setting of 50. It is preserved in the release history. The current [quantum implementation](../src/qrag/quantum.py) builds actual circuits and evaluates their statevector/shot objectives directly, with its own recorded budgets. Both approaches simulate quantum states classically; neither is quantum hardware. COBYLA adjusts circuit angles, not LLM parameters. The [IBM QAOA tutorial](https://quantum.cloud.ibm.com/docs/en/tutorials/quantum-approximate-optimization-algorithm) provides the algorithmic reference.
 
 COBYLA means Constrained Optimization BY Linear Approximation. It uses function evaluations and local linear models rather than requiring analytical derivatives. Here the function is a circuit-energy estimate and the parameters are angles. Its local search and finite evaluation budget do not certify the global optimum of the circuit-angle landscape. [COBYLA documentation](https://docs.scipy.org/doc/scipy/reference/optimize.minimize-cobyla.html)
 
@@ -608,7 +621,7 @@ Increasing circuit depth does not guarantee better observed outcomes with a fini
 
 ### The legacy exact solver and Qiskit adapters
 
-The earlier [exact solver](../src/optimization/exact_solver.py) wraps NumPyMinimumEigensolver, which computes a lowest eigenvalue/state classically. The operator for n binary decisions acts on a space of dimension 2ⁿ; implementations can exploit structure, but the method is not a general scalable substitute for MILP. [API reference](https://qiskit-community.github.io/qiskit-algorithms/stubs/qiskit_algorithms.NumPyMinimumEigensolver.html)
+The retired [prototype exact solver](https://github.com/awmbw/Q-RAG/blob/v0.1.0-research/src/optimization/exact_solver.py) wraps NumPyMinimumEigensolver, which computes a lowest eigenvalue/state classically. Its source remains in the release history. The operator for n binary decisions acts on a space of dimension 2ⁿ; implementations can exploit structure, but the method is not a general scalable substitute for MILP. [API reference](https://qiskit-community.github.io/qiskit-algorithms/stubs/qiskit_algorithms.NumPyMinimumEigensolver.html)
 
 MinimumEigenOptimizer is the optimization adapter: it maps supported quadratic problems to an operator and interprets eigensolver output as optimization variables. Its name does not identify whether the underlying method uses quantum hardware. [Adapter reference](https://qiskit-community.github.io/qiskit-optimization/stubs/qiskit_optimization.algorithms.MinimumEigenOptimizer.html)
 
@@ -626,7 +639,7 @@ $$
 
 Both classical and quantum solvers must be evaluated against the original target as well as the surrogate. Otherwise a lower reported energy may merely reflect removal of costs.
 
-Let δ be the sum of absolute removed coefficients. Because binary products lie in [0,1]:
+Let R be the removed edge set and let δ be the sum of |bᵢⱼ| over R. Every binary product xᵢxⱼ is zero or one. The magnitude of each removed term is therefore at most |bᵢⱼ|, and the triangle inequality bounds their sum:
 
 $$
 |E(x)-\widetilde E(x)|\le\delta.
@@ -641,7 +654,9 @@ E(\widetilde x)
 \le E(x^\star)+\epsilon+2\delta.
 $$
 
-This elementary bound is a useful check, not a novelty claim or an answer-F1 guarantee. It depends on a valid ε and unchanged constraints.
+Read the chain one step at a time. First replace the full energy of the sparse solution by its sparse energy plus δ. Second use ε-suboptimality: the chosen sparse solution is no worse than any feasible comparison, including the full optimum, plus ε. Third replace that comparison's sparse energy by its full energy plus δ. Rearranging gives a full-objective gap of at most 2δ+ε.
+
+The feasible set, candidates, budgets, coefficient scale and energy offsets must be the same in both problems. This elementary bound can be loose; it is a sanity check, not a new theorem or an answer-F1 guarantee. A sampled QAOA selection has no known ε certificate unless a separate solver optimum or bound establishes its sparse-objective gap.
 
 Circuit resources must include state preparation, mixers, routing and constraint encoding. Sparsifying interactions generally does not reduce the number of candidate qubits. A statevector simulator stores amplitudes growing as 2ⁿ; raw complex128 storage alone is about 16 × 2ⁿ bytes, before additional simulator memory. Simulation behavior cannot establish practical hardware speedup.
 
@@ -704,7 +719,7 @@ An environment snapshot answers “which software was installed?” An execution
 
 A fixed seed initializes a pseudorandom sequence. It does not fix every floating-point reduction, GPU kernel or future package implementation. A lock fixes package versions; a model revision fixes weights/tokenizer files; content hashes identify data and source bytes. Together these reduce ambiguity but do not establish that an experiment is correct. That requires mathematical checks and actual predictions.
 
-For paired evaluation, let d_q be method A's answer F1 minus method B's on question q. The estimated difference is the sum of d_q divided by the number N of questions. Bootstrap resampling draws N question IDs with replacement, computes that mean again, and repeats. The 2.5th and 97.5th percentiles give a 95% percentile interval. Pairing preserves each question's difficulty across methods. Solver seeds are repeated computations on one question, not new independent questions; average them within question before resampling. An interval spanning zero permits effects in both directions and does not prove equality.
+The evaluation protocol fixes paired question-level comparisons and keeps solver repeats within their question. The complete bootstrap procedure, seed averaging, failure treatment and interval interpretation are derived together in [Reading statistical comparisons correctly](#reading-statistical-comparisons-correctly).
 
 The full [protocol](EXPERIMENT_PROTOCOL.md) states the comparisons before final evaluation. This prevents choosing whichever metric, seed or subset looks most favorable afterward. Such a choice would change the question being tested and exaggerate apparent evidence.
 
@@ -774,19 +789,11 @@ When different selectors return exactly the same ordered source IDs for one ques
 
 ### From a binary decision to an Ising spin
 
-The computational basis state of qubit i represents x_i=0 or 1. Pauli Z has eigenvalue +1 on 0 and -1 on 1, so x_i=(1-Z_i)/2. Substitute this into E=sum(a_i*x_i)+sum over i<j of b_ij*x_i*x_j. A linear term becomes a_i/2-a_i*Z_i/2. A pair becomes b_ij*(1-Z_i-Z_j+Z_i*Z_j)/4. Collect constants, one-qubit terms and two-qubit terms:
-
-c = sum(a_i)/2 + sum(b_ij)/4;
-h_i = -a_i/2 - sum of all b touching i divided by 4;
-J_ij = b_ij/4.
-
-Thus H=c*I+sum(h_i*Z_i)+sum(J_ij*Z_i*Z_j) has the same basis-state energies as the binary objective. A constant changes reported energies but only adds a global phase to state evolution, so the circuit can omit that phase while energy evaluation retains it. Tests compare every bitstring on small signed problems rather than checking only the apparent best solution.
-
-Qiskit labels qubit 0 as the least significant bit. Integer state 1 therefore means x_0=1 and all other x_i=0. Reversing displayed bit strings without a fixed convention would choose the wrong passages. The energy table explicitly forms bit i as (state_index shifted right by i) AND 1.
+The full substitution, coefficient formulas, numerical example, constant offset and bit-order convention are derived once in [QUBO and Ising mapping](#qubo-and-ising-mapping). The implemented ising_coefficients and diagonal_energies functions in [quantum.py](../src/qrag/quantum.py) follow those conventions. Tests compare every bitstring on small signed problems, rather than checking only the apparent best solution. The rest of this section explains the additional constraint and circuit decisions used in the actual experiments.
 
 ### Enforcing exactly k
 
-The penalty construction adds lambda*(sum(x_i)-k)^2. Because binary x_i squared equals x_i, expansion gives lambda*(1-2k)*sum(x_i)+2*lambda*sum over all i<j x_i*x_j+lambda*k^2. Every pair acquires a coupling, even if the original semantic interaction was removed. This is why objective sparsity alone does not establish circuit sparsity.
+The [cardinality expansion above](#qubo-and-ising-mapping) adds 2*lambda to every unordered pair, even when that semantic interaction was removed. Its linear and constant terms must also be retained in encoded-energy bookkeeping. The implementation additionally needs a sufficient penalty strength, derived next.
 
 Let B=sum(abs(a_i))+sum(abs(b_ij)). Between any two bitstrings, the objective changes by at most B because each binary monomial changes by at most 1. Any infeasible integer count differs from k by at least 1, so its penalty is at least lambda. Choosing lambda=B+1 ensures that no infeasible bitstring has lower encoded energy than every feasible bitstring, provided a feasible bitstring exists. This statement concerns the global minimum; a shallow QAOA circuit can still measure infeasible strings frequently. Its finite optimization budget does not magically attain that minimum.
 
@@ -816,17 +823,11 @@ Evidence guidance ranks linked pairs by C_ij*sqrt(|b_ij|), protects at most ceil
 
 ### Step-by-step objective bound
 
-Let R be the removed edge set and define delta as the sum over R of |b_ij|. For a binary vector, every x_i*x_j is either 0 or 1. Therefore the absolute value of the removed sum is at most the sum of absolute removed coefficients: |E_full(x)-E_sparse(x)| <= delta. This holds for any binary x, regardless of whether the coefficients are positive or negative.
-
-Let x_star minimize the full objective over feasible set F, and let x_hat be within epsilon of the minimum sparse energy over that SAME F. First, E_full(x_hat) <= E_sparse(x_hat)+delta. Second, E_sparse(x_hat) <= E_sparse(x_star)+epsilon, because the sparse optimum is no worse than the sparse energy of x_star. Third, E_sparse(x_star) <= E_full(x_star)+delta. Combining gives E_full(x_hat)-E_full(x_star) <= 2*delta+epsilon.
-
-The assumptions matter: budgets and candidates must match, epsilon concerns the sparse objective, and both energies use the same coefficient scale and offsets. This is an elementary sanity bound, not a new theorem. It can be loose and gives no guarantee about answer F1. A measured QAOA state is not known epsilon-optimal unless a separate exact solver/bound establishes epsilon.
+The complete three-step proof and its assumptions are in [Sparsification changes the optimization problem](#sparsification-changes-the-optimization-problem). The implementation computes delta from the absolute mass of removed signed coefficients and reports both full and surrogate energies. This connects the recorded masks to the bound without assuming that QAOA has a certified epsilon or that an energy bound controls answer F1.
 
 ### Why a random control matters for small quantum cases
 
-With n candidates and exactly k selected, there are n!/(k!*(n-k)!) feasible subsets. For n=10,k=5, this is 252, much less than all 1,024 bitstrings. If independent uniform feasible draws are used, the probability of seeing one particular optimal subset at least once in S draws is 1-(1-1/252)^S. With S=1,024 this is about 98.3%. That calculation assumes uniform independent draws and one fixed optimum; QAOA draws generally follow a nonuniform distribution.
-
-A best-of-1,024-shot quantum policy can therefore appear strong simply because many small-case candidates are tested. The uniform feasible-sampling comparator uses the same number of draws and objective evaluations, with a recorded seed. It is a stronger control than comparing QAOA only to one random subset. At larger n the feasible space grows, so this coverage explanation changes; the final scaling study must state sizes and budgets rather than generalize from ten candidates.
+A best-of-many-shot policy also evaluates many candidate subsets classically. The uniform feasible-sampling control uses the same final draw count and a recorded seed, rather than comparing QAOA with one arbitrary subset. The combinatorial derivation, 10/16-candidate examples and distinction between equal final draws and equal total compute are explained together in [How repeated samples can look like optimization](#how-repeated-samples-can-look-like-optimization). That derivation is the reason this control was added before the final comparisons.
 
 ### Calibrating without reusing the test set
 

@@ -44,4 +44,4 @@ Commit source changes, relevant tests, experiment configurations, dependency spe
 
 Keep downloaded datasets, model weights, indexes, caches and bulk run outputs outside Git. Commit the preparation procedures, provenance, checksums and index/cache configuration needed to recreate them. Archive substantial final experiment bundles separately and record their location and checksums. Review the staged file list before committing; locally excluded material must remain local.
 
-The mathematical code and real experiment were not changed while preparing this report. Seventeen offline correctness tests were rerun successfully. Word export was not generated because this session does not expose the managed document-export runtime; no unverified Word or PDF file is presented as complete.
+The historical baseline's test counts and export boundaries belong to its dated entries in the progress report. Current verification and manuscript exports are recorded in the later completion entries. Maintaining these documents does not itself create a new model result or justify changing frozen scientific code.

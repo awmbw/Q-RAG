@@ -12,6 +12,11 @@ venv/
 .env.*
 !.env.example
 
+# Private local project material (shared protection for every checkout)
+/.private/
+/docs/LEARNING_LOG.md
+/midsem_report.tex
+
 # Local model weights and caches
 /models/
 /checkpoints/
