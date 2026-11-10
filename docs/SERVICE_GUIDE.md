@@ -2,6 +2,31 @@
 
 The service calls the same retrieval, graph, selection and generation library as the experiments. It accepts source text and questions, not reference answers. It is a local demonstration with serialized inference, not a production multiuser deployment. The dashboard is served at the root URL; interactive OpenAPI documentation is at `/docs`.
 
+## Dashboard
+
+The dashboard uses a paper background, a dotted grid, blue accents and local display/serif/monospace fonts, with visual inspiration from [AI Engineering from Scratch](https://aiengineeringfromscratch.com/). Its layout, diagram and application code are specific to Q-RAG. All fonts are served locally; their upstream license notices are in [the font directory](../src/qrag_service/static/fonts/README.md). The browser does not need an external font service.
+
+Edit source titles and text in Cards mode, or use JSON mode to edit the complete source array, including IDs. Add/remove sources, set the shared count, choose selectors and press Compare methods. Reset example restores the fictional demonstration. Arrow keys switch editor tabs. The interface exposes model-cold, queued, running, completed and failed states. Changing inputs after a result marks the displayed answers as belonging to the previous comparison.
+
+Each result shows its actual answer, supplied sources, context tokens, selection/generation time, objective, solver status and any classical fallback. Expand the source details to read the context supplied to the generator. Expand QAOA details to see feasible shots and complete compiled line costs. The graph includes a text disclosure of shared entities, so inspecting a link does not depend on hovering. At most 16 graph nodes are drawn in a large pool; the interface discloses that limit and lists all extracted links.
+
+The headline dataset/question/record counts describe the frozen research study. They are not live service counters. The hero diagram is labeled illustrative. No new evidence-guidance or quantum-advantage claim is introduced by the redesign.
+
+The current laptop demonstration remains at `http://127.0.0.1:8766/`. The redesigned container reuses the existing named state volume and read-only model mount. The stopped `qrag-release-demo-before-redesign` container is retained for rollback; do not run both containers against the same job database. Standard source/container installation below builds the current dashboard as part of the service.
+
+### Frontend behavior checks
+
+The small [DOM check script](../scripts/check_dashboard.cjs) runs application events with explicitly synthetic API responses. It needs Node and jsdom only for development verification; the dashboard itself has no Node build or runtime requirement.
+
+```bash
+npm install --prefix .cache/dashboard-checks --no-audit --no-fund jsdom@26.1.0
+NODE_PATH="$PWD/.cache/dashboard-checks/node_modules" node scripts/check_dashboard.cjs
+node --check src/qrag_service/static/dashboard.js
+venv/bin/python -m pytest tests/test_service.py -q
+```
+
+The nine DOM checks cover source editing, JSON round trips, count limits, reset, validation, answer/source/circuit rendering, explicit fallback, text-only rendering of untrusted output, failure recovery and keyboard tabs. These checks do not render CSS or establish browser layout, accessibility certification or general injection resistance. The [redesign verification](research_report/evidence/dashboard_redesign_20261110.json) separately records real HTTP/model execution, asset hashes and the remaining browser-review limit.
+
 ## Run on the laptop
 
 From the repository root with the tested environment and downloaded model snapshots:

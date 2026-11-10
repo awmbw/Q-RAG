@@ -6,6 +6,7 @@ from pathlib import Path
 
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse, JSONResponse
+from fastapi.staticfiles import StaticFiles
 
 from qrag_service.jobs import Jobs, QueueFull
 from qrag_service.schemas import CompareRequest, IngestRequest, QueryRequest
@@ -49,6 +50,11 @@ def create_app(engine=None, database: Path | None = None, capacity=4):
 
     application = FastAPI(
         title="Q-RAG context comparison", version="0.2.0", lifespan=lifespan
+    )
+    application.mount(
+        "/assets",
+        StaticFiles(directory=Path(__file__).parent / "static"),
+        name="assets",
     )
 
     @application.get("/")

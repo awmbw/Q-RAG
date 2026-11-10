@@ -66,6 +66,17 @@ class ServiceTests(unittest.TestCase):
             self.assertEqual(client.get("/health").status_code, 200)
             self.assertEqual(client.get("/ready").status_code, 200)
             self.assertIn("Compare source selection", client.get("/").text)
+            for asset, media_type in (
+                ("dashboard.css", "text/css"),
+                ("dashboard.js", "javascript"),
+                ("fonts/vt323.ttf", "font"),
+                ("fonts/source-serif-4.ttf", "font"),
+                ("fonts/jetbrains-mono.ttf", "font"),
+            ):
+                asset_response = client.get("/assets/" + asset)
+                self.assertEqual(asset_response.status_code, 200)
+                self.assertIn(media_type, asset_response.headers["content-type"])
+            self.assertEqual(client.get("/assets/missing.css").status_code, 404)
             response = client.post("/jobs", json=self.request())
             self.assertEqual(response.status_code, 202)
             row = self.wait(client, response.json()["id"])

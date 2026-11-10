@@ -1,6 +1,6 @@
 # Technical foundations and implementation notes
 
-**Version 1.1 audited working edition | Updated November 10 2026**
+**Version 1.2 working edition | Updated November 10 2026**
 
 This companion explains the mathematics, ML concepts and engineering decisions behind the implemented research pipeline. It connects definitions to source functions, derives equations and provides numerical examples. [Research progress](RESEARCH_PROGRESS_REPORT.md) contains the experimental account; [Development sequence](DEVELOPMENT_SEQUENCE.md) records implementation order and decisions.
 
@@ -37,6 +37,7 @@ The implemented pipeline now includes token-safe chunking, embedding and graph c
 - [Manuscript export](#turning-numerical-artifacts-into-a-manuscript)
 - [XY count-preservation derivation](#why-the-paired-xy-gates-preserve-passage-count)
 - [Release and acceptance](#versioned-release-versus-scientific-acceptance)
+- [Dashboard state and rendering](#dashboard-foundations--state-rendering-and-local-assets)
 
 **How to read the implementation history:** the first numerical example and the three-question trace explain the original baseline. The current study adds the graph coefficients, token constraints and quantum policies derived in the phase sections. Historical CPU settings, whole-passage encoding and the legacy Qiskit wrappers do not describe the final study. The current entry point is [study.py](../src/qrag/experiments/study.py); the separate demonstration is in [qrag_service](../src/qrag_service/). The [plan-coverage assessment](RESEARCH_PROGRESS_REPORT.md#coverage-of-the-original-plan-and-explicit-gaps) distinguishes implementation from unfinished validation and optional extensions.
 
@@ -987,3 +988,19 @@ At beta=pi/4, those two local probabilities are both one half. A sweep across ov
 ## Versioned release versus scientific acceptance
 
 A source archive records one committed tree; a wheel installs its Python packages; a PDF is a readable rendered account; checksums identify the supplied bytes. These objects serve different consumers. The release builder checks their consistency and rejects accidental inclusion of datasets, weights or private notes. Public availability still does not supply an unspecified license, establish novelty or replace peer review. The project therefore separates a reproducible software/research artifact from the human decisions and external publication process.
+
+## Dashboard foundations — state, rendering and local assets
+
+The dashboard is a client of the existing service, not another retrieval or solver implementation. [HTML](../src/qrag_service/static/index.html) describes its headings, form controls and result containers. [CSS](../src/qrag_service/static/dashboard.css) controls spacing, typography, color, grids and narrower-screen layouts. [JavaScript](../src/qrag_service/static/dashboard.js) keeps inputs synchronized, submits requests, polls jobs and renders responses. Separating these files makes their responsibilities easier to inspect. [The service](../src/qrag_service/app.py) serves their files under `/assets`; the wheel includes them and the local fonts. A page that works from source but omits these files from its wheel would be an incomplete installation.
+
+The request sequence is: edit question/sources → validate the input shape → POST the comparison JSON → receive HTTP 202 with a job ID → poll the status URL → render completed results or the reported failure. HTTP acceptance is not successful inference. The browser disables editing during a comparison so the displayed request cannot change underneath a running job. A finalization block restores controls after success or failure. Editing after completion labels the visible answers as results of the previous input.
+
+Source cards and JSON are two views of the same array. Editing a card updates the serialized JSON; switching back from JSON validates and rebuilds the cards. IDs stay stable unless explicitly edited in JSON. Removing a source lowers the count limit, and the count cannot exceed the available pool or ten. These are interface checks for understandable errors; Pydantic still validates requests independently on the server. A client-side check cannot protect an API from another client that bypasses the page.
+
+Rendering untrusted source titles, text and answers uses DOM textContent rather than interpreting them as HTML. For example, the literal answer `<img src=x onerror=alert(1)>` remains text instead of becoming an image element with an event handler. The DOM check verifies this behavior on that fixture. This addresses HTML interpretation at the rendering boundary; it does not prove that the generator resists malicious instructions inside its context or establish comprehensive application security.
+
+The interface is a small state machine: idle, submitting/queued/running, completed, failed, or inputs changed since the displayed result. Model readiness is separate: a cold service can accept a job that loads weights. A simulated quantum result is labeled simulated; a permitted classical fallback identifies the actual method. Result cards show the supplied context, not verified causal citations. The study totals and illustrative hero diagram are kept separate from live results so visual presentation does not invent measurements.
+
+Self-hosted fonts mean the browser requests font bytes from the same local service. It does not contact a third-party font service at page load. Font files remain separate upstream works with their included licenses. Responsive CSS changes grid columns and type sizes at narrower widths; reduced-motion settings disable nonessential animation. Keyboard tabs, visible focus styles, labels and live status text support interaction, but their presence alone is not an accessibility certification.
+
+Verification has distinct layers. Node checks JavaScript syntax. jsdom executes DOM/event behavior with synthetic API responses but does not lay out the CSS. FastAPI tests verify file routes and request contracts. Wheel inspection verifies distribution contents. Real local HTTP inference verifies the model/solver integration. A browser screenshot and interactive desktop/mobile review would verify rendered layout; that last layer remained blocked by browser-control errors during this revision. None of these interface checks changes or improves the scientific objective or measured answer scores.

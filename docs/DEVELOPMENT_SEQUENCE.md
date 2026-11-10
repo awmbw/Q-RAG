@@ -1,6 +1,6 @@
 # Development sequence and implementation decisions
 
-**Version 1.1 audited working edition | Updated November 10 2026**
+**Version 1.2 working edition | Updated November 10 2026**
 
 This document records the progression from the exploratory prototype through the current research implementation. The first baseline was implemented during one November 4 session; its dependency-ordered account comes first. The November 10 phase entries then record the larger data, retrieval, optimization, quantum, service and research work. Early status tables are labeled historical and do not override later measured progress.
 
@@ -278,3 +278,13 @@ The resulting artifact is a versioned research preview. It is not labeled as a s
 Reviewed all three main documents against the plan, current modules, frozen configurations and saved evidence. Corrected stale present-tense baseline claims, expanded the current pipeline and data contracts, distinguished main-study JSON validation from the stricter baseline/service interfaces, and corrected the main encoder's batch size and MILP row counts. Added a current status table and explicit plan gaps while retaining checkpoint history.
 
 Reconstructed all 24 public tables and paired intervals without loading models. Reran the intended test directory: 46 tests and 34 subtests passed. An initial unrestricted collection also discovered the extracted release's duplicate test modules under ignored results and failed collection; specifying `tests` avoids that local duplicate tree. No experiment, coefficient, reference annotation, model setting or frozen source was changed. The [audit receipt](research_report/evidence/documentation_audit_20261110.json) records commands and scope. The existing release remains an immutable historical artifact; these documentation corrections are a later revision.
+
+## Post-release dashboard revision — design around the actual experiment
+
+Inspected the requested visual reference and its styles, then replaced the original dark dashboard with a paper-and-blue laboratory design. Created an illustrative selection diagram, a clearer introduction, a frozen-study summary and explanations of the compared selectors. Preserved the distinction between simulation and hardware and between supplied sources and verified answer support.
+
+Split the page into HTML, CSS and JavaScript; added a static asset route and wheel package data. Bundled the three fonts with their upstream licenses so the local interface needs no external font requests. Added editable source cards and a JSON view, source/count controls, keyboard tabs, explicit loading/error states, source-context inspection and accessible text for graph links. No research coefficient, solver, model or evaluation policy changed.
+
+Verified nine DOM behavior groups, all 46 Python tests and 34 subtests, JavaScript syntax, Python lint, packaged wheel contents and byte-for-byte HTTP delivery of the page, styles, script and fonts. Updated the local container using the tested CPU runtime, retained its persistent state and preserved an old completed job response exactly. A real relevance/MILP/QAOA comparison returned India for all three without fallback. The old container is stopped and retained for rollback; unrelated services were untouched.
+
+Chrome inventory was visible, but browser navigation and screenshot calls failed. The interface therefore has implemented responsive CSS and passing DOM/HTTP checks, while visual desktop/mobile review remains unverified. This limitation is explicit in the [redesign receipt](research_report/evidence/dashboard_redesign_20261110.json). The [service guide](SERVICE_GUIDE.md#dashboard) documents the current interface and repeatable checks. The original research release remains unchanged.

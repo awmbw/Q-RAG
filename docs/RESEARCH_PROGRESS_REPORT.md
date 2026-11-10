@@ -1,6 +1,6 @@
 # Quantum RAG research progress and mathematical formulation
 
-**Version 1.1 audited working edition | Updated November 10 2026**
+**Version 1.2 working edition | Updated November 10 2026**
 
 The research implementation now includes token-safe retrieval, persistent caches/indexes, classical constrained selection, entity-link features, sparsification, actual QAOA simulation, downstream answer evaluation, bounded corpus experiments and a separate local demonstration service. The definitive evaluation and all declared controls are complete, and their 53,230 records pass the final artifact audit. The manuscript and release package report unfavorable findings as well as measured resource changes.
 
@@ -56,7 +56,7 @@ Implementation status does not establish scientific superiority or publication a
 
 The final statistics and their condition-by-condition links are in [the definitive evaluation](#phase-g--definitive-evaluation-and-independent-audit). The [handoff](HUMAN_HANDOFF.md) records external decisions. These gaps qualify the local phase-status table above; they are not hidden completed results.
 
-**Reading historical checkpoints:** sections from the initial baseline through the Phase H packaging checkpoint describe the state when each step occurred. Statements such as “will restart,” “scheduled” and earlier test counts belong to those checkpoints. The current status above and the later completion sections take precedence. The [documentation audit](research_report/evidence/documentation_audit_20261110.json) records the latest consistency checks.
+**Reading historical checkpoints:** sections from the initial baseline through the Phase H packaging checkpoint describe the state when each step occurred. Statements such as “will restart,” “scheduled” and earlier test counts belong to those checkpoints. The current status above and the later completion sections take precedence. The [documentation audit](research_report/evidence/documentation_audit_20261110.json) records the version 1.1 consistency checks; the post-release dashboard entry below records the subsequent interface revision.
 
 ## Historical baseline formulation and its reusable foundations
 
@@ -533,3 +533,13 @@ The original hypothesis is not presented as a successful new method. The manuscr
 The versioned research artifact contains the committed source, configurations, compact outcomes, source snapshots, figures, reports, an installable wheel and the reviewed manuscript PDF, with checksums identifying the files. The release builder requires a clean commit and verifies public prediction hashes, the common core identity and the reviewed PDF/source hashes. It excludes raw/processed datasets, model weights, large local runs, caches and private notes. The CPU container and wheel builds provide separate packaging evidence; no independently awarded artifact badge is claimed.
 
 The [claim/evidence map](CLAIM_EVIDENCE_MAP.md) connects findings to exact outputs. [Remaining external work](HUMAN_HANDOFF.md) identifies independent scientific review, unjudged graph annotations, browser visual review, author/rights-holder decisions, venue-specific formatting and actual submission. Those steps are not silently marked complete. Physical-device execution remains unavailable; simulation is the stated scope. The current local study and manuscript are complete as an implementation/evaluation artifact, not an accepted publication.
+
+## Post-release interface revision — dashboard design and inspection
+
+Reworked the local dashboard with a warm paper background, dotted grid, blue accents, pixel display headings, serif explanations and monospace labels. The visual direction was inspired by [AI Engineering from Scratch](https://aiengineeringfromscratch.com/); the Q-RAG layout, selection diagram and application code are original to this implementation. The fonts and their upstream license notices are served locally. The introductory diagram is explicitly illustrative, and headline study totals are labeled as frozen research results rather than live counters.
+
+Implemented editable source cards alongside the JSON editor, source addition/removal, a bounded count control, an example reset, keyboard editor tabs, explicit run states and input-change notices. Result cards expose supplied source text, actual solver status, fallbacks and simulation resources. Graph links also have a text inspection view. Application state, validation and rendering changed; embeddings, graph coefficients, mathematical objectives, solver policies, model settings and frozen research results did not.
+
+Verification: all **46 Python tests and 34 subtests passed**, including checks that CSS, JavaScript and all three fonts are served. **Nine jsdom behavior checks passed** with explicitly synthetic API fixtures. A wheel was built and its packaged assets checked. The running nonroot CPU container was updated on the same loopback address and state volume; a previous completed job response remained exactly equal. A new real-model, four-source comparison completed with relevance, MILP and QAOA all answering **India**, with no classical fallback. This single fictional example is an integration check, not a new dataset result or evidence of superiority.
+
+The [verification receipt](research_report/evidence/dashboard_redesign_20261110.json) records served asset hashes, behavior checks and the real HTTP comparison. Browser controls failed during navigation/screenshot attempts despite reporting a connected Chrome instance. Consequently, CSS rendering, interactive browser review and desktop/mobile screenshot inspection are not claimed as completed. Responsive rules are implemented and behavior is checked in a DOM environment; a rendered browser review remains distinct. The [service guide](SERVICE_GUIDE.md#dashboard) records usage and verification commands. The existing versioned research release and manuscript were not replaced.

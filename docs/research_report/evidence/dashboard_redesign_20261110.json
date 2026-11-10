@@ -1,0 +1,139 @@
+{
+  "date": "2026-11-10",
+  "scope": "Post-release local dashboard design and interaction revision; no scientific method or result change.",
+  "visual_reference": "https://aiengineeringfromscratch.com/",
+  "design_direction": [
+    "Warm paper background and dotted grid",
+    "Blue accents, pixel display type, serif body and monospace labels",
+    "Original source-selection illustration and research-specific layout",
+    "Self-hosted fonts with upstream SIL Open Font License notices"
+  ],
+  "scientific_source_sha256": "8d6bf4c5739869e525a7222714332b1b2972637d4c04524b6a3df320133dd287",
+  "scientific_source_unchanged": true,
+  "python_checks": {
+    "command": "venv/bin/python -m pytest tests -q",
+    "passed": 46,
+    "subtests_passed": 34,
+    "warning": "Existing Starlette TestClient/httpx deprecation warning"
+  },
+  "dom_checks": {
+    "scope": "jsdom DOM behavior checks with explicitly synthetic API fixtures; not a browser layout or real-model test",
+    "checks": [
+      "Initial source cards, JSON and count agree; ready/cold readiness is truthful",
+      "Card edits survive a JSON round trip; source removal clamps k",
+      "Add/remove sources, stepper and reset preserve a valid example",
+      "Invalid JSON blocks submission and keeps JSON editor available",
+      "Duplicate IDs, reference fields and missing methods fail before a request",
+      "Completion renders actual answers, context text, costs, graph and accessible links",
+      "Fallback displays the actual classical method; untrusted answer is text, never markup",
+      "Backend validation and terminal failure re-enable controls and report real errors",
+      "Arrow-key tab navigation preserves selection and focus"
+    ],
+    "passed": 9
+  },
+  "syntax_and_format": [
+    "node --check src/qrag_service/static/dashboard.js",
+    "ruff check src/qrag_service/app.py tests/test_service.py",
+    "Prettier check of HTML/CSS/JS and DOM check script",
+    "git diff --cached --check -- . :!src/qrag_service/static/fonts/*-OFL.txt"
+  ],
+  "wheel": {
+    "file": "qrag_research-0.1.0-py3-none-any.whl",
+    "sha256": "013cedabaafec05edc5bc0d9119c97e31a4b85a0fbd282967367f5e71c15cf15",
+    "all_static_bytes_match_source": true,
+    "packaged_files": [
+      "qrag_service/static/dashboard.css",
+      "qrag_service/static/dashboard.js",
+      "qrag_service/static/fonts/JetBrainsMono-OFL.txt",
+      "qrag_service/static/fonts/README.md",
+      "qrag_service/static/fonts/SourceSerif4-OFL.txt",
+      "qrag_service/static/fonts/VT323-OFL.txt",
+      "qrag_service/static/fonts/jetbrains-mono.ttf",
+      "qrag_service/static/fonts/source-serif-4.ttf",
+      "qrag_service/static/fonts/vt323.ttf",
+      "qrag_service/static/index.html"
+    ]
+  },
+  "http_and_real_inference": {
+    "index.html": {
+      "status": 200,
+      "bytes": 20647,
+      "sha256": "77d78e37774a56b15d770d21719480b1ada25466dba030e2a134e282def6f3a4"
+    },
+    "dashboard.css": {
+      "status": 200,
+      "bytes": 26629,
+      "sha256": "43162501ad848a6beeb165dec1d23b3f0942bb5cb9aece78fb110846241a0e62"
+    },
+    "dashboard.js": {
+      "status": 200,
+      "bytes": 20528,
+      "sha256": "6a4a90194ac997408b3fbf955ac9db423a18600d743e7c4d1e92ac2ef9856cdc"
+    },
+    "fonts/vt323.ttf": {
+      "status": 200,
+      "bytes": 147320,
+      "sha256": "954e44d25e0ccd643f4ef15e75d56d3d76590d3c2b1e42b71b13d5df740a51a6"
+    },
+    "fonts/source-serif-4.ttf": {
+      "status": 200,
+      "bytes": 194464,
+      "sha256": "f01900495012279f1e95d721c59363395eeffb79ef806eaa4dfa8bd923ccec0b"
+    },
+    "fonts/jetbrains-mono.ttf": {
+      "status": 200,
+      "bytes": 112172,
+      "sha256": "44ce4a84f20d60f24539bd0cef11f79c29e38609e0f8adf18551c9794a5d9dc3"
+    },
+    "previous_job_response_preserved_exactly": true,
+    "cold_readiness_status": 503,
+    "real_model_comparison": {
+      "status": "completed",
+      "answers": {
+        "relevance": "India",
+        "milp": "India",
+        "qaoa": "India"
+      },
+      "actual_methods": {
+        "relevance": "relevance",
+        "milp": "milp",
+        "qaoa": "qaoa"
+      },
+      "fallbacks": {
+        "relevance": null,
+        "milp": null,
+        "qaoa": null
+      },
+      "reported_wall_seconds": 11.06466273299884,
+      "scope": "One real-model fictional-source integration check; not a latency benchmark or dataset accuracy result."
+    },
+    "model_ready_after_job": true
+  },
+  "deployment": {
+    "url": "http://127.0.0.1:8766/",
+    "container": "qrag-release-demo",
+    "image": "qrag-research:dashboard-20261110",
+    "image_build_scope": "Service-only overlay on the existing tested locked CPU runtime; not a fresh dependency rebuild. The normal Dockerfile builds current source for a clean installation.",
+    "persistent_volume": "qrag-verification-state",
+    "previous_container": "qrag-release-demo-before-redesign (stopped, retained for rollback)",
+    "model_mount": "Existing read-only local model-cache mount; no weights bundled."
+  },
+  "browser_visual_review": {
+    "completed": false,
+    "reason": "Chrome inventory available, but repeated browser navigation/tab/screenshot calls failed with a browser-control timeout-options error, including after runtime reset.",
+    "not_established": [
+      "Rendered desktop/mobile layout validation",
+      "Interactive real-browser validation",
+      "Screenshot proof",
+      "Accessibility certification"
+    ]
+  },
+  "limits": [
+    "DOM tests use synthetic API fixtures and do not lay out CSS.",
+    "One real-model fictional example verifies integration, not dataset accuracy or latency guarantees.",
+    "No prompt-injection resistance or quantum advantage is established.",
+    "The frozen research release, manuscript and saved scientific outcomes are unchanged."
+  ],
+  "local_document_links_verified": 229,
+  "upstream_license_formatting": "License notices are preserved verbatim, including one upstream trailing space in SourceSerif4-OFL.txt; project whitespace checks exclude the upstream OFL notices."
+}
