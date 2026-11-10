@@ -1,10 +1,34 @@
 # Development sequence and implementation decisions
 
-**Version 1.0 working edition | Updated November 10 2026**
+**Version 1.1 audited working edition | Updated November 10 2026**
 
 This document records the progression from the exploratory prototype through the current research implementation. The first baseline was implemented during one November 4 session; its dependency-ordered account comes first. The November 10 phase entries then record the larger data, retrieval, optimization, quantum, service and research work. Early status tables are labeled historical and do not override later measured progress.
 
 The [progress report](RESEARCH_PROGRESS_REPORT.md) records outcomes. [Technical foundations](TECHNICAL_FOUNDATIONS.md) supplies derivations and worked examples.
+
+## Current state after the full local run
+
+This is the current summary. The stages and dated checkpoints below preserve what was true during implementation; their “remaining,” “next” and “pending” statements are historical unless repeated here.
+
+| Phase | Implemented and executed | Remaining boundary |
+| --- | --- | --- |
+| A | Measured environment, protocol, literature comparison, locks, manifests and CI | Exhaustive novelty certification and independent scientific review are not established. |
+| B | Two frozen splits, annotation-preserving adapters, official metric checks and real empty/oracle diagnostics | Known contamination and annotation limitations remain. |
+| C | Token-safe chunks, persistent embedding/graph caches, checked FAISS/SQLite index and retrieval/reranking policies | Cache and retrieval profiles are workload-specific, not general latency guarantees. |
+| D | Signed count/token MILP, exhaustive checks, heuristics and entity-link features | Independent graph annotation and original-model closest-method reproduction are unfinished. |
+| E | Actual QAOA simulations, mappings, sampling, noise diagnostic and full compilation | No physical quantum execution or quantum token-budget encoding. |
+| F | Four hard-budget sparsifiers, development calibration and ablations | The proposed guidance benefit and preserved answer quality were not established. |
+| G | 18 primary conditions plus six scoped controls, audited outcomes and reconstructed statistics | Small quantum subsets, shared generator family and non-certified large MILP cases limit generalization. |
+| H | Numerical manuscript, reviewed 13-page PDF, real-model service/container checks and batch profiling | No independent causal error annotation, browser visual review or demo video; no production deployment claim. |
+| I | Source/wheel/PDF/checksum preview release and reproduction instructions | Independent review, authorship/rights decisions, venue formatting and submission remain outstanding. |
+
+There are **53,230 method/question records across 24 runs**, covering **1,000 distinct held-out questions** with methods, seeds and generators repeated. Of these records, 53,209 succeeded and 21 failed; failures remain in answer averages. The exact core source is preserved in [the scientific snapshot](research_report/evidence/scientific_source_snapshot.json). The [final audit](research_report/evidence/final_audit.json), [complete result index](RESEARCH_PROGRESS_REPORT.md#complete-result-index) and [claim map](CLAIM_EVIDENCE_MAP.md) connect status to evidence.
+
+The [original-plan coverage assessment](RESEARCH_PROGRESS_REPORT.md#coverage-of-the-original-plan-and-explicit-gaps) lists adaptations and unfinished requirements explicitly. Local phase completion is not literal completion of every original plan item, publication acceptance or completion of interactive learning exercises.
+
+## Historical baseline sequence — November 4–9
+
+The next eight stages describe the first working slice. Their limitations motivated later phases and do not replace the current summary above.
 
 ## Starting point before the baseline
 
@@ -22,7 +46,7 @@ The source JSON is adapted into separate QueryInput and EvaluationLabels objects
 
 **Why this came first:** every later comparison depends on knowing its inputs and settings. A selector that can inspect reference labels or inherit hidden script constants cannot support a reliable experiment.
 
-**Remaining:** source-sentence offsets, full duplicate checks and frozen fresh evaluation partitions. The dependency lock currently covers only the core numeric pair rather than the complete model stack.
+**Remaining at this stage:** source-sentence offsets, full duplicate checks and frozen fresh evaluation partitions. The dependency lock then covered only the core numeric pair rather than the complete model stack. Phases A–C subsequently added the broader environment, data and retrieval contracts.
 
 ## Stage two answer and evidence metrics
 
@@ -46,7 +70,7 @@ The module implements stable relevance top-k, MILP with product linearization, a
 
 **Verification:** MILP agrees with exhaustive enumeration on tiny positive/negative-pair cases and count boundaries. Tests also cover time-limited solutions without falsely labeling them optimal.
 
-**Remaining:** native token constraints and additional classical baselines.
+**Remaining at this stage:** native token constraints and additional classical baselines, subsequently implemented in Phase D.
 
 ## Stage four common real-model adapters
 
@@ -56,7 +80,7 @@ The model adapter resolves immutable MiniLM/Qwen snapshots, loads once, produces
 
 **Why:** the compared selectors must use the same models and prompt policy. Model loading, feature generation and answer generation are distinct timing stages.
 
-**Remaining:** chunking, persistent embedding reuse, hardware profiling and generation diagnostics with empty or oracle evidence.
+**Remaining at this stage:** chunking, persistent embedding reuse, hardware profiling and generation diagnostics with empty or oracle evidence, subsequently covered by Phases A–C and the final service/batching checks.
 
 ## Stage five experiment orchestration and artifact integrity
 
@@ -68,7 +92,7 @@ The runner saves manifests, question-level JSONL records and summaries. The mani
 
 **Why:** an aggregate result without the predictions and settings behind it cannot explain what changed or support a reproducibility check.
 
-**Boundary:** completed error records are retained and skipped on resume. Failures before the run store exists may have only a CLI error; not every possible startup failure produces a manifest.
+**Historical runner boundary:** completed error records are retained and skipped on resume. The later main-study journal retries errors with explicit attempt numbers while protecting successful keys. Failures before a run store exists may still have only a CLI error; not every possible startup failure produces a manifest.
 
 ## Stage six independent correctness and package checks
 
@@ -76,7 +100,7 @@ The runner saves manifests, question-level JSONL records and summaries. The mani
 
 The seventeen test methods exercise contracts and mathematics without downloading language models. An explicitly labeled fake backend tests orchestration; it is unavailable as an experimental CLI mode.
 
-The package installed locally without downloads. A configured CI workflow is not evidence of a completed remote CI run.
+The package installed locally without downloads. No completed remote CI run was claimed at this stage; later phase entries record actual GitHub executions.
 
 **Why:** a real model can produce plausible answers while masking a wrong objective or metric. Mathematical and interface checks need independent expected outcomes.
 
@@ -118,7 +142,7 @@ Added the objective progress report, compact evidence snapshot and detailed comp
 
 ## Historical status after the first baseline
 
-| Phase | Current status | Principal gap |
+| Phase | Status at the first-baseline checkpoint | Gap at that checkpoint |
 | --- | --- | --- |
 | A reproducibility and research protocol | Partial | Literature matrix, contribution assessment, fuller profiling and full dependency lock |
 | B data and answer evaluation | Partial | Fresh frozen splits, source mappings and diagnostic experiments |
@@ -130,7 +154,7 @@ Added the objective progress report, compact evidence snapshot and detailed comp
 | H manuscript and demonstration | Pending beyond progress documentation | Complete paper, research figures and demonstration |
 | I submission package | Pending | Reviewed manuscript and reproducible release |
 
-No complete formal phase A–I is claimed merely because the first working baseline exists.
+At this checkpoint, no complete formal phase A–I was claimed merely because the first working baseline existed. The current summary at the top records subsequent work.
 
 ## Dependency sequence recorded after the first baseline
 
@@ -248,3 +272,9 @@ Completed the numerical manuscript and architecture/resource/sampling figures. A
 Prepared a clean-commit release builder for source/configuration/evidence, the installable wheel, reviewed PDF and SHA-256 checksums. Added a claim-to-evidence map and an explicit list of external review, authorship, licensing, annotation and submission tasks. Added model-free public-table and original/prepared quantum reproduction commands to the full CI workflow. Kept the negative findings, local source archives and primary-versus-exploratory distinction intact.
 
 The resulting artifact is a versioned research preview. It is not labeled as a submitted, accepted or independently validated paper. The local implementation, experiments, source restoration, statistical reconstruction, service checks and PDF inspection are complete within the recorded scope. No remaining human-only decision is represented as an automated result.
+
+## Documentation audit — reconcile explanations with the released implementation
+
+Reviewed all three main documents against the plan, current modules, frozen configurations and saved evidence. Corrected stale present-tense baseline claims, expanded the current pipeline and data contracts, distinguished main-study JSON validation from the stricter baseline/service interfaces, and corrected the main encoder's batch size and MILP row counts. Added a current status table and explicit plan gaps while retaining checkpoint history.
+
+Reconstructed all 24 public tables and paired intervals without loading models. Reran the intended test directory: 46 tests and 34 subtests passed. An initial unrestricted collection also discovered the extracted release's duplicate test modules under ignored results and failed collection; specifying `tests` avoids that local duplicate tree. No experiment, coefficient, reference annotation, model setting or frozen source was changed. The [audit receipt](research_report/evidence/documentation_audit_20261110.json) records commands and scope. The existing release remains an immutable historical artifact; these documentation corrections are a later revision.

@@ -82,7 +82,7 @@ def main():
     )
     report = report.replace(
         "| H manuscript and demonstration | In progress | Editable manuscript, figure tooling, API/dashboard, tests and working container; final results and real-model HTTP benchmark pending |",
-        "| H manuscript and demonstration | Implemented; export review underway | Completed numerical manuscript and real-model CPU service checks; PDF visual QA and release finalization follow |",
+        "| H manuscript and demonstration | Complete within local scope | Numerical manuscript, 13-page visually checked PDF, real-model API/container checks, persistence and batch profiling; browser review remains unavailable |",
     )
     report = report.replace("preregistered comparison", "predeclared comparison")
     report = block(report, "DEFINITIVE_RESULTS", "\n".join(lines))

@@ -1,6 +1,6 @@
 # Technical foundations and implementation notes
 
-**Version 1.0 working edition | Updated November 10 2026**
+**Version 1.1 audited working edition | Updated November 10 2026**
 
 This companion explains the mathematics, ML concepts and engineering decisions behind the implemented research pipeline. It connects definitions to source functions, derives equations and provides numerical examples. [Research progress](RESEARCH_PROGRESS_REPORT.md) contains the experimental account; [Development sequence](DEVELOPMENT_SEQUENCE.md) records implementation order and decisions.
 
@@ -18,10 +18,27 @@ The implemented pipeline now includes token-safe chunking, embedding and graph c
 - [Evaluation calculations](#evaluation-with-worked-calculations)
 - [Reproducibility and software contracts](#reproducibility-and-software-contracts)
 - [Actual question trace](#a-complete-trace-through-the-actual-first-question)
-- [Planned graph and quantum foundations](#foundations-for-the-planned-graph-and-quantum-work)
-- [Upcoming engineering](#upcoming-engineering-concepts-and-their-status)
+- [Graph and quantum foundations](#graph-and-quantum-foundations)
+- [Implemented engineering concepts](#implemented-engineering-concepts-and-their-status)
 - [Technical review questions](#technical-review-questions-and-reasoning-checks)
 - [References](#sources-and-implementation-references)
+- [Phase A: reproducibility](#phase-a-foundations--what-reproducibility-establishes)
+- [Phase B: dataset-specific annotations and scores](#phase-b-foundations--annotations-aliases-and-dataset-specific-scoring)
+- [Phase C: chunks, caches and search](#phase-c-foundations--chunking-caches-ranking-and-indexes)
+- [Phase D: budgets, policies and graph coefficients](#phase-d-foundations--budgets-heuristics-and-graph-coefficients)
+- [Phase E: implemented quantum calculation](#phase-e-foundations--deriving-the-implemented-quantum-calculation)
+- [Phase F: sparsification and its bound](#phase-f-foundations--exact-edge-budgets-and-what-sparsification-can-prove)
+- [Corpora and memory measurements](#phase-g-preparation--bounded-corpora-and-measuring-memory)
+- [Service jobs and observability](#service-foundations--requests-jobs-and-observability)
+- [Sampling and state preparation](#sampling-state-preparation-and-a-weak-depth-one-circuit)
+- [Statistical comparisons](#reading-statistical-comparisons-correctly)
+- [Artifacts and reconstruction](#artifact-checks-and-independent-reconstruction)
+- [Interpreting the final results](#connecting-the-completed-results-to-the-mathematics)
+- [Manuscript export](#turning-numerical-artifacts-into-a-manuscript)
+- [XY count-preservation derivation](#why-the-paired-xy-gates-preserve-passage-count)
+- [Release and acceptance](#versioned-release-versus-scientific-acceptance)
+
+**How to read the implementation history:** the first numerical example and the three-question trace explain the original baseline. The current study adds the graph coefficients, token constraints and quantum policies derived in the phase sections. Historical CPU settings, whole-passage encoding and the legacy Qiskit wrappers do not describe the final study. The current entry point is [study.py](../src/qrag/experiments/study.py); the separate demonstration is in [qrag_service](../src/qrag_service/). The [plan-coverage assessment](RESEARCH_PROGRESS_REPORT.md#coverage-of-the-original-plan-and-explicit-gaps) distinguishes implementation from unfinished validation and optional extensions.
 
 ## The system and the problem it solves
 
@@ -32,10 +49,11 @@ The implemented flow is:
 ~~~text
 Processed question and candidate passages
   → separate inference inputs from reference annotations
-  → embed the question and candidates
-  → calculate relevance and pair similarities
-  → construct a common constrained selection problem
-  → select passages by ranking or MILP
+  → split documents into token-safe chunks and obtain cached unit vectors
+  → aggregate document vectors; calculate relevance and pair similarities
+  → extract source-grounded entity links and construct common coefficients
+  → construct a fixed-count or classical token-budget problem
+  → select by a ranking/policy, MILP, sampling or simulated QAOA
   → order selected passages consistently and construct a chat prompt
   → generate a short answer
   → evaluate against reference annotations and save artifacts
@@ -61,15 +79,15 @@ This example illustrates the task; it is not a measured benchmark result.
 
 ## Data contracts and label isolation
 
-**Implementation:** [data.py](../src/qrag/data.py), functions adapt_example and load_examples.
+**Implementation:** [data.py](../src/qrag/data.py), functions adapt_example and load_examples; official-format conversion and dataset-specific scoring are in [datasets.py](../src/qrag/datasets.py).
 
 The source JSON contains both usable input and evaluation information. adapt_example splits it into:
 
 | Object | Contents | Consumer |
 | --- | --- | --- |
-| Document | ID title text | Scoring selection generation |
+| Document | ID, title, text, available source sentences and source ID | Scoring selection generation |
 | QueryInput | Question ID question text document tuple | Inference pipeline |
-| EvaluationLabels | Reference answer and supporting-title set | Evaluator |
+| EvaluationLabels | Reference answer, aliases, dataset, supporting titles/sentences and paragraph IDs where available | Evaluator |
 
 The reference answer and is_relevant fields are absent from inference objects. The adapter obtains supporting titles from supporting_facts, with a fallback to existing relevance annotations, but places them only in EvaluationLabels.
 
@@ -89,9 +107,9 @@ A tokenizer maps text to a sequence of integer token IDs. Tokens can represent s
 
 Each model has an input limit. If a necessary fact lies beyond the part an embedding model reads, that fact cannot contribute to its relevance score even if the full passage later reaches the generator.
 
-The new model adapter counts embedding input tokens before encoding. With embedding_truncation set to error, an overlong question or passage produces a visible failure. The report mode explicitly records affected positions before allowing truncation. Neither mode implements chunking.
+The historical whole-passage adapter counts embedding input tokens before encoding. With embedding_truncation set to error, an overlong question or passage produces a visible failure. Its report mode explicitly records affected positions before allowing truncation. These settings belong to that adapter, not to the current chunking policy.
 
-Chunking will divide long text into smaller, traceable units. It needs source offsets and annotation mappings so that evaluation can still determine which facts survived. Overlap can protect boundary facts but also creates repeated material that affects selection and token usage.
+The main study implements chunking in [retrieval.py](../src/qrag/retrieval.py). It divides long documents into traceable units of at most 240 embedding tokens, including special tokens and a title prefix limited to 64 tokens. Oversized sentences use overlapping windows, with a default overlap of 32 body tokens; ordinary sentences are grouped within the same bound. The question is checked separately and rejected if it exceeds the encoder limit. Source offsets and sentence mappings preserve provenance. All document chunks contribute to its vector; the generator still receives the selected document's full text. This removes silent tail truncation, although averaging chunks can dilute a small important fact. The [Phase C derivation](#phase-c-foundations--chunking-caches-ranking-and-indexes) explains the aggregation.
 
 ### What the embedding model produces
 
@@ -130,7 +148,7 @@ An embedding is a learned representation, not a list of explicit verified facts.
 
 The current project loads pretrained weights and performs inference. It does not fine-tune MiniLM or Qwen. Inference computes outputs using existing parameters; training changes parameters using a learning objective and an optimizer.
 
-This distinction also separates two kinds of optimization in the project: MILP chooses passage-selection variables, whereas neural-network training would change model weights. QAOA's classical optimizer would adjust circuit angles, not the LLM weights.
+This distinction also separates two kinds of optimization in the project: MILP chooses passage-selection variables, whereas neural-network training would change model weights. QAOA's classical optimizer adjusts circuit angles, not the LLM weights.
 
 ## Similarity derivation and array shapes
 
@@ -161,7 +179,7 @@ $$
 
 | Quantity | Meaning | Shape for ten candidates |
 | --- | --- | --- |
-| Encoded batch | Question followed by candidate vectors | 11 × 384 |
+| Final representation array | One question vector plus ten document vectors | 11 × 384 |
 | u | Question embedding | 384 |
 | D | Passage embeddings | 10 × 384 |
 | r | Relevance scores | 10 |
@@ -170,13 +188,15 @@ $$
 
 S is a redundancy proxy. Negative cosine values are clipped so the current model does not reward selecting a pair simply because its embeddings are opposed. The optimizer ignores diagonal entries: a passage must not incur a pair penalty with itself.
 
+The 11-vector shape describes the final representations, not the number of encoder inputs in the chunked study. Ten documents can produce more than ten chunks; document and question cache lookups are separate. ChunkEncoder.score returns raw G, and objective construction clips it when forming redundancy coefficients. The same raw similarities also remain available to policies such as MMR.
+
 Computing all passage-pair similarities costs roughly O(n²d) arithmetic and O(n²) storage. This is reasonable for small candidate pools but motivates retrieval before pairwise scoring on a large corpus. A vector index accelerates candidate search; it is not the same object as the pair matrix.
 
 ## The selection objective and its interpretation
 
 **Implementation:** build_problem and SelectionProblem.energy in [optimization.py](../src/qrag/optimization.py).
 
-Let xᵢ indicate selection of passage i. The implemented problem is:
+Let xᵢ indicate selection of passage i. The implemented base formulation, retained as the gamma=0 control in the final study, is:
 
 $$
 \min_{x\in\{0,1\}^{n}}
@@ -312,7 +332,7 @@ The [SciPy interface](https://docs.scipy.org/doc/scipy/reference/generated/scipy
 
 ### Mapping to the actual implementation
 
-select_milp creates n binary x variables plus one continuous y for each nonzero upper-triangular coefficient. If there are m retained interactions, it creates n + m variables and 1 + 3m linear rows. The first row enforces exact count. Each pair contributes:
+select_milp creates n binary x variables plus one continuous y for each nonzero upper-triangular coefficient. If there are m retained interactions, it creates n + m variables. Fixed-count mode without token costs has 1 + 3m linear rows. Token-budget mode has 2 + 3m rows: one count/minimum-count row and one token row, in addition to the pair rows. The count row enforces exact k when supplied, or the minimum count in variable-count mode. Each pair contributes:
 
 $$
 y_{ij}-x_i\le0,\quad
@@ -322,7 +342,7 @@ $$
 
 The matrix is stored sparsely. All variable bounds are [0,1]; only the first n integrality entries are enabled. The returned x values are checked for near-integrality before IDs are mapped back to source passages.
 
-The exhaustive oracle enumerates combinations with exactly k selections, limited to n ≤ 20 in this implementation. There are binomial(n,k) such selections, including 252 for n = 10 and k = 5. This oracle validates the formulation rather than replacing scalable optimization.
+The exhaustive oracle is limited to n ≤ 20. In count mode it enumerates combinations with exactly k selections: binomial(n,k), including 252 for n = 10 and k = 5. In variable-count token mode it enumerates sizes from min_count through n and rejects combinations that violate the token budget. This oracle validates the formulation rather than replacing scalable optimization.
 
 **Transferable application:** selecting projects under a budget, facility placement and scheduling all require separating objective design, constraints and solver guarantees in the same way.
 
@@ -342,7 +362,7 @@ The current call disables sampling. Greedy decoding chooses a highest-probabilit
 
 Each selected source is formatted with its ID, title and text. A system message asks for a short answer using only these sources and specifies noanswer when evidence is insufficient. A user message contains the sources and question. The tokenizer's chat template adds the model's expected message delimiters.
 
-The template is rendered first, then tokenized with add_special_tokens disabled to avoid adding another set of special tokens. Both selectors use the same template and source-formatting policy.
+The template is rendered first, then tokenized with add_special_tokens disabled to avoid adding another set of special tokens. All compared selectors use the same template and source-formatting policy within each condition.
 
 Selected indices are sorted into original candidate order before generation. This controls one source of variation: two methods choosing the same set should not receive different source orders. Stable ranking breaks equal-score ties using input order.
 
@@ -357,7 +377,7 @@ T_{\mathrm{prompt}}+T_{\mathrm{new}}
 \le \min(B_{\mathrm{config}},B_{\mathrm{model}}).
 $$
 
-For the current run, the effective total limit is 4,096 and T_new is 32, so the prompt must fit within 4,064 tokens. A 4,080-token prompt fails this check even if the model might have stopped early.
+For the final research configurations, the effective total limit is 4,096 and T_new is 32, so the prompt must fit within 4,064 tokens. A 4,080-token prompt fails this check even if the model might have stopped early.
 
 context_tokens counts the separately tokenized source block. input_tokens counts the complete rendered prompt. Their difference includes instructions, question and formatting; it is not generally constant across questions. Independently measured context-token counts are not guaranteed additive across arbitrary tokenizer boundaries.
 
@@ -365,19 +385,21 @@ max_new_tokens is an upper bound, not a fixed answer length. hit_output_limit fl
 
 ### Loading and computation
 
-Model snapshots are resolved at immutable revisions. The example configuration uses local-only resolution, CPU, float32 generator weights and four PyTorch threads. prepare loads models once per invocation. score reuses the embedder; generate reuses the language model.
+Model snapshots are resolved at immutable revisions. The historical baseline configuration uses local-only resolution, CPU, float32 generator weights and four PyTorch threads. The final research conditions use the recorded CUDA host with float16 generator weights; the independently tested CPU service has its own dependency lock and runtime settings. prepare loads models once per invocation. score reuses the embedder; generate reuses the language model.
 
 Evaluation mode and inference_mode avoid training behavior and gradient bookkeeping. No backpropagation updates occur. Disabling sampling improves repeatability under a fixed environment, but floating-point operations, hardware and dependencies can still produce differences.
 
 The legacy classes use lazy loading: weights are loaded when first needed. The new runner explicitly calls prepare before processing questions, making startup time visible. Both approaches can reuse a loaded model; loading on every question would waste work.
 
-Batching groups multiple inputs into a model operation. The embedding adapter uses batches of up to 32 texts. Larger batches may improve throughput but consume more memory, especially with long padded sequences. The generation adapter currently handles one selected context at a time; it is not a continuously batched inference server.
+Batching groups multiple inputs into a model operation. The historical whole-passage adapter uses batch_size=32; the main ChunkEncoder uses batch_size=64 for unique cache misses. The separate profiling experiment compares 1/8/32/64 and finds 32 fastest on that workload; it does not change the frozen research setting of 64. Larger batches may improve throughput but consume more memory, especially with long padded sequences. The generation adapter handles one selected context at a time; it is not a continuously batched inference server.
 
 Cold model startup, model-ready inference and cached-embedding execution are different conditions. The historical first run recomputed passage embeddings. The main study reuses content-addressed query/document embeddings, and the service loads models lazily on its first job. A cached weight file on disk is not the same as a loaded model or a cached document embedding.
 
+LocalModels.prepare still reports document_embedding_cache as not_implemented in its own adapter metadata: that adapter does not own the cache. The current study wraps the embedder in ChunkEncoder, which supplies caching and records hits/misses in shared-feature metadata. Reading the preparation flag alone would incorrectly suggest the complete current pipeline has no embedding cache.
+
 ## Evaluation with worked calculations
 
-**Implementation:** [metrics.py](../src/qrag/metrics.py), with aggregation in [run.py](../src/qrag/experiments/run.py).
+**Implementation:** the historical HotpotQA metrics are in [metrics.py](../src/qrag/metrics.py). The main study dispatches through score_answer and score_evidence in [datasets.py](../src/qrag/datasets.py), with seed grouping and paired analysis in [evaluation.py](../src/qrag/evaluation.py). The following normalization examples use HotpotQA rules; MuSiQue's differences are explained below.
 
 ### Answer normalization and exact match
 
@@ -410,11 +432,11 @@ Under the implemented reference rules, empty-normalized strings match exactly bu
 
 ### Document evidence metrics
 
-Let D be selected titles and G annotated supporting titles. Document precision is |D∩G|/|D|; recall is |D∩G|/|G|. Complete support is one exactly when G is a subset of D.
+Let D be selected evidence identities and G annotated supporting identities. HotpotQA uses titles; MuSiQue uses paragraph IDs, including canonical content IDs in retrieved pools, because titles need not be unique. Document precision is |D∩G|/|D|; recall is |D∩G|/|G|. Complete support is one exactly when G is a subset of D.
 
 If two documents are annotated and five are selected, selecting both gives precision 2/5, recall 1 and complete support 1. Selecting one gives precision 1/5, recall 1/2 and complete support 0.
 
-These labels identify annotated support, not every possible valid evidence route. Missing support annotations produce null document metrics. The runner does not predict supporting sentences, so these figures are not official sentence-level supporting-fact F1.
+These labels identify annotated support, not every possible valid evidence route. Missing support annotations produce null recall and complete-support values; precision behavior depends on the helper: the historical helper returns null, while the main study returns zero overlap divided by selected count. Frozen benchmark examples have support annotations. The runner does not predict supporting sentences, so these figures are not official sentence-level supporting-fact F1.
 
 ### Aggregation and failures
 
@@ -430,13 +452,15 @@ The recorded baseline has answer EM/F1 of 1/3 for both methods. MILP obtains hig
 
 Romanticism versus Romantic is a semantic near-match with zero exact token overlap. Another example asks for a film but has a person as its reference. Preserve the original primary score and record these cases; changing labels or metrics after viewing which method wins compromises the comparison.
 
-These observations motivate error analysis. They do not justify a general ranking of methods. Future paired confidence intervals should resample questions together across methods; repeated solver seeds for one question are not independent new questions.
+These historical observations motivated error analysis. They do not justify a general ranking of methods. The final paired confidence intervals resample questions together across methods after averaging repeated solver seeds within each question; repeats are not independent new questions.
 
 ## Reproducibility and software contracts
 
 ### Configuration and package installation
 
 [config.py](../src/qrag/config.py) loads TOML into ExperimentConfig and rejects unknown keys. __post_init__ checks types, numeric ranges, finite weights, device choices and immutable model revisions. Explicit type checks prevent boolean values from accidentally serving as positive integers.
+
+The larger study uses JSON specifications in [study.py](../src/qrag/experiments/study.py). Its validate_spec rejects unknown top-level settings, validates the model through ExperimentConfig, checks method-name uniqueness, solver names, budget mode and selected limits. Per-method dictionaries do not have a comprehensive unknown-key/type validator. It would be inaccurate to claim that every malformed nested study setting is rejected before execution. Frozen configurations and correctness checks reduce this risk but do not remove that interface limitation. The service separately uses strict Pydantic request models.
 
 The package configuration in [pyproject.toml](../pyproject.toml) makes qrag importable. An editable installation points imports at the source tree. Installing the package does not download model weights.
 
@@ -462,9 +486,9 @@ Per-method failures after startup are recorded and retained in the answer denomi
 
 ### Tests and their limits
 
-The first seventeen tests covered the baseline. The expanded suite has 45 tests covering data, caches/indexes, provenance, signed MILP, budgets, quantum spectra and mixers, sparsification, statistics, journaling and service behavior. Several methods contain multiple cases.
+The first seventeen tests covered the baseline. The expanded suite has 46 tests covering data, caches/indexes, provenance, signed MILP, budgets, quantum spectra and mixers, sparsification, statistics, journaling and service behavior. Several methods contain multiple cases. Run the suite with `venv/bin/python -m pytest tests -q`; an explicit test directory avoids discovering the separately extracted release copy under ignored local results.
 
-Offline tests use an explicitly labeled fake model backend. They verify orchestration, not language-model quality. The separate real MiniLM/Qwen run verifies the integrated inference path on three development examples.
+Orchestration and service tests use explicitly labeled fake inference engines; numerical and quantum tests execute their actual solver/circuit dependencies. These tests do not measure language-model quality. The historical MiniLM/Qwen run verified three development examples; the later real-model experiments and CPU-container checks provide the broader integration evidence.
 
 The baseline workflow and the expanded [research workflow](../.github/workflows/research.yml) have completed successfully on GitHub Actions. These checks do not download model weights or reproduce full scientific inference; local real-model runs provide that separate evidence. Container and wheel checks exercise packaging as well as Python tests.
 
@@ -493,7 +517,7 @@ The energy difference establishes a better value under this objective. This ques
 
 All values trace to the [evidence snapshot](research_report/evidence/baseline_dev_001.json) and the full local run directory. The actual model experiment occurred on November 4; documentation checks do not create new model results.
 
-## Foundations for the planned graph and quantum work
+## Graph and quantum foundations
 
 **Reading order:** these are the introductory derivations originally written before the quantum implementation. The implemented versions, actual settings, limitations and checks are detailed in the Phase D–F sections below. The historical three-question baseline did not execute QAOA.
 
@@ -620,7 +644,7 @@ This elementary bound is a useful check, not a novelty claim or an answer-F1 gua
 
 Circuit resources must include state preparation, mixers, routing and constraint encoding. Sparsifying interactions generally does not reduce the number of candidate qubits. A statevector simulator stores amplitudes growing as 2ⁿ; raw complex128 storage alone is about 16 × 2ⁿ bytes, before additional simulator memory. Simulation behavior cannot establish practical hardware speedup.
 
-## Upcoming engineering concepts and their status
+## Implemented engineering concepts and their status
 
 The table summarizes engineering requirements that are now implemented in the main study or service. Detailed mechanisms and measurements follow in the phase sections.
 
@@ -671,7 +695,7 @@ Primary sources support the transformer, generation, optimization and quantum ba
 - [pip repeatable installations](https://pip.pypa.io/en/stable/topics/repeatable-installs/)
 - [Official HotpotQA evaluator](https://github.com/hotpotqa/hotpot/blob/master/hotpot_evaluate_v1.py)
 
-For project execution, use [Baseline guide](BASELINE_GUIDE.md). For completed versus remaining work, use [Development sequence](DEVELOPMENT_SEQUENCE.md) and the [implementation plan](IMPLEMENTATION_PLAN.md).
+For current execution and restoration, use the [reproducibility guide](REPRODUCIBILITY.md) and [service guide](SERVICE_GUIDE.md). The [baseline guide](BASELINE_GUIDE.md) documents the historical first slice. For completed versus remaining work, use [Development sequence](DEVELOPMENT_SEQUENCE.md) and the [implementation plan](IMPLEMENTATION_PLAN.md).
 
 ## Phase A foundations — what reproducibility establishes
 
@@ -739,7 +763,7 @@ For each passage, extract exact candidate-title matches and capitalized spans, r
 
 Let a_i be the fraction of non-stopword question terms appearing in passage i's title or text. Let L_ij be 1 when passages i and j share an extracted entity, otherwise 0. Define C_ij = L_ij * max(a_i,a_j) * sqrt(max(r_i,0)*max(r_j,0)). Each factor is nonnegative. The anchor lets a question-matching passage connect to a possible bridge; the square root downweights pairs with little dense relevance. The pair coefficient becomes b_ij = beta*max(similarity_ij,0) - gamma*C_ij. Positive b discourages joint selection; negative b rewards it. Gamma controls the strength of an uncertain graph signal, not a probability of truth.
 
-For relevance (0.8,0.5), anchor maximum 0.6 and a link, C=0.6*sqrt(0.4), approximately 0.3795. If similarity is 0.4, beta=0.2 and gamma=0.8, then b=0.08-0.3036=-0.2236. A mistaken link therefore introduces a real reward for selecting both passages. This explains why mathematically optimal selection can worsen answers when the graph feature is noisy. The actual development graph result is negative; the example explains a possible mechanism, not a diagnosis of every failed question.
+For relevance (0.8,0.5), anchor maximum 0.6 and a link, C=0.6*sqrt(0.4), approximately 0.3795. If similarity is 0.4, beta=0.2 and gamma=0.8, then b=0.08-0.3036=-0.2236. A mistaken link therefore introduces a real reward for selecting both passages. This explains why mathematically optimal selection can worsen answers when the graph feature is noisy. The first gamma=0.8 development graph result is negative; subsequent gamma=0.2 calibration improves development means, while the final graph-minus-base intervals all span zero. The example explains a possible mechanism, not a diagnosis of every failed question.
 
 ### Timing and generation reuse
 

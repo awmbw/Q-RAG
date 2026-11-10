@@ -1,0 +1,52 @@
+{
+  "date": "2026-11-10",
+  "scope": "Documentation consistency audit against plan, implementation, frozen configurations and saved results; no new model inference.",
+  "audited_baseline_commit": "e8b992118d0e027d07f7991be1e37521c6a95198",
+  "scientific_source_sha256": "8d6bf4c5739869e525a7222714332b1b2972637d4c04524b6a3df320133dd287",
+  "scientific_source_unchanged": true,
+  "documents": {
+    "docs/RESEARCH_PROGRESS_REPORT.md": "7ea41f9cee907a66e266bff2934726ce1a0ca8db732195dc7c0fad5ab4e69864",
+    "docs/TECHNICAL_FOUNDATIONS.md": "b42e8611222b66ca37f66fbc743049815d16bd37d9445bb2503dec0f331212db",
+    "docs/DEVELOPMENT_SEQUENCE.md": "6bca650032c9fa64da115f024bec4ca294eebeb1c3f5f1b56dd9394c9ad816bc"
+  },
+  "saved_result_totals": {
+    "runs": 24,
+    "records": 53230,
+    "successful": 53209,
+    "failures": 21,
+    "output_limit_flagged_records": 914
+  },
+  "checks": [
+    {
+      "command": "venv/bin/python scripts/reproduce_public_tables.py --verify --output results/documentation_audit_20261110/public_tables",
+      "status": "passed",
+      "result": "All 24 public method tables and paired intervals reconstructed; compressed prediction hashes verified."
+    },
+    {
+      "command": "venv/bin/python -m pytest tests -q",
+      "status": "passed",
+      "tests": 46,
+      "subtests": 34,
+      "warnings": [
+        "Existing Starlette TestClient/httpx deprecation warning."
+      ]
+    },
+    {
+      "command": "venv/bin/python scripts/update_final_documents.py",
+      "status": "passed",
+      "result": "Final repeated refresh leaves all three audited documents unchanged; initial refresh normalized generated block spacing."
+    }
+  ],
+  "collection_boundary": "An initial unrestricted pytest collection discovered duplicate tests in the ignored extracted release tree and failed; the explicit tests directory passed without source changes.",
+  "limits": [
+    "No independent full neural-inference rerun in this documentation audit.",
+    "No new external-source or venue-deadline verification.",
+    "Local phase completion does not finish original-method reproduction, manual semantic/causal annotation, browser review, demo video, interactive learning or scholarly submission.",
+    "Original release tag and archived evidence are unchanged."
+  ],
+  "local_markdown_links": {
+    "checked": 211,
+    "broken": [],
+    "scope": "Inline links in the three documents; local target existence and Markdown heading anchors, including cross-document targets. External links were not fetched."
+  }
+}

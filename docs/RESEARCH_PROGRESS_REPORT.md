@@ -1,6 +1,6 @@
 # Quantum RAG research progress and mathematical formulation
 
-**Version 1.0 working edition | Updated November 10 2026**
+**Version 1.1 audited working edition | Updated November 10 2026**
 
 The research implementation now includes token-safe retrieval, persistent caches/indexes, classical constrained selection, entity-link features, sparsification, actual QAOA simulation, downstream answer evaluation, bounded corpus experiments and a separate local demonstration service. The definitive evaluation and all declared controls are complete, and their 53,230 records pass the final artifact audit. The manuscript and release package report unfavorable findings as well as measured resource changes.
 
@@ -10,7 +10,7 @@ The historical three-question baseline is retained below, followed by phase-by-p
 
 ## Research objective
 
-The proposed study asks whether question-specific evidence relationships can guide sparsification of the context-selection objective while preserving multi-hop answer quality and reducing compiled QAOA resource costs.
+The study tested whether question-specific evidence relationships can guide sparsification of the context-selection objective while preserving multi-hop answer quality and reducing compiled QAOA resource costs. The completed experiments do not establish the proposed evidence-guidance benefit; the resulting manuscript reports an encoding-aware comparative study and its limitations.
 
 A passage can be topically relevant without supplying a needed fact. Complementary passages may jointly answer a question. The implemented graph feature is a transparent entity-link proxy for such relationships, not verified semantic evidence or a guarantee of factual reasoning.
 
@@ -33,6 +33,30 @@ The implemented flow is supplied or commonly retrieved candidates → token-safe
 | I submission package | Local artifact prepared; external actions remain | Versioned source/wheel/PDF/checksum package, reproduction guides and claim map; scientific review, rights, authorship, venue formatting and submission remain external |
 
 Implementation status does not establish scientific superiority or publication acceptance. Earlier exploratory document-recall comparisons used classical optimization and unequal selection sizes; their figures are not directly comparable to the controlled answer evaluation. The following initial derivation and three-question result are historical; later phase sections describe their extensions.
+
+## Coverage of the original plan and explicit gaps
+
+“Implemented” means the documented local component and experiments exist. It does not mean every original work item, optional extension or publication condition in the [implementation plan](IMPLEMENTATION_PLAN.md) is finished. This table reconciles the plan with the saved implementation rather than treating a phase heading as proof of completion.
+
+| Plan requirement | Current evidence and boundary |
+| --- | --- |
+| A: tested environment, protocol, manifests and CI | [Measured environment](research_report/evidence/environment_20261110.json), pinned environments, [protocol](EXPERIMENT_PROTOCOL.md) and both CI workflows exist. The 19-source literature review is bounded; it is not exhaustive novelty certification. |
+| B: fresh splits, official metrics and actual answers | [Frozen split manifest](../configs/splits/research_v1.json), dataset adapters, official-score agreement, empty/oracle diagnostics and held-out predictions exist. Held-out examples are from official development/validation partitions, not a hidden test set. |
+| C: chunks, caches, restored index and fair budgets | [Retrieval implementation](../src/qrag/retrieval.py), cache/index checks and real profiles exist. Fixed count and token cap are separate studies; neither guarantees equal actual token consumption. |
+| D: classical references and provenance-aware graph features | Signed MILP, exhaustive checks, heuristics and entity-link coefficients exist. The [40-edge worksheet](research_report/annotation_sample.json) is entirely unjudged: the planned manual entity/bridge error measurement is unfinished. Typed factual relations were not added. |
+| Closest external selector reproduction | A local lexical coverage comparator and [prior-work differences](LITERATURE_REVIEW.md) are documented. An original-model reproduction of SetR or the closest QUBO evidence-selection paper is not complete. The local comparator must not be labeled an exact reproduction. |
+| E–F: actual quantum circuits, resources, sparsifiers and ablations | Actual Qiskit simulations, complete compilation, four sparsifiers and development decisions exist. Quantum studies enforce fixed count only. Hardware and token-budget circuits are absent. No noninferiority margin was frozen, so preserved answer quality is not established by an interval spanning zero. |
+| G: frozen evaluation, uncertainty, failures and corpus search | [Final audit](research_report/evidence/final_audit.json): 24 runs, 53,230 method/question records, including 21 failures. All tables reconstruct from public outcomes. The primary evaluation contains 1,000 distinct held-out questions; repeated methods/seeds/generators do not increase that independent question count. |
+| G: second generator and larger cases | Qwen 1.5B and 3B were evaluated; both belong to the same family. The larger model is not empirically stronger here. Corpus pools of 25/50/100 provide classical context; time-limited MILP results are not all certified optima. |
+| H: manuscript, error analysis and reproduction | [Manuscript source](../paper/manuscript.md), reviewed PDF, numerical examples, automatic error signatures, source restoration and fresh-source/model-free checks exist. Independent causal annotation of an error sample and an independent full end-to-end rerun remain undone. |
+| H and engineering: service and operational checks | Real-model API/container inference, restart persistence, tracing, cache reuse and GPU embedding profiles exist. Browser visual review and a demo video are not completed. The untrusted-source fixture was not selected into context, so it provides no generator prompt-injection-resistance evidence. |
+| Planned stack choices | JSON/JSONL artifacts replace a separate MLflow server; the dashboard is a thin static client. These choices avoid extra infrastructure for the local workload. Neo4j, Kubernetes, fine-tuning, quantization and continuously batched generation are not claimed. |
+| I: release and scholarly submission | A versioned research preview was released. Independent scientific review, authorship, rights/licensing decisions, venue formatting and actual submission are outstanding. A public release is not peer-reviewed publication. |
+| Teaching and interview preparation | Concept explanations, worked examples and review questions are available. Completing implementation autonomously does not complete interactive exercises or establish independent understanding. |
+
+The final statistics and their condition-by-condition links are in [the definitive evaluation](#phase-g--definitive-evaluation-and-independent-audit). The [handoff](HUMAN_HANDOFF.md) records external decisions. These gaps qualify the local phase-status table above; they are not hidden completed results.
+
+**Reading historical checkpoints:** sections from the initial baseline through the Phase H packaging checkpoint describe the state when each step occurred. Statements such as “will restart,” “scheduled” and earlier test counts belong to those checkpoints. The current status above and the later completion sections take precedence. The [documentation audit](research_report/evidence/documentation_audit_20261110.json) records the latest consistency checks.
 
 ## Historical baseline formulation and its reusable foundations
 
@@ -66,13 +90,13 @@ The later graph extension adds a complementarity reward. Token-budget constraint
 
 ## Evaluation and experimental controls
 
-Answer exact match compares normalized strings. Token F1 uses multiset overlap with HotpotQA's normalization and special-answer rules [7]. Document recall measures the fraction of annotated supporting titles selected; complete support records whether all such titles are present. These document metrics are not sentence-level supporting-fact F1.
+Answer exact match compares normalized strings. Token F1 uses multiset overlap with dataset-specific rules: HotpotQA applies its special-answer rules [7], while MuSiQue maximizes over valid aliases and follows its own empty-answer convention. Document recall measures the fraction of annotated supporting identities selected: titles for HotpotQA and paragraph IDs for MuSiQue. Complete support records whether all annotated identities are present. These document metrics are not sentence-level supporting-fact F1.
 
 The common model revisions, candidate pools, ordering and prompt policy control several variables. Exactly five selected passages controls count, but not token length. Failed executions remain in answer denominators; evidence and token summaries are successful-only and labeled accordingly.
 
 ## Verified development experiment
 
-The experiment ran on November 4. Its saved predictions, coefficients, references and hashes were audited on November 9. No new model inference was performed during documentation updates.
+This historical experiment ran on November 4. Its saved predictions, coefficients, references and hashes were audited on November 9 without new model inference. Later phase experiments are separate executions and do contain new model-generated answers.
 
 <!-- BEGIN VERIFIED BASELINE RESULTS -->
 
@@ -91,7 +115,7 @@ Run identifier: baseline_dev_001. The input is the first three already inspected
 | Model preparation | 4.72 seconds |
 | Recorded invocation wall time | 61.32 seconds |
 
-The model revisions and runtime versions are preserved in the evidence snapshot. Models loaded from local snapshots; document embeddings were recomputed once per question and shared between selectors. A persistent embedding cache is not implemented.
+The model revisions and runtime versions are preserved in the evidence snapshot. In this historical run, models loaded from local snapshots; document embeddings were recomputed once per question and shared between selectors. That runner did not use a persistent embedding cache. The current study uses the Phase C cache described below.
 
 | Measurement over three questions | Relevance top k | MILP |
 | --- | ---: | ---: |
@@ -126,15 +150,15 @@ Q1 corresponds to 5abed9f45542994516f4545a, Q2 to 5ab1dd6c5542993be8fa9860 and Q
 
 ## Historical baseline interpretation and limitations
 
-MILP improved objective values and annotated document recall on this sample without improving aggregate answer EM/F1. Its contexts were longer in tokens despite identical passage counts. A token-budget comparison is needed to isolate that difference.
+MILP improved objective values and annotated document recall on this sample without improving aggregate answer EM/F1. Its contexts were longer in tokens despite identical passage counts. This motivated the later, separately reported token-budget comparisons.
 
 Q2 illustrates metric sensitivity: Romanticism and Romantic have no exact normalized token overlap. MILP's Modernismo prediction is a separate error requiring evidence inspection. Q3 asks for a film but has a person as its reference; the November 4 investigation found the same inconsistency in the cached upstream record. The original primary reference is retained.
 
-Three inspected development questions, one seed and one generator cannot establish significance or general superiority. No corpus-scale benefit, novel graph result or quantum advantage has been demonstrated.
+Three inspected development questions, one seed and one generator could not establish significance or general superiority. This historical run demonstrated no corpus-scale benefit, novel graph result or quantum advantage; later experiments must be judged on their own conditions.
 
 ## Historical baseline correctness and reproducibility
 
-Seventeen offline test methods passed again on November 9, covering label isolation, metric edge cases, signed-pair optimization, count boundaries, MILP/exhaustive agreement, solver limits, configuration and resume/failure behavior. The CI workflow exists; a completed remote CI run is not claimed.
+Seventeen offline test methods passed again on November 9, covering label isolation, metric edge cases, signed-pair optimization, count boundaries, MILP/exhaustive agreement, solver limits, configuration and resume/failure behavior. A completed remote CI run was not claimed at that checkpoint. The expanded 46-test suite and subsequent remote CI results are recorded in the completion sections.
 
 The manifest records model revisions, configuration, question IDs, runtime/device and source/data hashes. Question-level records retain prompts, predictions, selections, coefficients, metrics and status. Saved energies and metrics were independently recomputed, aggregates checked and recorded source/data hashes verified.
 
@@ -142,7 +166,7 @@ Full local artifacts are in results/baseline_dev_001. A [compact evidence snapsh
 
 ## Backlog recorded after the first baseline
 
-Immediate work includes the structured prior-work comparison, data provenance and frozen splits, token-aware chunking, persistent embeddings and token-budget selection. Further classical baselines will precede graph-feature and QAOA comparisons.
+At that checkpoint, the backlog included the structured prior-work comparison, data provenance and frozen splits, token-aware chunking, persistent embeddings and token-budget selection. Further classical baselines were to precede graph-feature and QAOA comparisons. The Phase A–G entries below record their implementation; this paragraph is not a current pending-work list.
 
 The quantum study will account for mapping, constraints, state preparation, mixers, compilation and noise. Cardinality penalties can introduce all-pairs couplings, so a sparse semantic graph alone cannot establish circuit savings. Full and sparse objective values will be reported separately.
 
@@ -160,7 +184,7 @@ Detailed derivations and worked examples are in [Technical foundations and imple
 6. IBM Quantum. [Quantum approximate optimization algorithm](https://quantum.cloud.ibm.com/docs/en/tutorials/quantum-approximate-optimization-algorithm).
 7. HotpotQA. [Official answer and supporting-fact evaluator](https://github.com/hotpotqa/hotpot/blob/master/hotpot_evaluate_v1.py).
 
-Current implementation pointers: [data boundaries](../src/qrag/data.py), [objective and MILP](../src/qrag/optimization.py), [model adapters](../src/qrag/models.py), [metrics](../src/qrag/metrics.py), [runner](../src/qrag/experiments/run.py), [artifacts](../src/qrag/experiments/artifacts.py), [configuration](../configs/dev_baselines.toml), [tests](../tests/test_baselines.py) and [legacy QAOA wrapper](../src/optimization/qaoa_solver.py).
+Current implementation pointers: [data boundaries](../src/qrag/data.py), [dataset-specific metrics](../src/qrag/datasets.py), [chunked retrieval/cache/index](../src/qrag/retrieval.py), [bounded corpus search](../src/qrag/corpus.py), [entity-link features](../src/qrag/evidence.py), [objective and MILP](../src/qrag/optimization.py), [sparsification](../src/qrag/sparsification.py), [actual QAOA](../src/qrag/quantum.py), [model adapters](../src/qrag/models.py), [main study runner](../src/qrag/experiments/study.py), [durable journal](../src/qrag/experiments/journal.py), [paired evaluation](../src/qrag/evaluation.py), [frozen matrix](../configs/final_matrix.json), [tests](../tests/) and [local service](../src/qrag_service/). The [original runner](../src/qrag/experiments/run.py), [baseline configuration](../configs/dev_baselines.toml) and [legacy QAOA wrapper](../src/optimization/qaoa_solver.py) remain historical interfaces.
 
 ## Phase A — measured environment and research protocol (November 10, 2026)
 
@@ -427,7 +451,6 @@ The 25-candidate condition uses 100 questions; 50/100-candidate conditions use t
 Across the four 500-question fixed-count conditions, full MILP has lower common-objective energy but worse F1 than relevance selection on respectively 31, 37, 36, 32 questions (HotpotQA 1.5B/3B, MuSiQue 1.5B/3B). The relevance subset is rescored using the full MILP coefficients for this comparison. These observations directly distinguish proxy optimization from downstream correctness; they do not independently identify a causal graph or generator error. Deterministic examples and additional signatures are released.
 
 
-
 ### Complete result index
 
 Each linked analysis includes every method in that condition, answer/evidence/token outcomes, failures and paired intervals. Its JSON companion additionally retains resource and certification diagnostics. The public compact prediction file is identified and checksummed by the matching evidence manifest.
@@ -492,6 +515,12 @@ Batch 32 processes about 2.30 times as many chunks per second as batch 1 on this
 
 The service has strict input schemas, one inference worker, a four-job bound, persisted statuses, explicit fallbacks, source provenance and local tracing. It is a loopback demonstration without authentication or a production reliability claim. Forty-six correctness tests, targeted type checks, wheel/container checks and both current GitHub CI workflows pass.
 <!-- END SERVICE_RESULTS -->
+
+## Generation length limits in the completed evaluation
+
+The [final audit](research_report/evidence/final_audit.json) records **914 successful method/question outcomes flagged as reaching the 32-new-token allowance** across the 24 runs. These are flagged records, not 914 distinct model calls: identical selected contexts within one question can reuse the same generated answer, and questions recur across conditions. Reaching the allowance indicates possible output truncation; it does not prove that every flagged answer is incomplete. These predictions remain scored as emitted under the frozen policy. No longer-answer rerun was substituted after examining scores.
+
+This output-length issue is different from embedding input truncation. The main encoder checks token-safe chunks and rejects overlong queries; generation separately checks the fully formatted prompt against its 4,096-token total allowance. The historical baseline's statement that it had no limit hits applies only to its six outcomes. The final audit also distinguishes **53,209 successful records and 21 failed records**; retaining failures in answer averages does not mean every recorded method produced an answer.
 
 ## Phase H — manuscript export completed
 
