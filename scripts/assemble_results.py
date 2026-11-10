@@ -148,6 +148,17 @@ def main():
         result["candidate_recall_successful_only"] = {
             m: float(np.mean(list(values.values()))) for m, values in candidates.items()
         }
+        result["selection_diagnostics_successful_only"] = {}
+        for metric, callback in {
+            "selected_count": lambda r: r.get("selected_count"),
+            "certified_optimal_fraction": lambda r: (
+                float(r["selection"]["optimal"]) if r.get("selection") else None
+            ),
+        }.items():
+            result["selection_diagnostics_successful_only"][metric] = {
+                m: float(np.mean(list(values.values())))
+                for m, values in grouped_values(rows, callback).items()
+            }
         analyses[stem] = result
         configurations[stem] = metadata["identity"]["spec"]
         write_json(output / (stem + "_analysis.json"), result)
@@ -175,9 +186,9 @@ def main():
             "svg.fonttype": "none",
         }
     )
-    fig, axes = plt.subplots(1, 2, figsize=(10.2, 4), sharey=True)
+    fig, axes = plt.subplots(1, 2, figsize=(7.4, 3.8), sharey=True)
     points = [
-        ("xy_full_p1", "Full XY", "#375d85", "o"),
+        ("xy_full_p1", "Basis-start full XY", "#375d85", "o"),
         ("xy_absolute_f0.5", "Magnitude half", "#cb8a31", "s"),
         ("xy_evidence_f0.5", "Evidence half", "#178272", "D"),
         ("penalty_full", "Penalty full", "#a45b74", "^"),
@@ -305,6 +316,59 @@ def main():
             preparation_lines.append(
                 f"| {dataset} | {method} | {fmt(row['answer_f1'])} | {fmt(row['line_two_qubit_gates_all_completed_circuits'], 1)} |"
             )
+    additional_lines = [
+        "### Formulation effects and token-budget sensitivity",
+        "",
+        "| Dataset / generator | Budget | N | Graph minus base F1 | 95% paired interval |",
+        "| --- | --- | ---: | ---: | --- |",
+    ]
+    for dataset in ["hotpotqa", "musique"]:
+        for tag in ["qwen15", "qwen3"]:
+            for budget in ["count", "tokens"]:
+                comparison = analyses[f"final_{dataset}_{tag}_{budget}"][
+                    "graph_minus_base_f1"
+                ]
+                additional_lines.append(
+                    f"| {dataset} / {tag} | {budget} | {comparison['questions']} | {fmt(comparison['mean_difference'])} | [{fmt(comparison['ci95'][0])}, {fmt(comparison['ci95'][1])}] |"
+                )
+    additional_lines += [
+        "",
+        "The graph feature's effect varies across settings; these exploratory intervals all include zero. Count conditions use 500 questions, whereas the 1,200-token-cap conditions use the first 100 frozen IDs. Their raw means cannot establish a count-versus-token causal effect across different question populations. The cap is checked against actual formatted context; observed consumption varies below it.",
+        "",
+        "### Bounded corpus retrieval",
+        "",
+        "| Dataset | Candidates | N | Candidate support recall | Coverage F1 | Full MILP F1 | MILP certified fraction |",
+        "| --- | ---: | ---: | ---: | ---: | ---: | ---: |",
+    ]
+    for dataset in ["hotpotqa", "musique"]:
+        for size in [25, 50, 100]:
+            analysis = analyses[f"final_{dataset}_corpus{size}"]
+            table = analysis["table"]
+            additional_lines.append(
+                f"| {dataset} | {size} | {table['milp_full']['questions']} | {fmt(analysis['candidate_recall_successful_only']['milp_full'])} | {fmt(table['coverage']['answer_f1'])} | {fmt(table['milp_full']['answer_f1'])} | {fmt(analysis['selection_diagnostics_successful_only']['certified_optimal_fraction']['milp_full'])} |"
+            )
+    additional_lines += [
+        "",
+        "The 25-candidate condition uses 100 questions; 50/100-candidate conditions use the same first 30 IDs. Candidate recall is measured before selection, using annotations only during evaluation. Increasing a pool can recover annotated support while also increasing optimization difficulty and adding distractors. The one-second MILP setting can return feasible incumbents without an optimality certificate. Larger-pool results do not demonstrate quantum scaling.",
+        "",
+    ]
+    signatures = json.loads((output / "error_signatures.json").read_text())
+    additional_lines += [
+        "### Objective quality is not answer quality",
+        "",
+        "Across the four 500-question fixed-count conditions, full MILP has lower common-objective energy but worse F1 than relevance selection on respectively "
+        + ", ".join(
+            str(
+                signatures[f"final_{d}_{g}_count"]["signature_counts"].get(
+                    "lower_common_energy_but_worse_answer_than_relevance", 0
+                )
+            )
+            for d in ["hotpotqa", "musique"]
+            for g in ["qwen15", "qwen3"]
+        )
+        + " questions (HotpotQA 1.5B/3B, MuSiQue 1.5B/3B). The relevance subset is rescored using the full MILP coefficients for this comparison. These observations directly distinguish proxy optimization from downstream correctness; they do not independently identify a causal graph or generator error. Deterministic examples and additional signatures are released.",
+        "",
+    ]
     results = "\n".join(
         [
             "### Classical supplied-pool answers",
@@ -325,7 +389,7 @@ def main():
             "",
             "These intervals compare evidence guidance with magnitude retention on identical questions and budgets. An interval spanning zero does not establish equality or noninferiority.",
             "",
-            "![Figure 1. Mean answer F1 and complete compiled circuit cost. Error bars resample questions after averaging solver seeds. Synthetic line compilation is not a physical-device timing measurement.](figures/quality_resources.png)",
+            "![Figure 2. Mean answer F1 and complete compiled circuit cost. Error bars resample questions after averaging solver seeds. Synthetic line compilation is not a physical-device timing measurement.](figures/quality_resources.png)",
             "",
             "### Secondary complete-gate-cap control",
             "",
@@ -340,6 +404,8 @@ def main():
             "All aggregate values derive from question-level artifacts. Successful-only resource summaries exclude failed executions and are labeled accordingly. Timings are descriptive laptop measurements; software packaging tasks ran concurrently with parts of evaluation, so they are not isolated production-throughput benchmarks.",
             "",
             *preparation_lines,
+            "",
+            *additional_lines,
         ]
     )
     positives = sum(c["ci95"][0] > 0 for c in directions)
@@ -350,16 +416,19 @@ def main():
         else "Evidence guidance does not show a consistently positive paired interval across both datasets under this setup."
     )
     abstract = (
-        f"We evaluate sparse QAOA context selection for multi-hop retrieval augmented generation with controlled candidate pools, classical references and complete circuit compilation. "
-        f"The frozen primary matrix contains {primary_count:,} method/question evaluations, including 500-question classical conditions on HotpotQA and MuSiQue with two Qwen generators and 50-question quantum conditions with three seeds. "
-        "We separate scoring quality, sparse-objective quality and solver behavior. Squared cardinality penalties introduce all-pairs couplings; count-preserving mixing avoids this densification but adds its own cost. "
-        + interpretation
-        + " We release question-level outcomes, paired intervals, source snapshots and resource metadata. All quantum execution is simulated; no hardware speedup or general quantum advantage is established."
+        "We evaluate context selection for multi-hop retrieval augmented generation using the quantum approximate optimization algorithm (QAOA), classical references and complete circuit compilation. "
+        f"The frozen primary matrix contains {primary_count:,} method/question evaluations over 1,000 distinct held-out questions, including two Qwen generators and 50-question quantum conditions per dataset with three seeds. "
+        "We separate scoring quality, sparse-objective quality and solver behavior. Squared count penalties introduce all-pairs couplings; count-preserving mixing avoids this densification but adds its own cost. "
+        f"The principal evidence-minus-magnitude answer F1 differences are {fmt(directions[0]['mean_difference'])} on HotpotQA and {fmt(directions[1]['mean_difference'])} on MuSiQue, with both paired 95% intervals crossing zero. "
+        "We identify an inactive first cost phase in the basis-start depth-one circuit and retain its results alongside an exploratory feasible-superposition control; neither supports a consistent evidence-guidance benefit. "
+        "Uniform feasible sampling is a strong reference when only 252 subsets exist. Lexical coverage has the highest observed F1 in all four main classical count conditions. "
+        "We release question outcomes, frozen optimization instances, source snapshots and resource metadata. All quantum execution is simulated; practical quantum advantage is not established."
     )
     conclusion = (
         "Constraint encoding is part of the sparsification method, not an accounting detail. A sparse semantic objective can become dense again after a cardinality penalty, while a feasible-subspace mixer has an explicit resource cost. "
         + interpretation
         + " Strong classical and same-sample random controls remain essential when the feasible space is small. "
+        "State preparation also determines whether a cost layer can affect probabilities, and the exploratory prepared results do not establish a consistent evidence-guidance gain. "
         "The released pipeline supports transparent future hardware and stronger-evidence studies, but the present results do not establish practical quantum advantage or guaranteed evidence preservation."
     )
     paper = Path("paper/manuscript.md")
@@ -371,7 +440,10 @@ def main():
         "Author details and submission formatting require final approval. ", ""
     )
     atomic_text(paper, text)
-    atomic_text(output / "main_results.md", results + "\n")
+    atomic_text(
+        output / "main_results.md",
+        results.replace("](figures/", "](../figures/") + "\n",
+    )
     write_json(
         output / "claim_summary.json",
         {

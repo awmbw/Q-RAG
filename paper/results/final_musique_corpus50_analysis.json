@@ -1,0 +1,272 @@
+{
+  "candidate_recall_successful_only": {
+    "bm25": 0.711111111111111,
+    "coverage": 0.711111111111111,
+    "greedy": 0.711111111111111,
+    "hybrid": 0.711111111111111,
+    "milp_base": 0.711111111111111,
+    "milp_full": 0.711111111111111,
+    "reranker": 0.711111111111111,
+    "top_k": 0.711111111111111
+  },
+  "certified_full_energy_gap_successful_only": {
+    "milp_full": 0.0
+  },
+  "circuit_resource_denominator": "All completed circuits, including no-feasible-sample outcomes and later generation failures. Missing circuit measurements are not zero.",
+  "failure_types": {},
+  "graph_minus_base_f1": {
+    "ci95": [
+      -0.14112554112554113,
+      0.06363636363636364
+    ],
+    "mean_difference": -0.03874458874458875,
+    "method": "paired question bootstrap; solver repeats averaged within question",
+    "questions": 30,
+    "resamples": 10000,
+    "seed": 20261110
+  },
+  "interpretation": "Exploratory intervals unless a comparison is explicitly primary in the frozen protocol. No noninferiority or hardware-speedup claim.",
+  "output_limit_hits": 2,
+  "paired_differences_to_reference": {
+    "bm25": {
+      "ci95": [
+        -0.15,
+        0.08333333333333333
+      ],
+      "mean_difference": -0.03333333333333333,
+      "method": "paired question bootstrap; solver repeats averaged within question",
+      "questions": 30,
+      "resamples": 10000,
+      "seed": 20261110
+    },
+    "coverage": {
+      "ci95": [
+        -0.07222222222222222,
+        0.16666666666666666
+      ],
+      "mean_difference": 0.04444444444444444,
+      "method": "paired question bootstrap; solver repeats averaged within question",
+      "questions": 30,
+      "resamples": 10000,
+      "seed": 20261110
+    },
+    "greedy": {
+      "ci95": [
+        -0.1,
+        0.05
+      ],
+      "mean_difference": -0.016666666666666666,
+      "method": "paired question bootstrap; solver repeats averaged within question",
+      "questions": 30,
+      "resamples": 10000,
+      "seed": 20261110
+    },
+    "hybrid": {
+      "ci95": [
+        -0.07857142857142858,
+        0.11904761904761904
+      ],
+      "mean_difference": 0.019047619047619046,
+      "method": "paired question bootstrap; solver repeats averaged within question",
+      "questions": 30,
+      "resamples": 10000,
+      "seed": 20261110
+    },
+    "milp_base": {
+      "ci95": [
+        -0.06363636363636364,
+        0.14112554112554113
+      ],
+      "mean_difference": 0.03874458874458875,
+      "method": "paired question bootstrap; solver repeats averaged within question",
+      "questions": 30,
+      "resamples": 10000,
+      "seed": 20261110
+    },
+    "reranker": {
+      "ci95": [
+        -0.10555555555555554,
+        0.09444444444444443
+      ],
+      "mean_difference": -0.005555555555555558,
+      "method": "paired question bootstrap; solver repeats averaged within question",
+      "questions": 30,
+      "resamples": 10000,
+      "seed": 20261110
+    },
+    "top_k": {
+      "ci95": [
+        -0.08333333333333333,
+        0.1
+      ],
+      "mean_difference": 0.016666666666666666,
+      "method": "paired question bootstrap; solver repeats averaged within question",
+      "questions": 30,
+      "resamples": 10000,
+      "seed": 20261110
+    }
+  },
+  "principal_evidence_minus_absolute_f1": null,
+  "reference": "milp_full",
+  "selection_diagnostics_successful_only": {
+    "certified_optimal_fraction": {
+      "bm25": 0.0,
+      "coverage": 0.0,
+      "greedy": 0.0,
+      "hybrid": 0.0,
+      "milp_base": 0.03333333333333333,
+      "milp_full": 0.06666666666666667,
+      "reranker": 0.0,
+      "top_k": 0.0
+    },
+    "selected_count": {
+      "bm25": 5.0,
+      "coverage": 5.0,
+      "greedy": 5.0,
+      "hybrid": 5.0,
+      "milp_base": 5.0,
+      "milp_full": 5.0,
+      "reranker": 5.0,
+      "top_k": 5.0
+    }
+  },
+  "successful_distinct_generation_records": 225,
+  "table": {
+    "bm25": {
+      "actual_generation_seconds_successful_only": 0.1451527802666533,
+      "all_supporting_documents_successful_only": 0.0,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_em": 0.03333333333333333,
+      "answer_f1": 0.08333333333333333,
+      "attempted_method_records": 30,
+      "context_tokens_successful_only": 855.9666666666667,
+      "document_recall_successful_only": 0.2972222222222222,
+      "failures": 0,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": -1.1063295261303816,
+      "input_tokens_successful_only": 938.1,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 30,
+      "selection_seconds_successful_only": 2.3163199875853026e-05
+    },
+    "coverage": {
+      "actual_generation_seconds_successful_only": 0.14545109486662114,
+      "all_supporting_documents_successful_only": 0.1,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_em": 0.1,
+      "answer_f1": 0.1611111111111111,
+      "attempted_method_records": 30,
+      "context_tokens_successful_only": 882.8666666666667,
+      "document_recall_successful_only": 0.5,
+      "failures": 0,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": -1.5536066355804603,
+      "input_tokens_successful_only": 965.1,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 30,
+      "selection_seconds_successful_only": 0.0008433881668679533
+    },
+    "greedy": {
+      "actual_generation_seconds_successful_only": 0.13969250240000594,
+      "all_supporting_documents_successful_only": 0.03333333333333333,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_em": 0.03333333333333333,
+      "answer_f1": 0.1,
+      "attempted_method_records": 30,
+      "context_tokens_successful_only": 776.1333333333333,
+      "document_recall_successful_only": 0.44166666666666665,
+      "failures": 0,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": -1.8030766506213696,
+      "input_tokens_successful_only": 858.3,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 30,
+      "selection_seconds_successful_only": 0.0013055105998015886
+    },
+    "hybrid": {
+      "actual_generation_seconds_successful_only": 0.14054111253353768,
+      "all_supporting_documents_successful_only": 0.1,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_em": 0.06666666666666667,
+      "answer_f1": 0.1357142857142857,
+      "attempted_method_records": 30,
+      "context_tokens_successful_only": 831.0,
+      "document_recall_successful_only": 0.45555555555555555,
+      "failures": 0,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": -1.5259339388421116,
+      "input_tokens_successful_only": 913.0666666666667,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 30,
+      "selection_seconds_successful_only": 2.3896633138065226e-05
+    },
+    "milp_base": {
+      "actual_generation_seconds_successful_only": 0.09277707160017598,
+      "all_supporting_documents_successful_only": 0.03333333333333333,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_em": 0.06666666666666667,
+      "answer_f1": 0.1554112554112554,
+      "attempted_method_records": 30,
+      "context_tokens_successful_only": 778.4,
+      "document_recall_successful_only": 0.4111111111111111,
+      "failures": 0,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": -1.8048065494416126,
+      "input_tokens_successful_only": 860.5666666666667,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 30,
+      "selection_seconds_successful_only": 0.9973354252998736
+    },
+    "milp_full": {
+      "actual_generation_seconds_successful_only": 0.1263544219667286,
+      "all_supporting_documents_successful_only": 0.1,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_em": 0.06666666666666667,
+      "answer_f1": 0.11666666666666667,
+      "attempted_method_records": 30,
+      "context_tokens_successful_only": 820.0333333333333,
+      "document_recall_successful_only": 0.48055555555555546,
+      "failures": 0,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": -1.9083850936605407,
+      "input_tokens_successful_only": 902.2333333333333,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 30,
+      "selection_seconds_successful_only": 0.9553342840998691
+    },
+    "reranker": {
+      "actual_generation_seconds_successful_only": 0.12299884643337768,
+      "all_supporting_documents_successful_only": 0.13333333333333333,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_em": 0.06666666666666667,
+      "answer_f1": 0.1111111111111111,
+      "attempted_method_records": 30,
+      "context_tokens_successful_only": 792.5,
+      "document_recall_successful_only": 0.5472222222222222,
+      "failures": 0,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": -1.4598192680743522,
+      "input_tokens_successful_only": 874.6666666666666,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 30,
+      "selection_seconds_successful_only": 2.491350011647834e-05
+    },
+    "top_k": {
+      "actual_generation_seconds_successful_only": 0.1486091985000409,
+      "all_supporting_documents_successful_only": 0.1,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_em": 0.06666666666666667,
+      "answer_f1": 0.13333333333333333,
+      "attempted_method_records": 30,
+      "context_tokens_successful_only": 819.7666666666667,
+      "document_recall_successful_only": 0.4638888888888888,
+      "failures": 0,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": -1.679810891331484,
+      "input_tokens_successful_only": 901.9666666666667,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 30,
+      "selection_seconds_successful_only": 3.892106669809436e-05
+    }
+  }
+}

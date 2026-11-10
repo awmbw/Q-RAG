@@ -221,3 +221,20 @@ Prepared independent final artifact audits, compressed prediction exports, resto
 Captured and pinned the observed CPU container dependencies rather than assuming the CUDA laptop lock was portable. Rebuilt the image, started a nonroot instance with persistent state and a read-only model mount, verified its health/readiness/dashboard responses and ran pip compatibility checking. Model-job performance is still a separate pending measurement. Documented installation, API semantics, reproduction, upstream rights and current publication routes.
 
 The full remote research CI passed. The minimal workflow exposed that the new preparation regression lacked the optional-Qiskit skip used by the other quantum tests. Corrected that dependency boundary and retained actual execution in the full suite; all 46 local tests pass. Prepared a deterministic, unjudged 40-edge graph worksheet so external semantic review can use source-grounded examples without mistaking automated extraction for verified factual relations. No human annotation result is invented.
+
+<!-- BEGIN COMPLETED_EVALUATION -->
+## Phase G completion — frozen outputs before interpretation
+
+Finished all 18 primary configurations without changing their settings. Retained the one zero-feasible-shot failure and all failed cap diagnostics. Finished separate formulation, gate-cap and prepared-state controls. Audited 53,230 records across 24 grids, including independent tokenization/energy checks and recompilation of the gate-capped final circuits. All primary/formulation conditions use the same core source fingerprint; the prepared extension has a separate composite identity.
+
+Generated full method tables, paired intervals, resource plots, token/corpus sensitivities and deterministic error examples. The principal sparsification comparison does not establish the intended evidence-guidance benefit. Kept the research framing comparative and diagnostic. No post-hoc noninferiority margin, winning-seed selection, physical-hardware claim or answer-based parameter adjustment was introduced.
+
+Exported compressed public outcomes, common source snapshots and 110 frozen coefficient instances. Reconstructed all public tables without neural inference and reproduced four actual solver cases, matching selected IDs, full energies and line compilation. These checks complement the earlier exact restoration of all split/corpus files.
+
+## Phase H completion checks — actual execution beyond fixtures
+
+Ran real CPU-container ingestion and five repeated three-selector comparisons. Verified cache reuse, local traces, persistent corpus retrieval and exact job-response survival after recreating the container on the same state volume. The single untrusted-source input was not selected into context, so it supplies no generator-resistance evidence. Browser visual review remains unavailable and is not represented as completed.
+
+Profiled GPU embedding batches on 128 fixed development chunks, with three randomized repeats and synchronized timing. Verified the 240-token bound and vector agreement. Preserved the initial local timing export and published the final length-validated measurement. These operational profiles did not change scientific settings. Final manuscript export, page inspection and the versioned artifact package follow these checks.
+
+<!-- END COMPLETED_EVALUATION -->

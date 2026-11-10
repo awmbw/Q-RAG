@@ -1,0 +1,558 @@
+{
+  "common_source_sha256": "8d6bf4c5739869e525a7222714332b1b2972637d4c04524b6a3df320133dd287",
+  "execution_cycle": 2,
+  "runs": {
+    "final_hotpotqa_corpus100": {
+      "checks": [
+        "frozen config/data/source hashes",
+        "complete question/method grid",
+        "selection IDs and budgets",
+        "dataset-specific answer/evidence metrics",
+        "independent pair-sum energies",
+        "sparse edge counts and removed mass",
+        "solver certification",
+        "shot counts and ideal XY feasibility",
+        "exact prompt IDs and assembled context tokens"
+      ],
+      "distinct_contexts_retokenized": 202,
+      "failures": [],
+      "output_limit_hits": 9,
+      "records": 240,
+      "source_sha256": "8d6bf4c5739869e525a7222714332b1b2972637d4c04524b6a3df320133dd287",
+      "successful": 240
+    },
+    "final_hotpotqa_corpus25": {
+      "checks": [
+        "frozen config/data/source hashes",
+        "complete question/method grid",
+        "selection IDs and budgets",
+        "dataset-specific answer/evidence metrics",
+        "independent pair-sum energies",
+        "sparse edge counts and removed mass",
+        "solver certification",
+        "shot counts and ideal XY feasibility",
+        "exact prompt IDs and assembled context tokens"
+      ],
+      "distinct_contexts_retokenized": 628,
+      "failures": [],
+      "output_limit_hits": 35,
+      "records": 800,
+      "source_sha256": "8d6bf4c5739869e525a7222714332b1b2972637d4c04524b6a3df320133dd287",
+      "successful": 800
+    },
+    "final_hotpotqa_corpus50": {
+      "checks": [
+        "frozen config/data/source hashes",
+        "complete question/method grid",
+        "selection IDs and budgets",
+        "dataset-specific answer/evidence metrics",
+        "independent pair-sum energies",
+        "sparse edge counts and removed mass",
+        "solver certification",
+        "shot counts and ideal XY feasibility",
+        "exact prompt IDs and assembled context tokens"
+      ],
+      "distinct_contexts_retokenized": 200,
+      "failures": [],
+      "output_limit_hits": 7,
+      "records": 240,
+      "source_sha256": "8d6bf4c5739869e525a7222714332b1b2972637d4c04524b6a3df320133dd287",
+      "successful": 240
+    },
+    "final_hotpotqa_formulation": {
+      "checks": [
+        "frozen config/data/source hashes",
+        "complete question/method grid",
+        "selection IDs and budgets",
+        "dataset-specific answer/evidence metrics",
+        "independent pair-sum energies",
+        "sparse edge counts and removed mass",
+        "solver certification",
+        "shot counts and ideal XY feasibility",
+        "exact prompt IDs and assembled context tokens"
+      ],
+      "distinct_contexts_retokenized": 208,
+      "failures": [],
+      "output_limit_hits": 10,
+      "records": 400,
+      "source_sha256": "8d6bf4c5739869e525a7222714332b1b2972637d4c04524b6a3df320133dd287",
+      "successful": 400
+    },
+    "final_hotpotqa_gatecap": {
+      "checks": [
+        "primary/driver hashes and complete grid",
+        "sparse masks and independent full/surrogate energies",
+        "all higher tested retention prefixes rejected",
+        "complete final circuits independently recompiled within cap",
+        "dataset scores and prompt token IDs"
+      ],
+      "failures": [
+        {
+          "error": "No tested retention level meets complete compiled-gate cap",
+          "method": "gate_penalty_control",
+          "question_id": "5a729cc25542991f9a20c532"
+        },
+        {
+          "error": "No tested retention level meets complete compiled-gate cap",
+          "method": "gate_penalty_control",
+          "question_id": "5aba549f554299232ef4a290"
+        },
+        {
+          "error": "No tested retention level meets complete compiled-gate cap",
+          "method": "gate_penalty_control",
+          "question_id": "5ae25d2b554299495565da46"
+        },
+        {
+          "error": "No tested retention level meets complete compiled-gate cap",
+          "method": "gate_penalty_control",
+          "question_id": "5ab30d1155429976abd1bc3d"
+        },
+        {
+          "error": "No tested retention level meets complete compiled-gate cap",
+          "method": "gate_penalty_control",
+          "question_id": "5a7caae75542996dd594b971"
+        },
+        {
+          "error": "No tested retention level meets complete compiled-gate cap",
+          "method": "gate_penalty_control",
+          "question_id": "5adf34955542993a75d26423"
+        },
+        {
+          "error": "No tested retention level meets complete compiled-gate cap",
+          "method": "gate_penalty_control",
+          "question_id": "5a8a03985542992e4fca84d6"
+        },
+        {
+          "error": "No tested retention level meets complete compiled-gate cap",
+          "method": "gate_penalty_control",
+          "question_id": "5a88a8f4554299206df2b320"
+        },
+        {
+          "error": "No tested retention level meets complete compiled-gate cap",
+          "method": "gate_penalty_control",
+          "question_id": "5ae4c96355429913cc204506"
+        },
+        {
+          "error": "No tested retention level meets complete compiled-gate cap",
+          "method": "gate_penalty_control",
+          "question_id": "5a8f45ca5542997ba9cb320e"
+        }
+      ],
+      "records": 70,
+      "successful": 60
+    },
+    "final_hotpotqa_prepared": {
+      "checks": [
+        "frozen config/data/source hashes",
+        "complete question/method grid",
+        "selection IDs and budgets",
+        "dataset-specific answer/evidence metrics",
+        "independent pair-sum energies",
+        "sparse edge counts and removed mass",
+        "solver certification",
+        "shot counts and ideal XY feasibility",
+        "exact prompt IDs and assembled context tokens"
+      ],
+      "distinct_contexts_retokenized": 299,
+      "failures": [],
+      "output_limit_hits": 34,
+      "records": 1000,
+      "source_sha256": "8d6bf4c5739869e525a7222714332b1b2972637d4c04524b6a3df320133dd287",
+      "successful": 1000
+    },
+    "final_hotpotqa_quantum": {
+      "checks": [
+        "frozen config/data/source hashes",
+        "complete question/method grid",
+        "selection IDs and budgets",
+        "dataset-specific answer/evidence metrics",
+        "independent pair-sum energies",
+        "sparse edge counts and removed mass",
+        "solver certification",
+        "shot counts and ideal XY feasibility",
+        "exact prompt IDs and assembled context tokens"
+      ],
+      "distinct_contexts_retokenized": 400,
+      "failures": [
+        {
+          "error": "Solver returned no feasible solution: no_feasible_shot",
+          "method": "penalty_full_s42",
+          "question_id": "5add9bfa5542990dbb2f7e85",
+          "type": "RuntimeError"
+        }
+      ],
+      "output_limit_hits": 43,
+      "records": 1600,
+      "source_sha256": "8d6bf4c5739869e525a7222714332b1b2972637d4c04524b6a3df320133dd287",
+      "successful": 1599
+    },
+    "final_hotpotqa_qwen15_count": {
+      "checks": [
+        "frozen config/data/source hashes",
+        "complete question/method grid",
+        "selection IDs and budgets",
+        "dataset-specific answer/evidence metrics",
+        "independent pair-sum energies",
+        "sparse edge counts and removed mass",
+        "solver certification",
+        "shot counts and ideal XY feasibility",
+        "exact prompt IDs and assembled context tokens"
+      ],
+      "distinct_contexts_retokenized": 2934,
+      "failures": [],
+      "output_limit_hits": 166,
+      "records": 9500,
+      "source_sha256": "8d6bf4c5739869e525a7222714332b1b2972637d4c04524b6a3df320133dd287",
+      "successful": 9500
+    },
+    "final_hotpotqa_qwen15_tokens": {
+      "checks": [
+        "frozen config/data/source hashes",
+        "complete question/method grid",
+        "selection IDs and budgets",
+        "dataset-specific answer/evidence metrics",
+        "independent pair-sum energies",
+        "sparse edge counts and removed mass",
+        "solver certification",
+        "shot counts and ideal XY feasibility",
+        "exact prompt IDs and assembled context tokens"
+      ],
+      "distinct_contexts_retokenized": 583,
+      "failures": [],
+      "output_limit_hits": 57,
+      "records": 1600,
+      "source_sha256": "8d6bf4c5739869e525a7222714332b1b2972637d4c04524b6a3df320133dd287",
+      "successful": 1600
+    },
+    "final_hotpotqa_qwen3_count": {
+      "checks": [
+        "frozen config/data/source hashes",
+        "complete question/method grid",
+        "selection IDs and budgets",
+        "dataset-specific answer/evidence metrics",
+        "independent pair-sum energies",
+        "sparse edge counts and removed mass",
+        "solver certification",
+        "shot counts and ideal XY feasibility",
+        "exact prompt IDs and assembled context tokens"
+      ],
+      "distinct_contexts_retokenized": 2934,
+      "failures": [],
+      "output_limit_hits": 73,
+      "records": 9500,
+      "source_sha256": "8d6bf4c5739869e525a7222714332b1b2972637d4c04524b6a3df320133dd287",
+      "successful": 9500
+    },
+    "final_hotpotqa_qwen3_tokens": {
+      "checks": [
+        "frozen config/data/source hashes",
+        "complete question/method grid",
+        "selection IDs and budgets",
+        "dataset-specific answer/evidence metrics",
+        "independent pair-sum energies",
+        "sparse edge counts and removed mass",
+        "solver certification",
+        "shot counts and ideal XY feasibility",
+        "exact prompt IDs and assembled context tokens"
+      ],
+      "distinct_contexts_retokenized": 583,
+      "failures": [],
+      "output_limit_hits": 25,
+      "records": 1600,
+      "source_sha256": "8d6bf4c5739869e525a7222714332b1b2972637d4c04524b6a3df320133dd287",
+      "successful": 1600
+    },
+    "final_musique_corpus100": {
+      "checks": [
+        "frozen config/data/source hashes",
+        "complete question/method grid",
+        "selection IDs and budgets",
+        "dataset-specific answer/evidence metrics",
+        "independent pair-sum energies",
+        "sparse edge counts and removed mass",
+        "solver certification",
+        "shot counts and ideal XY feasibility",
+        "exact prompt IDs and assembled context tokens"
+      ],
+      "distinct_contexts_retokenized": 229,
+      "failures": [],
+      "output_limit_hits": 1,
+      "records": 240,
+      "source_sha256": "8d6bf4c5739869e525a7222714332b1b2972637d4c04524b6a3df320133dd287",
+      "successful": 240
+    },
+    "final_musique_corpus25": {
+      "checks": [
+        "frozen config/data/source hashes",
+        "complete question/method grid",
+        "selection IDs and budgets",
+        "dataset-specific answer/evidence metrics",
+        "independent pair-sum energies",
+        "sparse edge counts and removed mass",
+        "solver certification",
+        "shot counts and ideal XY feasibility",
+        "exact prompt IDs and assembled context tokens"
+      ],
+      "distinct_contexts_retokenized": 685,
+      "failures": [],
+      "output_limit_hits": 13,
+      "records": 800,
+      "source_sha256": "8d6bf4c5739869e525a7222714332b1b2972637d4c04524b6a3df320133dd287",
+      "successful": 800
+    },
+    "final_musique_corpus50": {
+      "checks": [
+        "frozen config/data/source hashes",
+        "complete question/method grid",
+        "selection IDs and budgets",
+        "dataset-specific answer/evidence metrics",
+        "independent pair-sum energies",
+        "sparse edge counts and removed mass",
+        "solver certification",
+        "shot counts and ideal XY feasibility",
+        "exact prompt IDs and assembled context tokens"
+      ],
+      "distinct_contexts_retokenized": 225,
+      "failures": [],
+      "output_limit_hits": 2,
+      "records": 240,
+      "source_sha256": "8d6bf4c5739869e525a7222714332b1b2972637d4c04524b6a3df320133dd287",
+      "successful": 240
+    },
+    "final_musique_formulation": {
+      "checks": [
+        "frozen config/data/source hashes",
+        "complete question/method grid",
+        "selection IDs and budgets",
+        "dataset-specific answer/evidence metrics",
+        "independent pair-sum energies",
+        "sparse edge counts and removed mass",
+        "solver certification",
+        "shot counts and ideal XY feasibility",
+        "exact prompt IDs and assembled context tokens"
+      ],
+      "distinct_contexts_retokenized": 189,
+      "failures": [],
+      "output_limit_hits": 1,
+      "records": 400,
+      "source_sha256": "8d6bf4c5739869e525a7222714332b1b2972637d4c04524b6a3df320133dd287",
+      "successful": 400
+    },
+    "final_musique_gatecap": {
+      "checks": [
+        "primary/driver hashes and complete grid",
+        "sparse masks and independent full/surrogate energies",
+        "all higher tested retention prefixes rejected",
+        "complete final circuits independently recompiled within cap",
+        "dataset scores and prompt token IDs"
+      ],
+      "failures": [
+        {
+          "error": "No tested retention level meets complete compiled-gate cap",
+          "method": "gate_penalty_control",
+          "question_id": "4hop1__88342_75218_128008_46748"
+        },
+        {
+          "error": "No tested retention level meets complete compiled-gate cap",
+          "method": "gate_penalty_control",
+          "question_id": "2hop__85596_807969"
+        },
+        {
+          "error": "No tested retention level meets complete compiled-gate cap",
+          "method": "gate_penalty_control",
+          "question_id": "4hop3__160230_470287_345497_72134"
+        },
+        {
+          "error": "No tested retention level meets complete compiled-gate cap",
+          "method": "gate_penalty_control",
+          "question_id": "3hop1__765565_326948_78782"
+        },
+        {
+          "error": "No tested retention level meets complete compiled-gate cap",
+          "method": "gate_penalty_control",
+          "question_id": "2hop__496732_658428"
+        },
+        {
+          "error": "No tested retention level meets complete compiled-gate cap",
+          "method": "gate_penalty_control",
+          "question_id": "2hop__256553_617289"
+        },
+        {
+          "error": "No tested retention level meets complete compiled-gate cap",
+          "method": "gate_penalty_control",
+          "question_id": "4hop3__827497_354093_254885_76356"
+        },
+        {
+          "error": "No tested retention level meets complete compiled-gate cap",
+          "method": "gate_penalty_control",
+          "question_id": "2hop__91248_84207"
+        },
+        {
+          "error": "No tested retention level meets complete compiled-gate cap",
+          "method": "gate_penalty_control",
+          "question_id": "4hop3__547073_88460_30152_20999"
+        },
+        {
+          "error": "No tested retention level meets complete compiled-gate cap",
+          "method": "gate_penalty_control",
+          "question_id": "3hop1__46571_87694_124169"
+        }
+      ],
+      "records": 70,
+      "successful": 60
+    },
+    "final_musique_prepared": {
+      "checks": [
+        "frozen config/data/source hashes",
+        "complete question/method grid",
+        "selection IDs and budgets",
+        "dataset-specific answer/evidence metrics",
+        "independent pair-sum energies",
+        "sparse edge counts and removed mass",
+        "solver certification",
+        "shot counts and ideal XY feasibility",
+        "exact prompt IDs and assembled context tokens"
+      ],
+      "distinct_contexts_retokenized": 293,
+      "failures": [],
+      "output_limit_hits": 1,
+      "records": 1000,
+      "source_sha256": "8d6bf4c5739869e525a7222714332b1b2972637d4c04524b6a3df320133dd287",
+      "successful": 1000
+    },
+    "final_musique_quantum": {
+      "checks": [
+        "frozen config/data/source hashes",
+        "complete question/method grid",
+        "selection IDs and budgets",
+        "dataset-specific answer/evidence metrics",
+        "independent pair-sum energies",
+        "sparse edge counts and removed mass",
+        "solver certification",
+        "shot counts and ideal XY feasibility",
+        "exact prompt IDs and assembled context tokens"
+      ],
+      "distinct_contexts_retokenized": 426,
+      "failures": [],
+      "output_limit_hits": 3,
+      "records": 1600,
+      "source_sha256": "8d6bf4c5739869e525a7222714332b1b2972637d4c04524b6a3df320133dd287",
+      "successful": 1600
+    },
+    "final_musique_quantum12": {
+      "checks": [
+        "frozen config/data/source hashes",
+        "complete question/method grid",
+        "selection IDs and budgets",
+        "dataset-specific answer/evidence metrics",
+        "independent pair-sum energies",
+        "sparse edge counts and removed mass",
+        "solver certification",
+        "shot counts and ideal XY feasibility",
+        "exact prompt IDs and assembled context tokens"
+      ],
+      "distinct_contexts_retokenized": 32,
+      "failures": [],
+      "output_limit_hits": 1,
+      "records": 65,
+      "source_sha256": "8d6bf4c5739869e525a7222714332b1b2972637d4c04524b6a3df320133dd287",
+      "successful": 65
+    },
+    "final_musique_quantum16": {
+      "checks": [
+        "frozen config/data/source hashes",
+        "complete question/method grid",
+        "selection IDs and budgets",
+        "dataset-specific answer/evidence metrics",
+        "independent pair-sum energies",
+        "sparse edge counts and removed mass",
+        "solver certification",
+        "shot counts and ideal XY feasibility",
+        "exact prompt IDs and assembled context tokens"
+      ],
+      "distinct_contexts_retokenized": 35,
+      "failures": [],
+      "output_limit_hits": 0,
+      "records": 65,
+      "source_sha256": "8d6bf4c5739869e525a7222714332b1b2972637d4c04524b6a3df320133dd287",
+      "successful": 65
+    },
+    "final_musique_qwen15_count": {
+      "checks": [
+        "frozen config/data/source hashes",
+        "complete question/method grid",
+        "selection IDs and budgets",
+        "dataset-specific answer/evidence metrics",
+        "independent pair-sum energies",
+        "sparse edge counts and removed mass",
+        "solver certification",
+        "shot counts and ideal XY feasibility",
+        "exact prompt IDs and assembled context tokens"
+      ],
+      "distinct_contexts_retokenized": 4885,
+      "failures": [],
+      "output_limit_hits": 285,
+      "records": 9500,
+      "source_sha256": "8d6bf4c5739869e525a7222714332b1b2972637d4c04524b6a3df320133dd287",
+      "successful": 9500
+    },
+    "final_musique_qwen15_tokens": {
+      "checks": [
+        "frozen config/data/source hashes",
+        "complete question/method grid",
+        "selection IDs and budgets",
+        "dataset-specific answer/evidence metrics",
+        "independent pair-sum energies",
+        "sparse edge counts and removed mass",
+        "solver certification",
+        "shot counts and ideal XY feasibility",
+        "exact prompt IDs and assembled context tokens"
+      ],
+      "distinct_contexts_retokenized": 936,
+      "failures": [],
+      "output_limit_hits": 31,
+      "records": 1600,
+      "source_sha256": "8d6bf4c5739869e525a7222714332b1b2972637d4c04524b6a3df320133dd287",
+      "successful": 1600
+    },
+    "final_musique_qwen3_count": {
+      "checks": [
+        "frozen config/data/source hashes",
+        "complete question/method grid",
+        "selection IDs and budgets",
+        "dataset-specific answer/evidence metrics",
+        "independent pair-sum energies",
+        "sparse edge counts and removed mass",
+        "solver certification",
+        "shot counts and ideal XY feasibility",
+        "exact prompt IDs and assembled context tokens"
+      ],
+      "distinct_contexts_retokenized": 4885,
+      "failures": [],
+      "output_limit_hits": 86,
+      "records": 9500,
+      "source_sha256": "8d6bf4c5739869e525a7222714332b1b2972637d4c04524b6a3df320133dd287",
+      "successful": 9500
+    },
+    "final_musique_qwen3_tokens": {
+      "checks": [
+        "frozen config/data/source hashes",
+        "complete question/method grid",
+        "selection IDs and budgets",
+        "dataset-specific answer/evidence metrics",
+        "independent pair-sum energies",
+        "sparse edge counts and removed mass",
+        "solver certification",
+        "shot counts and ideal XY feasibility",
+        "exact prompt IDs and assembled context tokens"
+      ],
+      "distinct_contexts_retokenized": 936,
+      "failures": [],
+      "output_limit_hits": 31,
+      "records": 1600,
+      "source_sha256": "8d6bf4c5739869e525a7222714332b1b2972637d4c04524b6a3df320133dd287",
+      "successful": 1600
+    }
+  },
+  "total_latest_records": 53230
+}

@@ -13,6 +13,130 @@ from qrag.evaluation import latest_records
 from qrag.experiments.artifacts import file_hash, value_hash, write_json
 
 
+def audit_gate_controls(tokenizers):
+    """Reconstruct sparse masks and verify the secondary complete-gate cap."""
+    from qrag.optimization import SelectionProblem
+    from qrag.quantum import compilation_resources, qaoa_circuit
+
+    output = {}
+    for dataset in ["hotpotqa", "musique"]:
+        run = Path("results") / f"final_{dataset}_gatecap"
+        manifest = json.loads((run / "manifest.json").read_text())
+        identity = manifest["identity"]
+        spec = identity["spec"]
+        assert manifest["status"] == "completed_with_errors"
+        snapshot = json.loads((run / "source_snapshot.json").read_text())
+        assert (
+            hashlib.sha256(snapshot["driver"].encode()).hexdigest()
+            == identity["driver_sha256"]
+        )
+        primary_path = (
+            Path("results") / f"final_{dataset}_quantum" / "predictions.jsonl"
+        )
+        assert file_hash(primary_path) == identity["primary_predictions_sha256"]
+        primary = {
+            r["question_id"]: r
+            for r in latest_records(primary_path)
+            if r["method"] == "milp_full"
+        }
+        examples = {
+            q.id: (q, labels)
+            for q, labels in load_examples(Path(spec["model"]["dataset"]))
+        }
+        tokenizer = tokenizers[
+            (spec["model"]["generator_model"], spec["model"]["generator_revision"])
+        ]
+        rows = latest_records(run / "predictions.jsonl")
+        assert {(r["question_id"], r["method"]) for r in rows} == {
+            (q, m["name"]) for q in identity["question_ids"] for m in spec["methods"]
+        }
+        failures = []
+        for row in rows:
+            resources = row["resources"]
+            cap = resources["gate_cap"]
+            trials = resources["prefix_trials"]
+            assert cap == spec["line_gate_cap"]
+            if row["status"] != "success":
+                assert row["method"] == "gate_penalty_control"
+                assert len(trials) == 21 and all(
+                    t["line_two_qubit_gates"] > cap for t in trials
+                )
+                failures.append(
+                    {
+                        "question_id": row["question_id"],
+                        "method": row["method"],
+                        "error": row["error"],
+                    }
+                )
+                continue
+            assert all(t["line_two_qubit_gates"] > cap for t in trials[:-1])
+            assert trials[-1]["line_two_qubit_gates"] <= cap
+            source = primary[row["question_id"]]
+            assert row["candidate_ids"] == source["candidate_ids"]
+            indices = row["selection"]["indices"]
+            assert len(indices) == spec["model"]["k"]
+            assert row["selected_ids"] == [row["candidate_ids"][i] for i in indices]
+            linear, pairs = (
+                np.array(source["linear_coefficients"]),
+                np.array(source["pair_coefficients"]),
+            )
+            sparse = np.zeros_like(pairs)
+            mask = row["sparsification"]["retained_indices"]
+            for i, j in mask:
+                sparse[i, j] = pairs[i, j]
+            info = row["sparsification"]
+            assert len(mask) == int(
+                np.floor(info["edge_fraction"] * info["available_edges"])
+            )
+            assert abs(np.abs(pairs - sparse).sum() - info["removed_l1"]) < 1e-10
+            for matrix, field in [(pairs, "full_energy"), (sparse, "surrogate_energy")]:
+                value = sum(linear[i] for i in indices) + sum(
+                    matrix[i, j] for i, j in combinations(indices, 2)
+                )
+                assert abs(value - row[field]) < 1e-7
+            problem = SelectionProblem(linear, sparse, spec["model"]["k"])
+            circuit, _ = qaoa_circuit(
+                problem, resources["angles"], seed=resources["seed"]
+            )
+            gates = compilation_resources(circuit, resources["seed"])["line"][
+                "two_qubit_gates"
+            ]
+            assert gates == resources["line"]["two_qubit_gates"] <= cap
+            query, labels = examples[row["question_id"]]
+            lookup = {d.id: d for d in query.documents}
+            selected = tuple(lookup[key] for key in row["selected_ids"])
+            expected = {
+                **score_answer(row["answer"], labels),
+                **score_evidence(selected, labels),
+            }
+            assert expected == row["metrics"]
+            assert (
+                tokenizer.encode(row["prompt"], add_special_tokens=False)
+                == row["input_ids"]
+            )
+        output[run.name] = {
+            "records": len(rows),
+            "successful": len(rows) - len(failures),
+            "failures": failures,
+            "checks": [
+                "primary/driver hashes and complete grid",
+                "sparse masks and independent full/surrogate energies",
+                "all higher tested retention prefixes rejected",
+                "complete final circuits independently recompiled within cap",
+                "dataset scores and prompt token IDs",
+            ],
+        }
+        print(
+            "Audited",
+            run.name,
+            len(rows),
+            "records; failures",
+            len(failures),
+            flush=True,
+        )
+    return output
+
+
 def main():
     from transformers import AutoTokenizer
 
@@ -86,6 +210,30 @@ def main():
         failures = []
         limit_hits = 0
         for row in rows:
+            resource = row.get("resources", {})
+            if resource.get("hardware") is False:
+                assert sum(resource["sampled_counts"].values()) == resource["shots"]
+                count = min(spec["model"]["k"], len(row["candidate_ids"]))
+                feasible_shots = sum(
+                    shots
+                    for state, shots in resource["sampled_counts"].items()
+                    if int(state).bit_count() == count
+                )
+                assert feasible_shots == resource["feasible_shots"]
+                assert (
+                    abs(
+                        feasible_shots / resource["shots"]
+                        - resource["feasible_fraction"]
+                    )
+                    < 1e-12
+                )
+                if (
+                    resource["mixer"] == "xy"
+                    and not resource["noise_two_qubit_depolarizing_probability"]
+                ):
+                    assert feasible_shots == resource["shots"]
+                if config_path.stem.endswith("_prepared"):
+                    assert resource["preparation_included_in_compilation"] is True
             if row["status"] != "success":
                 failures.append(
                     {
@@ -145,15 +293,6 @@ def main():
                 info = row["sparsification"]
                 assert np.count_nonzero(sparse) == info["retained_edges"]
                 assert abs(np.abs(pairs - sparse).sum() - info["removed_l1"]) < 1e-7
-            resource = row.get("resources", {})
-            if resource.get("hardware") is False:
-                assert sum(resource["sampled_counts"].values()) == resource["shots"]
-                assert 0 <= resource["feasible_shots"] <= resource["shots"]
-                if (
-                    resource["mixer"] == "xy"
-                    and not resource["noise_two_qubit_depolarizing_probability"]
-                ):
-                    assert abs(resource["feasible_fraction"] - 1) < 1e-12
             context_key = (query.id, tuple(ids))
             if context_key not in checked_contexts:
                 encoded = tokenizer.encode(row["prompt"], add_special_tokens=False)
@@ -208,6 +347,9 @@ def main():
         "Definitive primary runs do not share one scientific source fingerprint"
     )
     report["common_source_sha256"] = next(iter(source_hashes))
+    for name, result in audit_gate_controls(tokenizers).items():
+        report["runs"][name] = result
+        report["total_latest_records"] += result["records"]
     write_json(Path("docs/research_report/evidence/final_audit.json"), report)
 
 

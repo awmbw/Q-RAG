@@ -1,0 +1,948 @@
+{
+  "final_hotpotqa_qwen15_count": {
+    "examples": {
+      "certified_optimum_with_imperfect_answer": [
+        {
+          "aliases": [],
+          "optimized_answer": "Susan Choi",
+          "optimized_f1": 0.0,
+          "optimized_full_energy": -2.5762288834899665,
+          "optimized_selected_ids": [
+            "5a729cc25542991f9a20c532:d3",
+            "5a729cc25542991f9a20c532:d4",
+            "5a729cc25542991f9a20c532:d7",
+            "5a729cc25542991f9a20c532:d8",
+            "5a729cc25542991f9a20c532:d9"
+          ],
+          "optimized_support_recall": 0.0,
+          "question": "Which author wrote about a woman captured by the Symbionese Liberation Army?",
+          "question_id": "5a729cc25542991f9a20c532",
+          "reference": "Paul Avery",
+          "relevance_answer": "Susan Choi wrote about a woman captured by the Symbionese Liberation Army in her novel \"American Woman\".",
+          "relevance_f1": 0.0,
+          "relevance_selected_ids": [
+            "5a729cc25542991f9a20c532:d3",
+            "5a729cc25542991f9a20c532:d4",
+            "5a729cc25542991f9a20c532:d6",
+            "5a729cc25542991f9a20c532:d7",
+            "5a729cc25542991f9a20c532:d8"
+          ],
+          "relevance_under_same_full_energy": -2.4987927731126547
+        },
+        {
+          "aliases": [],
+          "optimized_answer": "Hip hop ballad",
+          "optimized_f1": 0.8571428571428571,
+          "optimized_full_energy": -1.8316971925087273,
+          "optimized_selected_ids": [
+            "5aba549f554299232ef4a290:d1",
+            "5aba549f554299232ef4a290:d2",
+            "5aba549f554299232ef4a290:d4",
+            "5aba549f554299232ef4a290:d5",
+            "5aba549f554299232ef4a290:d9"
+          ],
+          "optimized_support_recall": 1.0,
+          "question": "What kind of song did Alexander Grant produce for Eminem?",
+          "question_id": "5aba549f554299232ef4a290",
+          "reference": "a midtempo hip hop ballad",
+          "relevance_answer": "Hip hop ballad",
+          "relevance_f1": 0.8571428571428571,
+          "relevance_selected_ids": [
+            "5aba549f554299232ef4a290:d1",
+            "5aba549f554299232ef4a290:d2",
+            "5aba549f554299232ef4a290:d4",
+            "5aba549f554299232ef4a290:d5",
+            "5aba549f554299232ef4a290:d9"
+          ],
+          "relevance_under_same_full_energy": -1.8316971925087273
+        }
+      ],
+      "complete_annotated_support_with_imperfect_answer": [
+        {
+          "aliases": [],
+          "optimized_answer": "Hip hop ballad",
+          "optimized_f1": 0.8571428571428571,
+          "optimized_full_energy": -1.8316971925087273,
+          "optimized_selected_ids": [
+            "5aba549f554299232ef4a290:d1",
+            "5aba549f554299232ef4a290:d2",
+            "5aba549f554299232ef4a290:d4",
+            "5aba549f554299232ef4a290:d5",
+            "5aba549f554299232ef4a290:d9"
+          ],
+          "optimized_support_recall": 1.0,
+          "question": "What kind of song did Alexander Grant produce for Eminem?",
+          "question_id": "5aba549f554299232ef4a290",
+          "reference": "a midtempo hip hop ballad",
+          "relevance_answer": "Hip hop ballad",
+          "relevance_f1": 0.8571428571428571,
+          "relevance_selected_ids": [
+            "5aba549f554299232ef4a290:d1",
+            "5aba549f554299232ef4a290:d2",
+            "5aba549f554299232ef4a290:d4",
+            "5aba549f554299232ef4a290:d5",
+            "5aba549f554299232ef4a290:d9"
+          ],
+          "relevance_under_same_full_energy": -1.8316971925087273
+        },
+        {
+          "aliases": [],
+          "optimized_answer": "Brian Gottfried has more singles titles than Peter Fleming.",
+          "optimized_f1": 0.0,
+          "optimized_full_energy": -1.6620573431253434,
+          "optimized_selected_ids": [
+            "5ae25d2b554299495565da46:d1",
+            "5ae25d2b554299495565da46:d3",
+            "5ae25d2b554299495565da46:d7",
+            "5ae25d2b554299495565da46:d8",
+            "5ae25d2b554299495565da46:d9"
+          ],
+          "optimized_support_recall": 1.0,
+          "question": "Who has more singles titles, Brian Gottfried or Peter Fleming?",
+          "question_id": "5ae25d2b554299495565da46",
+          "reference": "21",
+          "relevance_answer": "Peter Fleming",
+          "relevance_f1": 0.0,
+          "relevance_selected_ids": [
+            "5ae25d2b554299495565da46:d3",
+            "5ae25d2b554299495565da46:d5",
+            "5ae25d2b554299495565da46:d7",
+            "5ae25d2b554299495565da46:d8",
+            "5ae25d2b554299495565da46:d9"
+          ],
+          "relevance_under_same_full_energy": -1.5411080751035895
+        }
+      ],
+      "correct_answer_without_all_annotated_support": [
+        {
+          "aliases": [],
+          "optimized_answer": "Royal College of Music",
+          "optimized_f1": 1.0,
+          "optimized_full_energy": -2.023231948625583,
+          "optimized_selected_ids": [
+            "5add2ba55542994ed6169ca8:d1",
+            "5add2ba55542994ed6169ca8:d2",
+            "5add2ba55542994ed6169ca8:d6",
+            "5add2ba55542994ed6169ca8:d8",
+            "5add2ba55542994ed6169ca8:d9"
+          ],
+          "optimized_support_recall": 0.5,
+          "question": "What college did the English conductor, organist and composer widely regarded as Britain's leading conductor of choral works teach at?",
+          "question_id": "5add2ba55542994ed6169ca8",
+          "reference": "Royal College of Music",
+          "relevance_answer": "Royal College of Music",
+          "relevance_f1": 1.0,
+          "relevance_selected_ids": [
+            "5add2ba55542994ed6169ca8:d2",
+            "5add2ba55542994ed6169ca8:d3",
+            "5add2ba55542994ed6169ca8:d4",
+            "5add2ba55542994ed6169ca8:d6",
+            "5add2ba55542994ed6169ca8:d8"
+          ],
+          "relevance_under_same_full_energy": -1.8340888598217413
+        },
+        {
+          "aliases": [],
+          "optimized_answer": "Ministro Pistarini International Airport",
+          "optimized_f1": 1.0,
+          "optimized_full_energy": -2.6090720237957106,
+          "optimized_selected_ids": [
+            "5a832a625542990548d0b1b4:d0",
+            "5a832a625542990548d0b1b4:d1",
+            "5a832a625542990548d0b1b4:d2",
+            "5a832a625542990548d0b1b4:d7",
+            "5a832a625542990548d0b1b4:d9"
+          ],
+          "optimized_support_recall": 0.5,
+          "question": "What airport is off National Route A002 and is largest airport in Greater Buenos Aires?",
+          "question_id": "5a832a625542990548d0b1b4",
+          "reference": "Ministro Pistarini International Airport",
+          "relevance_answer": "Ministro Pistarini International Airport",
+          "relevance_f1": 1.0,
+          "relevance_selected_ids": [
+            "5a832a625542990548d0b1b4:d0",
+            "5a832a625542990548d0b1b4:d1",
+            "5a832a625542990548d0b1b4:d2",
+            "5a832a625542990548d0b1b4:d4",
+            "5a832a625542990548d0b1b4:d7"
+          ],
+          "relevance_under_same_full_energy": -2.470456788937251
+        }
+      ],
+      "lower_common_energy_but_worse_answer_than_relevance": [
+        {
+          "aliases": [],
+          "optimized_answer": "The career of the actor in The Skull lasted until 1965 when it was released.",
+          "optimized_f1": 0.0,
+          "optimized_full_energy": -1.6665892023965716,
+          "optimized_selected_ids": [
+            "5ab4071955429976abd1bd38:d0",
+            "5ab4071955429976abd1bd38:d3",
+            "5ab4071955429976abd1bd38:d6",
+            "5ab4071955429976abd1bd38:d8",
+            "5ab4071955429976abd1bd38:d9"
+          ],
+          "optimized_support_recall": 1.0,
+          "question": "How long was the career of the actor in The Skull?",
+          "question_id": "5ab4071955429976abd1bd38",
+          "reference": "70 years",
+          "relevance_answer": "7 years",
+          "relevance_f1": 0.5,
+          "relevance_selected_ids": [
+            "5ab4071955429976abd1bd38:d3",
+            "5ab4071955429976abd1bd38:d4",
+            "5ab4071955429976abd1bd38:d6",
+            "5ab4071955429976abd1bd38:d8",
+            "5ab4071955429976abd1bd38:d9"
+          ],
+          "relevance_under_same_full_energy": -1.5650304737314582
+        },
+        {
+          "aliases": [],
+          "optimized_answer": "Band of Skulls",
+          "optimized_f1": 0.0,
+          "optimized_full_energy": -2.303681548535824,
+          "optimized_selected_ids": [
+            "5ae4585c5542996836b02c89:d1",
+            "5ae4585c5542996836b02c89:d2",
+            "5ae4585c5542996836b02c89:d5",
+            "5ae4585c5542996836b02c89:d7",
+            "5ae4585c5542996836b02c89:d9"
+          ],
+          "optimized_support_recall": 1.0,
+          "question": "Which band has more members Band of Skulls or Live ?",
+          "question_id": "5ae4585c5542996836b02c89",
+          "reference": "Live",
+          "relevance_answer": "Live",
+          "relevance_f1": 1.0,
+          "relevance_selected_ids": [
+            "5ae4585c5542996836b02c89:d2",
+            "5ae4585c5542996836b02c89:d3",
+            "5ae4585c5542996836b02c89:d5",
+            "5ae4585c5542996836b02c89:d7",
+            "5ae4585c5542996836b02c89:d9"
+          ],
+          "relevance_under_same_full_energy": -2.257566662877798
+        }
+      ]
+    },
+    "questions": 500,
+    "signature_counts": {
+      "certified_optimum_with_imperfect_answer": 324,
+      "complete_annotated_support_with_imperfect_answer": 190,
+      "correct_answer_without_all_annotated_support": 24,
+      "lower_common_energy_but_worse_answer_than_relevance": 31
+    }
+  },
+  "final_hotpotqa_qwen3_count": {
+    "examples": {
+      "certified_optimum_with_imperfect_answer": [
+        {
+          "aliases": [],
+          "optimized_answer": "Susan Choi",
+          "optimized_f1": 0.0,
+          "optimized_full_energy": -2.5762288834899665,
+          "optimized_selected_ids": [
+            "5a729cc25542991f9a20c532:d3",
+            "5a729cc25542991f9a20c532:d4",
+            "5a729cc25542991f9a20c532:d7",
+            "5a729cc25542991f9a20c532:d8",
+            "5a729cc25542991f9a20c532:d9"
+          ],
+          "optimized_support_recall": 0.0,
+          "question": "Which author wrote about a woman captured by the Symbionese Liberation Army?",
+          "question_id": "5a729cc25542991f9a20c532",
+          "reference": "Paul Avery",
+          "relevance_answer": "Susan Choi",
+          "relevance_f1": 0.0,
+          "relevance_selected_ids": [
+            "5a729cc25542991f9a20c532:d3",
+            "5a729cc25542991f9a20c532:d4",
+            "5a729cc25542991f9a20c532:d6",
+            "5a729cc25542991f9a20c532:d7",
+            "5a729cc25542991f9a20c532:d8"
+          ],
+          "relevance_under_same_full_energy": -2.4987927731126547
+        },
+        {
+          "aliases": [],
+          "optimized_answer": "hip hop ballad",
+          "optimized_f1": 0.8571428571428571,
+          "optimized_full_energy": -1.8316971925087273,
+          "optimized_selected_ids": [
+            "5aba549f554299232ef4a290:d1",
+            "5aba549f554299232ef4a290:d2",
+            "5aba549f554299232ef4a290:d4",
+            "5aba549f554299232ef4a290:d5",
+            "5aba549f554299232ef4a290:d9"
+          ],
+          "optimized_support_recall": 1.0,
+          "question": "What kind of song did Alexander Grant produce for Eminem?",
+          "question_id": "5aba549f554299232ef4a290",
+          "reference": "a midtempo hip hop ballad",
+          "relevance_answer": "hip hop ballad",
+          "relevance_f1": 0.8571428571428571,
+          "relevance_selected_ids": [
+            "5aba549f554299232ef4a290:d1",
+            "5aba549f554299232ef4a290:d2",
+            "5aba549f554299232ef4a290:d4",
+            "5aba549f554299232ef4a290:d5",
+            "5aba549f554299232ef4a290:d9"
+          ],
+          "relevance_under_same_full_energy": -1.8316971925087273
+        }
+      ],
+      "complete_annotated_support_with_imperfect_answer": [
+        {
+          "aliases": [],
+          "optimized_answer": "hip hop ballad",
+          "optimized_f1": 0.8571428571428571,
+          "optimized_full_energy": -1.8316971925087273,
+          "optimized_selected_ids": [
+            "5aba549f554299232ef4a290:d1",
+            "5aba549f554299232ef4a290:d2",
+            "5aba549f554299232ef4a290:d4",
+            "5aba549f554299232ef4a290:d5",
+            "5aba549f554299232ef4a290:d9"
+          ],
+          "optimized_support_recall": 1.0,
+          "question": "What kind of song did Alexander Grant produce for Eminem?",
+          "question_id": "5aba549f554299232ef4a290",
+          "reference": "a midtempo hip hop ballad",
+          "relevance_answer": "hip hop ballad",
+          "relevance_f1": 0.8571428571428571,
+          "relevance_selected_ids": [
+            "5aba549f554299232ef4a290:d1",
+            "5aba549f554299232ef4a290:d2",
+            "5aba549f554299232ef4a290:d4",
+            "5aba549f554299232ef4a290:d5",
+            "5aba549f554299232ef4a290:d9"
+          ],
+          "relevance_under_same_full_energy": -1.8316971925087273
+        },
+        {
+          "aliases": [],
+          "optimized_answer": "Brian Gottfried",
+          "optimized_f1": 0.0,
+          "optimized_full_energy": -1.6620573431253434,
+          "optimized_selected_ids": [
+            "5ae25d2b554299495565da46:d1",
+            "5ae25d2b554299495565da46:d3",
+            "5ae25d2b554299495565da46:d7",
+            "5ae25d2b554299495565da46:d8",
+            "5ae25d2b554299495565da46:d9"
+          ],
+          "optimized_support_recall": 1.0,
+          "question": "Who has more singles titles, Brian Gottfried or Peter Fleming?",
+          "question_id": "5ae25d2b554299495565da46",
+          "reference": "21",
+          "relevance_answer": "Peter Fleming",
+          "relevance_f1": 0.0,
+          "relevance_selected_ids": [
+            "5ae25d2b554299495565da46:d3",
+            "5ae25d2b554299495565da46:d5",
+            "5ae25d2b554299495565da46:d7",
+            "5ae25d2b554299495565da46:d8",
+            "5ae25d2b554299495565da46:d9"
+          ],
+          "relevance_under_same_full_energy": -1.5411080751035895
+        }
+      ],
+      "correct_answer_without_all_annotated_support": [
+        {
+          "aliases": [],
+          "optimized_answer": "Westchester",
+          "optimized_f1": 1.0,
+          "optimized_full_energy": -3.039720856398344,
+          "optimized_selected_ids": [
+            "5adf72095542992d7e9f935d:d4",
+            "5adf72095542992d7e9f935d:d5",
+            "5adf72095542992d7e9f935d:d6",
+            "5adf72095542992d7e9f935d:d7",
+            "5adf72095542992d7e9f935d:d8"
+          ],
+          "optimized_support_recall": 0.5,
+          "question": "The New York, Westchester and Boston Railway has a terminus at the New York city in what county?",
+          "question_id": "5adf72095542992d7e9f935d",
+          "reference": "Westchester",
+          "relevance_answer": "Westchester",
+          "relevance_f1": 1.0,
+          "relevance_selected_ids": [
+            "5adf72095542992d7e9f935d:d5",
+            "5adf72095542992d7e9f935d:d6",
+            "5adf72095542992d7e9f935d:d7",
+            "5adf72095542992d7e9f935d:d8",
+            "5adf72095542992d7e9f935d:d9"
+          ],
+          "relevance_under_same_full_energy": -2.929358749836683
+        },
+        {
+          "aliases": [],
+          "optimized_answer": "Objectivism",
+          "optimized_f1": 1.0,
+          "optimized_full_energy": -2.7993421041539737,
+          "optimized_selected_ids": [
+            "5a81b99c5542995ce29dcc56:d0",
+            "5a81b99c5542995ce29dcc56:d1",
+            "5a81b99c5542995ce29dcc56:d2",
+            "5a81b99c5542995ce29dcc56:d3",
+            "5a81b99c5542995ce29dcc56:d4"
+          ],
+          "optimized_support_recall": 0.5,
+          "question": "Atlas Shrugged was a film based on the books by a proponent of what philosophy?",
+          "question_id": "5a81b99c5542995ce29dcc56",
+          "reference": "Objectivism",
+          "relevance_answer": "Objectivism",
+          "relevance_f1": 1.0,
+          "relevance_selected_ids": [
+            "5a81b99c5542995ce29dcc56:d1",
+            "5a81b99c5542995ce29dcc56:d2",
+            "5a81b99c5542995ce29dcc56:d3",
+            "5a81b99c5542995ce29dcc56:d4",
+            "5a81b99c5542995ce29dcc56:d5"
+          ],
+          "relevance_under_same_full_energy": -2.6684506561074937
+        }
+      ],
+      "lower_common_energy_but_worse_answer_than_relevance": [
+        {
+          "aliases": [],
+          "optimized_answer": "Western Allied invasion of Germany",
+          "optimized_f1": 0.25,
+          "optimized_full_energy": -1.8941443593551717,
+          "optimized_selected_ids": [
+            "5a88a8f4554299206df2b320:d0",
+            "5a88a8f4554299206df2b320:d1",
+            "5a88a8f4554299206df2b320:d4",
+            "5a88a8f4554299206df2b320:d8",
+            "5a88a8f4554299206df2b320:d9"
+          ],
+          "optimized_support_recall": 1.0,
+          "question": "Which battle took place closer to New York City, Battle of Fredericksburg or the Western Allied invasion of Germany ?",
+          "question_id": "5a88a8f4554299206df2b320",
+          "reference": "Battle of Fredericksburg",
+          "relevance_answer": "Battle of Fredericksburg",
+          "relevance_f1": 1.0,
+          "relevance_selected_ids": [
+            "5a88a8f4554299206df2b320:d0",
+            "5a88a8f4554299206df2b320:d1",
+            "5a88a8f4554299206df2b320:d4",
+            "5a88a8f4554299206df2b320:d7",
+            "5a88a8f4554299206df2b320:d8"
+          ],
+          "relevance_under_same_full_energy": -1.8260483803848424
+        },
+        {
+          "aliases": [],
+          "optimized_answer": "coach",
+          "optimized_f1": 0.25,
+          "optimized_full_energy": -1.8438673131167889,
+          "optimized_selected_ids": [
+            "5adbd1d25542994650320bf6:d0",
+            "5adbd1d25542994650320bf6:d1",
+            "5adbd1d25542994650320bf6:d2",
+            "5adbd1d25542994650320bf6:d3",
+            "5adbd1d25542994650320bf6:d5"
+          ],
+          "optimized_support_recall": 1.0,
+          "question": "What is the current job of the former partner in ice skating of Vladimir Fedorov?",
+          "question_id": "5adbd1d25542994650320bf6",
+          "reference": "She currently works as a coach and choreographer",
+          "relevance_answer": "coach and choreographer",
+          "relevance_f1": 0.6,
+          "relevance_selected_ids": [
+            "5adbd1d25542994650320bf6:d0",
+            "5adbd1d25542994650320bf6:d2",
+            "5adbd1d25542994650320bf6:d3",
+            "5adbd1d25542994650320bf6:d5",
+            "5adbd1d25542994650320bf6:d6"
+          ],
+          "relevance_under_same_full_energy": -1.8345862813293934
+        }
+      ]
+    },
+    "questions": 500,
+    "signature_counts": {
+      "certified_optimum_with_imperfect_answer": 323,
+      "complete_annotated_support_with_imperfect_answer": 189,
+      "correct_answer_without_all_annotated_support": 24,
+      "lower_common_energy_but_worse_answer_than_relevance": 37
+    }
+  },
+  "final_musique_qwen15_count": {
+    "examples": {
+      "certified_optimum_with_imperfect_answer": [
+        {
+          "aliases": [],
+          "optimized_answer": "Chicago Cubs",
+          "optimized_f1": 0.0,
+          "optimized_full_energy": -2.2064064024125827,
+          "optimized_selected_ids": [
+            "4hop1__88342_75218_128008_46748:d9",
+            "4hop1__88342_75218_128008_46748:d11",
+            "4hop1__88342_75218_128008_46748:d14",
+            "4hop1__88342_75218_128008_46748:d16",
+            "4hop1__88342_75218_128008_46748:d17"
+          ],
+          "optimized_support_recall": 0.25,
+          "question": "The MLB MVP award is given out after a competition where a team has played the most games. What is the longest win streak in the history of league that team plays for?",
+          "question_id": "4hop1__88342_75218_128008_46748",
+          "reference": "26",
+          "relevance_answer": "Chicago Cubs",
+          "relevance_f1": 0.0,
+          "relevance_selected_ids": [
+            "4hop1__88342_75218_128008_46748:d2",
+            "4hop1__88342_75218_128008_46748:d11",
+            "4hop1__88342_75218_128008_46748:d14",
+            "4hop1__88342_75218_128008_46748:d16",
+            "4hop1__88342_75218_128008_46748:d17"
+          ],
+          "relevance_under_same_full_energy": -2.1289893792832597
+        },
+        {
+          "aliases": [],
+          "optimized_answer": "Manchester City",
+          "optimized_f1": 0.0,
+          "optimized_full_energy": -1.9073849474390348,
+          "optimized_selected_ids": [
+            "2hop__85596_807969:d3",
+            "2hop__85596_807969:d10",
+            "2hop__85596_807969:d11",
+            "2hop__85596_807969:d17",
+            "2hop__85596_807969:d19"
+          ],
+          "optimized_support_recall": 0.5,
+          "question": "What team is the highest goal scorer in the EPL a member of?",
+          "question_id": "2hop__85596_807969",
+          "reference": "Egypt national football team",
+          "relevance_answer": "Manchester City",
+          "relevance_f1": 0.0,
+          "relevance_selected_ids": [
+            "2hop__85596_807969:d11",
+            "2hop__85596_807969:d13",
+            "2hop__85596_807969:d14",
+            "2hop__85596_807969:d18",
+            "2hop__85596_807969:d19"
+          ],
+          "relevance_under_same_full_energy": -1.5854581370949745
+        }
+      ],
+      "complete_annotated_support_with_imperfect_answer": [
+        {
+          "aliases": [],
+          "optimized_answer": "Jay-Z",
+          "optimized_f1": 0.0,
+          "optimized_full_energy": -1.8154666508251631,
+          "optimized_selected_ids": [
+            "2hop__345_59409:d2",
+            "2hop__345_59409:d8",
+            "2hop__345_59409:d12",
+            "2hop__345_59409:d17",
+            "2hop__345_59409:d18"
+          ],
+          "optimized_support_recall": 1.0,
+          "question": "Who was the person who purchased Tidal's parent company in 2015 talking about in the song 'Cry?'",
+          "question_id": "2hop__345_59409",
+          "reference": "three different relationships he had in the past",
+          "relevance_answer": "Jay-Z",
+          "relevance_f1": 0.0,
+          "relevance_selected_ids": [
+            "2hop__345_59409:d2",
+            "2hop__345_59409:d5",
+            "2hop__345_59409:d8",
+            "2hop__345_59409:d15",
+            "2hop__345_59409:d18"
+          ],
+          "relevance_under_same_full_energy": -1.7286148269830102
+        },
+        {
+          "aliases": [],
+          "optimized_answer": "1407",
+          "optimized_f1": 0.0,
+          "optimized_full_energy": -1.7972179760535558,
+          "optimized_selected_ids": [
+            "3hop1__857_846_7701:d0",
+            "3hop1__857_846_7701:d5",
+            "3hop1__857_846_7701:d7",
+            "3hop1__857_846_7701:d17",
+            "3hop1__857_846_7701:d18"
+          ],
+          "optimized_support_recall": 1.0,
+          "question": "When did the city where the Yongle emperor greeted the person to whom the edict was addressed become the Chinese national capital?",
+          "question_id": "3hop1__857_846_7701",
+          "reference": "Jin dynasty",
+          "relevance_answer": "Noanswer",
+          "relevance_f1": 0.0,
+          "relevance_selected_ids": [
+            "3hop1__857_846_7701:d2",
+            "3hop1__857_846_7701:d6",
+            "3hop1__857_846_7701:d7",
+            "3hop1__857_846_7701:d14",
+            "3hop1__857_846_7701:d17"
+          ],
+          "relevance_under_same_full_energy": -1.4962104126811027
+        }
+      ],
+      "correct_answer_without_all_annotated_support": [
+        {
+          "aliases": [],
+          "optimized_answer": "1839",
+          "optimized_f1": 1.0,
+          "optimized_full_energy": -1.3963297210633754,
+          "optimized_selected_ids": [
+            "4hop3__160230_470287_345497_72134:d8",
+            "4hop3__160230_470287_345497_72134:d10",
+            "4hop3__160230_470287_345497_72134:d14",
+            "4hop3__160230_470287_345497_72134:d17",
+            "4hop3__160230_470287_345497_72134:d19"
+          ],
+          "optimized_support_recall": 0.75,
+          "question": "When did the death city of Taito Kantonen become the capital of the US state having the statue being the title of the various Latin Mother goddess?",
+          "question_id": "4hop3__160230_470287_345497_72134",
+          "reference": "1839",
+          "relevance_answer": "Noanswer",
+          "relevance_f1": 0.0,
+          "relevance_selected_ids": [
+            "4hop3__160230_470287_345497_72134:d8",
+            "4hop3__160230_470287_345497_72134:d10",
+            "4hop3__160230_470287_345497_72134:d14",
+            "4hop3__160230_470287_345497_72134:d16",
+            "4hop3__160230_470287_345497_72134:d19"
+          ],
+          "relevance_under_same_full_energy": -1.3481671139597893
+        },
+        {
+          "aliases": [],
+          "optimized_answer": "Ferdinand de Lesseps",
+          "optimized_f1": 1.0,
+          "optimized_full_energy": -1.3833472351641638,
+          "optimized_selected_ids": [
+            "4hop3__827497_354093_254885_76356:d1",
+            "4hop3__827497_354093_254885_76356:d2",
+            "4hop3__827497_354093_254885_76356:d3",
+            "4hop3__827497_354093_254885_76356:d5",
+            "4hop3__827497_354093_254885_76356:d17"
+          ],
+          "optimized_support_recall": 0.75,
+          "question": "The Pee Dee River leads to a bay which leads to an ocean. Who led an attempt to link that ocean with the Pacific via a canal through the continental region containing the El Valle volcano?",
+          "question_id": "4hop3__827497_354093_254885_76356",
+          "reference": "Ferdinand de Lesseps",
+          "relevance_answer": "Ferdinand de Lesseps",
+          "relevance_f1": 1.0,
+          "relevance_selected_ids": [
+            "4hop3__827497_354093_254885_76356:d2",
+            "4hop3__827497_354093_254885_76356:d3",
+            "4hop3__827497_354093_254885_76356:d5",
+            "4hop3__827497_354093_254885_76356:d14",
+            "4hop3__827497_354093_254885_76356:d19"
+          ],
+          "relevance_under_same_full_energy": -1.2937016917833764
+        }
+      ],
+      "lower_common_energy_but_worse_answer_than_relevance": [
+        {
+          "aliases": [
+            "Richland County, South Carolina"
+          ],
+          "optimized_answer": "Horry County",
+          "optimized_f1": 0.5,
+          "optimized_full_energy": -1.8664879251271487,
+          "optimized_selected_ids": [
+            "4hop1__131611_32392_823060_610794:d3",
+            "4hop1__131611_32392_823060_610794:d5",
+            "4hop1__131611_32392_823060_610794:d11",
+            "4hop1__131611_32392_823060_610794:d16",
+            "4hop1__131611_32392_823060_610794:d19"
+          ],
+          "optimized_support_recall": 0.75,
+          "question": "In which county is the city sharing a border with the capitol of the state where Ocean Forest Country Club is located?",
+          "question_id": "4hop1__131611_32392_823060_610794",
+          "reference": "Richland County",
+          "relevance_answer": "Richland County",
+          "relevance_f1": 1.0,
+          "relevance_selected_ids": [
+            "4hop1__131611_32392_823060_610794:d2",
+            "4hop1__131611_32392_823060_610794:d3",
+            "4hop1__131611_32392_823060_610794:d11",
+            "4hop1__131611_32392_823060_610794:d16",
+            "4hop1__131611_32392_823060_610794:d19"
+          ],
+          "relevance_under_same_full_energy": -1.8310084122995085
+        },
+        {
+          "aliases": [],
+          "optimized_answer": "David Simon",
+          "optimized_f1": 0.0,
+          "optimized_full_energy": -1.5458476781845092,
+          "optimized_selected_ids": [
+            "3hop1__321720_650651_7262:d8",
+            "3hop1__321720_650651_7262:d9",
+            "3hop1__321720_650651_7262:d10",
+            "3hop1__321720_650651_7262:d15",
+            "3hop1__321720_650651_7262:d17"
+          ],
+          "optimized_support_recall": 0.6666666666666666,
+          "question": "Who was a prominent figure at the radio division of the network that created the version of The Biggest Loser set in the country where Seria is?",
+          "question_id": "3hop1__321720_650651_7262",
+          "reference": "Walter Sabo",
+          "relevance_answer": "Walter Sabo",
+          "relevance_f1": 1.0,
+          "relevance_selected_ids": [
+            "3hop1__321720_650651_7262:d8",
+            "3hop1__321720_650651_7262:d9",
+            "3hop1__321720_650651_7262:d15",
+            "3hop1__321720_650651_7262:d16",
+            "3hop1__321720_650651_7262:d17"
+          ],
+          "relevance_under_same_full_energy": -1.4233124497967462
+        }
+      ]
+    },
+    "questions": 500,
+    "signature_counts": {
+      "certified_optimum_with_imperfect_answer": 413,
+      "complete_annotated_support_with_imperfect_answer": 96,
+      "correct_answer_without_all_annotated_support": 41,
+      "lower_common_energy_but_worse_answer_than_relevance": 36
+    }
+  },
+  "final_musique_qwen3_count": {
+    "examples": {
+      "certified_optimum_with_imperfect_answer": [
+        {
+          "aliases": [],
+          "optimized_answer": "Noanswer",
+          "optimized_f1": 0.0,
+          "optimized_full_energy": -2.2064064024125827,
+          "optimized_selected_ids": [
+            "4hop1__88342_75218_128008_46748:d9",
+            "4hop1__88342_75218_128008_46748:d11",
+            "4hop1__88342_75218_128008_46748:d14",
+            "4hop1__88342_75218_128008_46748:d16",
+            "4hop1__88342_75218_128008_46748:d17"
+          ],
+          "optimized_support_recall": 0.25,
+          "question": "The MLB MVP award is given out after a competition where a team has played the most games. What is the longest win streak in the history of league that team plays for?",
+          "question_id": "4hop1__88342_75218_128008_46748",
+          "reference": "26",
+          "relevance_answer": "noanswer",
+          "relevance_f1": 0.0,
+          "relevance_selected_ids": [
+            "4hop1__88342_75218_128008_46748:d2",
+            "4hop1__88342_75218_128008_46748:d11",
+            "4hop1__88342_75218_128008_46748:d14",
+            "4hop1__88342_75218_128008_46748:d16",
+            "4hop1__88342_75218_128008_46748:d17"
+          ],
+          "relevance_under_same_full_energy": -2.1289893792832597
+        },
+        {
+          "aliases": [],
+          "optimized_answer": "Tottenham Hotspur",
+          "optimized_f1": 0.0,
+          "optimized_full_energy": -1.9073849474390348,
+          "optimized_selected_ids": [
+            "2hop__85596_807969:d3",
+            "2hop__85596_807969:d10",
+            "2hop__85596_807969:d11",
+            "2hop__85596_807969:d17",
+            "2hop__85596_807969:d19"
+          ],
+          "optimized_support_recall": 0.5,
+          "question": "What team is the highest goal scorer in the EPL a member of?",
+          "question_id": "2hop__85596_807969",
+          "reference": "Egypt national football team",
+          "relevance_answer": "Liverpool",
+          "relevance_f1": 0.0,
+          "relevance_selected_ids": [
+            "2hop__85596_807969:d11",
+            "2hop__85596_807969:d13",
+            "2hop__85596_807969:d14",
+            "2hop__85596_807969:d18",
+            "2hop__85596_807969:d19"
+          ],
+          "relevance_under_same_full_energy": -1.5854581370949745
+        }
+      ],
+      "complete_annotated_support_with_imperfect_answer": [
+        {
+          "aliases": [
+            "Albert Woolson"
+          ],
+          "optimized_answer": "Bertie Felstead",
+          "optimized_f1": 0.0,
+          "optimized_full_energy": -1.6943255006335676,
+          "optimized_selected_ids": [
+            "2hop__91248_84207:d1",
+            "2hop__91248_84207:d11",
+            "2hop__91248_84207:d13",
+            "2hop__91248_84207:d14",
+            "2hop__91248_84207:d16"
+          ],
+          "optimized_support_recall": 1.0,
+          "question": "Who was the last soldier of the conflict that saw the government getting involved in healthcare to die?",
+          "question_id": "2hop__91248_84207",
+          "reference": "Albert Henry Woolson",
+          "relevance_answer": "Bertie Felstead",
+          "relevance_f1": 0.0,
+          "relevance_selected_ids": [
+            "2hop__91248_84207:d1",
+            "2hop__91248_84207:d11",
+            "2hop__91248_84207:d13",
+            "2hop__91248_84207:d14",
+            "2hop__91248_84207:d16"
+          ],
+          "relevance_under_same_full_energy": -1.6943255006335676
+        },
+        {
+          "aliases": [],
+          "optimized_answer": "Jay-Z",
+          "optimized_f1": 0.0,
+          "optimized_full_energy": -1.8154666508251631,
+          "optimized_selected_ids": [
+            "2hop__345_59409:d2",
+            "2hop__345_59409:d8",
+            "2hop__345_59409:d12",
+            "2hop__345_59409:d17",
+            "2hop__345_59409:d18"
+          ],
+          "optimized_support_recall": 1.0,
+          "question": "Who was the person who purchased Tidal's parent company in 2015 talking about in the song 'Cry?'",
+          "question_id": "2hop__345_59409",
+          "reference": "three different relationships he had in the past",
+          "relevance_answer": "Jay-Z",
+          "relevance_f1": 0.0,
+          "relevance_selected_ids": [
+            "2hop__345_59409:d2",
+            "2hop__345_59409:d5",
+            "2hop__345_59409:d8",
+            "2hop__345_59409:d15",
+            "2hop__345_59409:d18"
+          ],
+          "relevance_under_same_full_energy": -1.7286148269830102
+        }
+      ],
+      "correct_answer_without_all_annotated_support": [
+        {
+          "aliases": [],
+          "optimized_answer": "1952",
+          "optimized_f1": 1.0,
+          "optimized_full_energy": -1.8348370517293613,
+          "optimized_selected_ids": [
+            "3hop1__46571_87694_124169:d2",
+            "3hop1__46571_87694_124169:d11",
+            "3hop1__46571_87694_124169:d15",
+            "3hop1__46571_87694_124169:d18",
+            "3hop1__46571_87694_124169:d19"
+          ],
+          "optimized_support_recall": 0.6666666666666666,
+          "question": "When did the Governor of the city where the Basilica named after the saint holding the knife in the Last Supper is located in end?",
+          "question_id": "3hop1__46571_87694_124169",
+          "reference": "1952",
+          "relevance_answer": "noanswer",
+          "relevance_f1": 0.0,
+          "relevance_selected_ids": [
+            "3hop1__46571_87694_124169:d0",
+            "3hop1__46571_87694_124169:d2",
+            "3hop1__46571_87694_124169:d15",
+            "3hop1__46571_87694_124169:d17",
+            "3hop1__46571_87694_124169:d19"
+          ],
+          "relevance_under_same_full_energy": -1.661159340540568
+        },
+        {
+          "aliases": [],
+          "optimized_answer": "Chris Harrison",
+          "optimized_f1": 1.0,
+          "optimized_full_energy": -1.914851597779327,
+          "optimized_selected_ids": [
+            "3hop1__622497_160088_49779:d4",
+            "3hop1__622497_160088_49779:d5",
+            "3hop1__622497_160088_49779:d6",
+            "3hop1__622497_160088_49779:d12",
+            "3hop1__622497_160088_49779:d17"
+          ],
+          "optimized_support_recall": 0.3333333333333333,
+          "question": "Who is the host of Who Wants to be a Millionaire in the country that the producer of The Wild Women of Chastity Gulch is from?",
+          "question_id": "3hop1__622497_160088_49779",
+          "reference": "Chris Harrison",
+          "relevance_answer": "Chris Harrison",
+          "relevance_f1": 1.0,
+          "relevance_selected_ids": [
+            "3hop1__622497_160088_49779:d1",
+            "3hop1__622497_160088_49779:d4",
+            "3hop1__622497_160088_49779:d5",
+            "3hop1__622497_160088_49779:d12",
+            "3hop1__622497_160088_49779:d17"
+          ],
+          "relevance_under_same_full_energy": -1.8254692626496156
+        }
+      ],
+      "lower_common_energy_but_worse_answer_than_relevance": [
+        {
+          "aliases": [
+            "Richland County, South Carolina"
+          ],
+          "optimized_answer": "Horry",
+          "optimized_f1": 0.0,
+          "optimized_full_energy": -1.8664879251271487,
+          "optimized_selected_ids": [
+            "4hop1__131611_32392_823060_610794:d3",
+            "4hop1__131611_32392_823060_610794:d5",
+            "4hop1__131611_32392_823060_610794:d11",
+            "4hop1__131611_32392_823060_610794:d16",
+            "4hop1__131611_32392_823060_610794:d19"
+          ],
+          "optimized_support_recall": 0.75,
+          "question": "In which county is the city sharing a border with the capitol of the state where Ocean Forest Country Club is located?",
+          "question_id": "4hop1__131611_32392_823060_610794",
+          "reference": "Richland County",
+          "relevance_answer": "Richland",
+          "relevance_f1": 0.6666666666666666,
+          "relevance_selected_ids": [
+            "4hop1__131611_32392_823060_610794:d2",
+            "4hop1__131611_32392_823060_610794:d3",
+            "4hop1__131611_32392_823060_610794:d11",
+            "4hop1__131611_32392_823060_610794:d16",
+            "4hop1__131611_32392_823060_610794:d19"
+          ],
+          "relevance_under_same_full_energy": -1.8310084122995085
+        },
+        {
+          "aliases": [],
+          "optimized_answer": "Lockheed Martin",
+          "optimized_f1": 0.5,
+          "optimized_full_energy": -1.5921281949803232,
+          "optimized_selected_ids": [
+            "2hop__132954_533882:d2",
+            "2hop__132954_533882:d7",
+            "2hop__132954_533882:d15",
+            "2hop__132954_533882:d16",
+            "2hop__132954_533882:d17"
+          ],
+          "optimized_support_recall": 1.0,
+          "question": "What company was formed after a merger of the company that built ASM-N-5 Gorgon V?",
+          "question_id": "2hop__132954_533882",
+          "reference": "Martin Marietta",
+          "relevance_answer": "Martin Marietta",
+          "relevance_f1": 1.0,
+          "relevance_selected_ids": [
+            "2hop__132954_533882:d6",
+            "2hop__132954_533882:d7",
+            "2hop__132954_533882:d14",
+            "2hop__132954_533882:d15",
+            "2hop__132954_533882:d16"
+          ],
+          "relevance_under_same_full_energy": -1.4187223874405026
+        }
+      ]
+    },
+    "questions": 500,
+    "signature_counts": {
+      "certified_optimum_with_imperfect_answer": 445,
+      "complete_annotated_support_with_imperfect_answer": 105,
+      "correct_answer_without_all_annotated_support": 18,
+      "lower_common_energy_but_worse_answer_than_relevance": 32
+    }
+  }
+}

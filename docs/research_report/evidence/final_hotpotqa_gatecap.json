@@ -1,0 +1,227 @@
+{
+  "compact_predictions_file": "final_hotpotqa_gatecap.jsonl.gz",
+  "compact_predictions_sha256": "81a0af448c70723b1fdbf4d2a026fff01bd58c5b284e6290763e74e31d813186",
+  "git": {
+    "commit": "20515d96e980d18f7092dbe77e4c70589246b616",
+    "status": "",
+    "tracked_diff_sha256": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126"
+  },
+  "identity": {
+    "driver_sha256": "df042e5283e220f6e0d4ccbbb85e23a3c4c9fb5b1d00f5f789c89c27c83ff5fe",
+    "primary_predictions_sha256": "f3c12029240eafa7f970a78003cec5a14643c4e60dbdd79ffa9f6b1d476076a9",
+    "question_ids": [
+      "5a729cc25542991f9a20c532",
+      "5aba549f554299232ef4a290",
+      "5ae25d2b554299495565da46",
+      "5ab30d1155429976abd1bc3d",
+      "5a7caae75542996dd594b971",
+      "5adf34955542993a75d26423",
+      "5a8a03985542992e4fca84d6",
+      "5a88a8f4554299206df2b320",
+      "5ae4c96355429913cc204506",
+      "5a8f45ca5542997ba9cb320e"
+    ],
+    "source_sha256": "8d6bf4c5739869e525a7222714332b1b2972637d4c04524b6a3df320133dd287",
+    "spec": {
+      "choice_basis": "Development half-edge XY mean was approximately 177 complete compiled line two-qubit gates. Keep the largest tested retention fraction meeting cap, then verify final optimized circuit. Penalty control may be infeasible under this cap.",
+      "datasets": [
+        "hotpotqa",
+        "musique"
+      ],
+      "line_gate_cap": 180,
+      "max_evals": 64,
+      "methods": [
+        {
+          "name": "gate_absolute_s41",
+          "rule": "absolute",
+          "seed": 41,
+          "solver": "qaoa"
+        },
+        {
+          "name": "gate_absolute_s42",
+          "rule": "absolute",
+          "seed": 42,
+          "solver": "qaoa"
+        },
+        {
+          "name": "gate_absolute_s43",
+          "rule": "absolute",
+          "seed": 43,
+          "solver": "qaoa"
+        },
+        {
+          "name": "gate_evidence_s41",
+          "rule": "evidence",
+          "seed": 41,
+          "solver": "qaoa"
+        },
+        {
+          "name": "gate_evidence_s42",
+          "rule": "evidence",
+          "seed": 42,
+          "solver": "qaoa"
+        },
+        {
+          "name": "gate_evidence_s43",
+          "rule": "evidence",
+          "seed": 43,
+          "solver": "qaoa"
+        },
+        {
+          "mixer": "penalty",
+          "name": "gate_penalty_control",
+          "rule": "absolute",
+          "seed": 42,
+          "solver": "qaoa"
+        }
+      ],
+      "model": {
+        "alpha": 1.0,
+        "beta": 0.2,
+        "dataset": "data/processed/research/hotpotqa_evaluation.json",
+        "device": "cuda",
+        "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+        "embedding_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+        "embedding_truncation": "error",
+        "generator_dtype": "float16",
+        "generator_model": "Qwen/Qwen2.5-1.5B-Instruct",
+        "generator_revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+        "k": 5,
+        "limit": 10,
+        "local_files_only": true,
+        "max_input_tokens": 4096,
+        "max_new_tokens": 32,
+        "seed": 42,
+        "short_pool_policy": "use_all",
+        "solver_time_limit": 10.0,
+        "threads": 4
+      },
+      "questions_per_dataset": 10,
+      "scope": "secondary compiled-gate-cap diagnostic, declared before definitive held-out outcome analysis; main matrix unchanged",
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "shots": 1024
+    }
+  },
+  "invocations": [
+    {
+      "ended_at": "2026-11-09T23:14:24.373924+00:00",
+      "preparation": {
+        "document_embedding_cache": "not_implemented",
+        "embedding_max_sequence_tokens": 256,
+        "generator_input_limit": 4096,
+        "model_load_seconds": 1.1956315789993823
+      },
+      "started_at": "2026-11-09T23:14:07.747461+00:00",
+      "wall_seconds": 16.626459261999116
+    }
+  ],
+  "note": "Derived compact evidence. Original artifacts and exact prompts remain in the local run bundle; hashes identify their unchanged bytes.",
+  "original_hashes": {
+    "manifest.json": "3c87e10ea78adad7b3033d586649d7c54e90e38382a2ac9ef23920389bde79e2",
+    "predictions.jsonl": "95602ca93b58f43bf6de904db273c9176b35bc6d71ffb5acf918307bdeee40f0",
+    "source_snapshot.json": "bc6f8dabb8426dc5e37e1aeb04b80ba9e788a078b78bb77083c85438cea83c5d",
+    "summary.json": "3cf282f7a01f2bdebc48f700a7a6a0b2b1dc6e5db9e7517dc28778a8212a9e51"
+  },
+  "run_id": "final_hotpotqa_gatecap",
+  "status": "completed_with_errors",
+  "summary": {
+    "methods": {
+      "gate_absolute_s41": {
+        "all_supporting_documents_successful_only": 0.6,
+        "answer_em": 0.3,
+        "answer_f1": 0.35,
+        "context_tokens_successful_only": 864.7,
+        "document_recall_successful_only": 0.8,
+        "failures": 0,
+        "generation_seconds_successful_only": 0.20457118280010037,
+        "input_tokens_successful_only": 942.5,
+        "questions": 10,
+        "selected_count_successful_only": 5.0,
+        "selection_seconds_successful_only": 0.04261335640003381
+      },
+      "gate_absolute_s42": {
+        "all_supporting_documents_successful_only": 0.3,
+        "answer_em": 0.2,
+        "answer_f1": 0.2,
+        "context_tokens_successful_only": 804.5,
+        "document_recall_successful_only": 0.65,
+        "failures": 0,
+        "generation_seconds_successful_only": 0.16472879399971135,
+        "input_tokens_successful_only": 882.3,
+        "questions": 10,
+        "selected_count_successful_only": 5.0,
+        "selection_seconds_successful_only": 0.037878155899670675
+      },
+      "gate_absolute_s43": {
+        "all_supporting_documents_successful_only": 0.3,
+        "answer_em": 0.2,
+        "answer_f1": 0.2,
+        "context_tokens_successful_only": 804.5,
+        "document_recall_successful_only": 0.65,
+        "failures": 0,
+        "generation_seconds_successful_only": 0.16472879399971135,
+        "input_tokens_successful_only": 882.3,
+        "questions": 10,
+        "selected_count_successful_only": 5.0,
+        "selection_seconds_successful_only": 0.043667543700212266
+      },
+      "gate_evidence_s41": {
+        "all_supporting_documents_successful_only": 0.5,
+        "answer_em": 0.3,
+        "answer_f1": 0.35,
+        "context_tokens_successful_only": 863.6,
+        "document_recall_successful_only": 0.75,
+        "failures": 0,
+        "generation_seconds_successful_only": 0.20458203720008897,
+        "input_tokens_successful_only": 941.4,
+        "questions": 10,
+        "selected_count_successful_only": 5.0,
+        "selection_seconds_successful_only": 0.04069425409998075
+      },
+      "gate_evidence_s42": {
+        "all_supporting_documents_successful_only": 0.3,
+        "answer_em": 0.2,
+        "answer_f1": 0.2,
+        "context_tokens_successful_only": 801.8,
+        "document_recall_successful_only": 0.65,
+        "failures": 0,
+        "generation_seconds_successful_only": 0.16474060919954353,
+        "input_tokens_successful_only": 879.6,
+        "questions": 10,
+        "selected_count_successful_only": 5.0,
+        "selection_seconds_successful_only": 0.04009770520005986
+      },
+      "gate_evidence_s43": {
+        "all_supporting_documents_successful_only": 0.3,
+        "answer_em": 0.2,
+        "answer_f1": 0.2,
+        "context_tokens_successful_only": 792.8,
+        "document_recall_successful_only": 0.65,
+        "failures": 0,
+        "generation_seconds_successful_only": 0.16343841329962744,
+        "input_tokens_successful_only": 870.6,
+        "questions": 10,
+        "selected_count_successful_only": 5.0,
+        "selection_seconds_successful_only": 0.04320793169990793
+      },
+      "gate_penalty_control": {
+        "all_supporting_documents_successful_only": null,
+        "answer_em": 0.0,
+        "answer_f1": 0.0,
+        "context_tokens_successful_only": null,
+        "document_recall_successful_only": null,
+        "failures": 10,
+        "generation_seconds_successful_only": null,
+        "input_tokens_successful_only": null,
+        "questions": 10,
+        "selected_count_successful_only": null,
+        "selection_seconds_successful_only": null
+      }
+    }
+  },
+  "total_attempts": 70
+}

@@ -152,11 +152,13 @@ def main():
         "",
         "Means average seeds within question first. Conditional gaps describe the best feasible sample given that at least one is drawn; no-feasible probabilities and paired question intervals are also released. This development diagnostic compares final draws only: QAOA additionally performs angle training with up to 64 exact-expectation evaluations, whereas uniform feasible sampling does not. The same 20 questions recur across sizes, so the four size groups are not independent replications.",
         "",
-        "![Figure 2. Optimum coverage from trained ideal distributions and uniform feasible draws. These development-derived probabilities describe the full objective, not answer correctness.](figures/sampling_coverage.png)",
+        "![Figure 3. Optimum coverage from trained ideal distributions and uniform feasible draws. These development-derived probabilities describe the full objective, not answer correctness.](figures/sampling_coverage.png)",
         "",
     ]
     content = "\n".join(lines)
-    atomic_text(output / "sampling_coverage.md", content)
+    atomic_text(
+        output / "sampling_coverage.md", content.replace("](figures/", "](../figures/")
+    )
     paper = Path("paper/manuscript.md")
     atomic_text(paper, replace_block(paper.read_text(), "SAMPLING", content))
     print("Analyzed 480 circuit solves across 20 development questions")

@@ -1,0 +1,197 @@
+{
+  "candidate_recall_successful_only": {
+    "milp_full": 0.7833333333333333,
+    "random_full": 0.7833333333333333,
+    "xy_absolute_f0.5": 0.7833333333333333,
+    "xy_evidence_f0.5": 0.7833333333333333,
+    "xy_full_p1": 0.7833333333333333
+  },
+  "certified_full_energy_gap_successful_only": {
+    "milp_full": 0.0,
+    "random_full": 0.005640107230150256,
+    "xy_absolute_f0.5": 0.1977934027472354,
+    "xy_evidence_f0.5": 0.18817107898370902,
+    "xy_full_p1": 0.15888973245939214
+  },
+  "circuit_resource_denominator": "All completed circuits, including no-feasible-sample outcomes and later generation failures. Missing circuit measurements are not zero.",
+  "failure_types": {},
+  "interpretation": "Exploratory intervals unless a comparison is explicitly primary in the frozen protocol. No noninferiority or hardware-speedup claim.",
+  "output_limit_hits": 1,
+  "paired_differences_to_reference": {
+    "random_full": {
+      "ci95": [
+        -0.2,
+        0.023529411764705882
+      ],
+      "mean_difference": -0.05882352941176472,
+      "method": "paired question bootstrap; solver repeats averaged within question",
+      "questions": 5,
+      "resamples": 10000,
+      "seed": 20261110
+    },
+    "xy_absolute_f0.5": {
+      "ci95": [
+        -0.6,
+        0.0
+      ],
+      "mean_difference": -0.2,
+      "method": "paired question bootstrap; solver repeats averaged within question",
+      "questions": 5,
+      "resamples": 10000,
+      "seed": 20261110
+    },
+    "xy_evidence_f0.5": {
+      "ci95": [
+        -0.6666666666666667,
+        0.0
+      ],
+      "mean_difference": -0.2666666666666667,
+      "method": "paired question bootstrap; solver repeats averaged within question",
+      "questions": 5,
+      "resamples": 10000,
+      "seed": 20261110
+    },
+    "xy_full_p1": {
+      "ci95": [
+        -0.6666666666666667,
+        0.0
+      ],
+      "mean_difference": -0.2666666666666667,
+      "method": "paired question bootstrap; solver repeats averaged within question",
+      "questions": 5,
+      "resamples": 10000,
+      "seed": 20261110
+    }
+  },
+  "principal_evidence_minus_absolute_f1": {
+    "ci95": [
+      -0.2,
+      0.0
+    ],
+    "mean_difference": -0.06666666666666668,
+    "method": "paired question bootstrap; solver repeats averaged within question",
+    "questions": 5,
+    "resamples": 10000,
+    "seed": 20261110
+  },
+  "reference": "milp_full",
+  "selection_diagnostics_successful_only": {
+    "certified_optimal_fraction": {
+      "milp_full": 1.0,
+      "random_full": 0.0,
+      "xy_absolute_f0.5": 0.0,
+      "xy_evidence_f0.5": 0.0,
+      "xy_full_p1": 0.0
+    },
+    "selected_count": {
+      "milp_full": 5.0,
+      "random_full": 5.0,
+      "xy_absolute_f0.5": 5.0,
+      "xy_evidence_f0.5": 5.0,
+      "xy_full_p1": 5.0
+    }
+  },
+  "successful_distinct_generation_records": 32,
+  "table": {
+    "milp_full": {
+      "actual_generation_seconds_successful_only": 0.25816709940045257,
+      "all_supporting_documents_successful_only": 0.0,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_em": 0.2,
+      "answer_f1": 0.3,
+      "attempted_method_records": 5,
+      "context_tokens_successful_only": 871.8,
+      "document_recall_successful_only": 0.4666666666666666,
+      "failures": 0,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": -1.7202036048078735,
+      "input_tokens_successful_only": 953.2,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 5,
+      "selection_seconds_successful_only": 0.03632577220014355
+    },
+    "random_full": {
+      "actual_generation_seconds_successful_only": 0.06276361906675447,
+      "all_supporting_documents_successful_only": 0.06666666666666667,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_em": 0.13333333333333333,
+      "answer_f1": 0.24117647058823527,
+      "attempted_method_records": 15,
+      "context_tokens_successful_only": 863.7333333333333,
+      "document_recall_successful_only": 0.4833333333333333,
+      "failures": 0,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": -1.7145634975777235,
+      "input_tokens_successful_only": 945.1333333333333,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 5,
+      "selection_seconds_successful_only": 0.006148375066550216
+    },
+    "xy_absolute_f0.5": {
+      "actual_generation_seconds_successful_only": 0.07110834240011173,
+      "all_supporting_documents_successful_only": 0.13333333333333333,
+      "all_to_all_two_qubit_gates_all_completed_circuits": 108.4,
+      "all_to_all_two_qubit_gates_successful_only": 108.4,
+      "answer_em": 0.0,
+      "answer_f1": 0.1,
+      "attempted_method_records": 15,
+      "completed_circuit_records": 15,
+      "context_tokens_successful_only": 783.2666666666667,
+      "document_recall_successful_only": 0.5444444444444445,
+      "failures": 0,
+      "feasible_fraction_all_completed_circuits": 1.0,
+      "feasible_fraction_successful_only": 1.0,
+      "full_energy_successful_only": -1.522410202060638,
+      "input_tokens_successful_only": 864.6666666666666,
+      "line_two_qubit_gates_all_completed_circuits": 273.46666666666664,
+      "line_two_qubit_gates_successful_only": 273.46666666666664,
+      "questions": 5,
+      "selection_seconds_all_completed_circuits": 0.06489345653317287,
+      "selection_seconds_successful_only": 0.06489345653317287
+    },
+    "xy_evidence_f0.5": {
+      "actual_generation_seconds_successful_only": 0.05094449513332317,
+      "all_supporting_documents_successful_only": 0.13333333333333333,
+      "all_to_all_two_qubit_gates_all_completed_circuits": 108.4,
+      "all_to_all_two_qubit_gates_successful_only": 108.4,
+      "answer_em": 0.0,
+      "answer_f1": 0.03333333333333333,
+      "attempted_method_records": 15,
+      "completed_circuit_records": 15,
+      "context_tokens_successful_only": 735.1333333333333,
+      "document_recall_successful_only": 0.5111111111111112,
+      "failures": 0,
+      "feasible_fraction_all_completed_circuits": 1.0,
+      "feasible_fraction_successful_only": 1.0,
+      "full_energy_successful_only": -1.5320325258241645,
+      "input_tokens_successful_only": 816.5333333333333,
+      "line_two_qubit_gates_all_completed_circuits": 266.6,
+      "line_two_qubit_gates_successful_only": 266.6,
+      "questions": 5,
+      "selection_seconds_all_completed_circuits": 0.06003685106673705,
+      "selection_seconds_successful_only": 0.06003685106673705
+    },
+    "xy_full_p1": {
+      "actual_generation_seconds_successful_only": 0.0817805048001901,
+      "all_supporting_documents_successful_only": 0.13333333333333333,
+      "all_to_all_two_qubit_gates_all_completed_circuits": 169.2,
+      "all_to_all_two_qubit_gates_successful_only": 169.2,
+      "answer_em": 0.0,
+      "answer_f1": 0.03333333333333333,
+      "attempted_method_records": 15,
+      "completed_circuit_records": 15,
+      "context_tokens_successful_only": 789.0,
+      "document_recall_successful_only": 0.5277777777777778,
+      "failures": 0,
+      "feasible_fraction_all_completed_circuits": 1.0,
+      "feasible_fraction_successful_only": 1.0,
+      "full_energy_successful_only": -1.5613138723484814,
+      "input_tokens_successful_only": 870.4,
+      "line_two_qubit_gates_all_completed_circuits": 369.2,
+      "line_two_qubit_gates_successful_only": 369.2,
+      "questions": 5,
+      "selection_seconds_all_completed_circuits": 0.07956126159988344,
+      "selection_seconds_successful_only": 0.07956126159988344
+    }
+  }
+}

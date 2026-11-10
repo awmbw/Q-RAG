@@ -1,0 +1,316 @@
+{
+  "compact_predictions_file": "final_musique_formulation.jsonl.gz",
+  "compact_predictions_sha256": "be99894cf5350e899da27ae23450a01ba701eddfbc5cfc816e68a71b47b0959d",
+  "git": {
+    "commit": "20515d96e980d18f7092dbe77e4c70589246b616",
+    "status": "",
+    "tracked_diff_sha256": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126"
+  },
+  "identity": {
+    "backend": {
+      "device": "cuda",
+      "dtype": "float16",
+      "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+      "embedding_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "generator_model": "Qwen/Qwen2.5-1.5B-Instruct",
+      "generator_revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
+    },
+    "data_sha256": "c51e7b15ec50a6c6bd1171ff31904a494b13addca34ea1e334206caff9c1e327",
+    "environment": {
+      "packages": {
+        "huggingface-hub": "1.33.0",
+        "numpy": "2.5.3",
+        "safetensors": "0.8.0",
+        "scipy": "1.18.1",
+        "sentence-transformers": "6.1.0",
+        "tokenizers": "0.23.2",
+        "torch": "2.14.0+cu132",
+        "transformers": "5.17.0"
+      },
+      "platform": "Linux-7.0.0-42-generic-x86_64-with-glibc2.43",
+      "python": "3.14.4"
+    },
+    "question_ids": [
+      "4hop1__88342_75218_128008_46748",
+      "2hop__85596_807969",
+      "4hop3__160230_470287_345497_72134",
+      "3hop1__765565_326948_78782",
+      "2hop__496732_658428",
+      "2hop__256553_617289",
+      "4hop3__827497_354093_254885_76356",
+      "2hop__91248_84207",
+      "4hop3__547073_88460_30152_20999",
+      "3hop1__46571_87694_124169",
+      "2hop__71336_604644",
+      "4hop1__93316_53706_795904_580996",
+      "2hop__25797_25855",
+      "2hop__632234_122868",
+      "4hop1__131611_32392_823060_610794",
+      "2hop__345_59409",
+      "3hop1__573244_339990_15538",
+      "4hop1__668178_765799_282674_759393",
+      "2hop__71871_494136",
+      "3hop2__49541_140712_51068",
+      "3hop1__857_846_7701",
+      "2hop__71294_494136",
+      "4hop1__391525_49925_13759_736921",
+      "3hop1__131820_59747_43101",
+      "3hop1__222497_309482_89834",
+      "3hop1__662618_339990_54675",
+      "4hop1__846600_153080_33897_81096",
+      "2hop__132954_533882",
+      "2hop__806869_56873",
+      "4hop1__158877_53706_795904_580996",
+      "3hop1__321720_650651_7262",
+      "2hop__403060_92763",
+      "2hop__683203_72813",
+      "4hop1__726391_153080_159767_81096",
+      "4hop1__145494_698949_157828_162309",
+      "2hop__14121_15463",
+      "2hop__560534_91104",
+      "2hop__678516_179720",
+      "2hop__71165_807969",
+      "4hop1__726391_153080_33952_34109",
+      "3hop1__617062_127905_46894",
+      "4hop1__152146_5274_458768_33633",
+      "2hop__16446_58556",
+      "2hop__129721_40482",
+      "3hop2__131820_132454_61019",
+      "4hop1__131632_32392_823060_610794",
+      "2hop__9930_21567",
+      "3hop1__131783_131926_89261",
+      "2hop__85713_72187",
+      "3hop1__9285_5188_23307"
+    ],
+    "source_sha256": "8d6bf4c5739869e525a7222714332b1b2972637d4c04524b6a3df320133dd287",
+    "spec": {
+      "budget_mode": "count",
+      "candidate_limit": 10,
+      "dataset_sha256": "c51e7b15ec50a6c6bd1171ff31904a494b13addca34ea1e334206caff9c1e327",
+      "methods": [
+        {
+          "name": "milp_base",
+          "solver": "milp"
+        },
+        {
+          "gamma": 0.2,
+          "name": "milp_full",
+          "solver": "milp"
+        },
+        {
+          "gamma": 0.0,
+          "max_evals": 64,
+          "mixer": "xy",
+          "name": "xy_base_p1_s41",
+          "p": 1,
+          "seed": 41,
+          "shots": 1024,
+          "solver": "qaoa"
+        },
+        {
+          "gamma": 0.0,
+          "max_evals": 64,
+          "mixer": "xy",
+          "name": "xy_base_p1_s42",
+          "p": 1,
+          "seed": 42,
+          "shots": 1024,
+          "solver": "qaoa"
+        },
+        {
+          "gamma": 0.0,
+          "max_evals": 64,
+          "mixer": "xy",
+          "name": "xy_base_p1_s43",
+          "p": 1,
+          "seed": 43,
+          "shots": 1024,
+          "solver": "qaoa"
+        },
+        {
+          "gamma": 0.2,
+          "max_evals": 64,
+          "mixer": "xy",
+          "name": "xy_full_p1_s41",
+          "p": 1,
+          "seed": 41,
+          "shots": 1024,
+          "solver": "qaoa"
+        },
+        {
+          "gamma": 0.2,
+          "max_evals": 64,
+          "mixer": "xy",
+          "name": "xy_full_p1_s42",
+          "p": 1,
+          "seed": 42,
+          "shots": 1024,
+          "solver": "qaoa"
+        },
+        {
+          "gamma": 0.2,
+          "max_evals": 64,
+          "mixer": "xy",
+          "name": "xy_full_p1_s43",
+          "p": 1,
+          "seed": 43,
+          "shots": 1024,
+          "solver": "qaoa"
+        }
+      ],
+      "model": {
+        "alpha": 1.0,
+        "beta": 0.2,
+        "dataset": "data/processed/research/musique_evaluation.json",
+        "device": "cuda",
+        "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+        "embedding_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+        "embedding_truncation": "error",
+        "generator_dtype": "float16",
+        "generator_model": "Qwen/Qwen2.5-1.5B-Instruct",
+        "generator_revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+        "k": 5,
+        "limit": 50,
+        "local_files_only": true,
+        "max_input_tokens": 4096,
+        "max_new_tokens": 32,
+        "seed": 42,
+        "short_pool_policy": "use_all",
+        "solver_time_limit": 10.0,
+        "threads": 4
+      },
+      "scope": "secondary base-versus-graph QAOA formulation control; first 50 frozen quantum IDs; declared before definitive answer comparison analysis"
+    }
+  },
+  "invocations": [
+    {
+      "ended_at": "2026-11-09T23:14:05.423231+00:00",
+      "preparation": {
+        "document_embedding_cache": "not_implemented",
+        "embedding_max_sequence_tokens": 256,
+        "generator_input_limit": 4096,
+        "model_load_seconds": 1.143103415999576
+      },
+      "started_at": "2026-11-09T23:13:16.453217+00:00",
+      "wall_seconds": 48.97000871800083
+    }
+  ],
+  "note": "Derived compact evidence. Original artifacts and exact prompts remain in the local run bundle; hashes identify their unchanged bytes.",
+  "original_hashes": {
+    "manifest.json": "7c9e95e4fadc5f55565a61f21875153e72a83c9d7df078d143e2b93bcf43d43b",
+    "predictions.jsonl": "f73d6414aef2e39f9d1cd9895c19c765de1c1d1d8e868df5d89faf76bf2518a3",
+    "source_snapshot.json": "67f40de8d7276a14a271549e91e643435578dc0310e43398280bb82540ae2271",
+    "summary.json": "3b5b5ff54dd1a34276447671facdf3ce4cc6baa8ad1ea4d0d2f513391795996e"
+  },
+  "run_id": "final_musique_formulation",
+  "status": "completed",
+  "summary": {
+    "methods": {
+      "milp_base": {
+        "all_supporting_documents_successful_only": 0.26,
+        "answer_em": 0.24,
+        "answer_f1": 0.31777777777777777,
+        "context_tokens_successful_only": 784.98,
+        "document_recall_successful_only": 0.65,
+        "failures": 0,
+        "generation_seconds_successful_only": 0.14579313189999085,
+        "input_tokens_successful_only": 867.26,
+        "questions": 50,
+        "selected_count_successful_only": 5.0,
+        "selection_seconds_successful_only": 0.019010692699957872
+      },
+      "milp_full": {
+        "all_supporting_documents_successful_only": 0.24,
+        "answer_em": 0.24,
+        "answer_f1": 0.31777777777777777,
+        "context_tokens_successful_only": 794.84,
+        "document_recall_successful_only": 0.6299999999999999,
+        "failures": 0,
+        "generation_seconds_successful_only": 0.13763439433998428,
+        "input_tokens_successful_only": 877.1,
+        "questions": 50,
+        "selected_count_successful_only": 5.0,
+        "selection_seconds_successful_only": 0.014499194620038907
+      },
+      "xy_base_p1_s41": {
+        "all_supporting_documents_successful_only": 0.12,
+        "answer_em": 0.1,
+        "answer_f1": 0.16,
+        "context_tokens_successful_only": 772.24,
+        "document_recall_successful_only": 0.49500000000000005,
+        "failures": 0,
+        "generation_seconds_successful_only": 0.12998556187998475,
+        "input_tokens_successful_only": 854.5,
+        "questions": 50,
+        "selected_count_successful_only": 5.0,
+        "selection_seconds_successful_only": 0.051942652120087585
+      },
+      "xy_base_p1_s42": {
+        "all_supporting_documents_successful_only": 0.22,
+        "answer_em": 0.24,
+        "answer_f1": 0.2828771929824561,
+        "context_tokens_successful_only": 770.18,
+        "document_recall_successful_only": 0.5466666666666666,
+        "failures": 0,
+        "generation_seconds_successful_only": 0.1419653081200522,
+        "input_tokens_successful_only": 852.48,
+        "questions": 50,
+        "selected_count_successful_only": 5.0,
+        "selection_seconds_successful_only": 0.05609806601984019
+      },
+      "xy_base_p1_s43": {
+        "all_supporting_documents_successful_only": 0.2,
+        "answer_em": 0.24,
+        "answer_f1": 0.2868771929824561,
+        "context_tokens_successful_only": 766.38,
+        "document_recall_successful_only": 0.5366666666666666,
+        "failures": 0,
+        "generation_seconds_successful_only": 0.142368271880041,
+        "input_tokens_successful_only": 848.68,
+        "questions": 50,
+        "selected_count_successful_only": 5.0,
+        "selection_seconds_successful_only": 0.054893402639972916
+      },
+      "xy_full_p1_s41": {
+        "all_supporting_documents_successful_only": 0.14,
+        "answer_em": 0.1,
+        "answer_f1": 0.16,
+        "context_tokens_successful_only": 783.7,
+        "document_recall_successful_only": 0.5000000000000001,
+        "failures": 0,
+        "generation_seconds_successful_only": 0.13174732881998352,
+        "input_tokens_successful_only": 865.96,
+        "questions": 50,
+        "selected_count_successful_only": 5.0,
+        "selection_seconds_successful_only": 0.05150276837986894
+      },
+      "xy_full_p1_s42": {
+        "all_supporting_documents_successful_only": 0.22,
+        "answer_em": 0.24,
+        "answer_f1": 0.2828771929824561,
+        "context_tokens_successful_only": 782.64,
+        "document_recall_successful_only": 0.5466666666666666,
+        "failures": 0,
+        "generation_seconds_successful_only": 0.14345754843998293,
+        "input_tokens_successful_only": 864.92,
+        "questions": 50,
+        "selected_count_successful_only": 5.0,
+        "selection_seconds_successful_only": 0.05211338704008085
+      },
+      "xy_full_p1_s43": {
+        "all_supporting_documents_successful_only": 0.22,
+        "answer_em": 0.24,
+        "answer_f1": 0.2826666666666667,
+        "context_tokens_successful_only": 782.6,
+        "document_recall_successful_only": 0.5466666666666666,
+        "failures": 0,
+        "generation_seconds_successful_only": 0.13997147625999787,
+        "input_tokens_successful_only": 864.88,
+        "questions": 50,
+        "selected_count_successful_only": 5.0,
+        "selection_seconds_successful_only": 0.05454803438024101
+      }
+    }
+  },
+  "total_attempts": 400
+}

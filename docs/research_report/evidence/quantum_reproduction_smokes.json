@@ -1,0 +1,37 @@
+{
+  "cases": {
+    "16": {
+      "full_energy": -2.1466900368823723,
+      "instance": "4hop1__88342_75218_128008_46748",
+      "line_two_qubit_gates": 698,
+      "prepared": false,
+      "recorded_selection_energy_and_compilation_match": true,
+      "run": "final_musique_quantum16"
+    },
+    "prepared": {
+      "full_energy": -2.4987927731126547,
+      "instance": "5a729cc25542991f9a20c532",
+      "line_two_qubit_gates": 344,
+      "prepared": true,
+      "recorded_selection_energy_and_compilation_match": true,
+      "run": "final_hotpotqa_quantum"
+    },
+    "sparse": {
+      "full_energy": -2.0229925293256255,
+      "instance": "4hop1__88342_75218_128008_46748",
+      "line_two_qubit_gates": 191,
+      "prepared": false,
+      "recorded_selection_energy_and_compilation_match": true,
+      "run": "final_musique_quantum"
+    },
+    "xy": {
+      "full_energy": -2.139513400848955,
+      "instance": "5a729cc25542991f9a20c532",
+      "line_two_qubit_gates": 279,
+      "prepared": false,
+      "recorded_selection_energy_and_compilation_match": true,
+      "run": "final_hotpotqa_quantum"
+    }
+  },
+  "scope": "Four actual CPU solver reproductions in the recorded laptop environment; no weights or dataset text loaded"
+}

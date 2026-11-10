@@ -1,0 +1,265 @@
+{
+  "compact_predictions_file": "final_hotpotqa_corpus100.jsonl.gz",
+  "compact_predictions_sha256": "9543a490dea78269dae947cc53c0c22f38fd1094bcb0b4f5f6e68f22179ff9e7",
+  "git": {
+    "commit": "2c031766a2c93e7924d26603dd010028b6ca42bc",
+    "status": "M scripts/export_run.py\n?? scripts/assemble_results.py\n?? scripts/audit_final_runs.py\n?? scripts/benchmark_service.py\n?? scripts/download_models.py",
+    "tracked_diff_sha256": "6df4221920fa9fa6d15b36e741987bf05b81b9eb60635368aa10067ffd37208d"
+  },
+  "identity": {
+    "backend": {
+      "device": "cuda",
+      "dtype": "float16",
+      "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+      "embedding_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "generator_model": "Qwen/Qwen2.5-1.5B-Instruct",
+      "generator_revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
+    },
+    "data_sha256": "1a57fff2979d969542a22592e9d8b8e587c6633d040fc9906cb7fe13bdc32a34",
+    "environment": {
+      "packages": {
+        "huggingface-hub": "1.33.0",
+        "numpy": "2.5.3",
+        "safetensors": "0.8.0",
+        "scipy": "1.18.1",
+        "sentence-transformers": "6.1.0",
+        "tokenizers": "0.23.2",
+        "torch": "2.14.0+cu132",
+        "transformers": "5.17.0"
+      },
+      "platform": "Linux-7.0.0-42-generic-x86_64-with-glibc2.43",
+      "python": "3.14.4"
+    },
+    "question_ids": [
+      "5a729cc25542991f9a20c532",
+      "5aba549f554299232ef4a290",
+      "5ae25d2b554299495565da46",
+      "5ab30d1155429976abd1bc3d",
+      "5a7caae75542996dd594b971",
+      "5adf34955542993a75d26423",
+      "5a8a03985542992e4fca84d6",
+      "5a88a8f4554299206df2b320",
+      "5ae4c96355429913cc204506",
+      "5a8f45ca5542997ba9cb320e",
+      "5ae76d185542997ec2727641",
+      "5a8dd5f955429917b4a5bcc7",
+      "5ac413ca5542997ea680c9e9",
+      "5a81e04455429903bc27b9f9",
+      "5adbd1d25542994650320bf6",
+      "5ac2ffe7554299218029dbb3",
+      "5ab5fcae554299110f2199ad",
+      "5ae7316e554299572ea5477e",
+      "5a861fa75542994775f60706",
+      "5a716c415542994082a3e827",
+      "5abe9f7d5542997ec76fd331",
+      "5ac0d5cf554299294b219026",
+      "5a7587705542992db9473674",
+      "5ac44629554299194317395d",
+      "5abc19705542993a06baf86e",
+      "5ae4a75a55429913cc2044bc",
+      "5ab392ec55429969a97a817d",
+      "5a894bea55429946c8d6e910",
+      "5adf72095542992d7e9f935d",
+      "5a710d155542994082a3e520"
+    ],
+    "source_sha256": "8d6bf4c5739869e525a7222714332b1b2972637d4c04524b6a3df320133dd287",
+    "spec": {
+      "budget_mode": "count",
+      "dataset_sha256": "1a57fff2979d969542a22592e9d8b8e587c6633d040fc9906cb7fe13bdc32a34",
+      "methods": [
+        {
+          "name": "top_k",
+          "solver": "top_k"
+        },
+        {
+          "name": "bm25",
+          "solver": "bm25"
+        },
+        {
+          "name": "hybrid",
+          "solver": "hybrid"
+        },
+        {
+          "name": "reranker",
+          "solver": "reranker"
+        },
+        {
+          "name": "coverage",
+          "solver": "coverage"
+        },
+        {
+          "name": "greedy",
+          "solver": "greedy"
+        },
+        {
+          "name": "milp_base",
+          "solver": "milp",
+          "time_limit": 1.0
+        },
+        {
+          "gamma": 0.2,
+          "name": "milp_full",
+          "solver": "milp",
+          "time_limit": 1.0
+        }
+      ],
+      "model": {
+        "alpha": 1.0,
+        "beta": 0.2,
+        "dataset": "data/processed/research/hotpotqa_corpus_100.json",
+        "device": "cuda",
+        "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+        "embedding_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+        "embedding_truncation": "error",
+        "generator_dtype": "float16",
+        "generator_model": "Qwen/Qwen2.5-1.5B-Instruct",
+        "generator_revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+        "k": 5,
+        "limit": 30,
+        "local_files_only": true,
+        "max_input_tokens": 4096,
+        "max_new_tokens": 32,
+        "seed": 42,
+        "short_pool_policy": "use_all",
+        "solver_time_limit": 10.0,
+        "threads": 4
+      },
+      "reranker": {
+        "model": "cross-encoder/ms-marco-MiniLM-L6-v2",
+        "revision": "233902d25c440f23af6f7d6e94d2946bac0bee0a"
+      },
+      "scope": "bounded-corpus retrieval; supplied-pool results are separate"
+    }
+  },
+  "invocations": [
+    {
+      "ended_at": "2026-11-09T22:01:13.588610+00:00",
+      "preparation": {
+        "document_embedding_cache": "not_implemented",
+        "embedding_max_sequence_tokens": 256,
+        "generator_input_limit": 4096,
+        "model_load_seconds": 1.329798271000982
+      },
+      "started_at": "2026-11-09T21:59:29.868095+00:00",
+      "wall_seconds": 103.72051878499951
+    }
+  ],
+  "note": "Derived compact evidence. Original artifacts and exact prompts remain in the local run bundle; hashes identify their unchanged bytes.",
+  "original_hashes": {
+    "manifest.json": "bd46a25c317095e9b27e1f54397202f64417fdf982bad654f3fdb09a056995a5",
+    "predictions.jsonl": "99c64f5c3976e72fb30ee132c5be6f1535b42437fa1266f129cfc919884b5942",
+    "source_snapshot.json": "67f40de8d7276a14a271549e91e643435578dc0310e43398280bb82540ae2271",
+    "summary.json": "1d568f32fd80e8dba033c1000ce01dcd2c7aed8987a899c14ec958e315bea157"
+  },
+  "run_id": "final_hotpotqa_corpus100",
+  "status": "completed",
+  "summary": {
+    "methods": {
+      "bm25": {
+        "all_supporting_documents_successful_only": 0.3333333333333333,
+        "answer_em": 0.16666666666666666,
+        "answer_f1": 0.27202898550724636,
+        "context_tokens_successful_only": 788.0,
+        "document_recall_successful_only": 0.6,
+        "failures": 0,
+        "generation_seconds_successful_only": 0.16337634396683523,
+        "input_tokens_successful_only": 864.7666666666667,
+        "questions": 30,
+        "selected_count_successful_only": 5.0,
+        "selection_seconds_successful_only": 4.3995866750871455e-05
+      },
+      "coverage": {
+        "all_supporting_documents_successful_only": 0.5666666666666667,
+        "answer_em": 0.16666666666666666,
+        "answer_f1": 0.28478057889822594,
+        "context_tokens_successful_only": 892.0666666666667,
+        "document_recall_successful_only": 0.75,
+        "failures": 0,
+        "generation_seconds_successful_only": 0.17333774876654692,
+        "input_tokens_successful_only": 968.8333333333334,
+        "questions": 30,
+        "selected_count_successful_only": 5.0,
+        "selection_seconds_successful_only": 0.0016227223663615102
+      },
+      "greedy": {
+        "all_supporting_documents_successful_only": 0.4666666666666667,
+        "answer_em": 0.26666666666666666,
+        "answer_f1": 0.3251526251526251,
+        "context_tokens_successful_only": 793.1666666666666,
+        "document_recall_successful_only": 0.7,
+        "failures": 0,
+        "generation_seconds_successful_only": 0.17189396416652017,
+        "input_tokens_successful_only": 869.9666666666667,
+        "questions": 30,
+        "selected_count_successful_only": 5.0,
+        "selection_seconds_successful_only": 0.0032511247332270917
+      },
+      "hybrid": {
+        "all_supporting_documents_successful_only": 0.5,
+        "answer_em": 0.2,
+        "answer_f1": 0.29544011544011545,
+        "context_tokens_successful_only": 832.1,
+        "document_recall_successful_only": 0.7166666666666667,
+        "failures": 0,
+        "generation_seconds_successful_only": 0.17013170336661762,
+        "input_tokens_successful_only": 908.9,
+        "questions": 30,
+        "selected_count_successful_only": 5.0,
+        "selection_seconds_successful_only": 4.1120533205685204e-05
+      },
+      "milp_base": {
+        "all_supporting_documents_successful_only": 0.43333333333333335,
+        "answer_em": 0.26666666666666666,
+        "answer_f1": 0.3188034188034188,
+        "context_tokens_successful_only": 798.2,
+        "document_recall_successful_only": 0.6833333333333333,
+        "failures": 0,
+        "generation_seconds_successful_only": 0.16583497396677557,
+        "input_tokens_successful_only": 875.0,
+        "questions": 30,
+        "selected_count_successful_only": 5.0,
+        "selection_seconds_successful_only": 1.023222496999915
+      },
+      "milp_full": {
+        "all_supporting_documents_successful_only": 0.5333333333333333,
+        "answer_em": 0.16666666666666666,
+        "answer_f1": 0.2694444444444445,
+        "context_tokens_successful_only": 808.8333333333334,
+        "document_recall_successful_only": 0.7333333333333333,
+        "failures": 0,
+        "generation_seconds_successful_only": 0.16846788280011726,
+        "input_tokens_successful_only": 885.6333333333333,
+        "questions": 30,
+        "selected_count_successful_only": 5.0,
+        "selection_seconds_successful_only": 0.7424298487332635
+      },
+      "reranker": {
+        "all_supporting_documents_successful_only": 0.6333333333333333,
+        "answer_em": 0.23333333333333334,
+        "answer_f1": 0.3316374269005848,
+        "context_tokens_successful_only": 791.5666666666667,
+        "document_recall_successful_only": 0.8166666666666667,
+        "failures": 0,
+        "generation_seconds_successful_only": 0.16631132590003592,
+        "input_tokens_successful_only": 868.3333333333334,
+        "questions": 30,
+        "selected_count_successful_only": 5.0,
+        "selection_seconds_successful_only": 3.9534233292215506e-05
+      },
+      "top_k": {
+        "all_supporting_documents_successful_only": 0.5333333333333333,
+        "answer_em": 0.2,
+        "answer_f1": 0.27569997052755674,
+        "context_tokens_successful_only": 811.4,
+        "document_recall_successful_only": 0.75,
+        "failures": 0,
+        "generation_seconds_successful_only": 0.19523902076659094,
+        "input_tokens_successful_only": 888.1666666666666,
+        "questions": 30,
+        "selected_count_successful_only": 5.0,
+        "selection_seconds_successful_only": 3.978703334723832e-05
+      }
+    }
+  },
+  "total_attempts": 240
+}

@@ -1,0 +1,272 @@
+{
+  "candidate_recall_successful_only": {
+    "bm25": 0.7444444444444444,
+    "coverage": 0.7444444444444444,
+    "greedy": 0.7444444444444444,
+    "hybrid": 0.7444444444444444,
+    "milp_base": 0.7444444444444444,
+    "milp_full": 0.7444444444444444,
+    "reranker": 0.7444444444444444,
+    "top_k": 0.7444444444444444
+  },
+  "certified_full_energy_gap_successful_only": {
+    "milp_full": 0.0
+  },
+  "circuit_resource_denominator": "All completed circuits, including no-feasible-sample outcomes and later generation failures. Missing circuit measurements are not zero.",
+  "failure_types": {},
+  "graph_minus_base_f1": {
+    "ci95": [
+      -0.1357142857142857,
+      0.0
+    ],
+    "mean_difference": -0.05238095238095238,
+    "method": "paired question bootstrap; solver repeats averaged within question",
+    "questions": 30,
+    "resamples": 10000,
+    "seed": 20261110
+  },
+  "interpretation": "Exploratory intervals unless a comparison is explicitly primary in the frozen protocol. No noninferiority or hardware-speedup claim.",
+  "output_limit_hits": 1,
+  "paired_differences_to_reference": {
+    "bm25": {
+      "ci95": [
+        -0.11666666666666667,
+        0.08333333333333333
+      ],
+      "mean_difference": -0.016666666666666666,
+      "method": "paired question bootstrap; solver repeats averaged within question",
+      "questions": 30,
+      "resamples": 10000,
+      "seed": 20261110
+    },
+    "coverage": {
+      "ci95": [
+        -0.016666666666666666,
+        0.18333333333333332
+      ],
+      "mean_difference": 0.06904761904761904,
+      "method": "paired question bootstrap; solver repeats averaged within question",
+      "questions": 30,
+      "resamples": 10000,
+      "seed": 20261110
+    },
+    "greedy": {
+      "ci95": [
+        -0.05,
+        0.0
+      ],
+      "mean_difference": -0.016666666666666666,
+      "method": "paired question bootstrap; solver repeats averaged within question",
+      "questions": 30,
+      "resamples": 10000,
+      "seed": 20261110
+    },
+    "hybrid": {
+      "ci95": [
+        0.0,
+        0.10476190476190475
+      ],
+      "mean_difference": 0.03571428571428571,
+      "method": "paired question bootstrap; solver repeats averaged within question",
+      "questions": 30,
+      "resamples": 10000,
+      "seed": 20261110
+    },
+    "milp_base": {
+      "ci95": [
+        0.0,
+        0.1357142857142857
+      ],
+      "mean_difference": 0.05238095238095238,
+      "method": "paired question bootstrap; solver repeats averaged within question",
+      "questions": 30,
+      "resamples": 10000,
+      "seed": 20261110
+    },
+    "reranker": {
+      "ci95": [
+        -0.016666666666666666,
+        0.1
+      ],
+      "mean_difference": 0.027777777777777776,
+      "method": "paired question bootstrap; solver repeats averaged within question",
+      "questions": 30,
+      "resamples": 10000,
+      "seed": 20261110
+    },
+    "top_k": {
+      "ci95": [
+        0.0,
+        0.08333333333333333
+      ],
+      "mean_difference": 0.03333333333333333,
+      "method": "paired question bootstrap; solver repeats averaged within question",
+      "questions": 30,
+      "resamples": 10000,
+      "seed": 20261110
+    }
+  },
+  "principal_evidence_minus_absolute_f1": null,
+  "reference": "milp_full",
+  "selection_diagnostics_successful_only": {
+    "certified_optimal_fraction": {
+      "bm25": 0.0,
+      "coverage": 0.0,
+      "greedy": 0.0,
+      "hybrid": 0.0,
+      "milp_base": 0.0,
+      "milp_full": 0.03333333333333333,
+      "reranker": 0.0,
+      "top_k": 0.0
+    },
+    "selected_count": {
+      "bm25": 5.0,
+      "coverage": 5.0,
+      "greedy": 5.0,
+      "hybrid": 5.0,
+      "milp_base": 5.0,
+      "milp_full": 5.0,
+      "reranker": 5.0,
+      "top_k": 5.0
+    }
+  },
+  "successful_distinct_generation_records": 229,
+  "table": {
+    "bm25": {
+      "actual_generation_seconds_successful_only": 0.1421520809000261,
+      "all_supporting_documents_successful_only": 0.0,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_em": 0.03333333333333333,
+      "answer_f1": 0.08333333333333333,
+      "attempted_method_records": 30,
+      "context_tokens_successful_only": 809.6666666666666,
+      "document_recall_successful_only": 0.30277777777777776,
+      "failures": 0,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": -1.0559979179796453,
+      "input_tokens_successful_only": 891.7333333333333,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 30,
+      "selection_seconds_successful_only": 3.10656999014706e-05
+    },
+    "coverage": {
+      "actual_generation_seconds_successful_only": 0.14673369459960667,
+      "all_supporting_documents_successful_only": 0.1,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_em": 0.1,
+      "answer_f1": 0.16904761904761903,
+      "attempted_method_records": 30,
+      "context_tokens_successful_only": 877.7333333333333,
+      "document_recall_successful_only": 0.4972222222222222,
+      "failures": 0,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": -1.5282561504878687,
+      "input_tokens_successful_only": 959.9,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 30,
+      "selection_seconds_successful_only": 0.0016566350666228876
+    },
+    "greedy": {
+      "actual_generation_seconds_successful_only": 0.13881236116685614,
+      "all_supporting_documents_successful_only": 0.0,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_em": 0.03333333333333333,
+      "answer_f1": 0.08333333333333333,
+      "attempted_method_records": 30,
+      "context_tokens_successful_only": 767.3333333333334,
+      "document_recall_successful_only": 0.425,
+      "failures": 0,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": -1.8106916574179195,
+      "input_tokens_successful_only": 849.5,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 30,
+      "selection_seconds_successful_only": 0.0032204018333989856
+    },
+    "hybrid": {
+      "actual_generation_seconds_successful_only": 0.14128435549998056,
+      "all_supporting_documents_successful_only": 0.13333333333333333,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_em": 0.06666666666666667,
+      "answer_f1": 0.1357142857142857,
+      "attempted_method_records": 30,
+      "context_tokens_successful_only": 834.4333333333333,
+      "document_recall_successful_only": 0.4555555555555555,
+      "failures": 0,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": -1.531661674148927,
+      "input_tokens_successful_only": 916.5333333333333,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 30,
+      "selection_seconds_successful_only": 2.8992066897141438e-05
+    },
+    "milp_base": {
+      "actual_generation_seconds_successful_only": 0.101916818799873,
+      "all_supporting_documents_successful_only": 0.03333333333333333,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_em": 0.06666666666666667,
+      "answer_f1": 0.15238095238095237,
+      "attempted_method_records": 30,
+      "context_tokens_successful_only": 755.7333333333333,
+      "document_recall_successful_only": 0.40277777777777773,
+      "failures": 0,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": -1.8060505477769766,
+      "input_tokens_successful_only": 837.9333333333333,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 30,
+      "selection_seconds_successful_only": 1.0198705986999508
+    },
+    "milp_full": {
+      "actual_generation_seconds_successful_only": 0.11312866966685155,
+      "all_supporting_documents_successful_only": 0.06666666666666667,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_em": 0.03333333333333333,
+      "answer_f1": 0.1,
+      "attempted_method_records": 30,
+      "context_tokens_successful_only": 789.9,
+      "document_recall_successful_only": 0.4638888888888888,
+      "failures": 0,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": -1.9034459146232527,
+      "input_tokens_successful_only": 872.0333333333333,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 30,
+      "selection_seconds_successful_only": 1.003821749466503
+    },
+    "reranker": {
+      "actual_generation_seconds_successful_only": 0.12550819546662145,
+      "all_supporting_documents_successful_only": 0.1,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_em": 0.06666666666666667,
+      "answer_f1": 0.12777777777777777,
+      "attempted_method_records": 30,
+      "context_tokens_successful_only": 783.9,
+      "document_recall_successful_only": 0.5194444444444444,
+      "failures": 0,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": -1.4338993229554036,
+      "input_tokens_successful_only": 866.0666666666667,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 30,
+      "selection_seconds_successful_only": 3.0410500039579345e-05
+    },
+    "top_k": {
+      "actual_generation_seconds_successful_only": 0.14805606286669595,
+      "all_supporting_documents_successful_only": 0.1,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_em": 0.06666666666666667,
+      "answer_f1": 0.13333333333333333,
+      "attempted_method_records": 30,
+      "context_tokens_successful_only": 819.7666666666667,
+      "document_recall_successful_only": 0.4638888888888888,
+      "failures": 0,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": -1.679810891331484,
+      "input_tokens_successful_only": 901.9666666666667,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 30,
+      "selection_seconds_successful_only": 4.002003327817268e-05
+    }
+  }
+}

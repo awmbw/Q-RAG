@@ -1,0 +1,121 @@
+{
+  "candidate_recall_successful_only": {},
+  "certified_full_energy_gap_successful_only": {},
+  "circuit_resource_denominator": "All completed circuits, including no-feasible-sample outcomes and later generation failures. Missing circuit measurements are not zero.",
+  "failure_types": {
+    "ValueError": 10
+  },
+  "gate_evidence_minus_absolute_f1": {
+    "ci95": [
+      -0.01,
+      0.05
+    ],
+    "mean_difference": 0.013333333333333336,
+    "method": "paired question bootstrap; solver repeats averaged within question",
+    "questions": 10,
+    "resamples": 10000,
+    "seed": 20261110
+  },
+  "interpretation": "Exploratory intervals unless a comparison is explicitly primary in the frozen protocol. No noninferiority or hardware-speedup claim.",
+  "output_limit_hits": 0,
+  "paired_differences_to_reference": {
+    "gate_evidence": {
+      "ci95": [
+        -0.01,
+        0.05
+      ],
+      "mean_difference": 0.013333333333333336,
+      "method": "paired question bootstrap; solver repeats averaged within question",
+      "questions": 10,
+      "resamples": 10000,
+      "seed": 20261110
+    },
+    "gate_penalty_control": {
+      "ci95": [
+        -0.4333333333333333,
+        -0.01
+      ],
+      "mean_difference": -0.2033333333333333,
+      "method": "paired question bootstrap; solver repeats averaged within question",
+      "questions": 10,
+      "resamples": 10000,
+      "seed": 20261110
+    }
+  },
+  "principal_evidence_minus_absolute_f1": null,
+  "reference": "gate_absolute",
+  "selection_diagnostics_successful_only": {
+    "certified_optimal_fraction": {
+      "gate_absolute": 0.0,
+      "gate_evidence": 0.0
+    },
+    "selected_count": {
+      "gate_absolute": 5.0,
+      "gate_evidence": 5.0
+    }
+  },
+  "successful_distinct_generation_records": 31,
+  "table": {
+    "gate_absolute": {
+      "actual_generation_seconds_successful_only": 0.10517687066664318,
+      "all_supporting_documents_successful_only": 0.16666666666666666,
+      "all_to_all_two_qubit_gates_all_completed_circuits": 80.86666666666666,
+      "all_to_all_two_qubit_gates_successful_only": 80.86666666666666,
+      "answer_em": 0.16666666666666666,
+      "answer_f1": 0.2033333333333333,
+      "attempted_method_records": 30,
+      "completed_circuit_records": 30,
+      "context_tokens_successful_only": 721.9,
+      "document_recall_successful_only": 0.5249999999999999,
+      "failures": 0,
+      "feasible_fraction_all_completed_circuits": 1.0,
+      "feasible_fraction_successful_only": 1.0,
+      "full_energy_successful_only": -1.5661500346555648,
+      "input_tokens_successful_only": 804.8,
+      "line_two_qubit_gates_all_completed_circuits": 171.9,
+      "line_two_qubit_gates_successful_only": 171.9,
+      "questions": 10,
+      "selection_seconds_all_completed_circuits": 0.04121708776662369,
+      "selection_seconds_successful_only": 0.04121708776662369
+    },
+    "gate_evidence": {
+      "actual_generation_seconds_successful_only": 0.03410772979999213,
+      "all_supporting_documents_successful_only": 0.13333333333333333,
+      "all_to_all_two_qubit_gates_all_completed_circuits": 79.66666666666667,
+      "all_to_all_two_qubit_gates_successful_only": 79.66666666666667,
+      "answer_em": 0.16666666666666666,
+      "answer_f1": 0.21666666666666665,
+      "attempted_method_records": 30,
+      "completed_circuit_records": 30,
+      "context_tokens_successful_only": 727.9333333333333,
+      "document_recall_successful_only": 0.5,
+      "failures": 0,
+      "feasible_fraction_all_completed_circuits": 1.0,
+      "feasible_fraction_successful_only": 1.0,
+      "full_energy_successful_only": -1.5600294154192578,
+      "input_tokens_successful_only": 810.8333333333334,
+      "line_two_qubit_gates_all_completed_circuits": 171.93333333333334,
+      "line_two_qubit_gates_successful_only": 171.93333333333334,
+      "questions": 10,
+      "selection_seconds_all_completed_circuits": 0.042312501433419435,
+      "selection_seconds_successful_only": 0.042312501433419435
+    },
+    "gate_penalty_control": {
+      "actual_generation_seconds_successful_only": null,
+      "all_supporting_documents_successful_only": null,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_em": 0.0,
+      "answer_f1": 0.0,
+      "attempted_method_records": 10,
+      "context_tokens_successful_only": null,
+      "document_recall_successful_only": null,
+      "failures": 10,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": null,
+      "input_tokens_successful_only": null,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 10,
+      "selection_seconds_successful_only": null
+    }
+  }
+}

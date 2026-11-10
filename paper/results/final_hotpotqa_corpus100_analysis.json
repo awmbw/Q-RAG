@@ -1,0 +1,272 @@
+{
+  "candidate_recall_successful_only": {
+    "bm25": 0.9666666666666667,
+    "coverage": 0.9666666666666667,
+    "greedy": 0.9666666666666667,
+    "hybrid": 0.9666666666666667,
+    "milp_base": 0.9666666666666667,
+    "milp_full": 0.9666666666666667,
+    "reranker": 0.9666666666666667,
+    "top_k": 0.9666666666666667
+  },
+  "certified_full_energy_gap_successful_only": {
+    "milp_full": 0.0
+  },
+  "circuit_resource_denominator": "All completed circuits, including no-feasible-sample outcomes and later generation failures. Missing circuit measurements are not zero.",
+  "failure_types": {},
+  "graph_minus_base_f1": {
+    "ci95": [
+      -0.17777777777777778,
+      0.06303418803418802
+    ],
+    "mean_difference": -0.049358974358974364,
+    "method": "paired question bootstrap; solver repeats averaged within question",
+    "questions": 30,
+    "resamples": 10000,
+    "seed": 20261110
+  },
+  "interpretation": "Exploratory intervals unless a comparison is explicitly primary in the frozen protocol. No noninferiority or hardware-speedup claim.",
+  "output_limit_hits": 9,
+  "paired_differences_to_reference": {
+    "bm25": {
+      "ci95": [
+        -0.11222222222222222,
+        0.11888888888888888
+      ],
+      "mean_difference": 0.0025845410628019374,
+      "method": "paired question bootstrap; solver repeats averaged within question",
+      "questions": 30,
+      "resamples": 10000,
+      "seed": 20261110
+    },
+    "coverage": {
+      "ci95": [
+        -0.09087301587301587,
+        0.12446311858076564
+      ],
+      "mean_difference": 0.015336134453781517,
+      "method": "paired question bootstrap; solver repeats averaged within question",
+      "questions": 30,
+      "resamples": 10000,
+      "seed": 20261110
+    },
+    "greedy": {
+      "ci95": [
+        -0.08312499999999996,
+        0.2015873015873016
+      ],
+      "mean_difference": 0.05570818070818071,
+      "method": "paired question bootstrap; solver repeats averaged within question",
+      "questions": 30,
+      "resamples": 10000,
+      "seed": 20261110
+    },
+    "hybrid": {
+      "ci95": [
+        -0.05606060606060605,
+        0.12404761904761903
+      ],
+      "mean_difference": 0.025995670995670996,
+      "method": "paired question bootstrap; solver repeats averaged within question",
+      "questions": 30,
+      "resamples": 10000,
+      "seed": 20261110
+    },
+    "milp_base": {
+      "ci95": [
+        -0.06303418803418802,
+        0.17777777777777778
+      ],
+      "mean_difference": 0.049358974358974364,
+      "method": "paired question bootstrap; solver repeats averaged within question",
+      "questions": 30,
+      "resamples": 10000,
+      "seed": 20261110
+    },
+    "reranker": {
+      "ci95": [
+        -0.007777777777777771,
+        0.15219298245614035
+      ],
+      "mean_difference": 0.06219298245614035,
+      "method": "paired question bootstrap; solver repeats averaged within question",
+      "questions": 30,
+      "resamples": 10000,
+      "seed": 20261110
+    },
+    "top_k": {
+      "ci95": [
+        -0.11112566312997345,
+        0.12292219274977896
+      ],
+      "mean_difference": 0.006255526083112295,
+      "method": "paired question bootstrap; solver repeats averaged within question",
+      "questions": 30,
+      "resamples": 10000,
+      "seed": 20261110
+    }
+  },
+  "principal_evidence_minus_absolute_f1": null,
+  "reference": "milp_full",
+  "selection_diagnostics_successful_only": {
+    "certified_optimal_fraction": {
+      "bm25": 0.0,
+      "coverage": 0.0,
+      "greedy": 0.0,
+      "hybrid": 0.0,
+      "milp_base": 0.0,
+      "milp_full": 0.4,
+      "reranker": 0.0,
+      "top_k": 0.0
+    },
+    "selected_count": {
+      "bm25": 5.0,
+      "coverage": 5.0,
+      "greedy": 5.0,
+      "hybrid": 5.0,
+      "milp_base": 5.0,
+      "milp_full": 5.0,
+      "reranker": 5.0,
+      "top_k": 5.0
+    }
+  },
+  "successful_distinct_generation_records": 202,
+  "table": {
+    "bm25": {
+      "actual_generation_seconds_successful_only": 0.15757533500018325,
+      "all_supporting_documents_successful_only": 0.3333333333333333,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_em": 0.16666666666666666,
+      "answer_f1": 0.27202898550724636,
+      "attempted_method_records": 30,
+      "context_tokens_successful_only": 788.0,
+      "document_recall_successful_only": 0.6,
+      "failures": 0,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": -1.3775926602383455,
+      "input_tokens_successful_only": 864.7666666666667,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 30,
+      "selection_seconds_successful_only": 4.3995866750871455e-05
+    },
+    "coverage": {
+      "actual_generation_seconds_successful_only": 0.14085684119988098,
+      "all_supporting_documents_successful_only": 0.5666666666666667,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_em": 0.16666666666666666,
+      "answer_f1": 0.28478057889822594,
+      "attempted_method_records": 30,
+      "context_tokens_successful_only": 892.0666666666667,
+      "document_recall_successful_only": 0.75,
+      "failures": 0,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": -1.708258837131628,
+      "input_tokens_successful_only": 968.8333333333334,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 30,
+      "selection_seconds_successful_only": 0.0016227223663615102
+    },
+    "greedy": {
+      "actual_generation_seconds_successful_only": 0.15764777703322277,
+      "all_supporting_documents_successful_only": 0.4666666666666667,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_em": 0.26666666666666666,
+      "answer_f1": 0.32515262515262516,
+      "attempted_method_records": 30,
+      "context_tokens_successful_only": 793.1666666666666,
+      "document_recall_successful_only": 0.7,
+      "failures": 0,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": -1.9165637825568411,
+      "input_tokens_successful_only": 869.9666666666667,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 30,
+      "selection_seconds_successful_only": 0.0032511247332270917
+    },
+    "hybrid": {
+      "actual_generation_seconds_successful_only": 0.14686368713325162,
+      "all_supporting_documents_successful_only": 0.5,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_em": 0.2,
+      "answer_f1": 0.2954401154401154,
+      "attempted_method_records": 30,
+      "context_tokens_successful_only": 832.1,
+      "document_recall_successful_only": 0.7166666666666667,
+      "failures": 0,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": -1.68273464171992,
+      "input_tokens_successful_only": 908.9,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 30,
+      "selection_seconds_successful_only": 4.1120533205685204e-05
+    },
+    "milp_base": {
+      "actual_generation_seconds_successful_only": 0.07370531273354572,
+      "all_supporting_documents_successful_only": 0.43333333333333335,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_em": 0.26666666666666666,
+      "answer_f1": 0.3188034188034188,
+      "attempted_method_records": 30,
+      "context_tokens_successful_only": 798.2,
+      "document_recall_successful_only": 0.6833333333333333,
+      "failures": 0,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": -1.9133820797347048,
+      "input_tokens_successful_only": 875.0,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 30,
+      "selection_seconds_successful_only": 1.023222496999915
+    },
+    "milp_full": {
+      "actual_generation_seconds_successful_only": 0.14276545620014075,
+      "all_supporting_documents_successful_only": 0.5333333333333333,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_em": 0.16666666666666666,
+      "answer_f1": 0.26944444444444443,
+      "attempted_method_records": 30,
+      "context_tokens_successful_only": 808.8333333333334,
+      "document_recall_successful_only": 0.7333333333333333,
+      "failures": 0,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": -2.242742708092176,
+      "input_tokens_successful_only": 885.6333333333333,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 30,
+      "selection_seconds_successful_only": 0.7424298487332635
+    },
+    "reranker": {
+      "actual_generation_seconds_successful_only": 0.1362820617333758,
+      "all_supporting_documents_successful_only": 0.6333333333333333,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_em": 0.23333333333333334,
+      "answer_f1": 0.3316374269005848,
+      "attempted_method_records": 30,
+      "context_tokens_successful_only": 791.5666666666667,
+      "document_recall_successful_only": 0.8166666666666667,
+      "failures": 0,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": -1.5815099911531434,
+      "input_tokens_successful_only": 868.3333333333334,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 30,
+      "selection_seconds_successful_only": 3.9534233292215506e-05
+    },
+    "top_k": {
+      "actual_generation_seconds_successful_only": 0.19523902076659094,
+      "all_supporting_documents_successful_only": 0.5333333333333333,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_em": 0.2,
+      "answer_f1": 0.2756999705275567,
+      "attempted_method_records": 30,
+      "context_tokens_successful_only": 811.4,
+      "document_recall_successful_only": 0.75,
+      "failures": 0,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": -1.7604275374673306,
+      "input_tokens_successful_only": 888.1666666666666,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 30,
+      "selection_seconds_successful_only": 3.978703334723832e-05
+    }
+  }
+}

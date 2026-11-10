@@ -1,0 +1,463 @@
+{
+  "candidate_recall_successful_only": {
+    "annealing_full": 1.0,
+    "bm25": 1.0,
+    "coverage": 1.0,
+    "greedy": 1.0,
+    "hybrid": 1.0,
+    "milp_absolute_f0.5": 1.0,
+    "milp_absolute_f0.75": 1.0,
+    "milp_base": 1.0,
+    "milp_evidence_f0.5": 1.0,
+    "milp_evidence_f0.75": 1.0,
+    "milp_full": 1.0,
+    "mmr": 1.0,
+    "reranker": 1.0,
+    "top_k": 1.0
+  },
+  "certified_full_energy_gap_successful_only": {
+    "annealing_full": 0.007984410270222458,
+    "milp_absolute_f0.5": 0.05302110461697012,
+    "milp_absolute_f0.75": 0.010565365635400193,
+    "milp_evidence_f0.5": 0.07796421894472083,
+    "milp_evidence_f0.75": 0.016796715291212138,
+    "milp_full": 0.0
+  },
+  "circuit_resource_denominator": "All completed circuits, including no-feasible-sample outcomes and later generation failures. Missing circuit measurements are not zero.",
+  "failure_types": {},
+  "graph_minus_base_f1": {
+    "ci95": [
+      -0.009275187969924811,
+      0.07300136705399862
+    ],
+    "mean_difference": 0.030164319890635678,
+    "method": "paired question bootstrap; solver repeats averaged within question",
+    "questions": 100,
+    "resamples": 10000,
+    "seed": 20261110
+  },
+  "interpretation": "Exploratory intervals unless a comparison is explicitly primary in the frozen protocol. No noninferiority or hardware-speedup claim.",
+  "output_limit_hits": 31,
+  "paired_differences_to_reference": {
+    "annealing_full": {
+      "ci95": [
+        -0.025326876873556437,
+        0.021759570494864603
+      ],
+      "mean_difference": -0.0020847756646518263,
+      "method": "paired question bootstrap; solver repeats averaged within question",
+      "questions": 100,
+      "resamples": 10000,
+      "seed": 20261110
+    },
+    "bm25": {
+      "ci95": [
+        -0.12226851218956482,
+        0.009866447046469929
+      ],
+      "mean_difference": -0.05501610349985636,
+      "method": "paired question bootstrap; solver repeats averaged within question",
+      "questions": 100,
+      "resamples": 10000,
+      "seed": 20261110
+    },
+    "coverage": {
+      "ci95": [
+        -0.036739326915774285,
+        0.10924659916837547
+      ],
+      "mean_difference": 0.035230056201108834,
+      "method": "paired question bootstrap; solver repeats averaged within question",
+      "questions": 100,
+      "resamples": 10000,
+      "seed": 20261110
+    },
+    "greedy": {
+      "ci95": [
+        -0.056073451811346556,
+        0.028613381180223274
+      ],
+      "mean_difference": -0.013793392572339943,
+      "method": "paired question bootstrap; solver repeats averaged within question",
+      "questions": 100,
+      "resamples": 10000,
+      "seed": 20261110
+    },
+    "hybrid": {
+      "ci95": [
+        -0.09561635466227958,
+        0.03257176098110694
+      ],
+      "mean_difference": -0.029110916551628625,
+      "method": "paired question bootstrap; solver repeats averaged within question",
+      "questions": 100,
+      "resamples": 10000,
+      "seed": 20261110
+    },
+    "milp_absolute_f0.5": {
+      "ci95": [
+        -0.10007511050353156,
+        -0.005405302745500121
+      ],
+      "mean_difference": -0.050047721576668945,
+      "method": "paired question bootstrap; solver repeats averaged within question",
+      "questions": 100,
+      "resamples": 10000,
+      "seed": 20261110
+    },
+    "milp_absolute_f0.75": {
+      "ci95": [
+        -0.02603880952380952,
+        0.050166461038961004
+      ],
+      "mean_difference": 0.010455411255411256,
+      "method": "paired question bootstrap; solver repeats averaged within question",
+      "questions": 100,
+      "resamples": 10000,
+      "seed": 20261110
+    },
+    "milp_base": {
+      "ci95": [
+        -0.07300136705399864,
+        0.009275187969924811
+      ],
+      "mean_difference": -0.030164319890635678,
+      "method": "paired question bootstrap; solver repeats averaged within question",
+      "questions": 100,
+      "resamples": 10000,
+      "seed": 20261110
+    },
+    "milp_evidence_f0.5": {
+      "ci95": [
+        -0.10523186659831398,
+        0.016218722943722914
+      ],
+      "mean_difference": -0.04322128047391205,
+      "method": "paired question bootstrap; solver repeats averaged within question",
+      "questions": 100,
+      "resamples": 10000,
+      "seed": 20261110
+    },
+    "milp_evidence_f0.75": {
+      "ci95": [
+        -0.03581986728184097,
+        0.030067435064935057
+      ],
+      "mean_difference": -0.0027024834814308495,
+      "method": "paired question bootstrap; solver repeats averaged within question",
+      "questions": 100,
+      "resamples": 10000,
+      "seed": 20261110
+    },
+    "mmr": {
+      "ci95": [
+        -0.057526393255866934,
+        0.03702569377990428
+      ],
+      "mean_difference": -0.008933287764866711,
+      "method": "paired question bootstrap; solver repeats averaged within question",
+      "questions": 100,
+      "resamples": 10000,
+      "seed": 20261110
+    },
+    "reranker": {
+      "ci95": [
+        -0.10928535251899804,
+        0.035386869781405365
+      ],
+      "mean_difference": -0.03518214185195609,
+      "method": "paired question bootstrap; solver repeats averaged within question",
+      "questions": 100,
+      "resamples": 10000,
+      "seed": 20261110
+    },
+    "top_k": {
+      "ci95": [
+        -0.044126482304245464,
+        0.09260599225336062
+      ],
+      "mean_difference": 0.02369225336067441,
+      "method": "paired question bootstrap; solver repeats averaged within question",
+      "questions": 100,
+      "resamples": 10000,
+      "seed": 20261110
+    }
+  },
+  "principal_evidence_minus_absolute_f1": null,
+  "reference": "milp_full",
+  "selection_diagnostics_successful_only": {
+    "certified_optimal_fraction": {
+      "annealing_full": 0.0,
+      "bm25": 0.0,
+      "coverage": 0.0,
+      "greedy": 0.0,
+      "hybrid": 0.0,
+      "milp_absolute_f0.5": 1.0,
+      "milp_absolute_f0.75": 1.0,
+      "milp_base": 1.0,
+      "milp_evidence_f0.5": 1.0,
+      "milp_evidence_f0.75": 1.0,
+      "milp_full": 1.0,
+      "mmr": 0.0,
+      "reranker": 0.0,
+      "top_k": 0.0
+    },
+    "selected_count": {
+      "annealing_full": 8.033333333333333,
+      "bm25": 7.45,
+      "coverage": 7.46,
+      "greedy": 7.34,
+      "hybrid": 7.53,
+      "milp_absolute_f0.5": 8.57,
+      "milp_absolute_f0.75": 8.29,
+      "milp_base": 7.9,
+      "milp_evidence_f0.5": 8.74,
+      "milp_evidence_f0.75": 8.32,
+      "milp_full": 8.07,
+      "mmr": 7.61,
+      "reranker": 7.71,
+      "top_k": 7.68
+    }
+  },
+  "successful_distinct_generation_records": 936,
+  "table": {
+    "annealing_full": {
+      "actual_generation_seconds_successful_only": 0.03917068350669676,
+      "all_supporting_documents_successful_only": 0.36333333333333334,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_em": 0.23,
+      "answer_f1": 0.29823277489624234,
+      "attempted_method_records": 300,
+      "context_tokens_successful_only": 1068.13,
+      "document_recall_successful_only": 0.7130555555555557,
+      "failures": 0,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": -2.073042781498793,
+      "input_tokens_successful_only": 1148.6766666666667,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 100,
+      "selection_seconds_successful_only": 0.022838318216696886
+    },
+    "bm25": {
+      "actual_generation_seconds_successful_only": 0.19003481545003523,
+      "all_supporting_documents_successful_only": 0.26,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_em": 0.18,
+      "answer_f1": 0.24530144706103785,
+      "attempted_method_records": 100,
+      "context_tokens_successful_only": 1089.82,
+      "document_recall_successful_only": 0.5866666666666667,
+      "failures": 0,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": -1.3938176536163156,
+      "input_tokens_successful_only": 1170.34,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 100,
+      "selection_seconds_successful_only": 7.011017994955182e-05
+    },
+    "coverage": {
+      "actual_generation_seconds_successful_only": 0.12808201538999128,
+      "all_supporting_documents_successful_only": 0.37,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_em": 0.26,
+      "answer_f1": 0.33554760676200296,
+      "attempted_method_records": 100,
+      "context_tokens_successful_only": 1091.66,
+      "document_recall_successful_only": 0.7,
+      "failures": 0,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": -1.6000933083021665,
+      "input_tokens_successful_only": 1172.22,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 100,
+      "selection_seconds_successful_only": 0.0007011733899889805
+    },
+    "greedy": {
+      "actual_generation_seconds_successful_only": 0.17388209368999014,
+      "all_supporting_documents_successful_only": 0.34,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_em": 0.22,
+      "answer_f1": 0.28652415798855424,
+      "attempted_method_records": 100,
+      "context_tokens_successful_only": 1053.3,
+      "document_recall_successful_only": 0.6866666666666665,
+      "failures": 0,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": -1.8445291556685879,
+      "input_tokens_successful_only": 1133.85,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 100,
+      "selection_seconds_successful_only": 0.0009099616200182936
+    },
+    "hybrid": {
+      "actual_generation_seconds_successful_only": 0.1625338072699924,
+      "all_supporting_documents_successful_only": 0.34,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_em": 0.18,
+      "answer_f1": 0.2712066340092656,
+      "attempted_method_records": 100,
+      "context_tokens_successful_only": 1093.09,
+      "document_recall_successful_only": 0.67,
+      "failures": 0,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": -1.5913996171122198,
+      "input_tokens_successful_only": 1173.61,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 100,
+      "selection_seconds_successful_only": 7.04240500999731e-05
+    },
+    "milp_absolute_f0.5": {
+      "actual_generation_seconds_successful_only": 0.13356609742006184,
+      "all_supporting_documents_successful_only": 0.36,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_em": 0.19,
+      "answer_f1": 0.25026982898422523,
+      "attempted_method_records": 100,
+      "context_tokens_successful_only": 1086.94,
+      "document_recall_successful_only": 0.69,
+      "failures": 0,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": -2.0280060871520456,
+      "input_tokens_successful_only": 1167.5,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 100,
+      "selection_seconds_successful_only": 0.09910883306027245
+    },
+    "milp_absolute_f0.75": {
+      "actual_generation_seconds_successful_only": 0.052923616459993356,
+      "all_supporting_documents_successful_only": 0.41,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_em": 0.24,
+      "answer_f1": 0.3107729618163054,
+      "attempted_method_records": 100,
+      "context_tokens_successful_only": 1076.62,
+      "document_recall_successful_only": 0.7341666666666667,
+      "failures": 0,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": -2.070461826133615,
+      "input_tokens_successful_only": 1157.18,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 100,
+      "selection_seconds_successful_only": 0.16129927214004056
+    },
+    "milp_base": {
+      "actual_generation_seconds_successful_only": 0.09823719304997212,
+      "all_supporting_documents_successful_only": 0.33,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_em": 0.21,
+      "answer_f1": 0.2701532306702585,
+      "attempted_method_records": 100,
+      "context_tokens_successful_only": 1055.55,
+      "document_recall_successful_only": 0.6916666666666665,
+      "failures": 0,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": -1.8822317103317983,
+      "input_tokens_successful_only": 1136.1,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 100,
+      "selection_seconds_successful_only": 0.4336529518299358
+    },
+    "milp_evidence_f0.5": {
+      "actual_generation_seconds_successful_only": 0.10027959091999947,
+      "all_supporting_documents_successful_only": 0.3,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_em": 0.2,
+      "answer_f1": 0.2570962700869821,
+      "attempted_method_records": 100,
+      "context_tokens_successful_only": 1088.06,
+      "document_recall_successful_only": 0.6741666666666667,
+      "failures": 0,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": -2.0030629728242944,
+      "input_tokens_successful_only": 1168.61,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 100,
+      "selection_seconds_successful_only": 0.09219799116004651
+    },
+    "milp_evidence_f0.75": {
+      "actual_generation_seconds_successful_only": 0.027048823470013302,
+      "all_supporting_documents_successful_only": 0.4,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_em": 0.23,
+      "answer_f1": 0.29761506707946334,
+      "attempted_method_records": 100,
+      "context_tokens_successful_only": 1075.95,
+      "document_recall_successful_only": 0.7308333333333334,
+      "failures": 0,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": -2.0642304764778032,
+      "input_tokens_successful_only": 1156.5,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 100,
+      "selection_seconds_successful_only": 0.1721899249398848
+    },
+    "milp_full": {
+      "actual_generation_seconds_successful_only": 0.12207490050997877,
+      "all_supporting_documents_successful_only": 0.36,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_em": 0.23,
+      "answer_f1": 0.30031755056089415,
+      "attempted_method_records": 100,
+      "context_tokens_successful_only": 1070.87,
+      "document_recall_successful_only": 0.7175,
+      "failures": 0,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": -2.0810271917690155,
+      "input_tokens_successful_only": 1151.41,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 100,
+      "selection_seconds_successful_only": 0.2847850899500736
+    },
+    "mmr": {
+      "actual_generation_seconds_successful_only": 0.17144752404999963,
+      "all_supporting_documents_successful_only": 0.33,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_em": 0.22,
+      "answer_f1": 0.29138426279602747,
+      "attempted_method_records": 100,
+      "context_tokens_successful_only": 1083.7,
+      "document_recall_successful_only": 0.68,
+      "failures": 0,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": -1.7434467027436766,
+      "input_tokens_successful_only": 1164.25,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 100,
+      "selection_seconds_successful_only": 0.00029066057000818544
+    },
+    "reranker": {
+      "actual_generation_seconds_successful_only": 0.1859574925299239,
+      "all_supporting_documents_successful_only": 0.37,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_em": 0.21,
+      "answer_f1": 0.26513540870893815,
+      "attempted_method_records": 100,
+      "context_tokens_successful_only": 1090.63,
+      "document_recall_successful_only": 0.6941666666666666,
+      "failures": 0,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": -1.441370288650469,
+      "input_tokens_successful_only": 1171.14,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 100,
+      "selection_seconds_successful_only": 6.868205999126076e-05
+    },
+    "top_k": {
+      "actual_generation_seconds_successful_only": 0.20071378057988112,
+      "all_supporting_documents_successful_only": 0.34,
+      "all_to_all_two_qubit_gates_successful_only": null,
+      "answer_em": 0.24,
+      "answer_f1": 0.3240098039215686,
+      "attempted_method_records": 100,
+      "context_tokens_successful_only": 1090.71,
+      "document_recall_successful_only": 0.6825,
+      "failures": 0,
+      "feasible_fraction_successful_only": null,
+      "full_energy_successful_only": -1.6111936004548624,
+      "input_tokens_successful_only": 1171.26,
+      "line_two_qubit_gates_successful_only": null,
+      "questions": 100,
+      "selection_seconds_successful_only": 7.22776900147437e-05
+    }
+  }
+}

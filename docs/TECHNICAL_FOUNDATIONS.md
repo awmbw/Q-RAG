@@ -4,7 +4,7 @@
 
 This companion explains the mathematics, ML concepts and engineering decisions behind the implemented research pipeline. It connects definitions to source functions, derives equations and provides numerical examples. [Research progress](RESEARCH_PROGRESS_REPORT.md) contains the experimental account; [Development sequence](DEVELOPMENT_SEQUENCE.md) records implementation order and decisions.
 
-The implemented pipeline now includes token-safe chunking, embedding and graph caches, persistent exact corpus search, lexical/dense/reranking baselines, count/token constraints, MILP and heuristic selection, entity-link features, sparsification, QAOA simulation, two generators, answer evaluation and a separate local API. The early worked baseline remains useful for understanding the equations; phase-specific sections explain the later extensions. Typed factual relation extraction, physical quantum execution and quantum token-budget circuits are not implemented. Final evaluation and artifact assembly are currently running.
+The implemented pipeline now includes token-safe chunking, embedding and graph caches, persistent exact corpus search, lexical/dense/reranking baselines, count/token constraints, MILP and heuristic selection, entity-link features, sparsification, QAOA simulation, two generators, answer evaluation and a separate local API. The early worked baseline remains useful for understanding the equations; phase-specific sections explain the later extensions. Typed factual relation extraction, physical quantum execution and quantum token-budget circuits are not implemented. Final evaluation is complete; the progress report and released tables contain the measured results and their limits.
 
 **Contents**
 
@@ -922,3 +922,22 @@ A lock records exact package versions. An image packages an installed operating-
 The container runs as a nonroot user, mounts weights read-only and stores mutable indexes/jobs in a separate named volume. This separates immutable inputs from runtime state. Removing a disposable container need not remove that named volume. Restart recovery can then distinguish completed jobs from interrupted ones. These mechanisms are useful in other model services even when no quantum component exists.
 
 Correctness tests also have dependency boundaries. The lightweight workflow checks the available baseline contracts and explicitly skips integrations whose optional packages are absent. The fuller research workflow installs Qiskit/FAISS/service dependencies and executes those integrations. A skip is visible absence of a check, not a passed execution; the full suite currently has 46 tests. Testing source spectra, feasibility and probability sensitivity with actual Qiskit is different from exercising HTTP state transitions with an explicitly labeled fake inference engine.
+
+<!-- BEGIN FINAL_INTERPRETATION -->
+## Connecting the completed results to the mathematics
+
+The principal evidence-minus-magnitude differences are -0.0363 and -0.0095 F1, with intervals that cross zero. This does not prove that entity links are always useless. It says this extractor, scoring rule, sparsifier, shallow circuit, candidate pool and sample do not establish the proposed benefit. A weak feature, limited statistical precision and an optimization restriction can all matter; the current experiment does not independently identify their causal shares.
+
+The prepared control removes the specific global-phase degeneracy, but its two evidence-guidance intervals still cross zero. An improvement in expressivity is a mathematical property; an improvement in answer F1 is an empirical property. They must be measured separately. The full report retains both controls rather than replacing one after seeing scores.
+
+For a complete optimum, E(x*) <= E(x) for every feasible x under that coefficient array. This inequality contains no reference answer, supporting annotation or LLM likelihood. It therefore cannot imply that the generated answer is correct. The released error analysis demonstrates real cases of lower common energy and lower answer F1. It evaluates the relevance subset using the same full coefficients, avoiding the invalid comparison of energies from different graph weights.
+
+A 1,200-token cap bounds formatted context but leaves room for different consumption and selected counts. Comparing it with a 500-question count result would additionally change the question population, since the token condition has 100 questions. Within-condition paired comparisons are interpretable; a raw cross-table difference does not isolate the effect of the cap. Larger candidate pools similarly change retrieval opportunities and optimization cost together.
+
+The gate-cap diagnostic uses descending recorded floating-point fractions and an integer floor edge budget. Near a floating-point boundary, a value represented as 0.3999999999999999 can retain 17 of 45 edges rather than the 18 associated with an exact decimal 0.4. The artifact records the actual fraction, retained indices, trial costs and final circuit. The principal 0.5 fractions are exactly representable and unaffected. Final cap validation, not a rounded display label, establishes feasibility. Compiled gate cost is not monotonic in retained edges because routing and optimization can change.
+
+The service measures an entire three-method comparison request, not a single generated token or one selector in isolation. Its p95 comes from only five repeated fictional requests. Batching measurements use synchronized GPU embedding operations on 128 fixed chunks; their scope differs from both the CPU service and dataset evaluation. An engineering number becomes useful when its workload, denominator, warm/cold state and resource conditions are explicit.
+
+The 110 frozen optimization instances allow Qiskit/MILP experiments without loading an embedding model, raw dataset or generator. Reference solver optima in that bundle are analysis outputs, not answer annotations. The reproduction command passes only coefficients and constraints to the solver, then compares its output against the stored execution. Reconstructing saved statistical tables, rerunning a solver on fixed features, and rerunning end-to-end RAG are three different levels of reproduction.
+
+<!-- END FINAL_INTERPRETATION -->

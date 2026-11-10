@@ -1,0 +1,8 @@
+{
+  "interpretation": "Evidence guidance does not show a consistently positive paired interval across both datasets under this setup.",
+  "primary_evaluations": 50290,
+  "principal_negative_intervals": 0,
+  "principal_positive_intervals": 0,
+  "quantum_advantage_established": false,
+  "quantum_hardware": false
+}
