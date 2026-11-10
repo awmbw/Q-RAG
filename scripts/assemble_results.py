@@ -442,7 +442,7 @@ def main():
     atomic_text(paper, text)
     atomic_text(
         output / "main_results.md",
-        results.replace("](figures/", "](../figures/") + "\n",
+        results.replace("](figures/", "](../figures/").rstrip() + "\n",
     )
     write_json(
         output / "claim_summary.json",

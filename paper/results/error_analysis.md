@@ -117,4 +117,3 @@ These are automatically identified observations, not independently annotated cau
 
 - `4hop1__131611_32392_823060_610794`: In which county is the city sharing a border with the capitol of the state where Ocean Forest Country Club is located? Reference: 'Richland County'. MILP: 'Horry' (F1 0.0000); relevance: 'Richland' (F1 0.6667). Same-objective energies: MILP -1.86649, relevance -1.83101.
 - `2hop__132954_533882`: What company was formed after a merger of the company that built ASM-N-5 Gorgon V? Reference: 'Martin Marietta'. MILP: 'Lockheed Martin' (F1 0.5000); relevance: 'Martin Marietta' (F1 1.0000). Same-objective energies: MILP -1.59213, relevance -1.41872.
-

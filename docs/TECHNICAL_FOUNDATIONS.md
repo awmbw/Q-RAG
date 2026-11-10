@@ -941,3 +941,9 @@ The service measures an entire three-method comparison request, not a single gen
 The 110 frozen optimization instances allow Qiskit/MILP experiments without loading an embedding model, raw dataset or generator. Reference solver optima in that bundle are analysis outputs, not answer annotations. The reproduction command passes only coefficients and constraints to the solver, then compares its output against the stored execution. Reconstructing saved statistical tables, rerunning a solver on fixed features, and rerunning end-to-end RAG are three different levels of reproduction.
 
 <!-- END FINAL_INTERPRETATION -->
+
+## Turning numerical artifacts into a manuscript
+
+The report assembler reads completed per-question outcomes, derives statistics and fills only named numerical blocks in the manuscript. This keeps the explanation editable while avoiding hand-transcribed table values. The PDF renderer typesets equations, tables and generated figures from that source. A successful rendering process can still produce clipped labels, split captions or unreadable columns, so each of the 13 pages was separately rasterized and visually inspected.
+
+An export checksum identifies the reviewed PDF bytes. It does not establish that the research is correct or guarantee a bit-identical export with different fonts or rendering-library versions. Similarly, a polished PDF is not a submitted or accepted publication. Source review, author responsibility, venue requirements and independent evidence checking remain distinct from layout QA.

@@ -1,0 +1,47 @@
+{
+  "checks": [
+    "all pages rendered and visually inspected",
+    "math and figures readable",
+    "table column widths corrected",
+    "equation introductions and figure captions kept with their content",
+    "dedicated reference page",
+    "PDF text present and character bounds within page"
+  ],
+  "manuscript_sha256": "c49f16f898f3b896d66e68a5d63d86c2324b6a001d777d4ab900765080b812f2",
+  "page_image_hashes": {
+    "page-01.png": "c700a1c248f82deb7eb3bf8725fa1c7c155ec3a12ff6df080ef3428e9bd0da4a",
+    "page-02.png": "e11b86f1cf00d38e63df14acf8537417c14e59fb29ecd108db97e85e074bc813",
+    "page-03.png": "bb22a16a15d5930402da935dba302af9a9e89b9dbfa61884f675958eb4d7e64f",
+    "page-04.png": "fc9c0d7f0a9fc9c2cfa6494fa57538fc6770049c2d3ad498a409d0442d0ce991",
+    "page-05.png": "2f13393d6efbfbb242b55697a87a9a637aa79f2be4305248de3b60a6ededbe21",
+    "page-06.png": "dd7ec084cbb5167ba61a080ee4a2edd15a70b05674175e86098a54798ba64e79",
+    "page-07.png": "0c232ed4835e6e692629c9afd259bfefda3369a9c5aeb9ef5525aeba683bf902",
+    "page-08.png": "301e908a0569c4e89b2eb043d477c8846fba64b4046e240e5695ae520b248b56",
+    "page-09.png": "1dc470e862a835de8e7ec62bf48334289c3ae2814b5e7b07aa62a717e646a17f",
+    "page-10.png": "ba2c73ada470a61cb2e214697da22883d099762e5ba1ae5d27ebe63fdf3db6ac",
+    "page-11.png": "594e11c10d45535a04536e9defd1bcc2b4ac7065f205f600adc5289b8d4e2ef3",
+    "page-12.png": "299a20bf95d2758634453fbc87228fd58889fc86bf4b73f560a18d44690e5fd6",
+    "page-13.png": "6582b3e160cb149f5e71d3c8790754e86cfedc3a2a8a3ae145314fbb0af98aab"
+  },
+  "page_rasterizer": "Poppler pdftoppm, 110 dpi PNG",
+  "pages": 13,
+  "pdf": "output/pdf/manuscript.pdf",
+  "renderer": "ReportLab 5.1.0; Liberation Serif fonts; Matplotlib equation images",
+  "scope": "Automated export and visual layout inspection; not independent scientific peer review or venue-specific typesetting approval",
+  "sha256": "a2c6b8f6e01377ac17314a79ca3cfed789c7b5843c29ff5461b05b737d96700f",
+  "visually_inspected_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13
+  ]
+}

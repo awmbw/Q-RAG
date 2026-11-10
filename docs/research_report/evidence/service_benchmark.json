@@ -1,0 +1,541 @@
+{
+  "comparisons": [
+    {
+      "backend": {
+        "device": "cpu",
+        "dtype": "float32",
+        "generator": "Qwen/Qwen2.5-1.5B-Instruct",
+        "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
+      },
+      "cache_hits_total": 4,
+      "cache_misses_total": 5,
+      "graph_cache_hit": false,
+      "methods": [
+        {
+          "actual_method": "relevance",
+          "answer": "India",
+          "context_tokens": 43,
+          "fallback": null,
+          "full_energy": -0.8008412882685662,
+          "generation_reused": false,
+          "generation_seconds": 1.894023171000299,
+          "input_tokens": 113,
+          "optimal": false,
+          "requested_method": "relevance",
+          "selection_seconds": 0.0005567150001297705,
+          "solver_status": "ranking",
+          "supplied_sources": [
+            {
+              "id": "s1",
+              "title": "Film A"
+            },
+            {
+              "id": "s2",
+              "title": "Maya Rao"
+            }
+          ]
+        },
+        {
+          "actual_method": "milp",
+          "answer": "India",
+          "context_tokens": 43,
+          "fallback": null,
+          "full_energy": -0.8008412882685662,
+          "generation_reused": true,
+          "generation_seconds": 1.894023171000299,
+          "input_tokens": 113,
+          "optimal": true,
+          "requested_method": "milp",
+          "selection_seconds": 0.04560745599883376,
+          "solver_status": "optimal",
+          "supplied_sources": [
+            {
+              "id": "s1",
+              "title": "Film A"
+            },
+            {
+              "id": "s2",
+              "title": "Maya Rao"
+            }
+          ]
+        },
+        {
+          "actual_method": "qaoa",
+          "answer": "India",
+          "context_tokens": 43,
+          "fallback": null,
+          "full_energy": -0.8008412882685662,
+          "generation_reused": true,
+          "generation_seconds": 1.894023171000299,
+          "input_tokens": 113,
+          "optimal": false,
+          "requested_method": "qaoa",
+          "selection_seconds": 0.1048560359995463,
+          "solver_status": "sampled_feasible",
+          "supplied_sources": [
+            {
+              "id": "s1",
+              "title": "Film A"
+            },
+            {
+              "id": "s2",
+              "title": "Maya Rao"
+            }
+          ]
+        }
+      ],
+      "queue_seconds": 0.0010027885437011719,
+      "repeat": 0,
+      "stage_timings": {
+        "embedding_seconds": 0.020168637001916068,
+        "graph_seconds": 0.0033614799976930954
+      },
+      "total_seconds": 2.515749454498291,
+      "wall_seconds": 2.51424834700083
+    },
+    {
+      "backend": {
+        "device": "cpu",
+        "dtype": "float32",
+        "generator": "Qwen/Qwen2.5-1.5B-Instruct",
+        "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
+      },
+      "cache_hits_total": 9,
+      "cache_misses_total": 5,
+      "graph_cache_hit": true,
+      "methods": [
+        {
+          "actual_method": "relevance",
+          "answer": "India",
+          "context_tokens": 43,
+          "fallback": null,
+          "full_energy": -0.8008412882685662,
+          "generation_reused": false,
+          "generation_seconds": 2.1000967219988524,
+          "input_tokens": 113,
+          "optimal": false,
+          "requested_method": "relevance",
+          "selection_seconds": 4.068599810125306e-05,
+          "solver_status": "ranking",
+          "supplied_sources": [
+            {
+              "id": "s1",
+              "title": "Film A"
+            },
+            {
+              "id": "s2",
+              "title": "Maya Rao"
+            }
+          ]
+        },
+        {
+          "actual_method": "milp",
+          "answer": "India",
+          "context_tokens": 43,
+          "fallback": null,
+          "full_energy": -0.8008412882685662,
+          "generation_reused": true,
+          "generation_seconds": 2.1000967219988524,
+          "input_tokens": 113,
+          "optimal": true,
+          "requested_method": "milp",
+          "selection_seconds": 0.007660850002139341,
+          "solver_status": "optimal",
+          "supplied_sources": [
+            {
+              "id": "s1",
+              "title": "Film A"
+            },
+            {
+              "id": "s2",
+              "title": "Maya Rao"
+            }
+          ]
+        },
+        {
+          "actual_method": "qaoa",
+          "answer": "India",
+          "context_tokens": 43,
+          "fallback": null,
+          "full_energy": -0.8008412882685662,
+          "generation_reused": true,
+          "generation_seconds": 2.1000967219988524,
+          "input_tokens": 113,
+          "optimal": false,
+          "requested_method": "qaoa",
+          "selection_seconds": 0.03642399800082785,
+          "solver_status": "sampled_feasible",
+          "supplied_sources": [
+            {
+              "id": "s1",
+              "title": "Film A"
+            },
+            {
+              "id": "s2",
+              "title": "Maya Rao"
+            }
+          ]
+        }
+      ],
+      "queue_seconds": 0.0010418891906738281,
+      "repeat": 1,
+      "stage_timings": {
+        "embedding_seconds": 0.0025792610031203367,
+        "graph_seconds": 0.0005452129989862442
+      },
+      "total_seconds": 2.150743246078491,
+      "wall_seconds": 2.149126491000061
+    },
+    {
+      "backend": {
+        "device": "cpu",
+        "dtype": "float32",
+        "generator": "Qwen/Qwen2.5-1.5B-Instruct",
+        "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
+      },
+      "cache_hits_total": 14,
+      "cache_misses_total": 5,
+      "graph_cache_hit": true,
+      "methods": [
+        {
+          "actual_method": "relevance",
+          "answer": "India",
+          "context_tokens": 43,
+          "fallback": null,
+          "full_energy": -0.8008412882685662,
+          "generation_reused": false,
+          "generation_seconds": 2.0531799390009837,
+          "input_tokens": 113,
+          "optimal": false,
+          "requested_method": "relevance",
+          "selection_seconds": 6.996099909883924e-05,
+          "solver_status": "ranking",
+          "supplied_sources": [
+            {
+              "id": "s1",
+              "title": "Film A"
+            },
+            {
+              "id": "s2",
+              "title": "Maya Rao"
+            }
+          ]
+        },
+        {
+          "actual_method": "milp",
+          "answer": "India",
+          "context_tokens": 43,
+          "fallback": null,
+          "full_energy": -0.8008412882685662,
+          "generation_reused": true,
+          "generation_seconds": 2.0531799390009837,
+          "input_tokens": 113,
+          "optimal": true,
+          "requested_method": "milp",
+          "selection_seconds": 0.007868529002735158,
+          "solver_status": "optimal",
+          "supplied_sources": [
+            {
+              "id": "s1",
+              "title": "Film A"
+            },
+            {
+              "id": "s2",
+              "title": "Maya Rao"
+            }
+          ]
+        },
+        {
+          "actual_method": "qaoa",
+          "answer": "India",
+          "context_tokens": 43,
+          "fallback": null,
+          "full_energy": -0.8008412882685662,
+          "generation_reused": true,
+          "generation_seconds": 2.0531799390009837,
+          "input_tokens": 113,
+          "optimal": false,
+          "requested_method": "qaoa",
+          "selection_seconds": 0.04148335499849054,
+          "solver_status": "sampled_feasible",
+          "supplied_sources": [
+            {
+              "id": "s1",
+              "title": "Film A"
+            },
+            {
+              "id": "s2",
+              "title": "Maya Rao"
+            }
+          ]
+        }
+      ],
+      "queue_seconds": 0.0011820793151855469,
+      "repeat": 2,
+      "stage_timings": {
+        "embedding_seconds": 0.00283674499951303,
+        "graph_seconds": 0.0006972290029807482
+      },
+      "total_seconds": 2.110401153564453,
+      "wall_seconds": 2.1082418100013456
+    },
+    {
+      "backend": {
+        "device": "cpu",
+        "dtype": "float32",
+        "generator": "Qwen/Qwen2.5-1.5B-Instruct",
+        "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
+      },
+      "cache_hits_total": 19,
+      "cache_misses_total": 5,
+      "graph_cache_hit": true,
+      "methods": [
+        {
+          "actual_method": "relevance",
+          "answer": "India",
+          "context_tokens": 43,
+          "fallback": null,
+          "full_energy": -0.8008412882685662,
+          "generation_reused": false,
+          "generation_seconds": 1.9147774260018195,
+          "input_tokens": 113,
+          "optimal": false,
+          "requested_method": "relevance",
+          "selection_seconds": 4.819000241695903e-05,
+          "solver_status": "ranking",
+          "supplied_sources": [
+            {
+              "id": "s1",
+              "title": "Film A"
+            },
+            {
+              "id": "s2",
+              "title": "Maya Rao"
+            }
+          ]
+        },
+        {
+          "actual_method": "milp",
+          "answer": "India",
+          "context_tokens": 43,
+          "fallback": null,
+          "full_energy": -0.8008412882685662,
+          "generation_reused": true,
+          "generation_seconds": 1.9147774260018195,
+          "input_tokens": 113,
+          "optimal": true,
+          "requested_method": "milp",
+          "selection_seconds": 0.012934267997479765,
+          "solver_status": "optimal",
+          "supplied_sources": [
+            {
+              "id": "s1",
+              "title": "Film A"
+            },
+            {
+              "id": "s2",
+              "title": "Maya Rao"
+            }
+          ]
+        },
+        {
+          "actual_method": "qaoa",
+          "answer": "India",
+          "context_tokens": 43,
+          "fallback": null,
+          "full_energy": -0.8008412882685662,
+          "generation_reused": true,
+          "generation_seconds": 1.9147774260018195,
+          "input_tokens": 113,
+          "optimal": false,
+          "requested_method": "qaoa",
+          "selection_seconds": 0.034811520999937784,
+          "solver_status": "sampled_feasible",
+          "supplied_sources": [
+            {
+              "id": "s1",
+              "title": "Film A"
+            },
+            {
+              "id": "s2",
+              "title": "Maya Rao"
+            }
+          ]
+        }
+      ],
+      "queue_seconds": 0.002843618392944336,
+      "repeat": 3,
+      "stage_timings": {
+        "embedding_seconds": 0.0028572129995154683,
+        "graph_seconds": 0.0006371560011757538
+      },
+      "total_seconds": 1.971449375152588,
+      "wall_seconds": 1.9678313889999117
+    },
+    {
+      "backend": {
+        "device": "cpu",
+        "dtype": "float32",
+        "generator": "Qwen/Qwen2.5-1.5B-Instruct",
+        "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
+      },
+      "cache_hits_total": 24,
+      "cache_misses_total": 5,
+      "graph_cache_hit": true,
+      "methods": [
+        {
+          "actual_method": "relevance",
+          "answer": "India",
+          "context_tokens": 43,
+          "fallback": null,
+          "full_energy": -0.8008412882685662,
+          "generation_reused": false,
+          "generation_seconds": 2.0380934919994615,
+          "input_tokens": 113,
+          "optimal": false,
+          "requested_method": "relevance",
+          "selection_seconds": 4.670800262829289e-05,
+          "solver_status": "ranking",
+          "supplied_sources": [
+            {
+              "id": "s1",
+              "title": "Film A"
+            },
+            {
+              "id": "s2",
+              "title": "Maya Rao"
+            }
+          ]
+        },
+        {
+          "actual_method": "milp",
+          "answer": "India",
+          "context_tokens": 43,
+          "fallback": null,
+          "full_energy": -0.8008412882685662,
+          "generation_reused": true,
+          "generation_seconds": 2.0380934919994615,
+          "input_tokens": 113,
+          "optimal": true,
+          "requested_method": "milp",
+          "selection_seconds": 0.007445595998433419,
+          "solver_status": "optimal",
+          "supplied_sources": [
+            {
+              "id": "s1",
+              "title": "Film A"
+            },
+            {
+              "id": "s2",
+              "title": "Maya Rao"
+            }
+          ]
+        },
+        {
+          "actual_method": "qaoa",
+          "answer": "India",
+          "context_tokens": 43,
+          "fallback": null,
+          "full_energy": -0.8008412882685662,
+          "generation_reused": true,
+          "generation_seconds": 2.0380934919994615,
+          "input_tokens": 113,
+          "optimal": false,
+          "requested_method": "qaoa",
+          "selection_seconds": 0.03599768799904268,
+          "solver_status": "sampled_feasible",
+          "supplied_sources": [
+            {
+              "id": "s1",
+              "title": "Film A"
+            },
+            {
+              "id": "s2",
+              "title": "Maya Rao"
+            }
+          ]
+        }
+      ],
+      "queue_seconds": 0.0008993148803710938,
+      "repeat": 4,
+      "stage_timings": {
+        "embedding_seconds": 0.002778785998089006,
+        "graph_seconds": 0.000579917999857571
+      },
+      "total_seconds": 2.089085340499878,
+      "wall_seconds": 2.0869595440017292
+    }
+  ],
+  "health": {
+    "quantum_hardware": false,
+    "status": "ok",
+    "worker_policy": "one inference worker; bounded queue"
+  },
+  "ingestion": {
+    "manifest": {
+      "chunks": 4,
+      "content_identity": "7358e94b05c2c77da13838f29c845c89d9a225ddf3a15e07362b388eb031b915",
+      "documents": 4,
+      "documents_sha256": "3be4a7b6bccd5485ae8a5c4aa5e25d10a9b3b3049ce3cbed2be153831f5e5a43",
+      "representation": {
+        "document_aggregation": "mean-chunks-then-unit-normalize",
+        "dtype": "float32",
+        "max_tokens": 240,
+        "model": "sentence-transformers/all-MiniLM-L6-v2",
+        "normalize": true,
+        "policy": "sentence-greedy-v1-title64-long-sentence-offset-window-overlap32",
+        "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41"
+      },
+      "scope": "bounded union of benchmark input passages; not full Wikipedia"
+    },
+    "status": "completed",
+    "total_seconds": 10.480655908584595
+  },
+  "initial_readiness": {
+    "ready": false,
+    "state": "cold; first job loads local models"
+  },
+  "model_ready_seconds_p50": 2.1082418100013456,
+  "model_ready_seconds_p95": 2.441223975800676,
+  "operational_metrics": {
+    "completed_service_seconds_p50": 2.212409019470215,
+    "completed_service_seconds_p95": 7.757286429405208,
+    "jobs_by_status": {
+      "completed": 8
+    },
+    "latency_scope": "retained completed jobs; execution includes cold preparation if needed; queue time reported per job"
+  },
+  "persistent_query": {
+    "answers": [
+      "India",
+      "India"
+    ],
+    "retrieval": {
+      "candidate_ids": [
+        "corpus:42a6dce1fab12b75667ff353",
+        "corpus:d526fca591c3f280fb10b44d",
+        "corpus:8bd2a4502a74e1ea205373ce",
+        "corpus:ec4957525267344c6361abeb"
+      ],
+      "corpus_documents": 4,
+      "mode": "hybrid",
+      "requested": 4,
+      "returned": 4,
+      "seconds": 0.005714115999580827
+    },
+    "status": "completed"
+  },
+  "scope": "five repeated fictional supplied-source requests on one local CPU service; models prepared by ingestion; not a dataset accuracy or production load benchmark",
+  "untrusted_source_diagnostic": {
+    "answers": [
+      "India"
+    ],
+    "note": "One diagnostic only; prompt wording does not prove prompt-injection resistance.",
+    "selected_ids": [
+      [
+        "s1",
+        "s2"
+      ]
+    ]
+  }
+}

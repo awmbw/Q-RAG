@@ -1,0 +1,68 @@
+{
+  "cold_readiness_after_recreation": {
+    "ready": false,
+    "state": "cold; first job loads local models"
+  },
+  "cpu_limit": 4.0,
+  "fictional_source_sentence_in_console_log": false,
+  "image_id": "sha256:4700541de38618dfaabe589f8239a13fd21cffda7602bbf773c84896fbc9a8ab",
+  "job_result_preserved_exactly": true,
+  "memory_limit_bytes": 12884901888,
+  "nonroot_user": "10001",
+  "observed_span_counts": {
+    "GET /": 1,
+    "GET /health": 298,
+    "GET /jobs/{job_id}": 241,
+    "GET /metrics": 1,
+    "GET /ready": 2,
+    "POST /corpora": 1,
+    "POST /jobs": 6,
+    "POST /query": 1,
+    "corpus.ingest": 1,
+    "corpus.retrieve": 1,
+    "embedding.score": 7,
+    "evidence.graph": 7,
+    "fastapi.dependencies": 551,
+    "fastapi.endpoint": 551,
+    "fastapi.serialization": 548,
+    "generation.milp": 7,
+    "generation.qaoa": 5,
+    "generation.relevance": 6,
+    "model.prepare": 1,
+    "rag.compare": 7,
+    "selection.milp": 7,
+    "selection.qaoa": 5,
+    "selection.relevance": 6
+  },
+  "persistent_corpus_query": {
+    "answers": [
+      "India",
+      "India"
+    ],
+    "retrieval": {
+      "candidate_ids": [
+        "corpus:42a6dce1fab12b75667ff353",
+        "corpus:d526fca591c3f280fb10b44d",
+        "corpus:8bd2a4502a74e1ea205373ce",
+        "corpus:ec4957525267344c6361abeb"
+      ],
+      "corpus_documents": 4,
+      "mode": "hybrid",
+      "requested": 4,
+      "returned": 4,
+      "seconds": 0.0005058399983681738
+    },
+    "status": "completed"
+  },
+  "restored_job_status": "completed",
+  "runtime_versions": {
+    "cuda_available": false,
+    "qiskit": "2.6.2",
+    "sentence_transformers": "6.2.0",
+    "torch": "2.15.0+cpu",
+    "transformers": "5.22.2"
+  },
+  "scope": "Real CPU container inference, persisted job recovery and corpus query after recreating the container with the same named state volume",
+  "trace_log_sha256": "20c065e2875267ac675d2dddda50ddab7d609f48265b8939045e577a7f61b8f8",
+  "visual_dashboard_review_completed": false
+}

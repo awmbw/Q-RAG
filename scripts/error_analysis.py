@@ -115,7 +115,9 @@ def main():
                     )
             lines += [""]
     write_json(Path("paper/results/error_signatures.json"), report)
-    atomic_text(Path("paper/results/error_analysis.md"), "\n".join(lines) + "\n")
+    atomic_text(
+        Path("paper/results/error_analysis.md"), "\n".join(lines).rstrip() + "\n"
+    )
     print(
         "Generated descriptive signatures and deterministic examples for four main conditions"
     )

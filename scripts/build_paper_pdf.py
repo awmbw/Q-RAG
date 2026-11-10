@@ -16,7 +16,9 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.platypus import (
     Image,
+    KeepTogether,
     LongTable,
+    PageBreak,
     Paragraph,
     Preformatted,
     SimpleDocTemplate,
@@ -96,7 +98,7 @@ def main():
         "ResearchSubheading", parent=heading, fontSize=11, leading=14
     )
     cell = ParagraphStyle(
-        "ResearchCell", parent=body, fontSize=7.5, leading=9.5, spaceAfter=0
+        "ResearchCell", parent=body, fontSize=8, leading=10, spaceAfter=0
     )
     small = ParagraphStyle("ResearchSmall", parent=body, fontSize=8.5, leading=11)
     code = ParagraphStyle(
@@ -149,7 +151,14 @@ def main():
             while i < len(lines) and lines[i].strip() != "$$":
                 expression.append(lines[i].strip())
                 i += 1
-            story.extend([Spacer(1, 5), equation(" ".join(expression)), Spacer(1, 10)])
+            group = [Spacer(1, 5), equation(" ".join(expression)), Spacer(1, 10)]
+            if (
+                story
+                and isinstance(story[-1], Paragraph)
+                and story[-1].getPlainText().endswith(":")
+            ):
+                group.insert(0, story.pop())
+            story.append(KeepTogether(group))
             i += 1
             continue
         if line.startswith("```"):
@@ -171,6 +180,26 @@ def main():
             count = len(rows[0])
             first = 0.31 * doc.width if count > 3 else 0.48 * doc.width
             widths = [first] + [(doc.width - first) / (count - 1)] * (count - 1)
+            headers = [p.getPlainText() for p in rows[0]]
+            proportions = None
+            if count == 6:
+                proportions = [0.17, 0.28, 0.09, 0.11, 0.17, 0.18]
+            elif count == 7:
+                proportions = [0.13, 0.10, 0.07, 0.22, 0.14, 0.14, 0.20]
+            elif count == 4:
+                proportions = [0.17, 0.47, 0.13, 0.23]
+            elif count == 5 and headers[1] == "Method":
+                proportions = (
+                    [0.25, 0.31, 0.12, 0.16, 0.16]
+                    if headers[0] == "Dataset / generator"
+                    else [0.15, 0.31, 0.18, 0.18, 0.18]
+                )
+            elif count == 5 and headers[1] == "Budget":
+                proportions = [0.28, 0.12, 0.07, 0.23, 0.30]
+            elif count == 5 and headers[0] == "Candidates":
+                proportions = [0.13, 0.16, 0.25, 0.25, 0.21]
+            if proportions:
+                widths = [p * doc.width for p in proportions]
             table = LongTable(rows, colWidths=widths, repeatRows=1, hAlign="LEFT")
             table.setStyle(
                 TableStyle(
@@ -198,12 +227,14 @@ def main():
         if image:
             path = args.source.parent / image.group(2)
             w, h = PILImage.open(path).size
-            story.extend(
-                [
-                    Image(str(path), width=doc.width, height=doc.width * h / w),
-                    Paragraph(inline(image.group(1)), small),
-                    Spacer(1, 8),
-                ]
+            story.append(
+                KeepTogether(
+                    [
+                        Image(str(path), width=doc.width, height=doc.width * h / w),
+                        Paragraph(inline(image.group(1)), small),
+                        Spacer(1, 8),
+                    ]
+                )
             )
             i += 1
             continue
@@ -212,6 +243,8 @@ def main():
             i += 1
             continue
         if line.startswith("## "):
+            if line[3:] == "References":
+                story.append(PageBreak())
             story.append(Paragraph(inline(line[3:]), heading))
             i += 1
             continue

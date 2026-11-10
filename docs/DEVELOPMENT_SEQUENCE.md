@@ -238,3 +238,7 @@ Ran real CPU-container ingestion and five repeated three-selector comparisons. V
 Profiled GPU embedding batches on 128 fixed development chunks, with three randomized repeats and synchronized timing. Verified the 240-token bound and vector agreement. Preserved the initial local timing export and published the final length-validated measurement. These operational profiles did not change scientific settings. Final manuscript export, page inspection and the versioned artifact package follow these checks.
 
 <!-- END COMPLETED_EVALUATION -->
+
+## Phase H manuscript export — inspect the rendered artifact
+
+Completed the numerical manuscript and architecture/resource/sampling figures. Added explicit count/token, MILP, Ising, penalty and global-phase equations. Rendered the PDF, inspected all pages, widened method columns, kept figure captions and equation introductions with their content, and placed references on a dedicated page. Rebuilt and inspected the final 13-page export. Saved hashes and page-level QA evidence. This finishes the local manuscript/demo milestone; it does not claim external scientific approval, browser visual review or scholarly submission.

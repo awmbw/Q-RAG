@@ -29,7 +29,7 @@ The implemented flow is supplied or commonly retrieved candidates → token-safe
 | E QAOA and resources | Implemented | Ising/spectrum checks, penalty/XY circuits, exact/shot/noisy simulations and complete compilation |
 | F sparsification method | Implemented | Four rules, hard edge budgets, development calibration and negative-result research decision |
 | G frozen evaluation | Complete | 18 primary conditions and six separately scoped control runs; 53,230 records audited and public statistics reconstructed |
-| H manuscript and demonstration | Implemented; export review underway | Completed numerical manuscript and real-model CPU service checks; PDF visual QA and release finalization follow |
+| H manuscript and demonstration | Complete within local scope | Numerical manuscript, 13-page visually checked PDF, real-model API/container checks, persistence and batch profiling; browser review remains unavailable |
 | I submission package | In progress | Restoration/audit/export tooling prepared; final reproducible release and external authorship/submission decisions remain |
 
 Implementation status does not establish scientific superiority or publication acceptance. Earlier exploratory document-recall comparisons used classical optimization and unequal selection sizes; their figures are not directly comparable to the controlled answer evaluation. The following initial derivation and three-question result are historical; later phase sections describe their extensions.
@@ -492,3 +492,9 @@ Batch 32 processes about 2.30 times as many chunks per second as batch 1 on this
 
 The service has strict input schemas, one inference worker, a four-job bound, persisted statuses, explicit fallbacks, source provenance and local tracing. It is a loopback demonstration without authentication or a production reliability claim. Forty-six correctness tests, targeted type checks, wheel/container checks and both current GitHub CI workflows pass.
 <!-- END SERVICE_RESULTS -->
+
+## Phase H — manuscript export completed
+
+The [editable manuscript](../paper/manuscript.md) now contains the methods, relevant equations, controlled results, three research figures, error observations, limitations and AI-assistance disclosure. The [13-page PDF](../output/pdf/manuscript.pdf) was rendered with ReportLab, rasterized using Poppler and visually inspected on every page. Table widths, figure/caption grouping, equation introductions and the reference page were checked and refined. [Export QA](research_report/evidence/manuscript_export_qa.json) records source/PDF hashes and inspected page images. This is layout validation, not independent scientific review or venue acceptance.
+
+The original hypothesis is not presented as a successful new method. The manuscript explains constraint-induced densification, the basis-start first-layer limitation, the separately scoped prepared control, strong feasible-sampling references and the gap between objective and answer quality. Current publication routes and remaining authorship/formatting decisions are documented separately. No paper has been submitted or accepted.

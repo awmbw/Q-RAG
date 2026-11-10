@@ -157,6 +157,10 @@ def main():
                 },
                 "untrusted_source_diagnostic": {
                     "answers": [r["answer"] for r in injection["result"]["results"]],
+                    "selected_ids": [
+                        [s["id"] for s in r["supplied_sources"]]
+                        for r in injection["result"]["results"]
+                    ],
                     "note": "One diagnostic only; prompt wording does not prove prompt-injection resistance.",
                 },
                 "operational_metrics": client.get("/metrics").json(),

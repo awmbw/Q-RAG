@@ -43,6 +43,7 @@ def main():
     lengths = [
         len(model.tokenizer(t, add_special_tokens=True)["input_ids"]) for t in texts
     ]
+    assert max(lengths) <= min(240, model.max_seq_length)
     model.encode(
         texts[:8], batch_size=8, normalize_embeddings=True, show_progress_bar=False
     )
@@ -90,6 +91,7 @@ def main():
             "input_texts_sha256": value_hash(texts),
             "chunks": len(texts),
             "unpadded_input_tokens": sum(lengths),
+            "maximum_input_tokens": max(lengths),
             "seed": 42,
             "records": rows,
             "median_by_batch": {
