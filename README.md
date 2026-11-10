@@ -2,7 +2,7 @@
 
 Q-RAG studies how classical optimization and simulated quantum algorithms select context for multi-hop question answering. It combines token-safe retrieval, an entity-link scoring proxy, constrained subset selection, sparse QAOA circuits and real local language-model answer evaluation.
 
-The current study is an encoding-aware empirical comparison, with unfavorable outcomes retained. All quantum execution is classical simulation. No physical quantum hardware, practical quantum advantage or guaranteed evidence preservation is claimed. The frozen main evaluation covers two datasets, two generators, matched budgets and strong classical references; final artifact checks are in progress.
+The completed local study is an encoding-aware empirical comparison: **53,230 audited records across 24 conditions**, covering 1,000 distinct held-out questions, two generators and separately scoped controls. All quantum execution is classical simulation. The proposed evidence-guidance benefit is not established, and no practical quantum advantage is claimed. Read the [manuscript PDF](output/pdf/manuscript.pdf), [claim/evidence map](docs/CLAIM_EVIDENCE_MAP.md) and [remaining external work](docs/HUMAN_HANDOFF.md).
 
 The [research progress report](docs/RESEARCH_PROGRESS_REPORT.md) records the mathematical formulation, implementation status, audited results and research decisions. Update it at each phase boundary using the [report maintenance checklist](docs/research_report/MAINTENANCE.md).
 
@@ -43,3 +43,12 @@ Equal passage counts do not imply equal tokens; equal caps do not imply equal co
 The legacy `notebooks/` scripts remain available. Their recall/F1 figures concern document selection, their main optimization experiments use the classical exact solver, and their unequal context sizes cannot establish answer-quality or quantum improvements. The new runner provides the controlled starting point for subsequent studies.
 
 The [manuscript source](paper/manuscript.md) separates principal and exploratory comparisons. The [publication guide](docs/PUBLICATION_GUIDE.md) records current venue options and the remaining author/submission decisions. [Rights and attribution](docs/RIGHTS_AND_ATTRIBUTION.md) identify upstream terms; a project-wide license has not been invented on the owners' behalf. No scholarly submission or acceptance is claimed.
+
+For an inexpensive artifact check after installing the CPU CI dependencies, run:
+
+```bash
+venv/bin/python scripts/reproduce_public_tables.py --verify
+venv/bin/python scripts/reproduce_quantum_instance.py --verify-recorded
+```
+
+These commands reconstruct saved statistics and rerun one frozen solver instance without model weights or dataset downloads. The released coefficient bundle contains 110 optimization instances. Full end-to-end inference is a separate, more expensive reproduction route described in the guide.

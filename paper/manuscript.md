@@ -130,6 +130,8 @@ We use HotpotQA and MuSiQue-Ans with dataset-specific adapters and official answ
 
 The main classical study evaluates two frozen Qwen generators, 1.5B and 3B, with identical settings across selectors. It includes relevance, BM25, hybrid ranking, a fixed chunk-aware cross-encoder, MMR, lexical coverage, greedy energy, annealing, random feasible sampling, full MILP and sparse MILPs. These generators share a model family, limiting architectural generalization.
 
+The generators are Qwen2.5-1.5B-Instruct and Qwen2.5-3B-Instruct, using greedy decoding, float16 weights, at most 32 new tokens and a 4,096-token total bound. Execution uses a Ryzen AI 7 350 laptop with 16 logical CPUs, about 22 GiB host RAM and an RTX 5060 Laptop GPU with approximately 7.53 GiB of PyTorch-visible memory; numerical threads are limited to four. Immutable model revisions and full software versions are released in configurations and manifests.
+
 The main quantum study uses the first 50 frozen IDs per dataset and a shared relevance-reduced pool of at most ten candidates. Reduction is label-independent and applies to the classical references too. Three seeds are averaged within question before paired bootstrap resampling. Five-question 12/16-candidate MuSiQue sensitivities use real supplied candidates. Token studies and bounded corpus studies have their own declared sample sizes and are not pooled with the primary count experiment.
 
 The bounded corpora contain the deduplicated union of benchmark input passages. Exact chunk search and BM25 rank fusion construct common pools of 25/50/100 passages. This is a closed-corpus diagnostic, not full-Wikipedia retrieval. Larger MILPs use a one-second limit with status and bounds retained.

@@ -947,3 +947,19 @@ The 110 frozen optimization instances allow Qiskit/MILP experiments without load
 The report assembler reads completed per-question outcomes, derives statistics and fills only named numerical blocks in the manuscript. This keeps the explanation editable while avoiding hand-transcribed table values. The PDF renderer typesets equations, tables and generated figures from that source. A successful rendering process can still produce clipped labels, split captions or unreadable columns, so each of the 13 pages was separately rasterized and visually inspected.
 
 An export checksum identifies the reviewed PDF bytes. It does not establish that the research is correct or guarantee a bit-identical export with different fonts or rendering-library versions. Similarly, a polished PDF is not a submitted or accepted publication. Source review, author responsibility, venue requirements and independent evidence checking remain distinct from layout QA.
+
+## Why the paired XY gates preserve passage count
+
+The Pauli X operator exchanges |0> and |1>. For a pair of qubits, XX sends |01> to |10> and |00> to |11>. YY also sends |01> to |10>, but sends |00> to -|11>. Adding XX and YY therefore cancels the changes between |00> and |11>, while retaining exchange between |01> and |10>. Exchange moves a selected bit to another position without changing how many are selected.
+
+Qiskit's paired RXX(beta) and RYY(beta) rotations on the same edge commute and multiply to exp[-i beta(XX+YY)/2]. On the one-selected-bit subspace this gives:
+
+$$
+|01\rangle\longmapsto\cos(\beta)|01\rangle-i\sin(\beta)|10\rangle.
+$$
+
+At beta=pi/4, those two local probabilities are both one half. A sweep across overlapping ring edges is not a uniform distribution over every k-subset, because adjacent edge operations do not generally commute. Each edge nevertheless preserves total count, so their composition does too. The diagonal cost layer also preserves count. This explains ideal feasibility without requiring a penalty. Physical noise that flips bits can break the property, as the separate noisy development diagnostic demonstrates.
+
+## Versioned release versus scientific acceptance
+
+A source archive records one committed tree; a wheel installs its Python packages; a PDF is a readable rendered account; checksums identify the supplied bytes. These objects serve different consumers. The release builder checks their consistency and rejects accidental inclusion of datasets, weights or private notes. Public availability still does not supply an unspecified license, establish novelty or replace peer review. The project therefore separates a reproducible software/research artifact from the human decisions and external publication process.

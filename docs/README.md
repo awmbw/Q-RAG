@@ -13,7 +13,10 @@
 | [Service guide](SERVICE_GUIDE.md) | Local dashboard, API, container, queue, observability and reliability limits |
 | [Publication guide](PUBLICATION_GUIDE.md) | Checked venue routes, timeline choices and remaining author decisions |
 | [Rights and attribution](RIGHTS_AND_ATTRIBUTION.md) | Upstream dataset/model terms and release boundaries |
+| [Claim-to-evidence map](CLAIM_EVIDENCE_MAP.md) | Exact artifacts supporting each measured or mathematical statement |
+| [Remaining external work](HUMAN_HANDOFF.md) | Human review, authorship, rights, annotation, browser review and submission |
 | [Manuscript](../paper/manuscript.md) | Editable research paper with regenerated numerical sections |
+| [Reviewed PDF](../output/pdf/manuscript.pdf) | Thirteen-page rendered manuscript; all pages visually inspected |
 | [Derived result tables](../paper/results/) | Generated analyses and figures' numerical inputs |
 | [Unjudged graph review sample](research_report/annotation_sample.json) | Source-grounded development worksheet; not measured semantic graph accuracy |
 | [First baseline session](FIRST_BASELINE_SESSION.md) | Historical record of the November 4 experiment |

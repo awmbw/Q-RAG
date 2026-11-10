@@ -242,3 +242,9 @@ Profiled GPU embedding batches on 128 fixed development chunks, with three rando
 ## Phase H manuscript export — inspect the rendered artifact
 
 Completed the numerical manuscript and architecture/resource/sampling figures. Added explicit count/token, MILP, Ising, penalty and global-phase equations. Rendered the PDF, inspected all pages, widened method columns, kept figure captions and equation introductions with their content, and placed references on a dedicated page. Rebuilt and inspected the final 13-page export. Saved hashes and page-level QA evidence. This finishes the local manuscript/demo milestone; it does not claim external scientific approval, browser visual review or scholarly submission.
+
+## Phase I — package the measured state and preserve the handoff
+
+Prepared a clean-commit release builder for source/configuration/evidence, the installable wheel, reviewed PDF and SHA-256 checksums. Added a claim-to-evidence map and an explicit list of external review, authorship, licensing, annotation and submission tasks. Added model-free public-table and original/prepared quantum reproduction commands to the full CI workflow. Kept the negative findings, local source archives and primary-versus-exploratory distinction intact.
+
+The resulting artifact is a versioned research preview. It is not labeled as a submitted, accepted or independently validated paper. The local implementation, experiments, source restoration, statistical reconstruction, service checks and PDF inspection are complete within the recorded scope. No remaining human-only decision is represented as an automated result.
