@@ -1,6 +1,18 @@
 name: Research software checks
 on: [push, pull_request]
 jobs:
+  journey:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - run: node --version
+      - run: npm ci --prefix tools/journey --ignore-scripts --no-audit --no-fund
+      - run: node scripts/build_journey.cjs
+      - run: git diff --exit-code -- src/qrag_service/static/journey
+      - run: node scripts/check_journey.cjs
+      - run: NODE_PATH="$PWD/tools/journey/node_modules" node scripts/check_dashboard.cjs
+      - run: node --check src/qrag_service/static/journey.js
+      - run: node tools/journey/node_modules/prettier/bin/prettier.cjs --check scripts/build_journey.cjs scripts/check_journey.cjs docs/journey/content.cjs src/qrag_service/static/journey.html src/qrag_service/static/journey.css src/qrag_service/static/journey.js
   contracts:
     runs-on: ubuntu-latest
     steps:

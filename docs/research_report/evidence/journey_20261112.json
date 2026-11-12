@@ -1,0 +1,185 @@
+{
+  "date": "2026-11-12",
+  "scope": "Post-release interactive explanation and presentation revision. No scientific method, recorded experiment, dataset split or manuscript conclusion was changed.",
+  "scientific_source_sha256": "8d6bf4c5739869e525a7222714332b1b2972637d4c04524b6a3df320133dd287",
+  "scientific_source_unchanged": true,
+  "site": {
+    "route": "/journey",
+    "chapters": 10,
+    "phases_including_baseline": 10,
+    "full_references": 43,
+    "public_json_artifacts": 38,
+    "glossary_terms": 46,
+    "rendered_math_calls": 72,
+    "content_sha256": "7f62aa1c9593d25327c3c272fe033bc6368eca38f974f5fdda5a74af36dba46c",
+    "manifest": "src/qrag_service/static/journey/manifest.json"
+  },
+  "python_checks": {
+    "command": "venv/bin/python -m pytest tests -q",
+    "passed": 47,
+    "subtests_passed": 34,
+    "warnings": 1,
+    "warning_scope": "Existing Starlette TestClient/httpx deprecation warning",
+    "ruff_check": "passed",
+    "ruff_format_check": "passed",
+    "mypy_three_declared_modules": "passed"
+  },
+  "journey_checks": {
+    "scope": "DOM and numerical checks; no browser layout or real neural inference claim",
+    "checks_passed": 15,
+    "checks": [
+      "All bundled references/artifacts match source hashes; no private data paths are allowed",
+      "Ten chapter navigation, graceful model-free boot and keyboard controls",
+      "Guided/deep modes expose the same full references; focus and review answers work",
+      "Objective toy reproduces checked energies and signed evidence contribution",
+      "Every phase has its need, math, outcome, boundary and valid in-site deep content",
+      "MILP binary truth table and fractional relaxation have different valid bounds",
+      "Ising toy reproduces binary energies; penalty illustration becomes all-pairs",
+      "Global phase cannot alter basis-start probabilities; preparation changes sensitivity and preserves norm",
+      "All toy sparsifiers and epsilon settings obey the full-objective bound",
+      "Sampling combinatorics and controls reproduce 252 subsets / 98.29% optimum coverage",
+      "All result conditions/datasets use exact recorded values and honest failure/resource denominators",
+      "All 43 full documents and glossary are readable inside modal dialogs",
+      "Search finds full derivations and treats untrusted query text as plain text",
+      "Artifact viewer shows bundled hashes and literal JSON without executing values",
+      "Deep links to chapters, phases and references work on first load; missing content has retry"
+    ]
+  },
+  "laboratory_regression_checks": {
+    "scope": "jsdom DOM behavior checks with explicitly synthetic API fixtures; not a browser layout or real-model test",
+    "checks": [
+      "Initial source cards, JSON and count agree; ready/cold readiness is truthful",
+      "Card edits survive a JSON round trip; source removal clamps k",
+      "Add/remove sources, stepper and reset preserve a valid example",
+      "Invalid JSON blocks submission and keeps JSON editor available",
+      "Duplicate IDs, reference fields and missing methods fail before a request",
+      "Completion renders actual answers, context text, costs, graph and accessible links",
+      "Fallback displays the actual classical method; untrusted answer is text, never markup",
+      "Backend validation and terminal failure re-enable controls and report real errors",
+      "Arrow-key tab navigation preserves selection and focus"
+    ],
+    "passed": 9
+  },
+  "packaging": {
+    "static_files_verified": 40,
+    "wheel": "qrag_research-0.1.0-py3-none-any.whl",
+    "sha256": "6658dbfa8f3364d69d0b6783d63b9f548166a83924a1cdad9b1fe6af0d747675",
+    "all_static_assets_match_source": true,
+    "all_css_font_urls_resolve": true
+  },
+  "http": {
+    "base_url": "http://127.0.0.1:8766",
+    "journey_url": "http://127.0.0.1:8766/journey",
+    "static_assets_matching_worktree": 40,
+    "asset_sha256": {
+      "dashboard.js": "6a4a90194ac997408b3fbf955ac9db423a18600d743e7c4d1e92ac2ef9856cdc",
+      "index.html": "5f459cf3d59b801a471adf133e2c4b21728ba6ccc0bf5ec21ce5cb209421f07d",
+      "journey.js": "d3a2021397e8f7e14294c05be38560c66c6631284abe20540fc2f74562118d47",
+      "dashboard.css": "43162501ad848a6beeb165dec1d23b3f0942bb5cb9aece78fb110846241a0e62",
+      "journey.html": "9b1da43989309300589ba739652d2eaa204cd71f431bc2a32714c894b9bc2399",
+      "journey.css": "7ec7fdc3ac4789b56e01ae433e7bcfba7cb56536b4b9b9cac16189709c100edf",
+      "journey/KATEX-LICENSE.txt": "766ccc1f306c885aa45542a9846bbd0a505b27a0374f146778171c2254ce18e3",
+      "journey/katex.min.css": "1a18155222e88777a8ad26099cca6bddb1a5173c3f8e6aecb7904002114c14e1",
+      "journey/manifest.json": "418513a07fceb10f62151dc7d24beb53b2a3089c47b4f41e8766f76e127ee03d",
+      "journey/content.json": "7f62aa1c9593d25327c3c272fe033bc6368eca38f974f5fdda5a74af36dba46c",
+      "fonts/VT323-OFL.txt": "27d9af34210253e7ca1251fbace86c6f65b40031d6ce1a75493a1b2093631298",
+      "fonts/SourceSerif4-OFL.txt": "5f94c3fd3a23131a417ab5a0c8452de57e70c3cfb9f604d88241f7065ebf9fd9",
+      "fonts/README.md": "c3b6cdd75b7108185bb2e223bc2618b03014fd0114505774443d75d64f33b3b1",
+      "fonts/jetbrains-mono.ttf": "44ce4a84f20d60f24539bd0cef11f79c29e38609e0f8adf18551c9794a5d9dc3",
+      "fonts/source-serif-4.ttf": "f01900495012279f1e95d721c59363395eeffb79ef806eaa4dfa8bd923ccec0b",
+      "fonts/JetBrainsMono-OFL.txt": "b2fe5e8987594e9ffd1d2ca52a2f5d73eb8335243893c5d6254b5ad69269591d",
+      "fonts/vt323.ttf": "954e44d25e0ccd643f4ef15e75d56d3d76590d3c2b1e42b71b13d5df740a51a6",
+      "journey/figures/architecture.png": "5f0ea888eedcac57eb80f7f4d5e298b617d0575a1eba05f3151f143095d07b92",
+      "journey/figures/sampling_coverage.png": "025743473e873f2dce66e187670b57a8d3977a4f9c6259fd172a971e389de835",
+      "journey/figures/quality_resources.png": "388d7a9affcb3c34552c5135cdb1e2cf591e8612794b37e7e4727de4df97a1f5",
+      "journey/fonts/KaTeX_Size4-Regular.woff2": "a4af7d414440a1c1790825cfb700cf9cf43b0f2c4b04f0ebc523011ad9853ec0",
+      "journey/fonts/KaTeX_Main-Bold.woff2": "0f60d1b897938ec918c8ce073092411baf9438f6739465693ff18b0f9d20b021",
+      "journey/fonts/KaTeX_Main-BoldItalic.woff2": "99cd42a3c072d918f2f44984a807cf7aa16e13545fd0875fc07c6c65f99e715b",
+      "journey/fonts/KaTeX_Caligraphic-Bold.woff2": "de7701e42cf1f4cf0b766c03fb27977207eee2f4fd5d76fa82188406da43ea4c",
+      "journey/fonts/KaTeX_AMS-Regular.woff2": "0cdd387c9590a1a9f9794560022dbb59654a7d86f187aa0c81495ad42d3a7308",
+      "journey/fonts/KaTeX_Math-BoldItalic.woff2": "dc47344dbb6cb5b655c8460d561f4df5f501b90c804ad3c6cec65fe322351ab1",
+      "journey/fonts/KaTeX_Main-Italic.woff2": "97479ca6cce906abc961ecac96faa5f9ca2e61b8e7670d475826bcdee9a7c267",
+      "journey/fonts/KaTeX_Fraktur-Regular.woff2": "51814d270d06ff0255dba0799994fa4d8c84d11f09951d47595f4abb1f3602dc",
+      "journey/fonts/KaTeX_Caligraphic-Regular.woff2": "5d53e70ad607c2352162dec9e0923fb54ecdafaccbf604cd8dcf7d00facb989b",
+      "journey/fonts/KaTeX_SansSerif-Regular.woff2": "68e8c73ef42afd3ccec58bf0fba302cce448938e7fc020a5e31f8a952eee1342",
+      "journey/fonts/KaTeX_Main-Regular.woff2": "c2342cd8b869e01752a9321dc17213fc40d4d04c79688c1d43f2cf316abd7866",
+      "journey/fonts/KaTeX_SansSerif-Bold.woff2": "e99ae51144bf1232efcc1bfe5add36262c6866b0faab24fa75740e1b98577a62",
+      "journey/fonts/KaTeX_Size3-Regular.woff2": "73d591271b1604960cb10bb90fee021670af7297017e0e98480b332d11f51995",
+      "journey/fonts/KaTeX_Script-Regular.woff2": "036d4e95149b69ff9bcc0cd55771efeb25ffa3947293e69acd78d5ac328c684b",
+      "journey/fonts/KaTeX_Size2-Regular.woff2": "d04c54219f9eaec6d4d4fd42dfb28785975a4794d6b2fc71e566b9cd6db842dd",
+      "journey/fonts/KaTeX_SansSerif-Italic.woff2": "00b26ac825e2095056396e0553b8ac26d3f8ad158c3826e28b4c45b385c4714a",
+      "journey/fonts/KaTeX_Fraktur-Bold.woff2": "74444efd593c005e3f4573b44524704c0af0a937fe911cca9e94068d0d140d3f",
+      "journey/fonts/KaTeX_Typewriter-Regular.woff2": "71d517d67827787cfabdf186914cc3358eda539e37931941f2b2fd4a21f68c0b",
+      "journey/fonts/KaTeX_Math-Italic.woff2": "7af58c5ec8f132a2ddde9027c6d7814decce4d3b822a11192a42a20e2e973264",
+      "journey/fonts/KaTeX_Size1-Regular.woff2": "6b47c40166b6dbe21a5dfca7718413f2147fd2399be1ba605d8ad39cedf25dfe"
+    },
+    "prior_completed_result_preserved": true,
+    "job_status_counts_preserved": true,
+    "model_ready_before": false,
+    "model_ready_after": false,
+    "new_inference_jobs": 0,
+    "physical_quantum_execution": false
+  },
+  "dependency_audit": {
+    "command": "npm audit --prefix tools/journey --json",
+    "reported_vulnerabilities": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "scope": "npm advisory database at the time of this check; not a security certification",
+    "versions": {
+      "katex": "0.19.1",
+      "markdown-it": "14.3.3",
+      "jsdom": "26.1.0",
+      "prettier": "3.6.2"
+    }
+  },
+  "scientific_regressions": {
+    "public_tables_and_paired_intervals_reconstructed": 24,
+    "original_frozen_quantum_case": "recorded selection, energies and compiled resources reproduced",
+    "prepared_frozen_quantum_case": "recorded selection, energies and compiled resources reproduced",
+    "new_dataset_inference": false,
+    "new_quantum_hardware_execution": false
+  },
+  "container": {
+    "image": "qrag-research:journey-20261112",
+    "image_id": "sha256:1d3044989b566a325350ad63b416a961b9b9b06dd7f1be0287b332879551c7d2",
+    "base_image": "qrag-research:dashboard-20261110",
+    "build": "Verified current wheel installed without dependency changes or network on the existing local CPU image. Standard Dockerfile also packages these assets through pyproject.toml.",
+    "active_name": "qrag-release-demo",
+    "rollback_name": "qrag-release-demo-before-journey",
+    "loopback_port": 8766,
+    "prior_state_volume_reused": true,
+    "model_mount_read_only": true,
+    "nonroot_uid": 10001,
+    "new_real_model_benchmark": false
+  },
+  "visual_review": {
+    "completed": false,
+    "reason": "The connected Chrome surface allowed inventory and tab creation, but navigation and screenshot calls failed before page load: Cannot read properties of undefined (reading timeoutMs).",
+    "not_verified": [
+      "Desktop/mobile CSS painting and overflow",
+      "Real-browser keyboard/focus behavior",
+      "Animation appearance and reduced-motion appearance"
+    ],
+    "implemented_and_dom_checked": [
+      "Chapter and phase navigation",
+      "Guided and deep modes",
+      "Reference, glossary and JSON dialogs",
+      "Search and direct links",
+      "Illustrative numerical controls",
+      "Saved-result selection and exact values"
+    ],
+    "screenshots": []
+  },
+  "retained_boundaries": [
+    "All experimental quantum execution is classical simulation.",
+    "The proposed evidence-guidance benefit remains unestablished.",
+    "No practical quantum advantage or new publication-readiness claim.",
+    "Independent review, annotation, authorship/rights choices and submission remain external work."
+  ]
+}

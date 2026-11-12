@@ -1,6 +1,6 @@
 # Development sequence and implementation decisions
 
-**Version 1.3 working edition | Updated November 10 2026**
+**Version 1.4 working edition | Updated November 12 2026**
 
 This document records the progression from the exploratory prototype through the current research implementation. The first baseline was implemented during one November 4 session; its dependency-ordered account comes first. The November 10 phase entries then record the larger data, retrieval, optimization, quantum, service and research work. Early status tables are labeled historical and do not override later measured progress.
 
@@ -298,3 +298,13 @@ Retired the original notebooks and standalone modules as one bundle, together wi
 Consolidated repeated Ising substitutions, sparsification-bound proofs, feasible-sampling calculations and bootstrap explanations in the technical companion. Kept its worked examples, assumptions and implementation checks. Moved generated build/cache outputs and disposable release/audit verification copies to Trash, while preserving full scientific runs, failed-run archives, datasets, weights and service state. A local recovery manifest records exact Trash locations and verified content hashes; shared documentation contains no machine-specific Trash paths.
 
 Validation after actual retirement: 46 tests and 34 subtests passed; all 24 public statistical tables and intervals reconstructed; original and prepared QAOA reproductions matched; Python lint/format checks passed; documentation links and the unchanged scientific fingerprint were checked. The demo container had already stopped before this cleanup and was left in that state; no container or persistent volume was changed. The [cleanup receipt](research_report/evidence/cleanup_20261110.json) separates this maintenance work from new scientific experiments.
+
+## Project journey — connect the explanations without changing the experiment
+
+The presentation requirement was to explain the complete project inside the website while retaining the detailed source documents. Implemented a second page, `/journey`, and linked it from the existing laboratory. The reading sequence follows overview → current status → original plan → foundations → research design → baseline and phases A–I → results → reproduction → service → manuscript and external work. This preserves the distinction between historical implementation statements and current findings.
+
+First established an explicit allowlist of public reference documents and numerical artifacts. Then wrote the chapter narrative and phase summaries, retaining the full selected source text in an in-site reader. Added local KaTeX equations, figures, source hashes and a deterministic generated bundle. Pinned development-only rendering/checking dependencies in a separate tool directory; service startup needs neither npm nor model weights for reading. The package-data configuration includes the generated content, fonts and figures.
+
+Next added chapter/phase navigation, guided/deep modes, search, glossary, focus view, reference and artifact dialogs, keyboard behavior and responsive/reduced-motion rules. Mathematical interactions compute illustrative subset energies, MILP bounds, Ising energies, two-state quantum probabilities, sparsification bounds and sampling coverage. The results explorer reads saved analyses and explicitly preserves the original/prepared distinction and population/denominator limits. The live laboratory and research implementation remain available without replacing their solver policies.
+
+Verification proceeds from source freshness and numerical identities to DOM behavior, actual HTTP serving with an engine that must remain cold, wheel contents and regression checks. CI rebuilds the generated bundle and detects stale content. Browser navigation and screenshot attempts failed in the available connection, so real desktop/mobile layout and focus behavior remain a separate unverified layer. The [journey receipt](research_report/evidence/journey_20261112.json) records outcomes actually obtained; the [build guide](journey/README.md) records maintenance commands. There is no new scientific result, modified frozen experiment or physical-device execution in this presentation revision.

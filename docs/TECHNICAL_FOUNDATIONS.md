@@ -1,6 +1,6 @@
 # Technical foundations and implementation notes
 
-**Version 1.3 working edition | Updated November 10 2026**
+**Version 1.4 working edition | Updated November 12 2026**
 
 This companion explains the mathematics, ML concepts and engineering decisions behind the implemented research pipeline. It connects definitions to source functions, derives equations and provides numerical examples. [Research progress](RESEARCH_PROGRESS_REPORT.md) contains the experimental account; [Development sequence](DEVELOPMENT_SEQUENCE.md) records implementation order and decisions.
 
@@ -1005,3 +1005,47 @@ The interface is a small state machine: idle, submitting/queued/running, complet
 Self-hosted fonts mean the browser requests font bytes from the same local service. It does not contact a third-party font service at page load. Font files remain separate upstream works with their included licenses. Responsive CSS changes grid columns and type sizes at narrower widths; reduced-motion settings disable nonessential animation. Keyboard tabs, visible focus styles, labels and live status text support interaction, but their presence alone is not an accessibility certification.
 
 Verification has distinct layers. Node checks JavaScript syntax. jsdom executes DOM/event behavior with synthetic API responses but does not lay out the CSS. FastAPI tests verify file routes and request contracts. Wheel inspection verifies distribution contents. Real local HTTP inference verifies the model/solver integration. A browser screenshot and interactive desktop/mobile review would verify rendered layout; that last layer remained blocked by browser-control errors during this revision. None of these interface checks changes or improves the scientific objective or measured answer scores.
+
+## Interactive walkthrough mathematics and content provenance
+
+The project journey at `/journey` explains the existing research through locally computed examples and views of saved artifacts. The [editorial content](journey/content.cjs) supplies the narrative; the [compiler](../scripts/build_journey.cjs) incorporates full public references and unchanged numerical JSON. The [client](../src/qrag_service/static/journey.js) computes the illustrative examples below. These are not alternative research implementations, model predictions or quantum hardware runs.
+
+### 1. A valid vector example for subset energy
+
+Let the normalized question vector be `(1,0)`, and passage vectors be A=`(0.8,0.6)`, B=`(0.6,0.8)`, C=`(0.6,−0.8)`. Each has length one because its squared components sum to one. Dot products with the question give relevance `(0.8,0.6,0.6)`. Pairwise cosine values are A·B=`0.96`, A·C=`0`, B·C=`−0.28`. Clipping negative redundancy to zero yields pair scores `(0.96,0,0)`. These numbers come from a consistent geometry rather than independently invented similarity arrays.
+
+With exactly two passages, relevance weight one, redundancy weight `β=0.5` and evidence weight zero, the three feasible energies are A+B=`−0.8−0.6+0.5×0.96=−0.92`, A+C=`−1.40`, B+C=`−1.20`. Thus relevance-only ranking chooses A+B while this toy objective chooses A+C. Add illustrative complementarity values C_AC=`0.8` and C_BC=`0.2`; with `γ=1`, A+C becomes `−1.40−0.8=−2.20`. This demonstrates a coefficient's effect on selection. It establishes neither useful semantic evidence nor better generated answers.
+
+### 2. MILP products and the relaxation boundary
+
+For binary x and z, impose `0≤y≤1`, `y≤x`, `y≤z`, `y≥x+z−1`. If either input is zero, the upper bound and nonnegativity force y=0. If both are one, the last bound and upper bounds force y=1. Therefore continuous y equals the binary product. In general its allowed interval is `[max(0,x+z−1), min(x,z)]`. If both inputs are relaxed to `0.5`, the interval becomes `[0,0.5]`, which includes values other than the true product `0.25`. Exactness depends on binary inputs; the linear relaxation has a different meaning.
+
+### 3. A two-bit Ising identity
+
+The displayed energy is `E=−x₀−0.5x₁+0.2x₀x₁`. Substitute `x=(1−z)/2`. Expanding the product gives `0.05(1−z₀−z₁+z₀z₁)`. Combining constants gives `−0.5−0.25+0.05=−0.7`; combining linear coefficients gives `0.5−0.05=0.45` and `0.25−0.05=0.20`. Thus `H=−0.7+0.45z₀+0.20z₁+0.05z₀z₁`. For x=`(1,1)`, z=`(−1,−1)` and both energies equal `−1.30`. The example uses qubit zero as the least significant bit and preserves the constant when comparing energies.
+
+For the density illustration, expand `λ(Σxᵢ−k)²`. Since binary `xᵢ²=xᵢ`, it contributes `λ(1−2k)` to every linear coefficient, `2λ` to every unordered pair and constant `λk²`. At n=10 there are `10×9/2=45` possible pairs. Retaining half by a floor rule leaves 22 semantic pairs; the generic squared penalty still adds interactions on all 45. Exact cancellation can be an exception, and this pair count is not a compiled gate count. XY mixing avoids that penalty but has its own costs.
+
+### 4. Global phase versus useful relative phase
+
+The two-state illustration uses basis vectors `|10⟩` and `|01⟩`, energies −1 and −0.5, and mixer `exp(−iβX)` within this one-excitation subspace. Starting with amplitudes `(u,v)`, the cost layer gives `a=u exp(iγ)` and `b=v exp(iγ/2)`. The mixer gives final amplitudes `cos(β)a−i sin(β)b` and `cos(β)b−i sin(β)a`; squared magnitudes give the displayed probabilities and sum to one.
+
+For a basis start, `(u,v)=(1,0)`, so the probabilities are `cos²β` and `sin²β`, independent of γ. Its initial cost phase is global. For the prepared toy, `(u,v)=(1/√2,1/√2)`, the relative phase can change interference and therefore probabilities. The research preparation is generally nonuniform and uses the full recorded ansatz; this exact two-state calculation teaches the mechanism without claiming to rerun that ansatz.
+
+### 5. Sparsification and solver error are separate
+
+The six-variable example has nine signed edges and k=3, hence 20 feasible selections. A retained-fraction slider uses the hard budget `floor(f×9)` and four displayed ranking rules. The random-style toy uses a fixed order; the research rule uses recorded random seeds. Removed absolute mass is `δ=Σ_removed|bᵢⱼ|`. A returned point is required to lie within ε of the sparse optimum. Comparing its full energy against the full optimum illustrates the already derived bound `full gap≤2δ+ε`. The client enumerates all 20 feasible states, so the toy can display both optima exactly. It does not certify answer quality, and enumerating a toy does not demonstrate quantum speedup. The main sparsification section above provides the general proof and assumptions.
+
+### 6. Sampling coverage and its assumptions
+
+There are `M=binomial(n,k)` feasible fixed-count subsets. Under independent uniform sampling, the chance of missing one designated optimum in a draw is `1−1/M`; missing it S times is `(1−1/M)^S`. Therefore coverage is `1−(1−1/M)^S`. For n=10,k=5, M=252, S=1024, coverage is about 98.29%. For n=16,k=5, M=4368 and coverage is about 20.90%. Multiple optima increase coverage; correlated or nonuniform draws require a different model. Best-of-many uniform sampling is a meaningful baseline in a tiny feasible space, not proof of favorable scaling.
+
+### 7. Reading the measured charts
+
+Charts use the saved JSON tables rather than toy outputs. Answer F1 uses a shared zero-to-one axis. Failed records contribute zero to the reported answer denominator. Successful-only token summaries are labelled, and complete-circuit means disclose their own denominator. Seed repetitions are not treated as extra independent questions. Paired confidence intervals describe differences between methods on common questions; an interval crossing zero does not establish a positive benefit. Main and prepared conditions remain explicitly separate. None of these chart controls starts a fresh experiment.
+
+### 8. Deterministic content is a reproducibility contract
+
+An explicit allowlist defines what may enter the browser bundle. The compiler renders Markdown with raw HTML disabled, renders trusted math at build time, rewrites public reference links to the in-site reader, and packages local figures, fonts and licenses. SHA-256 hashes identify the exact source bytes; a hash proves identity, not scientific truth. The manifest also identifies editorial/compiler/tool-lock inputs. CI rebuilds and checks for differences so stale documentation cannot silently remain in a supposedly current bundle.
+
+The browser reads one local content bundle and manipulates its own DOM. It inserts search queries and artifact JSON as text. It does not need a model or Node runtime. Guided/deep modes expose the same information at different initial expansion levels. Automatic visual motion respects reduced-motion settings. Numerical tests check the equations, DOM checks check events, HTTP tests check cold-engine asset serving, and wheel inspection checks packaging. None substitutes for real-browser painting or independent scientific evaluation. The [journey guide](journey/README.md) and [verification receipt](research_report/evidence/journey_20261112.json) separate these layers.

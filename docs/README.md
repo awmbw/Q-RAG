@@ -2,6 +2,7 @@
 
 | Document | Purpose |
 | --- | --- |
+| [Interactive journey guide](journey/README.md) | Ten-chapter website, full in-site references, interactive mathematics, saved results and deterministic content build |
 | [Research progress report](RESEARCH_PROGRESS_REPORT.md) | Objective account of implemented methods, measured results, mathematical formulation, limitations and phase progress |
 | [Technical foundations and implementation notes](TECHNICAL_FOUNDATIONS.md) | Detailed concepts, derivations, numerical examples, code mapping and technical review questions |
 | [Development sequence](DEVELOPMENT_SEQUENCE.md) | Dependency order, reasons for implementation decisions and completed versus remaining phases |

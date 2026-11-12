@@ -21,6 +21,7 @@ venv/
 /models/
 /checkpoints/
 /.cache/
+/tools/journey/node_modules/
 
 # Test, type-checking, lint and coverage outputs
 .pytest_cache/

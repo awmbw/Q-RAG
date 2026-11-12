@@ -1,6 +1,14 @@
 # Local demonstration and API
 
-The service calls the same retrieval, graph, selection and generation library as the experiments. It accepts source text and questions, not reference answers. It is a local demonstration with serialized inference, not a production multiuser deployment. The dashboard is served at the root URL; interactive OpenAPI documentation is at `/docs`.
+The service calls the same retrieval, graph, selection and generation library as the experiments. It accepts source text and questions, not reference answers. It is a local demonstration with serialized inference, not a production multiuser deployment. The live laboratory is served at `/`, the complete project walkthrough at `/journey`, and interactive OpenAPI documentation at `/docs`.
+
+## Complete project walkthrough
+
+Open `/journey` to follow the problem, current state, original plan, foundations, research protocol, baseline and phases A–I, measured results, reproducibility, service and manuscript. Guided and deep modes include the full references inside the website. Search, a glossary, a phase explorer, numerical examples, saved-result charts and a literal JSON evidence viewer support the explanation. None of these controls submits inference jobs; model-cold readiness does not block reading.
+
+The [journey guide](journey/README.md) documents content sources, navigation, development-only dependencies and rebuilding. The compiled bundle, equations, fonts and figures ship with the Python package; no external JavaScript/font CDN or Node runtime is needed by visitors. The result explorer reads public saved analyses, while clearly labelled examples calculate illustrative quantities in the browser. Quantum execution remains simulated, and the original research conclusions remain unchanged.
+
+Functional, numerical, HTTP and packaging checks are recorded separately from visual review in the [journey verification receipt](research_report/evidence/journey_20261112.json). The available browser connection failed before navigation; actual desktop/mobile painting and browser interaction review remain unverified.
 
 ## Dashboard
 
@@ -62,6 +70,7 @@ The observed CPU runtime is pinned in [requirements-container.lock](../requireme
 
 | Request | Result |
 | --- | --- |
+| `GET /journey` | Model-free project walkthrough with locally served references and saved results |
 | `GET /health` | Process can answer requests; states that quantum hardware is false |
 | `GET /ready` | 200 when models are ready; otherwise 503 with a cold-state description |
 | `POST /jobs` | Validate a supplied-pool comparison and return 202 with a job ID |

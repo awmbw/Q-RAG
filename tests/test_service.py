@@ -115,6 +115,47 @@ class ServiceTests(unittest.TestCase):
             finally:
                 gate.set()
 
+    def test_project_journey_reads_without_loading_models_or_starting_jobs(self):
+        from fastapi.testclient import TestClient
+
+        from qrag_service.app import create_app
+        from qrag_service.engine import Engine
+
+        with TemporaryDirectory() as directory:
+            engine = Engine(Path(directory) / "cache")
+            with (
+                patch.object(
+                    engine, "warmup", side_effect=AssertionError("unexpected inference")
+                ),
+                TestClient(
+                    create_app(engine, Path(directory) / "jobs.sqlite")
+                ) as client,
+            ):
+                self.assertEqual(client.get("/ready").status_code, 503)
+                page = client.get("/journey")
+                self.assertEqual(page.status_code, 200)
+                self.assertIn("Follow the research", page.text)
+                self.assertIn("/journey", client.get("/").text)
+                bundle = client.get("/assets/journey/content.json").json()
+                self.assertEqual(len(bundle["chapters"]), 10)
+                self.assertEqual(len(bundle["phases"]), 10)
+                self.assertTrue(all(d["sha256"] for d in bundle["documents"]))
+                for asset in (
+                    "journey.css",
+                    "journey.js",
+                    "journey/manifest.json",
+                    "journey/katex.min.css",
+                    "journey/fonts/KaTeX_Main-Regular.woff2",
+                    "journey/figures/architecture.png",
+                ):
+                    self.assertEqual(
+                        client.get("/assets/" + asset).status_code, 200, asset
+                    )
+                self.assertEqual(client.get("/ready").status_code, 503)
+                self.assertFalse(engine.ready)
+                self.assertIsNone(engine.model)
+                self.assertEqual(client.get("/metrics").json()["jobs_by_status"], {})
+
     def test_timeout_is_recorded(self):
         from fastapi.testclient import TestClient
 

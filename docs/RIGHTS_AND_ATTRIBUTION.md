@@ -18,3 +18,9 @@ Published compact predictions include generated answers, selected source identif
 The software uses NumPy/SciPy, PyTorch/Transformers/Sentence Transformers, FAISS, Qiskit/Aer, FastAPI/Pydantic/Uvicorn, OpenTelemetry and the remaining packages identified in environment snapshots. Their licenses continue to apply to their distributions. Project code implementing score semantics is independently checked against the official HotpotQA/MuSiQue evaluators; no copied evaluator implementation is attributed to this project as an original invention.
 
 Before formal submission or archival publication, confirm author/rights-holder permission for the chosen code, results and manuscript licenses and retain required upstream notices. Do not label a GitHub artifact as peer-reviewed, independently validated, or awarded a reproducibility badge unless that process has actually occurred.
+
+## Website dependencies and local assets — November 12
+
+The project journey packages KaTeX 0.19.1 CSS and font files from the pinned npm distribution. Its [MIT license notice](../src/qrag_service/static/journey/KATEX-LICENSE.txt) is retained next to those assets. The existing display/serif/monospace font notices remain in the [font directory](../src/qrag_service/static/fonts/README.md). Markdown-it, jsdom and Prettier are pinned development tools; their upstream notices remain in their installed distributions. No dependency distribution grants a new license to this project's own software or manuscript. The [journey tool lock](../tools/journey/package-lock.json) identifies the exact npm dependency closure.
+
+The in-site reader republishes the existing selected public documentation and numerical artifacts. The already-public, unjudged graph annotation worksheet includes short attributed source excerpts; it is not a full dataset release or a completed semantic-accuracy study. Full raw corpora and model weights remain excluded from the website bundle.

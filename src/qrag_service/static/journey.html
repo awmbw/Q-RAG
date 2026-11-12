@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#f8f7f1" />
+    <meta
+      name="description"
+      content="An interactive, evidence-linked journey through Q-RAG: concepts, mathematics, development, quantum simulation and measured results."
+    />
+    <title>Q-RAG — Follow the research</title>
+    <link rel="stylesheet" href="/assets/dashboard.css" />
+    <link rel="stylesheet" href="/assets/journey/katex.min.css" />
+    <link rel="stylesheet" href="/assets/journey.css" />
+    <script src="/assets/journey.js" defer></script>
+  </head>
+  <body class="journey-page">
+    <a class="skip-link" href="#chapter">Skip to the current chapter</a>
+    <header class="journey-header">
+      <a class="brand" href="/journey" aria-label="Q-RAG project journey"
+        ><span class="brand-mark" aria-hidden="true">Q</span
+        ><span
+          >Q / RAG<span class="brand-sub">FOLLOW THE RESEARCH</span></span
+        ></a
+      >
+      <nav aria-label="Project navigation">
+        <a href="/#laboratory">Live laboratory ↗</a><a href="/docs">API</a
+        ><button type="button" id="open-library">Reference library</button>
+      </nav>
+      <span class="offline-badge"
+        ><i aria-hidden="true"></i> READ WITHOUT MODELS</span
+      >
+    </header>
+    <div class="journey-layout">
+      <aside class="journey-sidebar" aria-label="Chapter navigation">
+        <p class="eyebrow">THE PROJECT, CONNECTED.</p>
+        <p class="sidebar-intro">
+          A question.<br />A selection.<br />A measured answer.
+        </p>
+        <label for="journey-search" class="sr-only"
+          >Search the complete project</label
+        >
+        <div class="search-wrap">
+          <span aria-hidden="true">⌕</span
+          ><input
+            id="journey-search"
+            type="search"
+            placeholder="Find a concept…"
+            autocomplete="off"
+            aria-controls="search-results"
+            aria-expanded="false"
+          />
+        </div>
+        <div id="search-results" class="search-results" hidden></div>
+        <nav id="chapter-nav" aria-label="Reading sequence"></nav>
+        <div class="sidebar-footer">
+          <button id="open-glossary" type="button">
+            A–Z · Concept glossary
+          </button>
+          <p id="visit-progress">10 connected chapters</p>
+          <div class="visit-track"><span id="visit-bar"></span></div>
+          <p class="fine-print">
+            Visited chapters track navigation, not mastery. ← → move chapters
+            outside controls.
+          </p>
+        </div>
+      </aside>
+      <main id="journey-main">
+        <div class="journey-toolbar">
+          <div class="mode-switch" role="group" aria-label="Reading depth">
+            <button id="mode-guided" type="button" aria-pressed="true">
+              Guided walkthrough</button
+            ><button id="mode-deep" type="button" aria-pressed="false">
+              Deep exploration
+            </button>
+          </div>
+          <button id="focus-toggle" type="button" aria-pressed="false">
+            Focus view ⤢</button
+          ><button id="print-journey" type="button">Print chapter</button>
+        </div>
+        <article id="chapter" tabindex="-1" aria-labelledby="chapter-title">
+          <p class="eyebrow">LOADING THE PROJECT JOURNEY</p>
+          <h1 id="chapter-title">Follow the research.</h1>
+          <p>
+            Loading local explanations and saved evidence. Model weights are not
+            needed.
+          </p>
+          <noscript
+            ><p>
+              Enable JavaScript to use the interactive chapters. The
+              <a href="https://github.com/awmbw/Q-RAG/tree/main/docs"
+                >original documentation</a
+              >
+              remains available.
+            </p></noscript
+          >
+        </article>
+        <nav class="chapter-pagination" aria-label="Previous and next chapter">
+          <button id="previous-chapter" type="button">← Previous</button
+          ><span id="chapter-position"></span
+          ><button id="next-chapter" type="button">Next →</button>
+        </nav>
+        <footer class="journey-footer">
+          <span>Q-RAG / RESEARCH JOURNEY</span>
+          <p id="edition-note">
+            Educational examples and measured results are explicitly
+            distinguished.
+          </p>
+          <a href="/#laboratory">Try the live comparison ↗</a>
+        </footer>
+      </main>
+    </div>
+    <dialog
+      id="reader-dialog"
+      class="reader-dialog"
+      aria-labelledby="reader-title"
+    >
+      <div class="dialog-heading">
+        <div>
+          <p class="eyebrow">IN-SITE REFERENCE LIBRARY</p>
+          <h2 id="reader-title">Project references</h2>
+        </div>
+        <button
+          type="button"
+          class="dialog-close"
+          data-close="reader-dialog"
+          aria-label="Close reference reader"
+        >
+          ×
+        </button>
+      </div>
+      <div class="reader-layout">
+        <nav id="reader-nav" aria-label="Document selection"></nav>
+        <div id="reader-scroll">
+          <p id="reader-provenance" class="provenance"></p>
+          <div id="reader-outline" class="reader-outline"></div>
+          <div id="reader-content" class="prose"></div>
+        </div>
+      </div>
+    </dialog>
+    <dialog
+      id="glossary-dialog"
+      class="glossary-dialog"
+      aria-labelledby="glossary-title"
+    >
+      <div class="dialog-heading">
+        <div>
+          <p class="eyebrow">DEFINITIONS YOU CAN REUSE</p>
+          <h2 id="glossary-title">The concept glossary.</h2>
+        </div>
+        <button
+          type="button"
+          class="dialog-close"
+          data-close="glossary-dialog"
+          aria-label="Close glossary"
+        >
+          ×
+        </button>
+      </div>
+      <label for="glossary-search">Filter terms</label
+      ><input
+        id="glossary-search"
+        type="search"
+        placeholder="Try: QUBO, cache, F1…"
+      />
+      <dl id="glossary-list"></dl>
+    </dialog>
+    <dialog
+      id="evidence-dialog"
+      class="evidence-dialog"
+      aria-labelledby="evidence-title"
+    >
+      <div class="dialog-heading">
+        <div>
+          <p class="eyebrow">RECORDED ARTIFACT / NOT A NEW RUN</p>
+          <h2 id="evidence-title">Inspect the evidence</h2>
+        </div>
+        <button
+          type="button"
+          class="dialog-close"
+          data-close="evidence-dialog"
+          aria-label="Close evidence"
+        >
+          ×
+        </button>
+      </div>
+      <p id="evidence-provenance" class="provenance"></p>
+      <pre id="evidence-content" tabindex="0"></pre>
+    </dialog>
+  </body>
+</html>

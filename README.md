@@ -10,6 +10,8 @@ The [technical companion](docs/TECHNICAL_FOUNDATIONS.md) explains concepts, deri
 
 ## Start here
 
+The website now includes a complete **project journey** at `/journey`: ten connected chapters, the historical baseline and phases A–I, interactive mathematical examples, saved-result comparisons, the full manuscript and an in-site reference library. Follow the guided flow or expand the full derivations. The existing live comparison laboratory remains at `/`. Reading the journey does not load models or start inference. See the [journey build guide](docs/journey/README.md).
+
 From the repository root, using the existing laptop environment:
 
 ```bash
@@ -18,7 +20,7 @@ venv/bin/python scripts/download_models.py --core-only
 venv/bin/uvicorn qrag_service.app:app --host 127.0.0.1 --port 8000 --workers 1
 ```
 
-Open the local dashboard at `http://127.0.0.1:8000`. Its first job loads pinned local MiniLM and Qwen 1.5B weights. Cold readiness returns 503 until that succeeds. API inputs contain no reference answers. The [service guide](docs/SERVICE_GUIDE.md) explains the API, container, queue, limits and explicit fallback policy.
+Open the project journey at `http://127.0.0.1:8000/journey` or the live laboratory at `http://127.0.0.1:8000`. Only a submitted inference job needs the pinned local MiniLM and Qwen 1.5B weights. Cold readiness returns 503 until loading succeeds; the reading website remains usable. API inputs contain no reference answers. The [service guide](docs/SERVICE_GUIDE.md) explains the API, container, queue, limits and explicit fallback policy.
 
 For a fresh installation, input restoration and model-free result reconstruction, follow [reproducibility](docs/REPRODUCIBILITY.md). Weights and datasets are not bundled. CPU container, CI and CUDA laptop dependencies have distinct recorded snapshots. The [historical baseline guide](docs/BASELINE_GUIDE.md) documents the original three-question experiment rather than the complete current study.
 

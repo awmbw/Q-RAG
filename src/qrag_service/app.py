@@ -61,6 +61,10 @@ def create_app(engine=None, database: Path | None = None, capacity=4):
     def dashboard():
         return FileResponse(Path(__file__).parent / "static" / "index.html")
 
+    @application.get("/journey")
+    def project_journey():
+        return FileResponse(Path(__file__).parent / "static" / "journey.html")
+
     @application.get("/health")
     def health():
         return {

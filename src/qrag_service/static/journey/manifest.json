@@ -1,0 +1,358 @@
+{
+  "schema_version": 1,
+  "edition": "2026-11-12",
+  "chapters": 10,
+  "phases": 10,
+  "documents": 43,
+  "glossary_terms": 46,
+  "artifacts": 38,
+  "rendered_equations": 72,
+  "sources": [
+    {
+      "path": "docs/journey/content.cjs",
+      "sha256": "fb69f0a52c71776c405ac9df8a1126f550d87c8f8d1f348d620969222ccb9ef4"
+    },
+    {
+      "path": "scripts/build_journey.cjs",
+      "sha256": "57dfc1e0b19d5af146f02c5daa0d7bbeb19d26fa7b4b169082f7e14ec4f1b3b1"
+    },
+    {
+      "path": "tools/journey/package.json",
+      "sha256": "1c1bad33b89fd09baf9ac1ad2fbef5454aa57f4cffa71fd11468446ff9b6e556"
+    },
+    {
+      "path": "tools/journey/package-lock.json",
+      "sha256": "d8277d49f39880e09521d08c185d95b96bec027c34a8674bbea94c4e48749a5d"
+    },
+    {
+      "path": "README.md",
+      "sha256": "5725bc260568ac1b99a6ee4e3d9b011f3d3eedc314c5c511842f32a0e72a824d"
+    },
+    {
+      "path": "docs/RESEARCH_PROGRESS_REPORT.md",
+      "sha256": "a4ba0b5258fc379c0f52968b5fa71395a08a95833c871515a4e5796e84b38b55"
+    },
+    {
+      "path": "docs/TECHNICAL_FOUNDATIONS.md",
+      "sha256": "c693b7f2dce4c80a002543f72ba955fdfe2d0cc6c60151e102aa382c024ad87a"
+    },
+    {
+      "path": "docs/DEVELOPMENT_SEQUENCE.md",
+      "sha256": "98b5660eb3df609930f167e6c49729562da41d48f1d35bc55a37e3f9c739332c"
+    },
+    {
+      "path": "docs/IMPLEMENTATION_PLAN.md",
+      "sha256": "8af4a2b1f07bcac3135ad2728afffb7cd5ac7fafa18f195c7f0e462db90059a9"
+    },
+    {
+      "path": "docs/LITERATURE_REVIEW.md",
+      "sha256": "48fd647afb84f7a44b5e490bbdc4283f9685a7b3ec2870ccd79989d35c020720"
+    },
+    {
+      "path": "docs/EXPERIMENT_PROTOCOL.md",
+      "sha256": "89235b18442e816d5bbca967356236edc2634e780a039e314f2f054971af3ba2"
+    },
+    {
+      "path": "docs/REPRODUCIBILITY.md",
+      "sha256": "113bfed257e2bb1f8fa193a9d044108060c5bdea15bd4dd8c1a26bed7acaa1cf"
+    },
+    {
+      "path": "docs/CLAIM_EVIDENCE_MAP.md",
+      "sha256": "cd3715ef98c473396865c9eeae656c5c322b6002786c3154bef2c77f0e5f75f7"
+    },
+    {
+      "path": "docs/SERVICE_GUIDE.md",
+      "sha256": "8bbf24bb7ab221abf748a977a55c5c38978eae31145ae117f7843ad0b9e65bfa"
+    },
+    {
+      "path": "paper/manuscript.md",
+      "sha256": "8ed9fa13fa9815ba90b3a902b4124b0bf53683f7b1f61d3a63384c38b159cd57"
+    },
+    {
+      "path": "docs/HUMAN_HANDOFF.md",
+      "sha256": "c556718ab7e3ef4d08a4f43c1d8e72069320c279c70a7cb83c8fa40c648de52c"
+    },
+    {
+      "path": "docs/RIGHTS_AND_ATTRIBUTION.md",
+      "sha256": "cad7740bbfb2368632814022fcbebf654c52a308aeb5845c0860e1714cc8e95b"
+    },
+    {
+      "path": "docs/PUBLICATION_GUIDE.md",
+      "sha256": "e4ff2c5cb1fc2aa0ec176fe999644dc38f8493c5432cb4b1766258139d5d021f"
+    },
+    {
+      "path": "docs/BASELINE_GUIDE.md",
+      "sha256": "31be6adfca87c6265b624ce3ea010a0621feb5591539af1c5f188dfd1d467ab6"
+    },
+    {
+      "path": "paper/results/main_results.md",
+      "sha256": "0364cccb782e1d7bf81e5c0a64142324366b31457af7a595545caf1347030e70"
+    },
+    {
+      "path": "paper/results/sampling_coverage.md",
+      "sha256": "be61f78c060a42bf9e9a04030a1cda90b05df7823a7a4a8f8c3368cfe077b53a"
+    },
+    {
+      "path": "paper/results/error_analysis.md",
+      "sha256": "855af895b4b7f970dc7a6c87f16a021e8f31274280e3e8ad6d48a75b8851c0bc"
+    },
+    {
+      "path": "paper/results/error_analysis.md",
+      "sha256": "855af895b4b7f970dc7a6c87f16a021e8f31274280e3e8ad6d48a75b8851c0bc"
+    },
+    {
+      "path": "paper/results/final_hotpotqa_corpus100_analysis.md",
+      "sha256": "fcdfecfc448e6dc8df5827ff4efff297f34d1d7a970f40d13b34aaf1d2623b67"
+    },
+    {
+      "path": "paper/results/final_hotpotqa_corpus25_analysis.md",
+      "sha256": "cfcb46c29554110712f7ef812439b37cee31e085486a7ffcb661b2c2ee3e0ec9"
+    },
+    {
+      "path": "paper/results/final_hotpotqa_corpus50_analysis.md",
+      "sha256": "674c3fdb208369276dda4a5d20fb318b6e25411741b7da82b506f8fe30355137"
+    },
+    {
+      "path": "paper/results/final_hotpotqa_formulation_analysis.md",
+      "sha256": "c0cf107539a23e21b992b15deb60214e86808463394c8d3662322026707c7f4e"
+    },
+    {
+      "path": "paper/results/final_hotpotqa_gatecap_analysis.md",
+      "sha256": "d4ff5c426f4ec1c29b5df92405e200f77921fafb2f80e0d6bb150e8a58f43615"
+    },
+    {
+      "path": "paper/results/final_hotpotqa_prepared_analysis.md",
+      "sha256": "73024076ef3fc274e2acf3a806378be15b36f3f30e32e616475c507a577eaba1"
+    },
+    {
+      "path": "paper/results/final_hotpotqa_quantum_analysis.md",
+      "sha256": "c3995f88ba67f94d69e5e764ec0aff86f5cff096305b221a196c2136f2610dd8"
+    },
+    {
+      "path": "paper/results/final_hotpotqa_qwen15_count_analysis.md",
+      "sha256": "376c68fe1b4e810cc6ed8f964f3729ea3ff854972e5a04374cafd6206427a309"
+    },
+    {
+      "path": "paper/results/final_hotpotqa_qwen15_tokens_analysis.md",
+      "sha256": "e746b2a71079b13c747ac65bcd02ff06334641e9a481bf49cb7ebd73562ebad8"
+    },
+    {
+      "path": "paper/results/final_hotpotqa_qwen3_count_analysis.md",
+      "sha256": "1485bc790db60ddc69f9998d7859a7212612676cdfa79086b86c8e73c65af313"
+    },
+    {
+      "path": "paper/results/final_hotpotqa_qwen3_tokens_analysis.md",
+      "sha256": "7021fd4bb3576a20bd4faa68980cd18afac9077ba972349bf206a573863af2d7"
+    },
+    {
+      "path": "paper/results/final_musique_corpus100_analysis.md",
+      "sha256": "40c72bf1c47770e85a0e6235bcd3cb8844b11b524f511e0aa1efdc427b2b4625"
+    },
+    {
+      "path": "paper/results/final_musique_corpus25_analysis.md",
+      "sha256": "a02670ed95676f32dab67037b72b6836b6db77b4bddda0112b3cf6552843eda1"
+    },
+    {
+      "path": "paper/results/final_musique_corpus50_analysis.md",
+      "sha256": "921603271062fd64020b59b302ee5c0fb3dfaf51e8615f596a9cfedefca191db"
+    },
+    {
+      "path": "paper/results/final_musique_formulation_analysis.md",
+      "sha256": "662deea2318d2719001d244ea76d80c3d371729ffc3332cf51072a8275423724"
+    },
+    {
+      "path": "paper/results/final_musique_gatecap_analysis.md",
+      "sha256": "9623a1a2271dcf361d0fbc5981d13b9409acc281f57f757e4f40e55079badfe0"
+    },
+    {
+      "path": "paper/results/final_musique_prepared_analysis.md",
+      "sha256": "75f891c4182a749d5989350fd599a520a10db02b72feea8c66011ccac2c63775"
+    },
+    {
+      "path": "paper/results/final_musique_quantum12_analysis.md",
+      "sha256": "dca76b935089e17d52d13f8c00c9eff523de7296fc8ce8b8181af43fd88cec31"
+    },
+    {
+      "path": "paper/results/final_musique_quantum16_analysis.md",
+      "sha256": "31bc4a673c463ff62cb4289d153aa0309cfe26851d7b58f86a9e15bf438769d9"
+    },
+    {
+      "path": "paper/results/final_musique_quantum_analysis.md",
+      "sha256": "c825ba519d1ed4bcb70fe831352007edd41885b87b061f0c71bd168d3b4907d9"
+    },
+    {
+      "path": "paper/results/final_musique_qwen15_count_analysis.md",
+      "sha256": "35e7d0b3d1e130ade93d4a4da715d48e73784a73f390824d2fdd855312f7afc5"
+    },
+    {
+      "path": "paper/results/final_musique_qwen15_tokens_analysis.md",
+      "sha256": "6aa58a05ff0d56a814831c69633376979bfd5c2d42988f621648823e0610e90d"
+    },
+    {
+      "path": "paper/results/final_musique_qwen3_count_analysis.md",
+      "sha256": "3564e2e28523463868797605ce504b6a30b2ab48a9bef5d301c4cd69f2f2f5c0"
+    },
+    {
+      "path": "paper/results/final_musique_qwen3_tokens_analysis.md",
+      "sha256": "382ffadbdde5e2698919c921adc6aecbcb3818f4a19c4edb2202304f3fdc28ed"
+    },
+    {
+      "path": "docs/research_report/evidence/final_audit.json",
+      "sha256": "553beb59e13de4b36916f3dc95ba23284e5ee5b0afb2cc034722e7fd055e0719"
+    },
+    {
+      "path": "docs/research_report/evidence/baseline_dev_001.json",
+      "sha256": "6a7262681b3d18d2ccefbc832a7e9aa1b0308e251672411f1544e4f7ed1acbed"
+    },
+    {
+      "path": "docs/research_report/evidence/embedding_batch_profile.json",
+      "sha256": "b18683fc2493fc639701337a742e13bae2b9e2bdfa68d5e7985878cf97a03d3a"
+    },
+    {
+      "path": "docs/research_report/evidence/quantum_reproduction_smokes.json",
+      "sha256": "0371c8f95584e7c4d83fa54f8bca9bc1c1e77a2360c3164d3de663906eb1bbfb"
+    },
+    {
+      "path": "configs/development_decision.json",
+      "sha256": "980e2feb073170bffbff882227c41a28cbb7627d447cb2d9c253084fff3b7ef7"
+    },
+    {
+      "path": "configs/final_matrix.json",
+      "sha256": "fe49e3baf05e852e7fdfb2247c688fd7fa95a0b92d5fe779fbb54788d29f9b52"
+    },
+    {
+      "path": "configs/preparation_control.json",
+      "sha256": "1246b59d1139d5a4be7b1d10f7049881a32a17d70a755a91675a7b8308ddd8a4"
+    },
+    {
+      "path": "configs/splits/research_v1.json",
+      "sha256": "8f82cf867f955507c4b4d482991e8f785b088a77aaada32967d46d424f55b510"
+    },
+    {
+      "path": "configs/splits/corpus_v1.json",
+      "sha256": "8a27584880b123d739b233fd8433a40555b3e599c67e9093aaafde60cf29114b"
+    },
+    {
+      "path": "docs/research_report/annotation_sample.json",
+      "sha256": "6bbbd015346d2bd489c496ff457864679f7ba7339ab37f71dfae77f8053d23db"
+    },
+    {
+      "path": "paper/results/claim_summary.json",
+      "sha256": "e529134b78cbce2ed3ad6cdf08fc0f251ab93ca9da9a3d2a7c605feedbf7f4a1"
+    },
+    {
+      "path": "paper/results/error_signatures.json",
+      "sha256": "10644dc08a0030d4c995526882cb4e77b4c48cdb3067cfd4fdae437522063fad"
+    },
+    {
+      "path": "paper/results/final_hotpotqa_corpus100_analysis.json",
+      "sha256": "ff7fad3bffc29af73f1a8d080881eaedfaa3e60a754a7ee5f331c994f82cb995"
+    },
+    {
+      "path": "paper/results/final_hotpotqa_corpus25_analysis.json",
+      "sha256": "0336b8ecc60499aa258c7b6338a516ca4cf5c50019e3d1319eca9081357f1adf"
+    },
+    {
+      "path": "paper/results/final_hotpotqa_corpus50_analysis.json",
+      "sha256": "20df0e9d5798b762a27208f68577b775807d804dbe18ac551fdb877bca84f5a2"
+    },
+    {
+      "path": "paper/results/final_hotpotqa_formulation_analysis.json",
+      "sha256": "1f3b7bd2b6fe5f58e2818d054703071875dac3755bd257fa3305ce526e1958f1"
+    },
+    {
+      "path": "paper/results/final_hotpotqa_gatecap_analysis.json",
+      "sha256": "1b39b134b62f48cace520da6f7c6a40e7c627bb8a65e67cbc06bbb609a8cd325"
+    },
+    {
+      "path": "paper/results/final_hotpotqa_prepared_analysis.json",
+      "sha256": "0a92b64b87cbbd48a7251440e31f50d25223343eb44916783f02a457807e0959"
+    },
+    {
+      "path": "paper/results/final_hotpotqa_quantum_analysis.json",
+      "sha256": "edc40f8b29c81cfe6f6386f9108ba76becb46c220f404da1625c1496fc017ff7"
+    },
+    {
+      "path": "paper/results/final_hotpotqa_qwen15_count_analysis.json",
+      "sha256": "eee21197d02615c5703d3b92d0ee01ae65d0627ed2b104a6c8b9030c93003173"
+    },
+    {
+      "path": "paper/results/final_hotpotqa_qwen15_tokens_analysis.json",
+      "sha256": "03fc6496d91413f1d11ed59f37d9a7ea7faaded97683450b182e508e4994b6b1"
+    },
+    {
+      "path": "paper/results/final_hotpotqa_qwen3_count_analysis.json",
+      "sha256": "f5c9f6ddc5a345aa1345d0549676cac994f56158a1da3d1720db92612e25138e"
+    },
+    {
+      "path": "paper/results/final_hotpotqa_qwen3_tokens_analysis.json",
+      "sha256": "f78eda8c36c3be5bc5a7b07c1f972c8e2dbdb2454cacd89a1d4c28807aed4167"
+    },
+    {
+      "path": "paper/results/final_musique_corpus100_analysis.json",
+      "sha256": "d4720cee181af3bc0f2ad2e13fe66dea7f1f4f06596eef22acfded804e1fca28"
+    },
+    {
+      "path": "paper/results/final_musique_corpus25_analysis.json",
+      "sha256": "1639db1476e011efb155e9edfc0eb7fd278890cd3a3a49de766fa29c18bfa8ea"
+    },
+    {
+      "path": "paper/results/final_musique_corpus50_analysis.json",
+      "sha256": "54b88350f89b1b0ee165885eb3d1cf646244594e0474e6710a2fd843f532f3dc"
+    },
+    {
+      "path": "paper/results/final_musique_formulation_analysis.json",
+      "sha256": "6a49c01e0b959ab27e1af7be3ceea0cee7143bdc224a3eba99a1a9656bf19581"
+    },
+    {
+      "path": "paper/results/final_musique_gatecap_analysis.json",
+      "sha256": "a7a7c9a90de3d244e8386321c3b9455ec861b63462a61571a370f46096d243a4"
+    },
+    {
+      "path": "paper/results/final_musique_prepared_analysis.json",
+      "sha256": "e1fa52e1b95655d00edbdb7cf5d706d09ed2476390a11745251de4e761aaa12e"
+    },
+    {
+      "path": "paper/results/final_musique_quantum12_analysis.json",
+      "sha256": "50058630dae7659ea3856d69a2ec0f3a55a16fb1cc47e2ba3d099c0a33ef2b85"
+    },
+    {
+      "path": "paper/results/final_musique_quantum16_analysis.json",
+      "sha256": "d8de2e1a56bd4e37787119a60cc8d884e2437b226f328ade3e14cb260ec3cea6"
+    },
+    {
+      "path": "paper/results/final_musique_quantum_analysis.json",
+      "sha256": "68b53168cb97970041bcd80982226836fb2fae9ad500314e207c194265dec4b9"
+    },
+    {
+      "path": "paper/results/final_musique_qwen15_count_analysis.json",
+      "sha256": "374c2a0f38e79a2919b1e2add6c6920a7e2546b76dfb3258b601dc9d79269dda"
+    },
+    {
+      "path": "paper/results/final_musique_qwen15_tokens_analysis.json",
+      "sha256": "27ed17830fccc641fff467fdab6b9755f8ada82b586cd2d8ffd1733d3cfa5b7d"
+    },
+    {
+      "path": "paper/results/final_musique_qwen3_count_analysis.json",
+      "sha256": "f3db0caaa192ca8afb8b421ff76d92b03f49c9006e0957eefc6d7bafbb9c75cb"
+    },
+    {
+      "path": "paper/results/final_musique_qwen3_tokens_analysis.json",
+      "sha256": "7638787dd5798f505107010878ef85079f4ff8d57c7bd06c7ef564277bb2c9df"
+    },
+    {
+      "path": "paper/results/overview.json",
+      "sha256": "cbf5d3a7ee9807dfd7a9ee020b2ea0378e9e97373d93bc7e477520b3279bc37b"
+    },
+    {
+      "path": "paper/results/sampling_coverage_summary.json",
+      "sha256": "adcf4d81022eaa9cef970d239197ebefce42bf94d1def3d56eae8c1d84291642"
+    }
+  ],
+  "content_sha256": "7f62aa1c9593d25327c3c272fe033bc6368eca38f974f5fdda5a74af36dba46c",
+  "tools": {
+    "markdown-it": "14.3.3",
+    "katex": "0.19.1"
+  },
+  "scope": "Presentation build only. No model inference, new scientific runs or altered scientific results."
+}
